@@ -1,0 +1,48 @@
+Data dictonary
+
+    NAME : Name of a player (can be used as ID), string
+    CLUB : Club in which player is currently playing (18 total clubs), categorical
+    POSITION : Players position (7 total positions), categorical
+    P : Number of games player played this season, numerical
+    G : Number of goals player scored this season, numerical
+    M : Number of shots player missed this season, numerical
+    FG : Number of field goals player scored this season (G - G.1), numerical
+    G.1 : Number of penalty kicks player scored this season (G - FG), numerical
+    % : Players shot percentage this season (G/(G+M)*100), string
+    AS : Number of assists player had this season, numerical
+    TF : Number of technical fouls player had this season, numerical
+    ST : Number of steals player had this season, numerical
+    BL : Number of shots player has blocked this season, numerical
+    YC : Number of yellow cards player received this season, numerical
+    2MIN : Number of two minutes suspension player received this season (usually for hard fouls), numerical
+    RC : Number of red cards player received this season (can be received direct or after getting 2 minutes suspension third time in a game), numerical
+    BK : Number of blue cards player received this season (usually after very hard foul or making problems to referee), numerical
+    HPI : Average handball performance index (sophisticated method of measuring how well players played game created by league engineers), numerical
+
+
+Criar a base de dados para o sistema de gestão de uma plataforma de Fantasy Handball:
+
+Para elaborar este sistema precisamos de definir entidades. 
+Algumas entidades evidentes sao as seguintes:
+pessoa 
+arbitro (IS-A) pessoa
+treinador (IS-A) pessoa
+jogador (IS-A) pessoa
+utilizador
+jogador N:M jogo (A relação vai ser uma entidade no esquema relacional, que permite guardar todo o tipo de estatísticas por jogador no jogo, e com isso calcular as estatísticas totais do jogador, e as estatísticas de cada jogo)
+jogo
+equipa
+pavilhao
+liga (liga em vez de torneio para todas as equipas jogarem entre si)
+posicao (entidade e não atributo, como se fosse um enum do Java)
+
+
+A B C D:
+
+AB AC AD
+BA BC BD
+CA CB CD
+DA DB DC 
+
+Numa liga cada equipa joga com todas as outras, uma vez em Casa e outra vez Fora. 
+Com N equipas, cada equipa joga (N-1) jogos, e há (N-1)*N jogos no total.
