@@ -1,8 +1,8 @@
 # BD: Trabalho Prático APF-T
 
-**Grupo**: PXGY
-- António Fictício, MEC: 1000
-- João Inventado, MEC: 2000
+**Grupo**: P3G2
+- João Reis, MEC: 132982
+- Rúben Marques, MEC: 133155
 
 # Instructions - TO REMOVE
 
@@ -39,21 +39,11 @@ Write a simple introduction about your project.
 
 ![DER Diagram!](der.jpg "AnImage")
 
-### Melhorias/Improvements 
-
-Descreva sumariamente as melhorias sobre a entrega anterior.
-Describe briefly the improvements made since the previous delivery.
-
 ## ER - Esquema Relacional/Relational Schema
 
 ### Versão final/Final Version
 
 ![ER Diagram!](er.jpg "AnImage")
-
-### Melhorias/Improvements
-
-Descreva sumariamente as melhorias sobre a entrega anterior.
-Describe briefly the improvements made since the previous delivery.
 
 ## ​SQL DDL - Data Definition Language
 
