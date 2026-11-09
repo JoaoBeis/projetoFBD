@@ -1609,7 +1609,9 @@ INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_fa
     (49, 19, 2, 4, 2, 1, 0, 0, 0, 63.13, 18.31),
     (55, 19, 1, 2, 3, 1, 0, 0, 0, 67.39, 9.74),
     (58, 19, 1, 0, 1, 2, 0, 0, 13, 63.81, 44.38),
-    (62, 19, 0, 1, 0, 1, 0, 0, 12, 74.79, 43.48),
+    (62, 19, 0, 1, 0, 1, 0, 0, 12, 74.79, 43.48);
+
+INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES
     (59, 19, 0, 0, 3, 0, 0, 0, 16, 69.74, 51.97),
     (27, 20, 7, 1, 1, 0, 0, 0, 0, 71.43, 36.14),
     (24, 20, 4, 4, 1, 0, 1, 0, 0, 66.82, 24.68),
@@ -2109,7 +2111,9 @@ INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_fa
     (185, 38, 0, 1, 1, 0, 0, 0, 13, 63.22, 46.32),
     (183, 38, 0, 0, 3, 0, 0, 0, 11, 64.15, 36.41),
     (186, 38, 0, 1, 1, 0, 0, 0, 13, 60.24, 46.02),
-    (187, 38, 0, 1, 3, 1, 0, 0, 12, 58.45, 38.84),
+    (187, 38, 0, 1, 3, 1, 0, 0, 12, 58.45, 38.84);
+
+INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES
     (131, 39, 3, 1, 1, 0, 0, 0, 0, 72.54, 20.25),
     (146, 39, 2, 0, 3, 0, 0, 0, 0, 71.65, 12.17),
     (135, 39, 3, 1, 1, 0, 0, 0, 0, 69.08, 19.91),
