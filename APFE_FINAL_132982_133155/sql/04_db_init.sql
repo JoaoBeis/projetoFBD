@@ -1,2308 +1,2313 @@
 USE p3g2;
 
--- 1. PAÍSES
-INSERT INTO pais (nome, sigla) VALUES ('Alemanha', 'DEU');
-INSERT INTO pais (nome, sigla) VALUES ('Portugal', 'PRT');
-INSERT INTO pais (nome, sigla) VALUES ('Espanha', 'ESP');
-INSERT INTO pais (nome, sigla) VALUES ('França', 'FRA');
-INSERT INTO pais (nome, sigla) VALUES ('Dinamarca', 'DNK');
-INSERT INTO pais (nome, sigla) VALUES ('Suécia', 'SWE');
-INSERT INTO pais (nome, sigla) VALUES ('Noruega', 'NOR');
-INSERT INTO pais (nome, sigla) VALUES ('Croácia', 'HRV');
-INSERT INTO pais (nome, sigla) VALUES ('Sérvia', 'SRB');
-INSERT INTO pais (nome, sigla) VALUES ('Eslovénia', 'SVN');
-INSERT INTO pais (nome, sigla) VALUES ('Islândia', 'ISL');
-INSERT INTO pais (nome, sigla) VALUES ('Polónia', 'POL');
-INSERT INTO pais (nome, sigla) VALUES ('Hungria', 'HUN');
-INSERT INTO pais (nome, sigla) VALUES ('Macedónia do Norte', 'MKD');
-INSERT INTO pais (nome, sigla) VALUES ('Áustria', 'AUT');
+INSERT INTO pais (nome, sigla) VALUES
+    ('Alemanha', 'DEU'),
+    ('Portugal', 'PRT'),
+    ('Espanha', 'ESP'),
+    ('França', 'FRA'),
+    ('Dinamarca', 'DNK'),
+    ('Suécia', 'SWE'),
+    ('Noruega', 'NOR'),
+    ('Croácia', 'HRV'),
+    ('Sérvia', 'SRB'),
+    ('Eslovénia', 'SVN'),
+    ('Islândia', 'ISL'),
+    ('Polónia', 'POL'),
+    ('Hungria', 'HUN'),
+    ('Macedónia do Norte', 'MKD'),
+    ('Áustria', 'AUT');
 
--- 2. POSIÇÕES
 SET IDENTITY_INSERT posicao ON;
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (1, 'Guarda-Redes', 'GR');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (2, 'Ponta Esquerda', 'PE');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (3, 'Lateral Esquerdo', 'LE');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (4, 'Central', 'C');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (5, 'Lateral Direito', 'LD');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (6, 'Ponta Direita', 'PD');
-INSERT INTO posicao (id_posicao, nome, sigla) VALUES (7, 'Pivô', 'P');
+INSERT INTO posicao (id_posicao, nome, sigla) VALUES
+    (1, 'Guarda-Redes', 'GR'),
+    (2, 'Ponta Esquerda', 'PE'),
+    (3, 'Lateral Esquerdo', 'LE'),
+    (4, 'Central', 'C'),
+    (5, 'Lateral Direito', 'LD'),
+    (6, 'Ponta Direita', 'PD'),
+    (7, 'Pivô', 'P');
 SET IDENTITY_INSERT posicao OFF;
 
--- 3. PAVILHÕES E CLUBES
 SET IDENTITY_INSERT pavilhao ON;
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (1, 'WESTPRESS Arena', 2650, 'Hamm');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (2, 'Max-Schmeling-Halle', 9000, 'Berlim');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (3, 'Klingenhalle', 3200, 'Solingen');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (4, 'EWS Arena', 5600, 'Göppingen');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (5, 'SCHWALBE arena', 4132, 'Gummersbach');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (6, 'Kampa-Halle', 4050, 'Minden');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (7, 'ZAG Arena', 9850, 'Hannover');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (8, 'Arena Nürnberger Versicherung', 8200, 'Erlangen');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (9, 'Barclays Arena', 13000, 'Hamburgo');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (10, 'QUARTERBACK Immobilien ARENA', 6000, 'Leipzig');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (11, 'Rothenbach-Halle', 4500, 'Melsungen');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (12, 'SAP Arena', 13200, 'Mannheim');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (13, 'GETEC Arena', 6600, 'Magdeburgo');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (14, 'FLENS-ARENA', 6300, 'Flensburgo');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (15, 'SCHARRena Stuttgart', 2250, 'Estugarda');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (16, 'Phoenix Contact Arena', 4520, 'Lemgo');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (17, 'Wunderino Arena', 10285, 'Kiel');
-INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES (18, 'Buderus Arena Wetzlar', 4421, 'Wetzlar');
+INSERT INTO pavilhao (id_pavilhao, nome, capacidade, localidade) VALUES
+    (1, 'WESTPRESS Arena', 2650, 'Hamm'),
+    (2, 'Max-Schmeling-Halle', 9000, 'Berlim'),
+    (3, 'Klingenhalle', 3200, 'Solingen'),
+    (4, 'EWS Arena', 5600, 'Göppingen'),
+    (5, 'SCHWALBE arena', 4132, 'Gummersbach'),
+    (6, 'Kampa-Halle', 4050, 'Minden'),
+    (7, 'ZAG Arena', 9850, 'Hannover'),
+    (8, 'Arena Nürnberger Versicherung', 8200, 'Erlangen'),
+    (9, 'Barclays Arena', 13000, 'Hamburgo'),
+    (10, 'QUARTERBACK Immobilien ARENA', 6000, 'Leipzig'),
+    (11, 'Rothenbach-Halle', 4500, 'Melsungen'),
+    (12, 'SAP Arena', 13200, 'Mannheim'),
+    (13, 'GETEC Arena', 6600, 'Magdeburgo'),
+    (14, 'FLENS-ARENA', 6300, 'Flensburgo'),
+    (15, 'SCHARRena Stuttgart', 2250, 'Estugarda'),
+    (16, 'Phoenix Contact Arena', 4520, 'Lemgo'),
+    (17, 'Wunderino Arena', 10285, 'Kiel'),
+    (18, 'Buderus Arena Wetzlar', 4421, 'Wetzlar');
 SET IDENTITY_INSERT pavilhao OFF;
 
 SET IDENTITY_INSERT clube ON;
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (1, 'ASV Hamm-Westfalen', 'Hamm', 'https://assets.handball.de/clubs/1.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (2, 'Füchse Berlin', 'Berlim', 'https://assets.handball.de/clubs/2.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (3, 'Bergischer HC', 'Solingen', 'https://assets.handball.de/clubs/3.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (4, 'FRISCH AUF! Göppingen', 'Göppingen', 'https://assets.handball.de/clubs/4.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (5, 'VfL Gummersbach', 'Gummersbach', 'https://assets.handball.de/clubs/5.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (6, 'GWD Minden', 'Minden', 'https://assets.handball.de/clubs/6.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (7, 'TSV Hannover-Burgdorf', 'Hannover', 'https://assets.handball.de/clubs/7.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (8, 'HC Erlangen', 'Erlangen', 'https://assets.handball.de/clubs/8.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (9, 'HSV Hamburg', 'Hamburgo', 'https://assets.handball.de/clubs/9.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (10, 'SC DHfK Leipzig', 'Leipzig', 'https://assets.handball.de/clubs/10.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (11, 'MT Melsungen', 'Melsungen', 'https://assets.handball.de/clubs/11.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (12, 'Rhein-Neckar Löwen', 'Mannheim', 'https://assets.handball.de/clubs/12.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (13, 'SC Magdeburg', 'Magdeburgo', 'https://assets.handball.de/clubs/13.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (14, 'SG Flensburg-Handewitt', 'Flensburgo', 'https://assets.handball.de/clubs/14.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (15, 'TVB Stuttgart', 'Estugarda', 'https://assets.handball.de/clubs/15.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (16, 'TBV Lemgo Lippe', 'Lemgo', 'https://assets.handball.de/clubs/16.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (17, 'THW Kiel', 'Kiel', 'https://assets.handball.de/clubs/17.png');
-INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES (18, 'HSG Wetzlar', 'Wetzlar', 'https://assets.handball.de/clubs/18.png');
+INSERT INTO clube (id_clube, nome, cidade, emblema) VALUES
+    (1, 'ASV Hamm-Westfalen', 'Hamm', 'https://assets.handball.de/clubs/1.png'),
+    (2, 'Füchse Berlin', 'Berlim', 'https://assets.handball.de/clubs/2.png'),
+    (3, 'Bergischer HC', 'Solingen', 'https://assets.handball.de/clubs/3.png'),
+    (4, 'FRISCH AUF! Göppingen', 'Göppingen', 'https://assets.handball.de/clubs/4.png'),
+    (5, 'VfL Gummersbach', 'Gummersbach', 'https://assets.handball.de/clubs/5.png'),
+    (6, 'GWD Minden', 'Minden', 'https://assets.handball.de/clubs/6.png'),
+    (7, 'TSV Hannover-Burgdorf', 'Hannover', 'https://assets.handball.de/clubs/7.png'),
+    (8, 'HC Erlangen', 'Erlangen', 'https://assets.handball.de/clubs/8.png'),
+    (9, 'HSV Hamburg', 'Hamburgo', 'https://assets.handball.de/clubs/9.png'),
+    (10, 'SC DHfK Leipzig', 'Leipzig', 'https://assets.handball.de/clubs/10.png'),
+    (11, 'MT Melsungen', 'Melsungen', 'https://assets.handball.de/clubs/11.png'),
+    (12, 'Rhein-Neckar Löwen', 'Mannheim', 'https://assets.handball.de/clubs/12.png'),
+    (13, 'SC Magdeburg', 'Magdeburgo', 'https://assets.handball.de/clubs/13.png'),
+    (14, 'SG Flensburg-Handewitt', 'Flensburgo', 'https://assets.handball.de/clubs/14.png'),
+    (15, 'TVB Stuttgart', 'Estugarda', 'https://assets.handball.de/clubs/15.png'),
+    (16, 'TBV Lemgo Lippe', 'Lemgo', 'https://assets.handball.de/clubs/16.png'),
+    (17, 'THW Kiel', 'Kiel', 'https://assets.handball.de/clubs/17.png'),
+    (18, 'HSG Wetzlar', 'Wetzlar', 'https://assets.handball.de/clubs/18.png');
 SET IDENTITY_INSERT clube OFF;
 
--- 4. UTILIZADORES
 SET IDENTITY_INSERT utilizador ON;
-INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES (1, 'admin', 'admin@fantasyhandball.pt', 'hash_admin_123');
-INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES (2, 'joao_silva', 'joao.silva@gmail.com', 'hash_joao_456');
-INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES (3, 'maria_santos', 'maria.santos@outlook.pt', 'hash_maria_789');
-INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES (4, 'carlos_mendes', 'carlos.m@sapo.pt', 'hash_carlos_012');
-INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES (5, 'ana_coach', 'ana.coach@yahoo.com', 'hash_ana_345');
+INSERT INTO utilizador (id_utilizador, username, email, password_hash) VALUES
+    (1, 'admin', 'admin@fantasyhandball.pt', 'hash_admin_123'),
+    (2, 'joao_silva', 'joao.silva@gmail.com', 'hash_joao_456'),
+    (3, 'maria_santos', 'maria.santos@outlook.pt', 'hash_maria_789'),
+    (4, 'carlos_mendes', 'carlos.m@sapo.pt', 'hash_carlos_012'),
+    (5, 'ana_coach', 'ana.coach@yahoo.com', 'hash_ana_345');
 SET IDENTITY_INSERT utilizador OFF;
 
--- 5. PESSOA (Jogadores, Treinadores e Árbitros)
 SET IDENTITY_INSERT pessoa ON;
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (1, 'Fabian', 'Huesmann', '1991-06-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (2, 'Savvas', 'Savvas', '1998-11-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (3, 'Jan', 'Von Boenigk', '1991-04-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (4, 'Marian', 'Orlowski', '1999-09-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (5, 'Andreas', 'Bornemann', '2002-10-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (6, 'Tim', 'Wieling', '2003-12-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (7, 'Björn', 'Zintel', '2002-08-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (8, 'Yonatan', 'Dayan', '2002-10-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (9, 'Alexander', 'Schulze', '1993-01-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (10, 'Stefan', 'Bauer', '1991-02-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (11, 'Jan', 'Pretzewofsky', '2003-02-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (12, 'Mait', 'Patrail', '1990-11-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (13, 'Benjamin', 'Meschke', '2000-06-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (14, 'Vladimir', 'Bozic', '1996-05-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (15, 'Niko', 'Bratzke', '2004-06-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (16, 'Markus', 'Fuchs', '1996-12-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (17, 'Felix', 'Hertlein', '2000-02-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (18, 'Noah', 'Moussa', '1995-02-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (19, 'Hans', 'Lindberg', '1998-05-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (20, 'Jacob', 'Holm', '1997-03-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (21, 'Mathias', 'Gidsel', '2001-12-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (22, 'Mijajlo', 'Marsenic', '1994-01-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (23, 'Lasse Bredekjaer', 'Andersson', '2001-06-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (24, 'Fabian', 'Wiede', '1997-07-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (25, 'Milos', 'Vujovic', '1996-10-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (26, 'Tim', 'Freihöfer', '1997-02-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (27, 'Paul', 'Drux', '1998-10-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (28, 'Robert', 'Weber', '1996-09-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (29, 'Max', 'Darj', '2003-07-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (30, 'Nils', 'Lichtlein', '2004-08-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (31, 'Marko', 'Kopljar', '1998-01-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (32, 'Valter', 'Chrintz', '1993-03-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (33, 'Max Christoph', 'Beneke', '1990-12-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (34, 'Matthes', 'Langhoff', '2004-11-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (35, 'Ole', 'Machner', '2001-10-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (36, 'Dejan', 'Milosavljev', '1997-03-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (37, 'Jann Keno', 'Jacobs', '2004-04-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (38, 'Victor', 'Kireev', '2004-02-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (39, 'Tom', 'Göres', '2001-08-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (40, 'Lasse', 'Ludwig', '1997-12-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (41, 'Silas', 'Overby', '1994-09-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (42, 'Linus', 'Arnesson', '2000-05-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (43, 'Frederik', 'Ladefoged', '2002-11-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (44, 'Noah', 'Beyer', '2001-08-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (45, 'Lukas', 'Stutzke', '2004-07-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (46, 'Tomas', 'Babak', '1993-05-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (47, 'Isak', 'Persson', '1994-01-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (48, 'Tom Kare', 'Nikolaisen', '1992-11-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (49, 'Djibril', 'M''Bengue', '1997-09-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (50, 'Alexander', 'Weck', '1995-04-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (51, 'Arnor Thor', 'Gunnarsson', '2001-08-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (52, 'Yannick', 'Fraatz', '1998-08-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (53, 'Tim', 'Nothdurft', '1996-09-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (54, 'Fabian', 'Gutbrod', '2004-01-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (55, 'Simen', 'Schönningsen', '1994-06-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (56, 'Tobias', 'Schmitz', '2004-02-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (57, 'Tom', 'Bergner', '2001-12-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (58, 'Christopher', 'Rudeck', '1998-05-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (59, 'Peter', 'Johannesson', '2004-03-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (60, 'Aaron', 'Exner', '2003-12-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (61, 'Csaba', 'Szücs', '1991-11-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (62, 'Louis', 'Oberosler', '2004-08-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (63, 'Marcel', 'Schiller', '1991-04-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (64, 'Josip', 'Sarac', '2003-07-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (65, 'David', 'Schmidt', '1997-01-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (66, 'Tim', 'Kneule', '1990-08-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (67, 'Jon', 'Lindenchrone Andersen', '1998-02-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (68, 'Kevin Maageroe', 'Gulliksen', '2002-04-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (69, 'Kresimir', 'Kozina', '1991-10-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (70, 'Tobias', 'Ellebaek', '2002-09-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (71, 'Jaka', 'Malus', '2000-11-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (72, 'Blaz', 'Blagotinsek', '1992-01-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (73, 'Till', 'Hermann', '2000-10-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (74, 'Axel', 'Goller', '2002-08-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (75, 'Gilberto', 'Brito Duarte', '2001-03-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (76, 'Oskar', 'Neudeck', '1993-08-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (77, 'Marin', 'Sego', '1992-10-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (78, 'Nils', 'Röller', '1998-05-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (79, 'Sebastian', 'Heymann', '1996-11-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (80, 'Daniel', 'Rebmann', '2004-03-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (81, 'Valentin', 'Abt', '2002-10-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (82, 'Lukas', 'Blohme', '1998-07-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (83, 'Julian', 'Köster', '2002-03-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (84, 'Dominik', 'Mappes', '2002-04-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (85, 'Ellidi Snaer', 'Vidarsson', '1990-02-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (86, 'Tom', 'Jansen', '2004-02-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (87, 'Tilen', 'Kodrin', '2003-06-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (88, 'Hakon Dadi', 'Styrmisson', '1995-01-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (89, 'Ole', 'Pregler', '1998-08-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (90, 'Miro', 'Schluroff', '2000-05-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (91, 'Stepan', 'Zeman', '1995-02-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (92, 'Mathis', 'Häseler', '1997-10-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (93, 'Finn', 'Schroven', '2002-03-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (94, 'Jonas', 'Stüber', '1999-09-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (95, 'Tom', 'Kiesler', '1996-10-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (96, 'Paul', 'Ohl', '1997-10-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (97, 'Tibor', 'Ivanisevic', '2000-12-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (98, 'Nemanja', 'Zelenovic', '1998-07-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (99, 'Fabian', 'Norsten', '1993-11-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (100, 'Mohamed Amine', 'Darmoul', '1990-11-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (101, 'Mats', 'Korte', '2004-01-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (102, 'Tomas', 'Urban', '2003-11-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (103, 'Niclas', 'Pieczkowski', '1997-12-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (104, 'Mathias', 'Bitsch', '2004-01-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (105, 'Luka', 'Sebetic', '2000-09-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (106, 'Max', 'Staar', '2002-09-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (107, 'Florian', 'Kranzmann', '1992-11-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (108, 'Carles', 'Asensio Cambra', '1992-07-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (109, 'Sveinn', 'Johannsson', '1996-09-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (110, 'Magnus', 'Holpert', '2003-02-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (111, 'Justus Nicolas', 'Richtzenhain', '1994-03-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (112, 'Doruk', 'Pehlivan', '1992-05-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (113, 'Besard', 'Hakaj', '1997-07-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (114, 'Maximilian', 'Janke', '1997-03-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (115, 'Timo', 'Stoyke', '1998-08-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (116, 'Fynn Lukas', 'Hermeling', '1991-09-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (117, 'Jonah', 'Jungmann', '1998-05-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (118, 'Marko', 'Vignjevic', '1991-04-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (119, 'Paul Lukas', 'Hein', '1990-02-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (120, 'Jorit', 'Reshöft', '2000-06-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (121, 'Jan Malte', 'Diekmann', '1998-11-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (122, 'Gil', 'Kunkel', '1990-06-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (123, 'Malte', 'Semisch', '1992-06-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (124, 'Yahav', 'Shamir', '2000-10-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (125, 'Patrick', 'Mattausch', '1998-04-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (126, 'Lucas', 'Grabitz', '1999-12-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (127, 'Fabio Justin', 'Fenske', '1998-10-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (128, 'Theodor', 'Teuteberg', '1993-10-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (129, 'Maximilian', 'Gerbl', '1999-05-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (130, 'Marius', 'Steinhauser', '1998-03-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (131, 'Ilija', 'Brozovic', '2002-05-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (132, 'Branko', 'Vujovic', '1996-03-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (133, 'Uladzislau', 'Kulesh', '2000-01-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (134, 'Renars', 'Uscins', '1995-12-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (135, 'Vincent', 'Büchner', '1992-11-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (136, 'Marian', 'Michalczik', '1991-09-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (137, 'Hannes', 'Feise', '1994-10-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (138, 'Veit', 'Mävers', '1991-05-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (139, 'Evgeni', 'Pevnov', '1992-05-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (140, 'Justus', 'Fischer', '1991-01-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (141, 'Jonathan', 'Edvardsson', '2003-05-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (142, 'Filip', 'Kuzmanovski', '1990-01-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (143, 'Martin', 'Hanne', '1993-01-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (144, 'Domenico', 'Ebner', '1991-02-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (145, 'Koray', 'Ayar', '1998-10-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (146, 'Daniel', 'Weber', '1995-06-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (147, 'Dario', 'Quenstedt', '1997-10-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (148, 'Bastian', 'Roscheck', '2000-12-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (149, 'Petar', 'Juric', '1990-07-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (150, 'Luc', 'Depping', '1999-04-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (151, 'Christoph', 'Steinert', '1997-07-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (152, 'Simon', 'Jeppsson', '2004-02-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (153, 'Nico', 'Büdel', '1995-09-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (154, 'Christopher', 'Bissel', '2004-05-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (155, 'Tim', 'Zechel', '1994-06-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (156, 'Hampus', 'Olsson', '2001-12-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (157, 'Sebastian', 'Firnhaber', '2004-01-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (158, 'Lutz', 'Heiny', '2001-06-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (159, 'Johannes', 'Sellin', '2001-02-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (160, 'Manuel', 'Zehnder', '2002-07-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (161, 'Antonio', 'Metzner', '1999-01-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (162, 'Steffen', 'Fäth', '1995-04-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (163, 'Yannik', 'Bialowas', '1990-12-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (164, 'Justin', 'Kurch', '1992-10-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (165, 'Nikolai', 'Link', '1991-01-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (166, 'Klemen', 'Ferlin', '1998-06-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (167, 'Stephan', 'Seitz', '2000-11-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (168, 'Michael', 'Haßferter', '1990-07-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (169, 'Bertram', 'Obling', '1992-06-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (170, 'Casper Ulrich', 'Mortensen', '1996-07-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (171, 'Jacob Arenth', 'Lassen', '2002-07-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (172, 'Frederik Bo', 'Andersen', '1993-03-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (173, 'Dani', 'Baijens', '1998-01-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (174, 'Niklas', 'Weller', '2001-09-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (175, 'Dominik', 'Axmann', '1998-07-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (176, 'Azat', 'Valiullin', '2002-03-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (177, 'Andreas', 'Magaard', '1990-01-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (178, 'Leif', 'Tissier', '1998-08-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (179, 'Thies', 'Bergemann', '1994-06-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (180, 'Nicolai', 'Theilinger', '2000-10-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (181, 'Tobias', 'Schimmelbauer', '2003-03-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (182, 'Thore', 'Feit', '1990-11-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (183, 'Jens', 'Vortmann', '2003-09-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (184, 'Lukas', 'Ossenkopp', '1994-06-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (185, 'Johannes', 'Bitter', '1998-12-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (186, 'Ivan', 'Budalic', '1990-11-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (187, 'Alexander', 'Pinski', '1990-11-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (188, 'Max', 'Niemann', '1997-01-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (189, 'Levin', 'Unbehaun', '2000-09-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (190, 'Viggó', 'Kristjánsson', '1992-12-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (191, 'Patrick', 'Wiesmach', '1996-12-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (192, 'Sime', 'Ivic', '2002-04-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (193, 'Luca', 'Witzke', '2003-05-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (194, 'Lukas', 'Binder', '2003-04-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (195, 'Matej', 'Klima', '1995-08-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (196, 'Oskar', 'Sunnefeldt', '1997-09-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (197, 'Simon', 'Ernst', '1997-11-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (198, 'Maciej', 'Gebala', '1994-04-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (199, 'Lucas', 'Krzikalla', '2000-07-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (200, 'Tim', 'Matthes', '1997-01-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (201, 'Moritz', 'Preuss', '2003-09-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (202, 'Marko', 'Mamic', '1996-01-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (203, 'Lovro', 'Jotić', '1992-02-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (204, 'Mika Laurin', 'Sajenev', '1995-09-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (205, 'Finn-Lukas', 'Leun', '1994-03-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (206, 'Niclas', 'Heitkamp', '2001-02-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (207, 'Julius', 'Meyer-Siebert', '1998-04-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (208, 'Hendrik', 'Hanemann', '2003-12-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (209, 'Kristian', 'Sæverås', '1994-10-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (210, 'Pascal', 'Bochmann', '1996-07-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (211, 'Paul', 'Bones', '1998-11-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (212, 'Mohamed Essam Moustafa', 'El-Tayar', '1992-09-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (213, 'Kai', 'Häfner', '1991-03-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (214, 'Agustin', 'Casado Marcelo', '1996-06-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (215, 'André', 'Gomes', '1994-05-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (216, 'Elvar Örn', 'Jonsson', '2001-10-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (217, 'Arnar Freyr', 'Arnarsson', '2002-04-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (218, 'Ivan', 'Martinovic', '2004-05-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (219, 'Timo', 'Kastening', '1998-05-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (220, 'David', 'Mandic', '1992-07-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (221, 'Dimitri', 'Ignatow', '2001-11-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (222, 'Aidenas', 'Malasinskas', '2003-10-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (223, 'Rogerio', 'Moraes Ferreira', '1997-07-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (224, 'Gleb', 'Kalarash', '2002-09-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (225, 'Julius', 'Kühn', '2001-09-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (226, 'Julian', 'Fuchs', '1992-06-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (227, 'Florian', 'Drosten', '1992-03-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (228, 'Domagoj', 'Pavlovic', '2004-02-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (229, 'Ben', 'Beekmann', '2000-12-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (230, 'Nebojsa', 'Simic', '2002-01-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (231, 'Lasse', 'Ohl', '1995-02-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (232, 'Adam', 'Morawski', '1994-04-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (233, 'Juri', 'Knorr', '1992-10-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (234, 'Patrick', 'Groetzki', '1993-03-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (235, 'Philipp', 'Ahouansou', '1995-08-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (236, 'Jannik', 'Kohlbacher', '2003-12-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (237, 'Uwe', 'Gensheimer', '1996-05-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (238, 'Niclas', 'Kirkelokke', '1994-11-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (239, 'Albin', 'Lagergren', '1995-08-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (240, 'Olle', 'Forsell Schefvert', '1991-09-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (241, 'Halil', 'Jaganjac', '1993-06-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (242, 'Benjamin', 'Helander', '2003-08-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (243, 'Lukas', 'Nilsson', '1995-02-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (244, 'Kristjan', 'Horzen', '2002-02-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (245, 'Elias', 'Scholtes', '1997-05-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (246, 'Ymir Örn', 'Gislason', '2002-11-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (247, 'Niklas', 'Michalski', '1992-06-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (248, 'David', 'Móré', '1998-09-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (249, 'Robert', 'Timmermeister', '1995-12-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (250, 'Theo', 'Straub', '2003-08-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (251, 'David', 'Späth', '1995-03-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (252, 'Mikael', 'Appelgren', '2002-08-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (253, 'Lion', 'Zacharias', '2003-12-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (254, 'Fabian', 'Schwarzer', '2002-06-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (255, 'Magnus', 'Grupe', '2003-10-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (256, 'Joel', 'Birlehm', '1993-03-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (257, 'Kay', 'Smits', '2001-10-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (258, 'Gisli Thorgeir', 'Kristjansson', '2001-03-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (259, 'Omar Ingi', 'Magnusson', '1994-06-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (260, 'Tim', 'Hornke', '1991-06-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (261, 'Michael', 'Damgaard', '2003-08-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (262, 'Magnus', 'Saugstrup', '1992-09-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (263, 'Lukas', 'Mertens', '1994-04-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (264, 'Philipp', 'Weber', '1992-09-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (265, 'Vladan', 'Lipovina', '1991-05-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (266, 'Lucas', 'Meister', '1999-08-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (267, 'Daniel', 'Pettersson', '1996-07-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (268, 'Christian', 'O''Sullivan', '1998-12-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (269, 'Matthias', 'Musche', '2000-07-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (270, 'Marko', 'Bezjak', '1991-11-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (271, 'Nikola', 'Portner', '2004-08-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (272, 'Mike', 'Jensen', '2003-11-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (273, 'Piotr', 'Chrapkowski', '2000-09-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (274, 'Niclas', 'Behrendt', '1993-07-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (275, 'Emil', 'Jakobsen', '2000-06-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (276, 'Johannes', 'Golla', '2004-07-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (277, 'Johan', 'Hansen', '1992-01-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (278, 'Magnus Abelvik', 'Rød', '1998-12-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (279, 'Hans Aaron', 'Mensing', '1992-06-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (280, 'Gøran', 'Søgard Johannessen', '2000-10-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (281, 'Mads Mensah', 'Larsen', '2003-08-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (282, 'Lasse', 'Kjær Møller', '2004-08-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (283, 'Jim', 'Gottfridsson', '1990-01-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (284, 'Simon', 'Hald Jensen', '1993-11-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (285, 'Franz', 'Semper', '2000-05-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (286, 'August Baskar', 'Pedersen', '1990-04-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (287, 'Teitur Örn', 'Einarsson', '1997-09-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (288, 'Anton', 'Lindskog', '1999-11-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (289, 'Benjamin', 'Buric', '1991-09-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (290, 'Kevin', 'Møller', '1993-09-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (291, 'Leon', 'Kirschberger', '1990-02-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (292, 'Sascha', 'Pfattheicher', '1995-04-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (293, 'Adam', 'Lönn', '1993-10-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (294, 'Egon', 'Hanusz', '1992-12-10');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (295, 'Daniel', 'Fernandez Jimenez', '1991-10-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (296, 'Patrick', 'Zieker', '2001-09-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (297, 'Max', 'Häfner', '1999-09-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (298, 'Jan', 'Forstbauer', '1991-01-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (299, 'Marino', 'Maric', '1996-01-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (300, 'Jerome', 'Müller', '1998-12-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (301, 'Oscar', 'Bergendahl', '1993-08-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (302, 'Ivan', 'Sliskovic', '2000-06-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (303, 'Fynn-Luca', 'Nicolaus', '1995-06-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (304, 'Jorge', 'Serrano Villalobos', '1997-05-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (305, 'Samuel', 'Röthlisberger', '2004-06-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (306, 'Jonas', 'Truchanovicius', '1994-01-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (307, 'Nico', 'Schöttle', '1997-03-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (308, 'Lukas', 'Süsser', '1997-06-09');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (309, 'Miljan', 'Vujovic', '2003-08-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (310, 'Silvio', 'Heinevetter', '1995-05-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (311, 'Lukas', 'Laube', '2003-12-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (312, 'Yannick', 'Wissmann', '1994-04-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (313, 'Samuel', 'Zehnder', '1990-07-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (314, 'Niels Gerardus', 'Versteijnen', '1991-12-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (315, 'Lukas', 'Hutecek', '2000-11-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (316, 'Lukas', 'Zerbe', '2000-09-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (317, 'Tim', 'Suton', '2003-05-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (318, 'Gedeon', 'Guardiola', '1999-02-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (319, 'Emil Buhl', 'Lærke', '1998-09-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (320, 'Jan', 'Brosch', '1995-08-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (321, 'Bobby', 'Schagen', '2000-06-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (322, 'Frederik', 'Simak', '1992-02-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (323, 'Kian', 'Schwarzer', '2003-03-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (324, 'Isaias', 'Guardiola', '1994-09-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (325, 'Leve', 'Carstensen', '2003-07-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (326, 'Niko', 'Blaauw', '1991-10-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (327, 'Borko', 'Ristovski', '1990-08-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (328, 'Finn', 'Zecher', '1993-07-17');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (329, 'Urh', 'Kastelic', '2003-09-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (330, 'Timon', 'Mühlenstädt', '1998-04-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (331, 'Thomas', 'Houtepen', '2003-05-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (332, 'Leon', 'Goldbecker', '2003-12-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (333, 'Niclas', 'Ekberg', '1992-09-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (334, 'Nikola', 'Bilyk', '2003-06-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (335, 'Harald', 'Reinkind', '2000-07-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (336, 'Eric', 'Johansson', '1999-12-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (337, 'Patrick', 'Wiencek', '1993-03-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (338, 'Sander', 'Sagosen', '1998-12-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (339, 'Domagoj', 'Duvnjak', '2001-03-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (340, 'Magnus', 'Landin', '2002-11-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (341, 'Steffen', 'Weinhold', '1990-11-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (342, 'Petter', 'Øverby', '1990-05-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (343, 'Hendrik', 'Pekeler', '1994-03-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (344, 'Miha', 'Zarabec', '1994-09-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (345, 'Rune', 'Dahmke', '1995-03-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (346, 'Karl', 'Wallinius', '1992-03-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (347, 'Sven', 'Ehrig', '1990-03-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (348, 'Tomas', 'Mrkva', '1992-07-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (349, 'Ben Connar', 'Battermann', '1999-08-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (350, 'Luca Alexander', 'Schwormstede', '1990-05-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (351, 'Malte', 'Voigt', '1998-06-18');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (352, 'Niklas', 'Landin', '1991-08-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (353, 'Henri', 'Pabst', '2001-07-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (354, 'Lenny', 'Rubin', '2004-06-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (355, 'Domen', 'Novak', '2001-09-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (356, 'Emil', 'Mellegard', '1997-01-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (357, 'Lars', 'Weissgerber', '1991-06-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (358, 'Erik', 'Schmidt', '2003-12-23');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (359, 'Stefan', 'Cavor', '2003-05-11');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (360, 'Adam', 'Nyfjäll', '2002-01-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (361, 'Hendrik', 'Wagner', '1998-04-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (362, 'Jonas', 'Schelker', '2003-02-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (363, 'Jovica', 'Nikolic', '2000-07-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (364, 'Magnus', 'Fredriksen', '2003-03-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (365, 'Lukas', 'Becher', '1993-11-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (366, 'Radojica', 'Cepic', '1993-06-06');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (367, 'Nikita', 'Pliuto', '1998-07-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (368, 'Ole', 'Klimpke', '1996-08-28');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (369, 'Tim', 'Rüdiger', '1995-12-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (370, 'Anadin', 'Suljakovic', '1994-11-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (371, 'Till', 'Klimpke', '1997-09-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (372, 'Leonard', 'Grazioli', '1997-02-07');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (373, 'Bennett', 'Wiegert', '1981-04-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (374, 'Filip', 'Jicha', '1982-02-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (375, 'Maik', 'Machulla', '1981-11-20');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (376, 'Alfred', 'Gislason', '1981-03-04');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (377, 'Guðjón', 'Sigurðsson', '1972-04-21');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (378, 'Jaron', 'Siewert', '1976-04-14');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (379, 'Florian', 'Kehrmann', '1970-09-05');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (380, 'Christian', 'Prokop', '1980-11-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (381, 'Momir', 'Ilić', '1974-05-24');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (382, 'Roberto', 'Parrondo', '1975-07-01');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (383, 'Velimir', 'Petković', '1977-09-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (384, 'Ljubomir', 'Vranjes', '1974-06-16');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (385, 'Dagur', 'Sigurðsson', '1972-02-26');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (386, 'Talant', 'Dujshebaev', '1972-09-08');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (387, 'Xavi', 'Pascual', '1975-08-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (388, 'Guillaume', 'Gille', '1979-11-19');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (389, 'Glenn', 'Solberg', '1970-12-22');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (390, 'Michael', 'Biegler', '1978-06-25');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (391, 'Robert', 'Schulze', '1982-11-03');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (392, 'Tobias', 'Tönnies', '1985-08-12');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (393, 'Lars', 'Geipel', '1986-09-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (394, 'Marcus', 'Helbig', '1986-02-27');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (395, 'Fabian', 'Baumgart', '1982-05-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (396, 'Sascha', 'Wild', '1979-10-02');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (397, 'Ramesh', 'Thiyagarajah', '1979-09-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (398, 'Suresh', 'Thiyagarajah', '1987-02-13');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (399, 'Jannik', 'Otto', '1988-10-15');
-INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES (400, 'Raphael', 'Piper', '1987-08-18');
+INSERT INTO pessoa (id_pessoa, primeiro_nome, apelido, data_nasc) VALUES
+    (1, 'Fabian', 'Huesmann', '1991-06-17'),
+    (2, 'Savvas', 'Savvas', '1998-11-28'),
+    (3, 'Jan', 'Von Boenigk', '1991-04-20'),
+    (4, 'Marian', 'Orlowski', '1999-09-14'),
+    (5, 'Andreas', 'Bornemann', '2002-10-18'),
+    (6, 'Tim', 'Wieling', '2003-12-25'),
+    (7, 'Björn', 'Zintel', '2002-08-25'),
+    (8, 'Yonatan', 'Dayan', '2002-10-15'),
+    (9, 'Alexander', 'Schulze', '1993-01-20'),
+    (10, 'Stefan', 'Bauer', '1991-02-10'),
+    (11, 'Jan', 'Pretzewofsky', '2003-02-15'),
+    (12, 'Mait', 'Patrail', '1990-11-16'),
+    (13, 'Benjamin', 'Meschke', '2000-06-07'),
+    (14, 'Vladimir', 'Bozic', '1996-05-12'),
+    (15, 'Niko', 'Bratzke', '2004-06-26'),
+    (16, 'Markus', 'Fuchs', '1996-12-17'),
+    (17, 'Felix', 'Hertlein', '2000-02-24'),
+    (18, 'Noah', 'Moussa', '1995-02-18'),
+    (19, 'Hans', 'Lindberg', '1998-05-10'),
+    (20, 'Jacob', 'Holm', '1997-03-21'),
+    (21, 'Mathias', 'Gidsel', '2001-12-19'),
+    (22, 'Mijajlo', 'Marsenic', '1994-01-28'),
+    (23, 'Lasse Bredekjaer', 'Andersson', '2001-06-12'),
+    (24, 'Fabian', 'Wiede', '1997-07-03'),
+    (25, 'Milos', 'Vujovic', '1996-10-18'),
+    (26, 'Tim', 'Freihöfer', '1997-02-14'),
+    (27, 'Paul', 'Drux', '1998-10-16'),
+    (28, 'Robert', 'Weber', '1996-09-09'),
+    (29, 'Max', 'Darj', '2003-07-19'),
+    (30, 'Nils', 'Lichtlein', '2004-08-17'),
+    (31, 'Marko', 'Kopljar', '1998-01-19'),
+    (32, 'Valter', 'Chrintz', '1993-03-27'),
+    (33, 'Max Christoph', 'Beneke', '1990-12-17'),
+    (34, 'Matthes', 'Langhoff', '2004-11-04'),
+    (35, 'Ole', 'Machner', '2001-10-14'),
+    (36, 'Dejan', 'Milosavljev', '1997-03-16'),
+    (37, 'Jann Keno', 'Jacobs', '2004-04-28'),
+    (38, 'Victor', 'Kireev', '2004-02-21'),
+    (39, 'Tom', 'Göres', '2001-08-22'),
+    (40, 'Lasse', 'Ludwig', '1997-12-18'),
+    (41, 'Silas', 'Overby', '1994-09-13'),
+    (42, 'Linus', 'Arnesson', '2000-05-18'),
+    (43, 'Frederik', 'Ladefoged', '2002-11-17'),
+    (44, 'Noah', 'Beyer', '2001-08-26'),
+    (45, 'Lukas', 'Stutzke', '2004-07-14'),
+    (46, 'Tomas', 'Babak', '1993-05-27'),
+    (47, 'Isak', 'Persson', '1994-01-02'),
+    (48, 'Tom Kare', 'Nikolaisen', '1992-11-20'),
+    (49, 'Djibril', 'M''Bengue', '1997-09-16'),
+    (50, 'Alexander', 'Weck', '1995-04-09'),
+    (51, 'Arnor Thor', 'Gunnarsson', '2001-08-15'),
+    (52, 'Yannick', 'Fraatz', '1998-08-26'),
+    (53, 'Tim', 'Nothdurft', '1996-09-22'),
+    (54, 'Fabian', 'Gutbrod', '2004-01-27'),
+    (55, 'Simen', 'Schönningsen', '1994-06-15'),
+    (56, 'Tobias', 'Schmitz', '2004-02-15'),
+    (57, 'Tom', 'Bergner', '2001-12-26'),
+    (58, 'Christopher', 'Rudeck', '1998-05-15'),
+    (59, 'Peter', 'Johannesson', '2004-03-14'),
+    (60, 'Aaron', 'Exner', '2003-12-16'),
+    (61, 'Csaba', 'Szücs', '1991-11-09'),
+    (62, 'Louis', 'Oberosler', '2004-08-12'),
+    (63, 'Marcel', 'Schiller', '1991-04-24'),
+    (64, 'Josip', 'Sarac', '2003-07-05'),
+    (65, 'David', 'Schmidt', '1997-01-03'),
+    (66, 'Tim', 'Kneule', '1990-08-19'),
+    (67, 'Jon', 'Lindenchrone Andersen', '1998-02-20'),
+    (68, 'Kevin Maageroe', 'Gulliksen', '2002-04-08'),
+    (69, 'Kresimir', 'Kozina', '1991-10-02'),
+    (70, 'Tobias', 'Ellebaek', '2002-09-09'),
+    (71, 'Jaka', 'Malus', '2000-11-12'),
+    (72, 'Blaz', 'Blagotinsek', '1992-01-11'),
+    (73, 'Till', 'Hermann', '2000-10-19'),
+    (74, 'Axel', 'Goller', '2002-08-23'),
+    (75, 'Gilberto', 'Brito Duarte', '2001-03-18'),
+    (76, 'Oskar', 'Neudeck', '1993-08-19'),
+    (77, 'Marin', 'Sego', '1992-10-23'),
+    (78, 'Nils', 'Röller', '1998-05-03'),
+    (79, 'Sebastian', 'Heymann', '1996-11-06'),
+    (80, 'Daniel', 'Rebmann', '2004-03-26'),
+    (81, 'Valentin', 'Abt', '2002-10-10'),
+    (82, 'Lukas', 'Blohme', '1998-07-13'),
+    (83, 'Julian', 'Köster', '2002-03-17'),
+    (84, 'Dominik', 'Mappes', '2002-04-13'),
+    (85, 'Ellidi Snaer', 'Vidarsson', '1990-02-13'),
+    (86, 'Tom', 'Jansen', '2004-02-02'),
+    (87, 'Tilen', 'Kodrin', '2003-06-21'),
+    (88, 'Hakon Dadi', 'Styrmisson', '1995-01-01'),
+    (89, 'Ole', 'Pregler', '1998-08-11'),
+    (90, 'Miro', 'Schluroff', '2000-05-15'),
+    (91, 'Stepan', 'Zeman', '1995-02-16'),
+    (92, 'Mathis', 'Häseler', '1997-10-20'),
+    (93, 'Finn', 'Schroven', '2002-03-05'),
+    (94, 'Jonas', 'Stüber', '1999-09-07'),
+    (95, 'Tom', 'Kiesler', '1996-10-11'),
+    (96, 'Paul', 'Ohl', '1997-10-08'),
+    (97, 'Tibor', 'Ivanisevic', '2000-12-03'),
+    (98, 'Nemanja', 'Zelenovic', '1998-07-02'),
+    (99, 'Fabian', 'Norsten', '1993-11-06'),
+    (100, 'Mohamed Amine', 'Darmoul', '1990-11-18'),
+    (101, 'Mats', 'Korte', '2004-01-15'),
+    (102, 'Tomas', 'Urban', '2003-11-07'),
+    (103, 'Niclas', 'Pieczkowski', '1997-12-22'),
+    (104, 'Mathias', 'Bitsch', '2004-01-05'),
+    (105, 'Luka', 'Sebetic', '2000-09-07'),
+    (106, 'Max', 'Staar', '2002-09-05'),
+    (107, 'Florian', 'Kranzmann', '1992-11-28'),
+    (108, 'Carles', 'Asensio Cambra', '1992-07-09'),
+    (109, 'Sveinn', 'Johannsson', '1996-09-14'),
+    (110, 'Magnus', 'Holpert', '2003-02-13'),
+    (111, 'Justus Nicolas', 'Richtzenhain', '1994-03-12'),
+    (112, 'Doruk', 'Pehlivan', '1992-05-15'),
+    (113, 'Besard', 'Hakaj', '1997-07-10'),
+    (114, 'Maximilian', 'Janke', '1997-03-11'),
+    (115, 'Timo', 'Stoyke', '1998-08-15'),
+    (116, 'Fynn Lukas', 'Hermeling', '1991-09-26'),
+    (117, 'Jonah', 'Jungmann', '1998-05-27'),
+    (118, 'Marko', 'Vignjevic', '1991-04-08'),
+    (119, 'Paul Lukas', 'Hein', '1990-02-15'),
+    (120, 'Jorit', 'Reshöft', '2000-06-14'),
+    (121, 'Jan Malte', 'Diekmann', '1998-11-06'),
+    (122, 'Gil', 'Kunkel', '1990-06-28'),
+    (123, 'Malte', 'Semisch', '1992-06-18'),
+    (124, 'Yahav', 'Shamir', '2000-10-26'),
+    (125, 'Patrick', 'Mattausch', '1998-04-04'),
+    (126, 'Lucas', 'Grabitz', '1999-12-09'),
+    (127, 'Fabio Justin', 'Fenske', '1998-10-24'),
+    (128, 'Theodor', 'Teuteberg', '1993-10-10'),
+    (129, 'Maximilian', 'Gerbl', '1999-05-22'),
+    (130, 'Marius', 'Steinhauser', '1998-03-04'),
+    (131, 'Ilija', 'Brozovic', '2002-05-04'),
+    (132, 'Branko', 'Vujovic', '1996-03-04'),
+    (133, 'Uladzislau', 'Kulesh', '2000-01-25'),
+    (134, 'Renars', 'Uscins', '1995-12-26'),
+    (135, 'Vincent', 'Büchner', '1992-11-21'),
+    (136, 'Marian', 'Michalczik', '1991-09-11'),
+    (137, 'Hannes', 'Feise', '1994-10-27'),
+    (138, 'Veit', 'Mävers', '1991-05-11'),
+    (139, 'Evgeni', 'Pevnov', '1992-05-09'),
+    (140, 'Justus', 'Fischer', '1991-01-14'),
+    (141, 'Jonathan', 'Edvardsson', '2003-05-14'),
+    (142, 'Filip', 'Kuzmanovski', '1990-01-04'),
+    (143, 'Martin', 'Hanne', '1993-01-10'),
+    (144, 'Domenico', 'Ebner', '1991-02-22'),
+    (145, 'Koray', 'Ayar', '1998-10-28'),
+    (146, 'Daniel', 'Weber', '1995-06-25'),
+    (147, 'Dario', 'Quenstedt', '1997-10-21'),
+    (148, 'Bastian', 'Roscheck', '2000-12-20'),
+    (149, 'Petar', 'Juric', '1990-07-11'),
+    (150, 'Luc', 'Depping', '1999-04-20'),
+    (151, 'Christoph', 'Steinert', '1997-07-22'),
+    (152, 'Simon', 'Jeppsson', '2004-02-22'),
+    (153, 'Nico', 'Büdel', '1995-09-22'),
+    (154, 'Christopher', 'Bissel', '2004-05-13'),
+    (155, 'Tim', 'Zechel', '1994-06-02'),
+    (156, 'Hampus', 'Olsson', '2001-12-14'),
+    (157, 'Sebastian', 'Firnhaber', '2004-01-10'),
+    (158, 'Lutz', 'Heiny', '2001-06-10'),
+    (159, 'Johannes', 'Sellin', '2001-02-10'),
+    (160, 'Manuel', 'Zehnder', '2002-07-11'),
+    (161, 'Antonio', 'Metzner', '1999-01-18'),
+    (162, 'Steffen', 'Fäth', '1995-04-18'),
+    (163, 'Yannik', 'Bialowas', '1990-12-04'),
+    (164, 'Justin', 'Kurch', '1992-10-04'),
+    (165, 'Nikolai', 'Link', '1991-01-05'),
+    (166, 'Klemen', 'Ferlin', '1998-06-20'),
+    (167, 'Stephan', 'Seitz', '2000-11-10'),
+    (168, 'Michael', 'Haßferter', '1990-07-19'),
+    (169, 'Bertram', 'Obling', '1992-06-14'),
+    (170, 'Casper Ulrich', 'Mortensen', '1996-07-08'),
+    (171, 'Jacob Arenth', 'Lassen', '2002-07-22'),
+    (172, 'Frederik Bo', 'Andersen', '1993-03-06'),
+    (173, 'Dani', 'Baijens', '1998-01-22'),
+    (174, 'Niklas', 'Weller', '2001-09-22'),
+    (175, 'Dominik', 'Axmann', '1998-07-09'),
+    (176, 'Azat', 'Valiullin', '2002-03-08'),
+    (177, 'Andreas', 'Magaard', '1990-01-09'),
+    (178, 'Leif', 'Tissier', '1998-08-14'),
+    (179, 'Thies', 'Bergemann', '1994-06-05'),
+    (180, 'Nicolai', 'Theilinger', '2000-10-03'),
+    (181, 'Tobias', 'Schimmelbauer', '2003-03-18'),
+    (182, 'Thore', 'Feit', '1990-11-28'),
+    (183, 'Jens', 'Vortmann', '2003-09-27'),
+    (184, 'Lukas', 'Ossenkopp', '1994-06-21'),
+    (185, 'Johannes', 'Bitter', '1998-12-11'),
+    (186, 'Ivan', 'Budalic', '1990-11-27'),
+    (187, 'Alexander', 'Pinski', '1990-11-08'),
+    (188, 'Max', 'Niemann', '1997-01-08'),
+    (189, 'Levin', 'Unbehaun', '2000-09-28'),
+    (190, 'Viggó', 'Kristjánsson', '1992-12-28'),
+    (191, 'Patrick', 'Wiesmach', '1996-12-12'),
+    (192, 'Sime', 'Ivic', '2002-04-18'),
+    (193, 'Luca', 'Witzke', '2003-05-11'),
+    (194, 'Lukas', 'Binder', '2003-04-12'),
+    (195, 'Matej', 'Klima', '1995-08-21'),
+    (196, 'Oskar', 'Sunnefeldt', '1997-09-26'),
+    (197, 'Simon', 'Ernst', '1997-11-19'),
+    (198, 'Maciej', 'Gebala', '1994-04-06'),
+    (199, 'Lucas', 'Krzikalla', '2000-07-05'),
+    (200, 'Tim', 'Matthes', '1997-01-12'),
+    (201, 'Moritz', 'Preuss', '2003-09-23'),
+    (202, 'Marko', 'Mamic', '1996-01-21'),
+    (203, 'Lovro', 'Jotić', '1992-02-10'),
+    (204, 'Mika Laurin', 'Sajenev', '1995-09-24'),
+    (205, 'Finn-Lukas', 'Leun', '1994-03-23'),
+    (206, 'Niclas', 'Heitkamp', '2001-02-01'),
+    (207, 'Julius', 'Meyer-Siebert', '1998-04-28'),
+    (208, 'Hendrik', 'Hanemann', '2003-12-19'),
+    (209, 'Kristian', 'Sæverås', '1994-10-02'),
+    (210, 'Pascal', 'Bochmann', '1996-07-18'),
+    (211, 'Paul', 'Bones', '1998-11-22'),
+    (212, 'Mohamed Essam Moustafa', 'El-Tayar', '1992-09-04'),
+    (213, 'Kai', 'Häfner', '1991-03-24'),
+    (214, 'Agustin', 'Casado Marcelo', '1996-06-18'),
+    (215, 'André', 'Gomes', '1994-05-02'),
+    (216, 'Elvar Örn', 'Jonsson', '2001-10-22'),
+    (217, 'Arnar Freyr', 'Arnarsson', '2002-04-06'),
+    (218, 'Ivan', 'Martinovic', '2004-05-10'),
+    (219, 'Timo', 'Kastening', '1998-05-12'),
+    (220, 'David', 'Mandic', '1992-07-07'),
+    (221, 'Dimitri', 'Ignatow', '2001-11-01'),
+    (222, 'Aidenas', 'Malasinskas', '2003-10-21'),
+    (223, 'Rogerio', 'Moraes Ferreira', '1997-07-12'),
+    (224, 'Gleb', 'Kalarash', '2002-09-06'),
+    (225, 'Julius', 'Kühn', '2001-09-01'),
+    (226, 'Julian', 'Fuchs', '1992-06-18'),
+    (227, 'Florian', 'Drosten', '1992-03-01'),
+    (228, 'Domagoj', 'Pavlovic', '2004-02-17'),
+    (229, 'Ben', 'Beekmann', '2000-12-21'),
+    (230, 'Nebojsa', 'Simic', '2002-01-27'),
+    (231, 'Lasse', 'Ohl', '1995-02-12'),
+    (232, 'Adam', 'Morawski', '1994-04-18'),
+    (233, 'Juri', 'Knorr', '1992-10-20'),
+    (234, 'Patrick', 'Groetzki', '1993-03-04'),
+    (235, 'Philipp', 'Ahouansou', '1995-08-04'),
+    (236, 'Jannik', 'Kohlbacher', '2003-12-03'),
+    (237, 'Uwe', 'Gensheimer', '1996-05-20'),
+    (238, 'Niclas', 'Kirkelokke', '1994-11-04'),
+    (239, 'Albin', 'Lagergren', '1995-08-16'),
+    (240, 'Olle', 'Forsell Schefvert', '1991-09-17'),
+    (241, 'Halil', 'Jaganjac', '1993-06-22'),
+    (242, 'Benjamin', 'Helander', '2003-08-19'),
+    (243, 'Lukas', 'Nilsson', '1995-02-03'),
+    (244, 'Kristjan', 'Horzen', '2002-02-26'),
+    (245, 'Elias', 'Scholtes', '1997-05-09'),
+    (246, 'Ymir Örn', 'Gislason', '2002-11-08'),
+    (247, 'Niklas', 'Michalski', '1992-06-14'),
+    (248, 'David', 'Móré', '1998-09-11'),
+    (249, 'Robert', 'Timmermeister', '1995-12-22'),
+    (250, 'Theo', 'Straub', '2003-08-13'),
+    (251, 'David', 'Späth', '1995-03-07'),
+    (252, 'Mikael', 'Appelgren', '2002-08-08'),
+    (253, 'Lion', 'Zacharias', '2003-12-12'),
+    (254, 'Fabian', 'Schwarzer', '2002-06-14'),
+    (255, 'Magnus', 'Grupe', '2003-10-13'),
+    (256, 'Joel', 'Birlehm', '1993-03-15'),
+    (257, 'Kay', 'Smits', '2001-10-22'),
+    (258, 'Gisli Thorgeir', 'Kristjansson', '2001-03-14'),
+    (259, 'Omar Ingi', 'Magnusson', '1994-06-27'),
+    (260, 'Tim', 'Hornke', '1991-06-09'),
+    (261, 'Michael', 'Damgaard', '2003-08-09'),
+    (262, 'Magnus', 'Saugstrup', '1992-09-21'),
+    (263, 'Lukas', 'Mertens', '1994-04-11'),
+    (264, 'Philipp', 'Weber', '1992-09-25'),
+    (265, 'Vladan', 'Lipovina', '1991-05-10'),
+    (266, 'Lucas', 'Meister', '1999-08-21'),
+    (267, 'Daniel', 'Pettersson', '1996-07-01'),
+    (268, 'Christian', 'O''Sullivan', '1998-12-11'),
+    (269, 'Matthias', 'Musche', '2000-07-11'),
+    (270, 'Marko', 'Bezjak', '1991-11-25'),
+    (271, 'Nikola', 'Portner', '2004-08-22'),
+    (272, 'Mike', 'Jensen', '2003-11-27'),
+    (273, 'Piotr', 'Chrapkowski', '2000-09-17'),
+    (274, 'Niclas', 'Behrendt', '1993-07-12'),
+    (275, 'Emil', 'Jakobsen', '2000-06-02'),
+    (276, 'Johannes', 'Golla', '2004-07-24'),
+    (277, 'Johan', 'Hansen', '1992-01-09'),
+    (278, 'Magnus Abelvik', 'Rød', '1998-12-09'),
+    (279, 'Hans Aaron', 'Mensing', '1992-06-19'),
+    (280, 'Gøran', 'Søgard Johannessen', '2000-10-14'),
+    (281, 'Mads Mensah', 'Larsen', '2003-08-28'),
+    (282, 'Lasse', 'Kjær Møller', '2004-08-11'),
+    (283, 'Jim', 'Gottfridsson', '1990-01-25'),
+    (284, 'Simon', 'Hald Jensen', '1993-11-04'),
+    (285, 'Franz', 'Semper', '2000-05-11'),
+    (286, 'August Baskar', 'Pedersen', '1990-04-26'),
+    (287, 'Teitur Örn', 'Einarsson', '1997-09-09'),
+    (288, 'Anton', 'Lindskog', '1999-11-12'),
+    (289, 'Benjamin', 'Buric', '1991-09-23'),
+    (290, 'Kevin', 'Møller', '1993-09-25'),
+    (291, 'Leon', 'Kirschberger', '1990-02-05'),
+    (292, 'Sascha', 'Pfattheicher', '1995-04-15'),
+    (293, 'Adam', 'Lönn', '1993-10-22'),
+    (294, 'Egon', 'Hanusz', '1992-12-10'),
+    (295, 'Daniel', 'Fernandez Jimenez', '1991-10-14'),
+    (296, 'Patrick', 'Zieker', '2001-09-22'),
+    (297, 'Max', 'Häfner', '1999-09-05'),
+    (298, 'Jan', 'Forstbauer', '1991-01-09'),
+    (299, 'Marino', 'Maric', '1996-01-06'),
+    (300, 'Jerome', 'Müller', '1998-12-17'),
+    (301, 'Oscar', 'Bergendahl', '1993-08-22'),
+    (302, 'Ivan', 'Sliskovic', '2000-06-11'),
+    (303, 'Fynn-Luca', 'Nicolaus', '1995-06-20'),
+    (304, 'Jorge', 'Serrano Villalobos', '1997-05-16'),
+    (305, 'Samuel', 'Röthlisberger', '2004-06-27'),
+    (306, 'Jonas', 'Truchanovicius', '1994-01-21'),
+    (307, 'Nico', 'Schöttle', '1997-03-01'),
+    (308, 'Lukas', 'Süsser', '1997-06-09'),
+    (309, 'Miljan', 'Vujovic', '2003-08-07'),
+    (310, 'Silvio', 'Heinevetter', '1995-05-17'),
+    (311, 'Lukas', 'Laube', '2003-12-13'),
+    (312, 'Yannick', 'Wissmann', '1994-04-19'),
+    (313, 'Samuel', 'Zehnder', '1990-07-28'),
+    (314, 'Niels Gerardus', 'Versteijnen', '1991-12-24'),
+    (315, 'Lukas', 'Hutecek', '2000-11-17'),
+    (316, 'Lukas', 'Zerbe', '2000-09-25'),
+    (317, 'Tim', 'Suton', '2003-05-16'),
+    (318, 'Gedeon', 'Guardiola', '1999-02-28'),
+    (319, 'Emil Buhl', 'Lærke', '1998-09-20'),
+    (320, 'Jan', 'Brosch', '1995-08-11'),
+    (321, 'Bobby', 'Schagen', '2000-06-12'),
+    (322, 'Frederik', 'Simak', '1992-02-18'),
+    (323, 'Kian', 'Schwarzer', '2003-03-25'),
+    (324, 'Isaias', 'Guardiola', '1994-09-17'),
+    (325, 'Leve', 'Carstensen', '2003-07-21'),
+    (326, 'Niko', 'Blaauw', '1991-10-07'),
+    (327, 'Borko', 'Ristovski', '1990-08-08'),
+    (328, 'Finn', 'Zecher', '1993-07-17'),
+    (329, 'Urh', 'Kastelic', '2003-09-05'),
+    (330, 'Timon', 'Mühlenstädt', '1998-04-26'),
+    (331, 'Thomas', 'Houtepen', '2003-05-25'),
+    (332, 'Leon', 'Goldbecker', '2003-12-16'),
+    (333, 'Niclas', 'Ekberg', '1992-09-22'),
+    (334, 'Nikola', 'Bilyk', '2003-06-12'),
+    (335, 'Harald', 'Reinkind', '2000-07-18'),
+    (336, 'Eric', 'Johansson', '1999-12-18'),
+    (337, 'Patrick', 'Wiencek', '1993-03-20'),
+    (338, 'Sander', 'Sagosen', '1998-12-05'),
+    (339, 'Domagoj', 'Duvnjak', '2001-03-05'),
+    (340, 'Magnus', 'Landin', '2002-11-19'),
+    (341, 'Steffen', 'Weinhold', '1990-11-28'),
+    (342, 'Petter', 'Øverby', '1990-05-26'),
+    (343, 'Hendrik', 'Pekeler', '1994-03-05'),
+    (344, 'Miha', 'Zarabec', '1994-09-23'),
+    (345, 'Rune', 'Dahmke', '1995-03-15'),
+    (346, 'Karl', 'Wallinius', '1992-03-23'),
+    (347, 'Sven', 'Ehrig', '1990-03-22'),
+    (348, 'Tomas', 'Mrkva', '1992-07-21'),
+    (349, 'Ben Connar', 'Battermann', '1999-08-18'),
+    (350, 'Luca Alexander', 'Schwormstede', '1990-05-08'),
+    (351, 'Malte', 'Voigt', '1998-06-18'),
+    (352, 'Niklas', 'Landin', '1991-08-22'),
+    (353, 'Henri', 'Pabst', '2001-07-05'),
+    (354, 'Lenny', 'Rubin', '2004-06-05'),
+    (355, 'Domen', 'Novak', '2001-09-02'),
+    (356, 'Emil', 'Mellegard', '1997-01-02'),
+    (357, 'Lars', 'Weissgerber', '1991-06-19'),
+    (358, 'Erik', 'Schmidt', '2003-12-23'),
+    (359, 'Stefan', 'Cavor', '2003-05-11'),
+    (360, 'Adam', 'Nyfjäll', '2002-01-06'),
+    (361, 'Hendrik', 'Wagner', '1998-04-28'),
+    (362, 'Jonas', 'Schelker', '2003-02-14'),
+    (363, 'Jovica', 'Nikolic', '2000-07-07'),
+    (364, 'Magnus', 'Fredriksen', '2003-03-08'),
+    (365, 'Lukas', 'Becher', '1993-11-16'),
+    (366, 'Radojica', 'Cepic', '1993-06-06'),
+    (367, 'Nikita', 'Pliuto', '1998-07-24'),
+    (368, 'Ole', 'Klimpke', '1996-08-28'),
+    (369, 'Tim', 'Rüdiger', '1995-12-07'),
+    (370, 'Anadin', 'Suljakovic', '1994-11-24'),
+    (371, 'Till', 'Klimpke', '1997-09-20'),
+    (372, 'Leonard', 'Grazioli', '1997-02-07'),
+    (373, 'Bennett', 'Wiegert', '1981-04-04'),
+    (374, 'Filip', 'Jicha', '1982-02-12'),
+    (375, 'Maik', 'Machulla', '1981-11-20'),
+    (376, 'Alfred', 'Gislason', '1981-03-04'),
+    (377, 'Guðjón', 'Sigurðsson', '1972-04-21'),
+    (378, 'Jaron', 'Siewert', '1976-04-14'),
+    (379, 'Florian', 'Kehrmann', '1970-09-05'),
+    (380, 'Christian', 'Prokop', '1980-11-26'),
+    (381, 'Momir', 'Ilić', '1974-05-24'),
+    (382, 'Roberto', 'Parrondo', '1975-07-01'),
+    (383, 'Velimir', 'Petković', '1977-09-15'),
+    (384, 'Ljubomir', 'Vranjes', '1974-06-16'),
+    (385, 'Dagur', 'Sigurðsson', '1972-02-26'),
+    (386, 'Talant', 'Dujshebaev', '1972-09-08'),
+    (387, 'Xavi', 'Pascual', '1975-08-13'),
+    (388, 'Guillaume', 'Gille', '1979-11-19'),
+    (389, 'Glenn', 'Solberg', '1970-12-22'),
+    (390, 'Michael', 'Biegler', '1978-06-25'),
+    (391, 'Robert', 'Schulze', '1982-11-03'),
+    (392, 'Tobias', 'Tönnies', '1985-08-12'),
+    (393, 'Lars', 'Geipel', '1986-09-27'),
+    (394, 'Marcus', 'Helbig', '1986-02-27'),
+    (395, 'Fabian', 'Baumgart', '1982-05-02'),
+    (396, 'Sascha', 'Wild', '1979-10-02'),
+    (397, 'Ramesh', 'Thiyagarajah', '1979-09-15'),
+    (398, 'Suresh', 'Thiyagarajah', '1987-02-13'),
+    (399, 'Jannik', 'Otto', '1988-10-15'),
+    (400, 'Raphael', 'Piper', '1987-08-18');
 SET IDENTITY_INSERT pessoa OFF;
 
--- 6. JOGADORES
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (1, 178, 78, 3131735.00, 'Alemanha', 1, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (2, 189, 100, 2942040.00, 'Alemanha', 1, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (3, 194, 88, 2851054.00, 'Dinamarca', 1, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (4, 188, 112, 2873899.00, 'Portugal', 1, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (5, 196, 110, 2770084.00, 'Alemanha', 1, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (6, 185, 79, 2857238.00, 'Dinamarca', 1, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (7, 200, 110, 2721789.00, 'Alemanha', 1, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (8, 202, 98, 2684901.00, 'Alemanha', 1, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (9, 181, 85, 2649154.00, 'Alemanha', 1, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (10, 189, 106, 2747431.00, 'Espanha', 1, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (11, 185, 84, 2617142.00, 'Portugal', 1, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (12, 192, 100, 2640713.00, 'Alemanha', 1, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (13, 200, 113, 2638387.00, 'Alemanha', 1, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (14, 201, 100, 2416140.00, 'Alemanha', 1, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (15, 199, 111, 2481066.00, 'Alemanha', 1, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (16, 202, 93, 2429517.00, 'Alemanha', 1, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (17, 193, 90, 2366882.00, 'Alemanha', 1, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (18, 191, 102, 2378136.00, 'Suécia', 1, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (19, 190, 77, 3434514.00, 'Alemanha', 2, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (20, 186, 95, 3125774.00, 'Alemanha', 2, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (21, 191, 104, 3264916.00, 'Sérvia', 2, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (22, 188, 96, 3236971.00, 'Sérvia', 2, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (23, 187, 94, 3112621.00, 'Noruega', 2, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (24, 203, 91, 2898641.00, 'Espanha', 2, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (25, 178, 81, 3015946.00, 'Portugal', 2, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (26, 186, 86, 2919543.00, 'Eslovénia', 2, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (27, 192, 108, 2920354.00, 'Polónia', 2, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (28, 178, 80, 2996939.00, 'Alemanha', 2, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (29, 188, 96, 2686817.00, 'Alemanha', 2, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (30, 187, 103, 2553992.00, 'Alemanha', 2, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (31, 203, 93, 2486755.00, 'França', 2, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (32, 187, 84, 2376193.00, 'Portugal', 2, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (33, 187, 105, 2701138.00, 'Alemanha', 2, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (34, 198, 102, 2381463.00, 'Alemanha', 2, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (35, 178, 82, 2560572.00, 'Espanha', 2, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (36, 195, 89, 2457488.00, 'Alemanha', 2, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (37, 203, 94, 2676171.00, 'Dinamarca', 2, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (38, 194, 92, 2479690.00, 'França', 2, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (39, 195, 86, 2467482.00, 'Alemanha', 2, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (40, 199, 88, 2434303.00, 'Noruega', 2, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (41, 193, 114, 2492175.00, 'Croácia', 2, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (42, 190, 109, 3182256.00, 'Alemanha', 3, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (43, 203, 91, 3163177.00, 'Alemanha', 3, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (44, 184, 77, 3181485.00, 'Portugal', 3, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (45, 199, 109, 2949285.00, 'Alemanha', 3, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (46, 197, 90, 2972331.00, 'Dinamarca', 3, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (47, 178, 86, 2743068.00, 'Alemanha', 3, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (48, 198, 95, 2834811.00, 'Espanha', 3, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (49, 204, 109, 2549243.00, 'Alemanha', 3, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (50, 203, 88, 2613742.00, 'Alemanha', 3, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (51, 189, 78, 2743642.00, 'Portugal', 3, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (52, 179, 79, 2802095.00, 'Portugal', 3, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (53, 180, 85, 2800878.00, 'Sérvia', 3, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (54, 201, 91, 2528849.00, 'Alemanha', 3, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (55, 202, 97, 2479350.00, 'Alemanha', 3, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (56, 182, 76, 2518236.00, 'Espanha', 3, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (57, 190, 100, 2643037.00, 'França', 3, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (58, 195, 102, 2490923.00, 'Alemanha', 3, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (59, 201, 94, 2423175.00, 'Suécia', 3, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (60, 198, 96, 2492511.00, 'Suécia', 3, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (61, 195, 96, 2453451.00, 'Dinamarca', 3, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (62, 194, 99, 2573855.00, 'Noruega', 3, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (63, 180, 77, 3455269.00, 'Espanha', 4, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (64, 192, 94, 3136626.00, 'Alemanha', 4, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (65, 198, 95, 3005745.00, 'França', 4, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (66, 191, 113, 2708304.00, 'Alemanha', 4, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (67, 190, 107, 2763940.00, 'França', 4, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (68, 184, 79, 2935795.00, 'Espanha', 4, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (69, 203, 105, 2944550.00, 'Dinamarca', 4, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (70, 197, 102, 2691793.00, 'Alemanha', 4, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (71, 195, 89, 2731329.00, 'França', 4, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (72, 192, 97, 2842260.00, 'Noruega', 4, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (73, 188, 85, 2646388.00, 'Alemanha', 4, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (74, 184, 86, 2625129.00, 'Dinamarca', 4, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (75, 195, 111, 2469739.00, 'Suécia', 4, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (76, 202, 98, 2493632.00, 'Alemanha', 4, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (77, 194, 91, 2425592.00, 'França', 4, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (78, 203, 114, 2646960.00, 'Alemanha', 4, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (79, 202, 99, 2445970.00, 'Dinamarca', 4, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (80, 196, 91, 2396769.00, 'Alemanha', 4, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (81, 184, 82, 2336633.00, 'Croácia', 4, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (82, 183, 88, 3496982.00, 'Espanha', 5, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (83, 198, 99, 3252398.00, 'Noruega', 5, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (84, 186, 91, 3175949.00, 'Alemanha', 5, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (85, 201, 107, 3246589.00, 'Portugal', 5, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (86, 191, 101, 2887246.00, 'Alemanha', 5, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (87, 178, 84, 2796085.00, 'Hungria', 5, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (88, 179, 79, 2797106.00, 'Alemanha', 5, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (89, 197, 108, 2712623.00, 'Macedónia do Norte', 5, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (90, 189, 101, 2600802.00, 'Alemanha', 5, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (91, 186, 91, 2703692.00, 'Suécia', 5, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (92, 188, 78, 2765414.00, 'França', 5, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (93, 179, 86, 2563825.00, 'Noruega', 5, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (94, 192, 113, 2747673.00, 'Noruega', 5, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (95, 196, 107, 2418739.00, 'Alemanha', 5, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (96, 197, 95, 2579581.00, 'Alemanha', 5, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (97, 201, 87, 2512187.00, 'Suécia', 5, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (98, 199, 112, 2347162.00, 'Alemanha', 5, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (99, 198, 98, 2345449.00, 'Croácia', 5, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (100, 188, 102, 3115257.00, 'Alemanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (101, 185, 81, 3182934.00, 'Alemanha', 6, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (102, 178, 82, 2863777.00, 'Alemanha', 6, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (103, 188, 96, 2733437.00, 'Espanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (104, 193, 101, 2609283.00, 'Alemanha', 6, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (105, 191, 88, 2593565.00, 'Espanha', 6, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (106, 190, 80, 2713833.00, 'Suécia', 6, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (107, 184, 88, 2688413.00, 'Dinamarca', 6, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (108, 197, 112, 2704936.00, 'Alemanha', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (109, 188, 106, 2760978.00, 'Alemanha', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (110, 199, 107, 2465810.00, 'Alemanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (111, 202, 93, 2619149.00, 'Alemanha', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (112, 187, 105, 2589901.00, 'Alemanha', 6, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (113, 200, 97, 2634186.00, 'Dinamarca', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (114, 194, 94, 2507763.00, 'Sérvia', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (115, 204, 102, 2596362.00, 'Alemanha', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (116, 202, 97, 2714796.00, 'Alemanha', 6, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (117, 193, 88, 2390963.00, 'Espanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (118, 196, 110, 2396710.00, 'Dinamarca', 6, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (119, 189, 109, 2449097.00, 'Alemanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (120, 199, 107, 2355524.00, 'Espanha', 6, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (121, 188, 77, 2308841.00, 'Noruega', 6, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (122, 199, 112, 2489105.00, 'Portugal', 6, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (123, 193, 102, 2444467.00, 'Alemanha', 6, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (124, 200, 95, 2340639.00, 'Dinamarca', 6, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (125, 190, 80, 2387888.00, 'Alemanha', 6, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (126, 194, 98, 2260769.00, 'Espanha', 6, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (127, 195, 105, 2536394.00, 'Suécia', 6, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (128, 179, 88, 2403366.00, 'Alemanha', 6, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (129, 184, 80, 3238014.00, 'Alemanha', 7, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (130, 181, 79, 3072558.00, 'Alemanha', 7, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (131, 191, 89, 3157895.00, 'Alemanha', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (132, 203, 102, 2893517.00, 'França', 7, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (133, 203, 104, 2922945.00, 'França', 7, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (134, 195, 92, 2719168.00, 'Croácia', 7, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (135, 181, 77, 2946062.00, 'Áustria', 7, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (136, 189, 113, 2719414.00, 'Áustria', 7, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (137, 189, 87, 2715875.00, 'Alemanha', 7, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (138, 200, 114, 2703642.00, 'Dinamarca', 7, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (139, 195, 101, 2978628.00, 'Espanha', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (140, 200, 94, 2856693.00, 'Alemanha', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (141, 190, 96, 2668830.00, 'Sérvia', 7, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (142, 203, 93, 2529506.00, 'Alemanha', 7, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (143, 187, 90, 2464426.00, 'Islândia', 7, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (144, 194, 99, 2532814.00, 'França', 7, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (145, 190, 113, 2610109.00, 'Alemanha', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (146, 190, 77, 2451879.00, 'Alemanha', 7, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (147, 192, 98, 2393663.00, 'França', 7, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (148, 192, 98, 2520870.00, 'Suécia', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (149, 195, 88, 2583507.00, 'Alemanha', 7, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (150, 184, 77, 2512108.00, 'Alemanha', 7, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (151, 188, 88, 3448109.00, 'Espanha', 8, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (152, 188, 96, 2952411.00, 'Alemanha', 8, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (153, 196, 96, 2917167.00, 'Alemanha', 8, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (154, 186, 77, 3036239.00, 'Alemanha', 8, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (155, 193, 102, 3158168.00, 'Alemanha', 8, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (156, 190, 78, 3032387.00, 'Alemanha', 8, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (157, 203, 96, 3039538.00, 'Alemanha', 8, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (158, 194, 106, 2844766.00, 'Portugal', 8, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (159, 181, 79, 2844622.00, 'Alemanha', 8, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (160, 197, 103, 2633465.00, 'Croácia', 8, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (161, 190, 107, 2572615.00, 'Suécia', 8, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (162, 203, 89, 2502797.00, 'Alemanha', 8, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (163, 181, 87, 2531182.00, 'Portugal', 8, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (164, 187, 97, 2624903.00, 'Alemanha', 8, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (165, 198, 113, 2518547.00, 'Alemanha', 8, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (166, 192, 87, 2438872.00, 'Islândia', 8, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (167, 199, 90, 2362753.00, 'Alemanha', 8, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (168, 192, 88, 2417021.00, 'Sérvia', 8, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (169, 188, 86, 2398153.00, 'Dinamarca', 8, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (170, 179, 79, 3860742.00, 'Alemanha', 9, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (171, 203, 88, 3098938.00, 'Hungria', 9, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (172, 181, 76, 3317064.00, 'Noruega', 9, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (173, 189, 96, 2980393.00, 'Polónia', 9, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (174, 199, 109, 3043823.00, 'Espanha', 9, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (175, 193, 89, 2866911.00, 'Noruega', 9, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (176, 204, 110, 2729527.00, 'Sérvia', 9, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (177, 201, 110, 2836223.00, 'Alemanha', 9, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (178, 196, 99, 2656457.00, 'Espanha', 9, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (179, 182, 84, 2703097.00, 'Portugal', 9, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (180, 198, 105, 2395602.00, 'França', 9, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (181, 190, 88, 2427725.00, 'Alemanha', 9, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (182, 187, 108, 2733433.00, 'Alemanha', 9, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (183, 190, 99, 2562879.00, 'Alemanha', 9, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (184, 197, 91, 2404631.00, 'Alemanha', 9, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (185, 194, 91, 2484586.00, 'Alemanha', 9, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (186, 191, 98, 2384780.00, 'Alemanha', 9, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (187, 188, 100, 2352209.00, 'Alemanha', 9, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (188, 198, 113, 2374233.00, 'Alemanha', 9, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (189, 181, 87, 2543925.00, 'Alemanha', 9, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (190, 195, 112, 3231465.00, 'Alemanha', 10, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (191, 184, 84, 3066691.00, 'Alemanha', 10, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (192, 198, 100, 2928236.00, 'Croácia', 10, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (193, 203, 111, 2993220.00, 'Espanha', 10, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (194, 189, 83, 2939313.00, 'Suécia', 10, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (195, 193, 111, 2932041.00, 'Noruega', 10, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (196, 196, 105, 2776648.00, 'Noruega', 10, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (197, 194, 93, 2710383.00, 'Portugal', 10, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (198, 193, 111, 2969556.00, 'Sérvia', 10, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (199, 187, 82, 2701146.00, 'Noruega', 10, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (200, 178, 80, 2709453.00, 'Croácia', 10, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (201, 195, 110, 2682029.00, 'França', 10, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (202, 194, 114, 2475868.00, 'Alemanha', 10, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (203, 188, 112, 2480801.00, 'Croácia', 10, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (204, 202, 101, 2702614.00, 'Alemanha', 10, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (205, 188, 91, 2691619.00, 'Dinamarca', 10, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (206, 189, 110, 2452229.00, 'Portugal', 10, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (207, 190, 95, 2372682.00, 'Suécia', 10, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (208, 196, 95, 2644768.00, 'França', 10, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (209, 192, 84, 2519068.00, 'Alemanha', 10, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (210, 190, 102, 2465886.00, 'Suécia', 10, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (211, 194, 102, 2322867.00, 'Dinamarca', 10, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (212, 199, 86, 2397026.00, 'Alemanha', 10, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (213, 194, 100, 3016035.00, 'Alemanha', 11, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (214, 188, 107, 2953529.00, 'Alemanha', 11, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (215, 203, 110, 2800998.00, 'Dinamarca', 11, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (216, 186, 90, 2857172.00, 'Croácia', 11, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (217, 187, 108, 2931089.00, 'França', 11, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (218, 186, 88, 2809165.00, 'Alemanha', 11, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (219, 178, 85, 2884185.00, 'Alemanha', 11, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (220, 178, 79, 2793583.00, 'Suécia', 11, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (221, 180, 83, 2726321.00, 'Polónia', 11, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (222, 187, 99, 2619372.00, 'Alemanha', 11, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (223, 187, 97, 2898846.00, 'Hungria', 11, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (224, 201, 102, 2805947.00, 'Portugal', 11, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (225, 189, 101, 2533141.00, 'Alemanha', 11, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (226, 179, 77, 2670059.00, 'Alemanha', 11, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (227, 183, 77, 2505510.00, 'Alemanha', 11, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (228, 186, 95, 2412070.00, 'Alemanha', 11, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (229, 178, 76, 2450030.00, 'Alemanha', 11, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (230, 191, 84, 2610913.00, 'Alemanha', 11, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (231, 198, 94, 2673986.00, 'Alemanha', 11, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (232, 189, 97, 2494558.00, 'Alemanha', 11, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (233, 197, 93, 3502539.00, 'Alemanha', 12, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (234, 178, 77, 3278127.00, 'Alemanha', 12, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (235, 187, 104, 3112331.00, 'Alemanha', 12, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (236, 190, 112, 3298942.00, 'Noruega', 12, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (237, 185, 83, 3077669.00, 'Noruega', 12, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (238, 201, 107, 2999666.00, 'Alemanha', 12, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (239, 191, 94, 2957941.00, 'Noruega', 12, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (240, 188, 111, 2849939.00, 'Alemanha', 12, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (241, 187, 114, 2876895.00, 'Hungria', 12, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (242, 188, 77, 2832135.00, 'Alemanha', 12, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (243, 197, 105, 2680721.00, 'Alemanha', 12, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (244, 204, 107, 2878519.00, 'Alemanha', 12, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (245, 195, 103, 2473034.00, 'França', 12, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (246, 201, 114, 2694670.00, 'Alemanha', 12, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (247, 186, 81, 2502409.00, 'Alemanha', 12, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (248, 181, 81, 2542635.00, 'Alemanha', 12, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (249, 199, 113, 2447922.00, 'Alemanha', 12, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (250, 183, 85, 2440796.00, 'Alemanha', 12, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (251, 196, 86, 2458105.00, 'Alemanha', 12, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (252, 195, 89, 2554290.00, 'Alemanha', 12, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (253, 189, 82, 2311847.00, 'Suécia', 12, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (254, 186, 88, 2597275.00, 'Espanha', 12, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (255, 191, 88, 2399137.00, 'Dinamarca', 12, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (256, 199, 88, 2522297.00, 'Dinamarca', 12, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (257, 190, 108, 3480284.00, 'Alemanha', 13, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (258, 195, 92, 3427884.00, 'Alemanha', 13, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (259, 193, 102, 3275731.00, 'Polónia', 13, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (260, 190, 86, 3137845.00, 'França', 13, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (261, 197, 89, 3025083.00, 'Alemanha', 13, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (262, 189, 105, 3243277.00, 'Espanha', 13, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (263, 186, 83, 2891439.00, 'Alemanha', 13, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (264, 196, 91, 2820628.00, 'Sérvia', 13, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (265, 187, 114, 2718794.00, 'Alemanha', 13, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (266, 190, 98, 2788334.00, 'Alemanha', 13, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (267, 183, 87, 2782289.00, 'Dinamarca', 13, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (268, 192, 108, 2711683.00, 'Portugal', 13, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (269, 190, 78, 2741312.00, 'Alemanha', 13, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (270, 187, 108, 2582024.00, 'Alemanha', 13, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (271, 199, 102, 2427797.00, 'França', 13, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (272, 190, 87, 2394954.00, 'Portugal', 13, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (273, 197, 100, 2437979.00, 'Portugal', 13, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (274, 188, 89, 2271791.00, 'Alemanha', 13, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (275, 184, 88, 3530397.00, 'Espanha', 14, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (276, 196, 94, 3494098.00, 'Alemanha', 14, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (277, 185, 80, 3016829.00, 'Croácia', 14, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (278, 196, 89, 2968615.00, 'Alemanha', 14, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (279, 197, 91, 3041849.00, 'Dinamarca', 14, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (280, 187, 101, 2830386.00, 'Croácia', 14, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (281, 201, 90, 2889977.00, 'Dinamarca', 14, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (282, 201, 90, 2914499.00, 'Alemanha', 14, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (283, 194, 95, 2870861.00, 'França', 14, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (284, 188, 101, 2939403.00, 'Espanha', 14, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (285, 187, 107, 2667899.00, 'França', 14, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (286, 186, 76, 2693808.00, 'Alemanha', 14, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (287, 192, 91, 2585713.00, 'Alemanha', 14, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (288, 192, 108, 2603281.00, 'Alemanha', 14, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (289, 193, 84, 2565511.00, 'Alemanha', 14, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (290, 201, 89, 2540243.00, 'Alemanha', 14, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (291, 189, 77, 2411028.00, 'Alemanha', 14, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (292, 180, 85, 3175422.00, 'Alemanha', 15, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (293, 189, 113, 3036874.00, 'Hungria', 15, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (294, 195, 91, 2964370.00, 'Alemanha', 15, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (295, 186, 78, 3028068.00, 'Macedónia do Norte', 15, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (296, 184, 87, 2873436.00, 'Alemanha', 15, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (297, 193, 99, 2717311.00, 'Dinamarca', 15, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (298, 190, 93, 2607934.00, 'Eslovénia', 15, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (299, 202, 109, 2880707.00, 'Alemanha', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (300, 201, 113, 2644772.00, 'Portugal', 15, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (301, 198, 89, 2777894.00, 'Dinamarca', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (302, 197, 97, 2552463.00, 'Alemanha', 15, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (303, 198, 104, 2815166.00, 'Alemanha', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (304, 188, 78, 2653549.00, 'Alemanha', 15, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (305, 200, 101, 2665251.00, 'Noruega', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (306, 188, 108, 2592441.00, 'Alemanha', 15, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (307, 201, 97, 2393438.00, 'Dinamarca', 15, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (308, 200, 100, 2607571.00, 'Alemanha', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (309, 201, 98, 2486560.00, 'Alemanha', 15, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (310, 191, 96, 2564936.00, 'Alemanha', 15, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (311, 197, 98, 2507774.00, 'Alemanha', 15, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (312, 184, 81, 2384424.00, 'Alemanha', 15, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (313, 184, 76, 3409271.00, 'Alemanha', 16, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (314, 193, 95, 3111650.00, 'Portugal', 16, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (315, 191, 100, 3191275.00, 'Noruega', 16, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (316, 185, 77, 3161331.00, 'França', 16, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (317, 198, 97, 2948373.00, 'Alemanha', 16, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (318, 195, 113, 2995875.00, 'Croácia', 16, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (319, 200, 93, 2728488.00, 'Alemanha', 16, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (320, 203, 95, 2826708.00, 'Noruega', 16, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (321, 184, 86, 2725540.00, 'Portugal', 16, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (322, 198, 104, 2702684.00, 'Eslovénia', 16, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (323, 183, 77, 2878614.00, 'Dinamarca', 16, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (324, 203, 89, 2465478.00, 'Espanha', 16, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (325, 180, 76, 2456693.00, 'Eslovénia', 16, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (326, 193, 106, 2441459.00, 'Alemanha', 16, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (327, 190, 85, 2261116.00, 'França', 16, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (328, 202, 98, 2378716.00, 'Espanha', 16, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (329, 191, 99, 2371591.00, 'Alemanha', 16, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (330, 188, 102, 2357846.00, 'Espanha', 16, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (331, 201, 101, 2377698.00, 'Alemanha', 16, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (332, 190, 100, 2271747.00, 'Alemanha', 16, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (333, 178, 83, 3237213.00, 'Eslovénia', 17, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (334, 199, 107, 3033976.00, 'Hungria', 17, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (335, 202, 96, 3030958.00, 'Alemanha', 17, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (336, 201, 104, 3033800.00, 'Alemanha', 17, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (337, 198, 111, 3025089.00, 'Alemanha', 17, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (338, 194, 94, 2938218.00, 'Noruega', 17, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (339, 200, 96, 2885706.00, 'Sérvia', 17, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (340, 184, 80, 2737529.00, 'Alemanha', 17, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (341, 192, 91, 2776608.00, 'Dinamarca', 17, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (342, 200, 102, 2888140.00, 'Alemanha', 17, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (343, 195, 90, 2896589.00, 'Alemanha', 17, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (344, 192, 112, 2627997.00, 'Alemanha', 17, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (345, 188, 88, 2734190.00, 'Polónia', 17, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (346, 198, 102, 2652470.00, 'França', 17, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (347, 180, 77, 2569701.00, 'Sérvia', 17, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (348, 197, 85, 2397527.00, 'Alemanha', 17, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (349, 188, 92, 2570592.00, 'Alemanha', 17, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (350, 198, 104, 2494618.00, 'Eslovénia', 17, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (351, 180, 78, 2391014.00, 'Noruega', 17, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (352, 191, 100, 2669711.00, 'Islândia', 17, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (353, 189, 93, 2439107.00, 'Alemanha', 17, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (354, 201, 90, 3253682.00, 'França', 18, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (355, 188, 78, 3063662.00, 'Dinamarca', 18, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (356, 187, 81, 2734586.00, 'França', 18, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (357, 178, 83, 2813549.00, 'Alemanha', 18, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (358, 198, 98, 2939994.00, 'Espanha', 18, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (359, 192, 103, 2647781.00, 'Portugal', 18, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (360, 198, 94, 2848892.00, 'Alemanha', 18, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (361, 199, 113, 2629531.00, 'Dinamarca', 18, 3);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (362, 194, 98, 2535501.00, 'Áustria', 18, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (363, 188, 90, 2598380.00, 'Alemanha', 18, 5);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (364, 195, 101, 2514285.00, 'Noruega', 18, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (365, 187, 82, 2627292.00, 'Noruega', 18, 2);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (366, 203, 97, 2508136.00, 'Dinamarca', 18, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (367, 187, 88, 2825078.00, 'França', 18, 7);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (368, 202, 98, 2455105.00, 'Croácia', 18, 4);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (369, 186, 77, 2400098.00, 'Alemanha', 18, 6);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (370, 200, 91, 2338386.00, 'Suécia', 18, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (371, 193, 97, 2435571.00, 'Alemanha', 18, 1);
-INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES (372, 198, 84, 2467643.00, 'Dinamarca', 18, 1);
+INSERT INTO jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao) VALUES
+    (1, 178, 78, 3131735.00, 'Alemanha', 1, 2),
+    (2, 189, 100, 2942040.00, 'Alemanha', 1, 3),
+    (3, 194, 88, 2851054.00, 'Dinamarca', 1, 5),
+    (4, 188, 112, 2873899.00, 'Portugal', 1, 3),
+    (5, 196, 110, 2770084.00, 'Alemanha', 1, 5),
+    (6, 185, 79, 2857238.00, 'Dinamarca', 1, 6),
+    (7, 200, 110, 2721789.00, 'Alemanha', 1, 4),
+    (8, 202, 98, 2684901.00, 'Alemanha', 1, 4),
+    (9, 181, 85, 2649154.00, 'Alemanha', 1, 2),
+    (10, 189, 106, 2747431.00, 'Espanha', 1, 7),
+    (11, 185, 84, 2617142.00, 'Portugal', 1, 6),
+    (12, 192, 100, 2640713.00, 'Alemanha', 1, 3),
+    (13, 200, 113, 2638387.00, 'Alemanha', 1, 7),
+    (14, 201, 100, 2416140.00, 'Alemanha', 1, 1),
+    (15, 199, 111, 2481066.00, 'Alemanha', 1, 4),
+    (16, 202, 93, 2429517.00, 'Alemanha', 1, 3),
+    (17, 193, 90, 2366882.00, 'Alemanha', 1, 1),
+    (18, 191, 102, 2378136.00, 'Suécia', 1, 3),
+    (19, 190, 77, 3434514.00, 'Alemanha', 2, 6),
+    (20, 186, 95, 3125774.00, 'Alemanha', 2, 4),
+    (21, 191, 104, 3264916.00, 'Sérvia', 2, 5),
+    (22, 188, 96, 3236971.00, 'Sérvia', 2, 7),
+    (23, 187, 94, 3112621.00, 'Noruega', 2, 3),
+    (24, 203, 91, 2898641.00, 'Espanha', 2, 5),
+    (25, 178, 81, 3015946.00, 'Portugal', 2, 2),
+    (26, 186, 86, 2919543.00, 'Eslovénia', 2, 2),
+    (27, 192, 108, 2920354.00, 'Polónia', 2, 3),
+    (28, 178, 80, 2996939.00, 'Alemanha', 2, 6),
+    (29, 188, 96, 2686817.00, 'Alemanha', 2, 7),
+    (30, 187, 103, 2553992.00, 'Alemanha', 2, 5),
+    (31, 203, 93, 2486755.00, 'França', 2, 5),
+    (32, 187, 84, 2376193.00, 'Portugal', 2, 6),
+    (33, 187, 105, 2701138.00, 'Alemanha', 2, 5),
+    (34, 198, 102, 2381463.00, 'Alemanha', 2, 3),
+    (35, 178, 82, 2560572.00, 'Espanha', 2, 2),
+    (36, 195, 89, 2457488.00, 'Alemanha', 2, 1),
+    (37, 203, 94, 2676171.00, 'Dinamarca', 2, 7),
+    (38, 194, 92, 2479690.00, 'França', 2, 1),
+    (39, 195, 86, 2467482.00, 'Alemanha', 2, 1),
+    (40, 199, 88, 2434303.00, 'Noruega', 2, 1),
+    (41, 193, 114, 2492175.00, 'Croácia', 2, 3),
+    (42, 190, 109, 3182256.00, 'Alemanha', 3, 4),
+    (43, 203, 91, 3163177.00, 'Alemanha', 3, 7),
+    (44, 184, 77, 3181485.00, 'Portugal', 3, 2),
+    (45, 199, 109, 2949285.00, 'Alemanha', 3, 3),
+    (46, 197, 90, 2972331.00, 'Dinamarca', 3, 4),
+    (47, 178, 86, 2743068.00, 'Alemanha', 3, 6),
+    (48, 198, 95, 2834811.00, 'Espanha', 3, 7),
+    (49, 204, 109, 2549243.00, 'Alemanha', 3, 5),
+    (50, 203, 88, 2613742.00, 'Alemanha', 3, 3),
+    (51, 189, 78, 2743642.00, 'Portugal', 3, 6),
+    (52, 179, 79, 2802095.00, 'Portugal', 3, 6),
+    (53, 180, 85, 2800878.00, 'Sérvia', 3, 2),
+    (54, 201, 91, 2528849.00, 'Alemanha', 3, 3),
+    (55, 202, 97, 2479350.00, 'Alemanha', 3, 5),
+    (56, 182, 76, 2518236.00, 'Espanha', 3, 2),
+    (57, 190, 100, 2643037.00, 'França', 3, 7),
+    (58, 195, 102, 2490923.00, 'Alemanha', 3, 1),
+    (59, 201, 94, 2423175.00, 'Suécia', 3, 1),
+    (60, 198, 96, 2492511.00, 'Suécia', 3, 3),
+    (61, 195, 96, 2453451.00, 'Dinamarca', 3, 4),
+    (62, 194, 99, 2573855.00, 'Noruega', 3, 1),
+    (63, 180, 77, 3455269.00, 'Espanha', 4, 2),
+    (64, 192, 94, 3136626.00, 'Alemanha', 4, 3),
+    (65, 198, 95, 3005745.00, 'França', 4, 5),
+    (66, 191, 113, 2708304.00, 'Alemanha', 4, 4),
+    (67, 190, 107, 2763940.00, 'França', 4, 5),
+    (68, 184, 79, 2935795.00, 'Espanha', 4, 6),
+    (69, 203, 105, 2944550.00, 'Dinamarca', 4, 7),
+    (70, 197, 102, 2691793.00, 'Alemanha', 4, 3),
+    (71, 195, 89, 2731329.00, 'França', 4, 4),
+    (72, 192, 97, 2842260.00, 'Noruega', 4, 7),
+    (73, 188, 85, 2646388.00, 'Alemanha', 4, 2),
+    (74, 184, 86, 2625129.00, 'Dinamarca', 4, 6),
+    (75, 195, 111, 2469739.00, 'Suécia', 4, 3),
+    (76, 202, 98, 2493632.00, 'Alemanha', 4, 3),
+    (77, 194, 91, 2425592.00, 'França', 4, 1),
+    (78, 203, 114, 2646960.00, 'Alemanha', 4, 7),
+    (79, 202, 99, 2445970.00, 'Dinamarca', 4, 3),
+    (80, 196, 91, 2396769.00, 'Alemanha', 4, 1),
+    (81, 184, 82, 2336633.00, 'Croácia', 4, 2),
+    (82, 183, 88, 3496982.00, 'Espanha', 5, 6),
+    (83, 198, 99, 3252398.00, 'Noruega', 5, 3),
+    (84, 186, 91, 3175949.00, 'Alemanha', 5, 4),
+    (85, 201, 107, 3246589.00, 'Portugal', 5, 7),
+    (86, 191, 101, 2887246.00, 'Alemanha', 5, 5),
+    (87, 178, 84, 2796085.00, 'Hungria', 5, 2),
+    (88, 179, 79, 2797106.00, 'Alemanha', 5, 2),
+    (89, 197, 108, 2712623.00, 'Macedónia do Norte', 5, 4),
+    (90, 189, 101, 2600802.00, 'Alemanha', 5, 3),
+    (91, 186, 91, 2703692.00, 'Suécia', 5, 7),
+    (92, 188, 78, 2765414.00, 'França', 5, 6),
+    (93, 179, 86, 2563825.00, 'Noruega', 5, 6),
+    (94, 192, 113, 2747673.00, 'Noruega', 5, 7),
+    (95, 196, 107, 2418739.00, 'Alemanha', 5, 3),
+    (96, 197, 95, 2579581.00, 'Alemanha', 5, 4),
+    (97, 201, 87, 2512187.00, 'Suécia', 5, 1),
+    (98, 199, 112, 2347162.00, 'Alemanha', 5, 5),
+    (99, 198, 98, 2345449.00, 'Croácia', 5, 1),
+    (100, 188, 102, 3115257.00, 'Alemanha', 6, 4),
+    (101, 185, 81, 3182934.00, 'Alemanha', 6, 2),
+    (102, 178, 82, 2863777.00, 'Alemanha', 6, 6),
+    (103, 188, 96, 2733437.00, 'Espanha', 6, 4),
+    (104, 193, 101, 2609283.00, 'Alemanha', 6, 5),
+    (105, 191, 88, 2593565.00, 'Espanha', 6, 5),
+    (106, 190, 80, 2713833.00, 'Suécia', 6, 6),
+    (107, 184, 88, 2688413.00, 'Dinamarca', 6, 2),
+    (108, 197, 112, 2704936.00, 'Alemanha', 6, 7),
+    (109, 188, 106, 2760978.00, 'Alemanha', 6, 7),
+    (110, 199, 107, 2465810.00, 'Alemanha', 6, 4),
+    (111, 202, 93, 2619149.00, 'Alemanha', 6, 7),
+    (112, 187, 105, 2589901.00, 'Alemanha', 6, 3),
+    (113, 200, 97, 2634186.00, 'Dinamarca', 6, 7),
+    (114, 194, 94, 2507763.00, 'Sérvia', 6, 4),
+    (115, 204, 102, 2596362.00, 'Alemanha', 6, 7),
+    (116, 202, 97, 2714796.00, 'Alemanha', 6, 3),
+    (117, 193, 88, 2390963.00, 'Espanha', 6, 4),
+    (118, 196, 110, 2396710.00, 'Dinamarca', 6, 3),
+    (119, 189, 109, 2449097.00, 'Alemanha', 6, 4),
+    (120, 199, 107, 2355524.00, 'Espanha', 6, 4),
+    (121, 188, 77, 2308841.00, 'Noruega', 6, 6),
+    (122, 199, 112, 2489105.00, 'Portugal', 6, 5),
+    (123, 193, 102, 2444467.00, 'Alemanha', 6, 1),
+    (124, 200, 95, 2340639.00, 'Dinamarca', 6, 1),
+    (125, 190, 80, 2387888.00, 'Alemanha', 6, 2),
+    (126, 194, 98, 2260769.00, 'Espanha', 6, 1),
+    (127, 195, 105, 2536394.00, 'Suécia', 6, 7),
+    (128, 179, 88, 2403366.00, 'Alemanha', 6, 6),
+    (129, 184, 80, 3238014.00, 'Alemanha', 7, 6),
+    (130, 181, 79, 3072558.00, 'Alemanha', 7, 6),
+    (131, 191, 89, 3157895.00, 'Alemanha', 7, 7),
+    (132, 203, 102, 2893517.00, 'França', 7, 5),
+    (133, 203, 104, 2922945.00, 'França', 7, 3),
+    (134, 195, 92, 2719168.00, 'Croácia', 7, 5),
+    (135, 181, 77, 2946062.00, 'Áustria', 7, 2),
+    (136, 189, 113, 2719414.00, 'Áustria', 7, 3),
+    (137, 189, 87, 2715875.00, 'Alemanha', 7, 2),
+    (138, 200, 114, 2703642.00, 'Dinamarca', 7, 4),
+    (139, 195, 101, 2978628.00, 'Espanha', 7, 7),
+    (140, 200, 94, 2856693.00, 'Alemanha', 7, 7),
+    (141, 190, 96, 2668830.00, 'Sérvia', 7, 4),
+    (142, 203, 93, 2529506.00, 'Alemanha', 7, 3),
+    (143, 187, 90, 2464426.00, 'Islândia', 7, 3),
+    (144, 194, 99, 2532814.00, 'França', 7, 1),
+    (145, 190, 113, 2610109.00, 'Alemanha', 7, 7),
+    (146, 190, 77, 2451879.00, 'Alemanha', 7, 6),
+    (147, 192, 98, 2393663.00, 'França', 7, 1),
+    (148, 192, 98, 2520870.00, 'Suécia', 7, 7),
+    (149, 195, 88, 2583507.00, 'Alemanha', 7, 7),
+    (150, 184, 77, 2512108.00, 'Alemanha', 7, 6),
+    (151, 188, 88, 3448109.00, 'Espanha', 8, 5),
+    (152, 188, 96, 2952411.00, 'Alemanha', 8, 3),
+    (153, 196, 96, 2917167.00, 'Alemanha', 8, 4),
+    (154, 186, 77, 3036239.00, 'Alemanha', 8, 2),
+    (155, 193, 102, 3158168.00, 'Alemanha', 8, 7),
+    (156, 190, 78, 3032387.00, 'Alemanha', 8, 6),
+    (157, 203, 96, 3039538.00, 'Alemanha', 8, 7),
+    (158, 194, 106, 2844766.00, 'Portugal', 8, 3),
+    (159, 181, 79, 2844622.00, 'Alemanha', 8, 6),
+    (160, 197, 103, 2633465.00, 'Croácia', 8, 4),
+    (161, 190, 107, 2572615.00, 'Suécia', 8, 5),
+    (162, 203, 89, 2502797.00, 'Alemanha', 8, 3),
+    (163, 181, 87, 2531182.00, 'Portugal', 8, 2),
+    (164, 187, 97, 2624903.00, 'Alemanha', 8, 7),
+    (165, 198, 113, 2518547.00, 'Alemanha', 8, 3),
+    (166, 192, 87, 2438872.00, 'Islândia', 8, 1),
+    (167, 199, 90, 2362753.00, 'Alemanha', 8, 5),
+    (168, 192, 88, 2417021.00, 'Sérvia', 8, 1),
+    (169, 188, 86, 2398153.00, 'Dinamarca', 8, 1),
+    (170, 179, 79, 3860742.00, 'Alemanha', 9, 2),
+    (171, 203, 88, 3098938.00, 'Hungria', 9, 5),
+    (172, 181, 76, 3317064.00, 'Noruega', 9, 6),
+    (173, 189, 96, 2980393.00, 'Polónia', 9, 4),
+    (174, 199, 109, 3043823.00, 'Espanha', 9, 7),
+    (175, 193, 89, 2866911.00, 'Noruega', 9, 3),
+    (176, 204, 110, 2729527.00, 'Sérvia', 9, 3),
+    (177, 201, 110, 2836223.00, 'Alemanha', 9, 7),
+    (178, 196, 99, 2656457.00, 'Espanha', 9, 4),
+    (179, 182, 84, 2703097.00, 'Portugal', 9, 6),
+    (180, 198, 105, 2395602.00, 'França', 9, 5),
+    (181, 190, 88, 2427725.00, 'Alemanha', 9, 2),
+    (182, 187, 108, 2733433.00, 'Alemanha', 9, 7),
+    (183, 190, 99, 2562879.00, 'Alemanha', 9, 1),
+    (184, 197, 91, 2404631.00, 'Alemanha', 9, 3),
+    (185, 194, 91, 2484586.00, 'Alemanha', 9, 1),
+    (186, 191, 98, 2384780.00, 'Alemanha', 9, 1),
+    (187, 188, 100, 2352209.00, 'Alemanha', 9, 1),
+    (188, 198, 113, 2374233.00, 'Alemanha', 9, 4),
+    (189, 181, 87, 2543925.00, 'Alemanha', 9, 6),
+    (190, 195, 112, 3231465.00, 'Alemanha', 10, 5),
+    (191, 184, 84, 3066691.00, 'Alemanha', 10, 6),
+    (192, 198, 100, 2928236.00, 'Croácia', 10, 5),
+    (193, 203, 111, 2993220.00, 'Espanha', 10, 4),
+    (194, 189, 83, 2939313.00, 'Suécia', 10, 2),
+    (195, 193, 111, 2932041.00, 'Noruega', 10, 3),
+    (196, 196, 105, 2776648.00, 'Noruega', 10, 3),
+    (197, 194, 93, 2710383.00, 'Portugal', 10, 4),
+    (198, 193, 111, 2969556.00, 'Sérvia', 10, 7),
+    (199, 187, 82, 2701146.00, 'Noruega', 10, 6),
+    (200, 178, 80, 2709453.00, 'Croácia', 10, 2),
+    (201, 195, 110, 2682029.00, 'França', 10, 7),
+    (202, 194, 114, 2475868.00, 'Alemanha', 10, 3),
+    (203, 188, 112, 2480801.00, 'Croácia', 10, 4),
+    (204, 202, 101, 2702614.00, 'Alemanha', 10, 7),
+    (205, 188, 91, 2691619.00, 'Dinamarca', 10, 5),
+    (206, 189, 110, 2452229.00, 'Portugal', 10, 4),
+    (207, 190, 95, 2372682.00, 'Suécia', 10, 3),
+    (208, 196, 95, 2644768.00, 'França', 10, 7),
+    (209, 192, 84, 2519068.00, 'Alemanha', 10, 1),
+    (210, 190, 102, 2465886.00, 'Suécia', 10, 1),
+    (211, 194, 102, 2322867.00, 'Dinamarca', 10, 4),
+    (212, 199, 86, 2397026.00, 'Alemanha', 10, 1),
+    (213, 194, 100, 3016035.00, 'Alemanha', 11, 5),
+    (214, 188, 107, 2953529.00, 'Alemanha', 11, 4),
+    (215, 203, 110, 2800998.00, 'Dinamarca', 11, 3),
+    (216, 186, 90, 2857172.00, 'Croácia', 11, 4),
+    (217, 187, 108, 2931089.00, 'França', 11, 7),
+    (218, 186, 88, 2809165.00, 'Alemanha', 11, 5),
+    (219, 178, 85, 2884185.00, 'Alemanha', 11, 6),
+    (220, 178, 79, 2793583.00, 'Suécia', 11, 2),
+    (221, 180, 83, 2726321.00, 'Polónia', 11, 6),
+    (222, 187, 99, 2619372.00, 'Alemanha', 11, 4),
+    (223, 187, 97, 2898846.00, 'Hungria', 11, 7),
+    (224, 201, 102, 2805947.00, 'Portugal', 11, 7),
+    (225, 189, 101, 2533141.00, 'Alemanha', 11, 3),
+    (226, 179, 77, 2670059.00, 'Alemanha', 11, 6),
+    (227, 183, 77, 2505510.00, 'Alemanha', 11, 2),
+    (228, 186, 95, 2412070.00, 'Alemanha', 11, 4),
+    (229, 178, 76, 2450030.00, 'Alemanha', 11, 2),
+    (230, 191, 84, 2610913.00, 'Alemanha', 11, 1),
+    (231, 198, 94, 2673986.00, 'Alemanha', 11, 7),
+    (232, 189, 97, 2494558.00, 'Alemanha', 11, 1),
+    (233, 197, 93, 3502539.00, 'Alemanha', 12, 4),
+    (234, 178, 77, 3278127.00, 'Alemanha', 12, 6),
+    (235, 187, 104, 3112331.00, 'Alemanha', 12, 3),
+    (236, 190, 112, 3298942.00, 'Noruega', 12, 7),
+    (237, 185, 83, 3077669.00, 'Noruega', 12, 2),
+    (238, 201, 107, 2999666.00, 'Alemanha', 12, 5),
+    (239, 191, 94, 2957941.00, 'Noruega', 12, 5),
+    (240, 188, 111, 2849939.00, 'Alemanha', 12, 3),
+    (241, 187, 114, 2876895.00, 'Hungria', 12, 3),
+    (242, 188, 77, 2832135.00, 'Alemanha', 12, 2),
+    (243, 197, 105, 2680721.00, 'Alemanha', 12, 3),
+    (244, 204, 107, 2878519.00, 'Alemanha', 12, 7),
+    (245, 195, 103, 2473034.00, 'França', 12, 4),
+    (246, 201, 114, 2694670.00, 'Alemanha', 12, 7),
+    (247, 186, 81, 2502409.00, 'Alemanha', 12, 6),
+    (248, 181, 81, 2542635.00, 'Alemanha', 12, 2),
+    (249, 199, 113, 2447922.00, 'Alemanha', 12, 3),
+    (250, 183, 85, 2440796.00, 'Alemanha', 12, 6),
+    (251, 196, 86, 2458105.00, 'Alemanha', 12, 1),
+    (252, 195, 89, 2554290.00, 'Alemanha', 12, 1),
+    (253, 189, 82, 2311847.00, 'Suécia', 12, 2),
+    (254, 186, 88, 2597275.00, 'Espanha', 12, 6),
+    (255, 191, 88, 2399137.00, 'Dinamarca', 12, 4),
+    (256, 199, 88, 2522297.00, 'Dinamarca', 12, 1),
+    (257, 190, 108, 3480284.00, 'Alemanha', 13, 5),
+    (258, 195, 92, 3427884.00, 'Alemanha', 13, 4),
+    (259, 193, 102, 3275731.00, 'Polónia', 13, 5),
+    (260, 190, 86, 3137845.00, 'França', 13, 6),
+    (261, 197, 89, 3025083.00, 'Alemanha', 13, 3),
+    (262, 189, 105, 3243277.00, 'Espanha', 13, 7),
+    (263, 186, 83, 2891439.00, 'Alemanha', 13, 2),
+    (264, 196, 91, 2820628.00, 'Sérvia', 13, 4),
+    (265, 187, 114, 2718794.00, 'Alemanha', 13, 5),
+    (266, 190, 98, 2788334.00, 'Alemanha', 13, 7),
+    (267, 183, 87, 2782289.00, 'Dinamarca', 13, 6),
+    (268, 192, 108, 2711683.00, 'Portugal', 13, 4),
+    (269, 190, 78, 2741312.00, 'Alemanha', 13, 2),
+    (270, 187, 108, 2582024.00, 'Alemanha', 13, 4),
+    (271, 199, 102, 2427797.00, 'França', 13, 1),
+    (272, 190, 87, 2394954.00, 'Portugal', 13, 1),
+    (273, 197, 100, 2437979.00, 'Portugal', 13, 3),
+    (274, 188, 89, 2271791.00, 'Alemanha', 13, 1),
+    (275, 184, 88, 3530397.00, 'Espanha', 14, 2),
+    (276, 196, 94, 3494098.00, 'Alemanha', 14, 7),
+    (277, 185, 80, 3016829.00, 'Croácia', 14, 6),
+    (278, 196, 89, 2968615.00, 'Alemanha', 14, 5),
+    (279, 197, 91, 3041849.00, 'Dinamarca', 14, 3),
+    (280, 187, 101, 2830386.00, 'Croácia', 14, 3),
+    (281, 201, 90, 2889977.00, 'Dinamarca', 14, 4),
+    (282, 201, 90, 2914499.00, 'Alemanha', 14, 3),
+    (283, 194, 95, 2870861.00, 'França', 14, 4),
+    (284, 188, 101, 2939403.00, 'Espanha', 14, 7),
+    (285, 187, 107, 2667899.00, 'França', 14, 5),
+    (286, 186, 76, 2693808.00, 'Alemanha', 14, 2),
+    (287, 192, 91, 2585713.00, 'Alemanha', 14, 5),
+    (288, 192, 108, 2603281.00, 'Alemanha', 14, 7),
+    (289, 193, 84, 2565511.00, 'Alemanha', 14, 1),
+    (290, 201, 89, 2540243.00, 'Alemanha', 14, 1),
+    (291, 189, 77, 2411028.00, 'Alemanha', 14, 6),
+    (292, 180, 85, 3175422.00, 'Alemanha', 15, 6),
+    (293, 189, 113, 3036874.00, 'Hungria', 15, 3),
+    (294, 195, 91, 2964370.00, 'Alemanha', 15, 4),
+    (295, 186, 78, 3028068.00, 'Macedónia do Norte', 15, 2),
+    (296, 184, 87, 2873436.00, 'Alemanha', 15, 2),
+    (297, 193, 99, 2717311.00, 'Dinamarca', 15, 4),
+    (298, 190, 93, 2607934.00, 'Eslovénia', 15, 5),
+    (299, 202, 109, 2880707.00, 'Alemanha', 15, 7),
+    (300, 201, 113, 2644772.00, 'Portugal', 15, 5),
+    (301, 198, 89, 2777894.00, 'Dinamarca', 15, 7),
+    (302, 197, 97, 2552463.00, 'Alemanha', 15, 3),
+    (303, 198, 104, 2815166.00, 'Alemanha', 15, 7),
+    (304, 188, 78, 2653549.00, 'Alemanha', 15, 6),
+    (305, 200, 101, 2665251.00, 'Noruega', 15, 7),
+    (306, 188, 108, 2592441.00, 'Alemanha', 15, 3),
+    (307, 201, 97, 2393438.00, 'Dinamarca', 15, 3),
+    (308, 200, 100, 2607571.00, 'Alemanha', 15, 7),
+    (309, 201, 98, 2486560.00, 'Alemanha', 15, 1),
+    (310, 191, 96, 2564936.00, 'Alemanha', 15, 1),
+    (311, 197, 98, 2507774.00, 'Alemanha', 15, 7),
+    (312, 184, 81, 2384424.00, 'Alemanha', 15, 2),
+    (313, 184, 76, 3409271.00, 'Alemanha', 16, 2),
+    (314, 193, 95, 3111650.00, 'Portugal', 16, 5),
+    (315, 191, 100, 3191275.00, 'Noruega', 16, 3),
+    (316, 185, 77, 3161331.00, 'França', 16, 6),
+    (317, 198, 97, 2948373.00, 'Alemanha', 16, 4),
+    (318, 195, 113, 2995875.00, 'Croácia', 16, 7),
+    (319, 200, 93, 2728488.00, 'Alemanha', 16, 3),
+    (320, 203, 95, 2826708.00, 'Noruega', 16, 7),
+    (321, 184, 86, 2725540.00, 'Portugal', 16, 6),
+    (322, 198, 104, 2702684.00, 'Eslovénia', 16, 3),
+    (323, 183, 77, 2878614.00, 'Dinamarca', 16, 2),
+    (324, 203, 89, 2465478.00, 'Espanha', 16, 5),
+    (325, 180, 76, 2456693.00, 'Eslovénia', 16, 2),
+    (326, 193, 106, 2441459.00, 'Alemanha', 16, 4),
+    (327, 190, 85, 2261116.00, 'França', 16, 1),
+    (328, 202, 98, 2378716.00, 'Espanha', 16, 1),
+    (329, 191, 99, 2371591.00, 'Alemanha', 16, 1),
+    (330, 188, 102, 2357846.00, 'Espanha', 16, 1),
+    (331, 201, 101, 2377698.00, 'Alemanha', 16, 4),
+    (332, 190, 100, 2271747.00, 'Alemanha', 16, 1),
+    (333, 178, 83, 3237213.00, 'Eslovénia', 17, 6),
+    (334, 199, 107, 3033976.00, 'Hungria', 17, 3),
+    (335, 202, 96, 3030958.00, 'Alemanha', 17, 5),
+    (336, 201, 104, 3033800.00, 'Alemanha', 17, 3),
+    (337, 198, 111, 3025089.00, 'Alemanha', 17, 7),
+    (338, 194, 94, 2938218.00, 'Noruega', 17, 4),
+    (339, 200, 96, 2885706.00, 'Sérvia', 17, 4),
+    (340, 184, 80, 2737529.00, 'Alemanha', 17, 2),
+    (341, 192, 91, 2776608.00, 'Dinamarca', 17, 5),
+    (342, 200, 102, 2888140.00, 'Alemanha', 17, 7),
+    (343, 195, 90, 2896589.00, 'Alemanha', 17, 7),
+    (344, 192, 112, 2627997.00, 'Alemanha', 17, 4),
+    (345, 188, 88, 2734190.00, 'Polónia', 17, 2),
+    (346, 198, 102, 2652470.00, 'França', 17, 3),
+    (347, 180, 77, 2569701.00, 'Sérvia', 17, 6),
+    (348, 197, 85, 2397527.00, 'Alemanha', 17, 1),
+    (349, 188, 92, 2570592.00, 'Alemanha', 17, 3),
+    (350, 198, 104, 2494618.00, 'Eslovénia', 17, 3),
+    (351, 180, 78, 2391014.00, 'Noruega', 17, 2),
+    (352, 191, 100, 2669711.00, 'Islândia', 17, 1),
+    (353, 189, 93, 2439107.00, 'Alemanha', 17, 5),
+    (354, 201, 90, 3253682.00, 'França', 18, 3),
+    (355, 188, 78, 3063662.00, 'Dinamarca', 18, 6),
+    (356, 187, 81, 2734586.00, 'França', 18, 2),
+    (357, 178, 83, 2813549.00, 'Alemanha', 18, 6),
+    (358, 198, 98, 2939994.00, 'Espanha', 18, 7),
+    (359, 192, 103, 2647781.00, 'Portugal', 18, 5),
+    (360, 198, 94, 2848892.00, 'Alemanha', 18, 7),
+    (361, 199, 113, 2629531.00, 'Dinamarca', 18, 3),
+    (362, 194, 98, 2535501.00, 'Áustria', 18, 4),
+    (363, 188, 90, 2598380.00, 'Alemanha', 18, 5),
+    (364, 195, 101, 2514285.00, 'Noruega', 18, 4),
+    (365, 187, 82, 2627292.00, 'Noruega', 18, 2),
+    (366, 203, 97, 2508136.00, 'Dinamarca', 18, 4),
+    (367, 187, 88, 2825078.00, 'França', 18, 7),
+    (368, 202, 98, 2455105.00, 'Croácia', 18, 4),
+    (369, 186, 77, 2400098.00, 'Alemanha', 18, 6),
+    (370, 200, 91, 2338386.00, 'Suécia', 18, 1),
+    (371, 193, 97, 2435571.00, 'Alemanha', 18, 1),
+    (372, 198, 84, 2467643.00, 'Dinamarca', 18, 1);
 
--- 7. TREINADORES
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (373, 'LIC-EHF-A-2025-01', 1);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (374, 'LIC-EHF-A-2025-02', 2);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (375, 'LIC-EHF-A-2025-03', 3);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (376, 'LIC-EHF-A-2025-04', 4);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (377, 'LIC-EHF-A-2025-05', 5);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (378, 'LIC-EHF-A-2025-06', 6);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (379, 'LIC-EHF-A-2025-07', 7);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (380, 'LIC-EHF-A-2025-08', 8);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (381, 'LIC-EHF-A-2025-09', 9);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (382, 'LIC-EHF-A-2025-10', 10);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (383, 'LIC-EHF-A-2025-11', 11);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (384, 'LIC-EHF-A-2025-12', 12);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (385, 'LIC-EHF-A-2025-13', 13);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (386, 'LIC-EHF-A-2025-14', 14);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (387, 'LIC-EHF-A-2025-15', 15);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (388, 'LIC-EHF-A-2025-16', 16);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (389, 'LIC-EHF-A-2025-17', 17);
-INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES (390, 'LIC-EHF-A-2025-18', 18);
+INSERT INTO treinador (id_treinador, licenca, id_clube) VALUES
+    (373, 'LIC-EHF-A-2025-01', 1),
+    (374, 'LIC-EHF-A-2025-02', 2),
+    (375, 'LIC-EHF-A-2025-03', 3),
+    (376, 'LIC-EHF-A-2025-04', 4),
+    (377, 'LIC-EHF-A-2025-05', 5),
+    (378, 'LIC-EHF-A-2025-06', 6),
+    (379, 'LIC-EHF-A-2025-07', 7),
+    (380, 'LIC-EHF-A-2025-08', 8),
+    (381, 'LIC-EHF-A-2025-09', 9),
+    (382, 'LIC-EHF-A-2025-10', 10),
+    (383, 'LIC-EHF-A-2025-11', 11),
+    (384, 'LIC-EHF-A-2025-12', 12),
+    (385, 'LIC-EHF-A-2025-13', 13),
+    (386, 'LIC-EHF-A-2025-14', 14),
+    (387, 'LIC-EHF-A-2025-15', 15),
+    (388, 'LIC-EHF-A-2025-16', 16),
+    (389, 'LIC-EHF-A-2025-17', 17),
+    (390, 'LIC-EHF-A-2025-18', 18);
 
--- 8. ÁRBITROS
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (391, 'CED-ARB-2025-101');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (392, 'CED-ARB-2025-102');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (393, 'CED-ARB-2025-103');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (394, 'CED-ARB-2025-104');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (395, 'CED-ARB-2025-105');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (396, 'CED-ARB-2025-106');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (397, 'CED-ARB-2025-107');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (398, 'CED-ARB-2025-108');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (399, 'CED-ARB-2025-109');
-INSERT INTO arbitro (id_arbitro, num_cedula) VALUES (400, 'CED-ARB-2025-110');
+INSERT INTO arbitro (id_arbitro, num_cedula) VALUES
+    (391, 'CED-ARB-2025-101'),
+    (392, 'CED-ARB-2025-102'),
+    (393, 'CED-ARB-2025-103'),
+    (394, 'CED-ARB-2025-104'),
+    (395, 'CED-ARB-2025-105'),
+    (396, 'CED-ARB-2025-106'),
+    (397, 'CED-ARB-2025-107'),
+    (398, 'CED-ARB-2025-108'),
+    (399, 'CED-ARB-2025-109'),
+    (400, 'CED-ARB-2025-110');
 
--- 9. LIGAS
 SET IDENTITY_INSERT liga ON;
-INSERT INTO liga (id_liga, nome, codigo_acesso, e_privada, nome_pais, id_utilizador) VALUES (1, 'Liga HBL Fantasy 2025/26', NULL, 0, 'Alemanha', 1);
-INSERT INTO liga (id_liga, nome, codigo_acesso, e_privada, nome_pais, id_utilizador) VALUES (2, 'Liga Privada Amigos do Andebol', 'HANDBALL2026', 1, 'Portugal', 2);
+INSERT INTO liga (id_liga, nome, codigo_acesso, e_privada, nome_pais, id_utilizador) VALUES
+    (1, 'Liga HBL Fantasy 2025/26', NULL, 0, 'Alemanha', 1),
+    (2, 'Liga Privada Amigos do Andebol', 'HANDBALL2026', 1, 'Portugal', 2);
 SET IDENTITY_INSERT liga OFF;
 
--- 10. PLANTÉIS
 SET IDENTITY_INSERT plantel ON;
-INSERT INTO plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador) VALUES (1, 'Invicta Handball FC', 15450000.00, 452.50, 2);
-INSERT INTO plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador) VALUES (2, 'Aveiro Eagles', 18200000.00, 398.00, 3);
-INSERT INTO plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador) VALUES (3, 'SL Andebolitas', 12100000.00, 510.00, 4);
-INSERT INTO plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador) VALUES (4, 'Vikings do Norte', 22500000.00, 340.50, 5);
+INSERT INTO plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador) VALUES
+    (1, 'Invicta Handball FC', 15450000.00, 452.50, 2),
+    (2, 'Aveiro Eagles', 18200000.00, 398.00, 3),
+    (3, 'SL Andebolitas', 12100000.00, 510.00, 4),
+    (4, 'Vikings do Norte', 22500000.00, 340.50, 5);
 SET IDENTITY_INSERT plantel OFF;
 
--- 11. PARTICIPA LIGA
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (1, 1);
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (1, 2);
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (2, 1);
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (3, 1);
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (4, 1);
-INSERT INTO participa_liga (id_plantel, id_liga) VALUES (4, 2);
+INSERT INTO participa_liga (id_plantel, id_liga) VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (3, 1),
+    (4, 1),
+    (4, 2);
 
--- 12. SELECIONA (Plantel <-> Jogador)
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 99, 1, 0, 2340000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 248, 1, 0, 2580000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 45, 1, 0, 2925000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 258, 1, 0, 3425000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 171, 1, 0, 3145000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 316, 1, 1, 3210000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 301, 1, 0, 2790000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 3, 0, 0, 2895000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 42, 0, 0, 3190000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (1, 38, 0, 0, 2445000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 62, 1, 0, 2585000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 312, 1, 0, 2375000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 243, 1, 0, 2715000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 326, 1, 1, 2435000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 161, 1, 0, 2585000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 128, 1, 0, 2410000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 127, 1, 0, 2515000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 209, 0, 0, 2480000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 349, 0, 0, 2525000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (2, 198, 0, 0, 2990000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 210, 1, 0, 2480000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 356, 1, 0, 2765000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 76, 1, 0, 2470000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 270, 1, 0, 2565000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 359, 1, 0, 2685000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 321, 1, 0, 2775000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 69, 1, 1, 2945000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 212, 0, 0, 2375000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 131, 0, 0, 3115000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (3, 313, 0, 0, 3415000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 36, 1, 1, 2485000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 351, 1, 0, 2380000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 235, 1, 0, 3070000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 368, 1, 0, 2490000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 86, 1, 0, 2870000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 347, 1, 0, 2550000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 343, 1, 0, 2855000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 363, 0, 0, 2610000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 28, 0, 0, 3035000.00);
-INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES (4, 139, 0, 0, 2980000.00);
+INSERT INTO seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra) VALUES
+    (1, 99, 1, 0, 2340000.00),
+    (1, 248, 1, 0, 2580000.00),
+    (1, 45, 1, 0, 2925000.00),
+    (1, 258, 1, 0, 3425000.00),
+    (1, 171, 1, 0, 3145000.00),
+    (1, 316, 1, 1, 3210000.00),
+    (1, 301, 1, 0, 2790000.00),
+    (1, 3, 0, 0, 2895000.00),
+    (1, 42, 0, 0, 3190000.00),
+    (1, 38, 0, 0, 2445000.00),
+    (2, 62, 1, 0, 2585000.00),
+    (2, 312, 1, 0, 2375000.00),
+    (2, 243, 1, 0, 2715000.00),
+    (2, 326, 1, 1, 2435000.00),
+    (2, 161, 1, 0, 2585000.00),
+    (2, 128, 1, 0, 2410000.00),
+    (2, 127, 1, 0, 2515000.00),
+    (2, 209, 0, 0, 2480000.00),
+    (2, 349, 0, 0, 2525000.00),
+    (2, 198, 0, 0, 2990000.00),
+    (3, 210, 1, 0, 2480000.00),
+    (3, 356, 1, 0, 2765000.00),
+    (3, 76, 1, 0, 2470000.00),
+    (3, 270, 1, 0, 2565000.00),
+    (3, 359, 1, 0, 2685000.00),
+    (3, 321, 1, 0, 2775000.00),
+    (3, 69, 1, 1, 2945000.00),
+    (3, 212, 0, 0, 2375000.00),
+    (3, 131, 0, 0, 3115000.00),
+    (3, 313, 0, 0, 3415000.00),
+    (4, 36, 1, 1, 2485000.00),
+    (4, 351, 1, 0, 2380000.00),
+    (4, 235, 1, 0, 3070000.00),
+    (4, 368, 1, 0, 2490000.00),
+    (4, 86, 1, 0, 2870000.00),
+    (4, 347, 1, 0, 2550000.00),
+    (4, 343, 1, 0, 2855000.00),
+    (4, 363, 0, 0, 2610000.00),
+    (4, 28, 0, 0, 3035000.00),
+    (4, 139, 0, 0, 2980000.00);
 
--- 13. JORNADAS
 SET IDENTITY_INSERT jornada ON;
-INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES (1, 1, '2025-09-06', '2025-09-08', 1);
-INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES (2, 2, '2025-09-13', '2025-09-15', 1);
-INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES (3, 3, '2025-09-20', '2025-09-22', 1);
-INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES (4, 4, '2025-09-27', '2025-09-29', 1);
-INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES (5, 5, '2025-10-04', '2025-10-06', 1);
+INSERT INTO jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga) VALUES
+    (1, 1, '2025-09-06', '2025-09-08', 1),
+    (2, 2, '2025-09-13', '2025-09-15', 1),
+    (3, 3, '2025-09-20', '2025-09-22', 1),
+    (4, 4, '2025-09-27', '2025-09-29', 1),
+    (5, 5, '2025-10-04', '2025-10-06', 1);
 SET IDENTITY_INSERT jornada OFF;
 
--- 14. PARTICIPA JORNADA
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (1, 1, 92.22);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (2, 1, 78.21);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (3, 1, 108.46);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (4, 1, 103.45);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (1, 2, 69.84);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (2, 2, 86.71);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (3, 2, 72.66);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (4, 2, 95.34);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (1, 3, 95.52);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (2, 3, 101.66);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (3, 3, 91.14);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (4, 3, 106.98);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (1, 4, 65.29);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (2, 4, 88.85);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (3, 4, 109.16);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (4, 4, 75.87);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (1, 5, 74.78);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (2, 5, 76.69);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (3, 5, 109.55);
-INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES (4, 5, 87.96);
+INSERT INTO participa_jornada (id_plantel, id_jornada, pontos_jornada) VALUES
+    (1, 1, 92.22),
+    (2, 1, 78.21),
+    (3, 1, 108.46),
+    (4, 1, 103.45),
+    (1, 2, 69.84),
+    (2, 2, 86.71),
+    (3, 2, 72.66),
+    (4, 2, 95.34),
+    (1, 3, 95.52),
+    (2, 3, 101.66),
+    (3, 3, 91.14),
+    (4, 3, 106.98),
+    (1, 4, 65.29),
+    (2, 4, 88.85),
+    (3, 4, 109.16),
+    (4, 4, 75.87),
+    (1, 5, 74.78),
+    (2, 5, 76.69),
+    (3, 5, 109.55),
+    (4, 5, 87.96);
 
--- 15. JOGOS, ARBITRAGEM E PARTICIPAÇÃO DE JOGADORES
 SET IDENTITY_INSERT jogo ON;
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (1, '2025-09-06 15:00:00', 30, 32, 1, 2, 1, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (2, '2025-09-06 17:00:00', 29, 32, 3, 4, 3, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (3, '2025-09-06 19:00:00', 33, 23, 5, 6, 5, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (4, '2025-09-06 21:00:00', 31, 28, 7, 8, 7, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (5, '2025-09-06 15:00:00', 30, 31, 9, 10, 9, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (6, '2025-09-06 17:00:00', 30, 29, 11, 12, 11, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (7, '2025-09-06 19:00:00', 27, 28, 13, 14, 13, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (8, '2025-09-06 21:00:00', 27, 31, 15, 16, 15, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (9, '2025-09-06 15:00:00', 29, 28, 17, 18, 17, 1);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (10, '2025-09-13 15:00:00', 31, 24, 2, 3, 2, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (11, '2025-09-13 17:00:00', 33, 29, 4, 5, 4, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (12, '2025-09-13 19:00:00', 28, 27, 6, 7, 6, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (13, '2025-09-13 21:00:00', 25, 33, 8, 9, 8, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (14, '2025-09-13 15:00:00', 30, 29, 10, 11, 10, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (15, '2025-09-13 17:00:00', 26, 26, 12, 13, 12, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (16, '2025-09-13 19:00:00', 30, 30, 14, 15, 14, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (17, '2025-09-13 21:00:00', 30, 23, 16, 17, 16, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (18, '2025-09-13 15:00:00', 31, 32, 18, 1, 18, 2);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (19, '2025-09-20 15:00:00', 29, 25, 1, 3, 1, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (20, '2025-09-20 17:00:00', 31, 33, 2, 4, 2, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (21, '2025-09-20 19:00:00', 31, 33, 5, 7, 5, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (22, '2025-09-20 21:00:00', 34, 31, 6, 8, 6, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (23, '2025-09-20 15:00:00', 35, 24, 9, 11, 9, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (24, '2025-09-20 17:00:00', 35, 27, 10, 12, 10, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (25, '2025-09-20 19:00:00', 35, 26, 13, 15, 13, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (26, '2025-09-20 21:00:00', 28, 24, 14, 16, 14, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (27, '2025-09-20 15:00:00', 32, 32, 17, 2, 17, 3);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (28, '2025-09-27 15:00:00', 26, 27, 3, 5, 3, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (29, '2025-09-27 17:00:00', 28, 23, 4, 6, 4, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (30, '2025-09-27 19:00:00', 32, 27, 7, 9, 7, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (31, '2025-09-27 21:00:00', 32, 30, 8, 10, 8, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (32, '2025-09-27 15:00:00', 32, 29, 11, 13, 11, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (33, '2025-09-27 17:00:00', 28, 33, 12, 14, 12, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (34, '2025-09-27 19:00:00', 33, 31, 15, 17, 15, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (35, '2025-09-27 21:00:00', 35, 29, 16, 18, 16, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (36, '2025-09-27 15:00:00', 35, 32, 1, 4, 1, 4);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (37, '2025-10-04 15:00:00', 26, 31, 5, 8, 5, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (38, '2025-10-04 17:00:00', 25, 27, 6, 9, 6, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (39, '2025-10-04 19:00:00', 29, 24, 7, 10, 7, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (40, '2025-10-04 21:00:00', 33, 29, 11, 14, 11, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (41, '2025-10-04 15:00:00', 26, 26, 12, 15, 12, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (42, '2025-10-04 17:00:00', 35, 33, 13, 16, 13, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (43, '2025-10-04 19:00:00', 29, 23, 17, 1, 17, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (44, '2025-10-04 21:00:00', 31, 32, 18, 2, 18, 5);
-INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES (45, '2025-10-04 15:00:00', 35, 28, 3, 7, 3, 5);
+INSERT INTO jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada) VALUES
+    (1, '2025-09-06 15:00:00', 30, 32, 1, 2, 1, 1),
+    (2, '2025-09-06 17:00:00', 29, 32, 3, 4, 3, 1),
+    (3, '2025-09-06 19:00:00', 33, 23, 5, 6, 5, 1),
+    (4, '2025-09-06 21:00:00', 31, 28, 7, 8, 7, 1),
+    (5, '2025-09-06 15:00:00', 30, 31, 9, 10, 9, 1),
+    (6, '2025-09-06 17:00:00', 30, 29, 11, 12, 11, 1),
+    (7, '2025-09-06 19:00:00', 27, 28, 13, 14, 13, 1),
+    (8, '2025-09-06 21:00:00', 27, 31, 15, 16, 15, 1),
+    (9, '2025-09-06 15:00:00', 29, 28, 17, 18, 17, 1),
+    (10, '2025-09-13 15:00:00', 31, 24, 2, 3, 2, 2),
+    (11, '2025-09-13 17:00:00', 33, 29, 4, 5, 4, 2),
+    (12, '2025-09-13 19:00:00', 28, 27, 6, 7, 6, 2),
+    (13, '2025-09-13 21:00:00', 25, 33, 8, 9, 8, 2),
+    (14, '2025-09-13 15:00:00', 30, 29, 10, 11, 10, 2),
+    (15, '2025-09-13 17:00:00', 26, 26, 12, 13, 12, 2),
+    (16, '2025-09-13 19:00:00', 30, 30, 14, 15, 14, 2),
+    (17, '2025-09-13 21:00:00', 30, 23, 16, 17, 16, 2),
+    (18, '2025-09-13 15:00:00', 31, 32, 18, 1, 18, 2),
+    (19, '2025-09-20 15:00:00', 29, 25, 1, 3, 1, 3),
+    (20, '2025-09-20 17:00:00', 31, 33, 2, 4, 2, 3),
+    (21, '2025-09-20 19:00:00', 31, 33, 5, 7, 5, 3),
+    (22, '2025-09-20 21:00:00', 34, 31, 6, 8, 6, 3),
+    (23, '2025-09-20 15:00:00', 35, 24, 9, 11, 9, 3),
+    (24, '2025-09-20 17:00:00', 35, 27, 10, 12, 10, 3),
+    (25, '2025-09-20 19:00:00', 35, 26, 13, 15, 13, 3),
+    (26, '2025-09-20 21:00:00', 28, 24, 14, 16, 14, 3),
+    (27, '2025-09-20 15:00:00', 32, 32, 17, 2, 17, 3),
+    (28, '2025-09-27 15:00:00', 26, 27, 3, 5, 3, 4),
+    (29, '2025-09-27 17:00:00', 28, 23, 4, 6, 4, 4),
+    (30, '2025-09-27 19:00:00', 32, 27, 7, 9, 7, 4),
+    (31, '2025-09-27 21:00:00', 32, 30, 8, 10, 8, 4),
+    (32, '2025-09-27 15:00:00', 32, 29, 11, 13, 11, 4),
+    (33, '2025-09-27 17:00:00', 28, 33, 12, 14, 12, 4),
+    (34, '2025-09-27 19:00:00', 33, 31, 15, 17, 15, 4),
+    (35, '2025-09-27 21:00:00', 35, 29, 16, 18, 16, 4),
+    (36, '2025-09-27 15:00:00', 35, 32, 1, 4, 1, 4),
+    (37, '2025-10-04 15:00:00', 26, 31, 5, 8, 5, 5),
+    (38, '2025-10-04 17:00:00', 25, 27, 6, 9, 6, 5),
+    (39, '2025-10-04 19:00:00', 29, 24, 7, 10, 7, 5),
+    (40, '2025-10-04 21:00:00', 33, 29, 11, 14, 11, 5),
+    (41, '2025-10-04 15:00:00', 26, 26, 12, 15, 12, 5),
+    (42, '2025-10-04 17:00:00', 35, 33, 13, 16, 13, 5),
+    (43, '2025-10-04 19:00:00', 29, 23, 17, 1, 17, 5),
+    (44, '2025-10-04 21:00:00', 31, 32, 18, 2, 18, 5),
+    (45, '2025-10-04 15:00:00', 35, 28, 3, 7, 3, 5);
 SET IDENTITY_INSERT jogo OFF;
 
--- 16. APITA (Árbitros <-> Jogos)
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 1);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 1);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 2);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 2);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 3);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 3);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 4);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 4);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 5);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 5);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 6);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 6);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 7);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 7);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 8);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 8);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 9);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 9);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 10);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 10);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 11);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 11);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 12);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 12);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 13);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 13);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 14);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 14);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 15);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 15);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 16);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 16);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 17);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 17);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 18);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 18);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 19);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 19);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 20);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 20);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 21);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 21);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 22);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 22);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 23);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 23);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 24);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 24);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 25);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 25);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 26);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 26);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 27);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 27);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 28);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 28);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 29);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 29);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 30);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 30);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 31);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 31);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 32);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 32);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 33);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 33);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 34);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 34);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 35);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 35);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 36);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 36);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 37);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 37);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 38);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 38);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 39);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 39);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 40);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 40);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (391, 41);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (392, 41);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (393, 42);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (394, 42);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (395, 43);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (396, 43);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (397, 44);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (398, 44);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (399, 45);
-INSERT INTO apita (id_arbitro, id_jogo) VALUES (400, 45);
+INSERT INTO apita (id_arbitro, id_jogo) VALUES
+    (391, 1),
+    (392, 1),
+    (393, 2),
+    (394, 2),
+    (395, 3),
+    (396, 3),
+    (397, 4),
+    (398, 4),
+    (399, 5),
+    (400, 5),
+    (391, 6),
+    (392, 6),
+    (393, 7),
+    (394, 7),
+    (395, 8),
+    (396, 8),
+    (397, 9),
+    (398, 9),
+    (399, 10),
+    (400, 10),
+    (391, 11),
+    (392, 11),
+    (393, 12),
+    (394, 12),
+    (395, 13),
+    (396, 13),
+    (397, 14),
+    (398, 14),
+    (399, 15),
+    (400, 15),
+    (391, 16),
+    (392, 16),
+    (393, 17),
+    (394, 17),
+    (395, 18),
+    (396, 18),
+    (397, 19),
+    (398, 19),
+    (399, 20),
+    (400, 20),
+    (391, 21),
+    (392, 21),
+    (393, 22),
+    (394, 22),
+    (395, 23),
+    (396, 23),
+    (397, 24),
+    (398, 24),
+    (399, 25),
+    (400, 25),
+    (391, 26),
+    (392, 26),
+    (393, 27),
+    (394, 27),
+    (395, 28),
+    (396, 28),
+    (397, 29),
+    (398, 29),
+    (399, 30),
+    (400, 30),
+    (391, 31),
+    (392, 31),
+    (393, 32),
+    (394, 32),
+    (395, 33),
+    (396, 33),
+    (397, 34),
+    (398, 34),
+    (399, 35),
+    (400, 35),
+    (391, 36),
+    (392, 36),
+    (393, 37),
+    (394, 37),
+    (395, 38),
+    (396, 38),
+    (397, 39),
+    (398, 39),
+    (399, 40),
+    (400, 40),
+    (391, 41),
+    (392, 41),
+    (393, 42),
+    (394, 42),
+    (395, 43),
+    (396, 43),
+    (397, 44),
+    (398, 44),
+    (399, 45),
+    (400, 45);
 
--- 17. PARTICIPA_JOGO (Estatísticas dos Jogadores no Jogo)
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (6, 1, 1, 0, 1, 0, 0, 0, 0, 67.48, 9.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (13, 1, 0, 4, 2, 0, 0, 0, 0, 69.36, 12.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (12, 1, 4, 3, 3, 0, 0, 0, 0, 69.82, 25.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (7, 1, 4, 2, 1, 0, 0, 0, 0, 71.20, 26.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (9, 1, 0, 1, 2, 1, 0, 0, 0, 72.34, 5.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (2, 1, 5, 1, 0, 0, 0, 0, 0, 62.61, 28.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (16, 1, 0, 4, 1, 0, 0, 0, 0, 69.65, 13.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (10, 1, 0, 4, 2, 2, 0, 0, 0, 66.31, 8.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (8, 1, 5, 4, 0, 0, 0, 0, 0, 72.24, 35.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (3, 1, 1, 3, 1, 0, 0, 0, 0, 67.54, 15.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (1, 1, 7, 1, 1, 1, 0, 0, 0, 73.06, 34.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (17, 1, 0, 0, 1, 1, 0, 0, 14, 60.54, 45.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (14, 1, 0, 0, 0, 0, 0, 0, 13, 60.44, 45.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (34, 1, 1, 0, 0, 0, 0, 0, 0, 64.59, 10.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (33, 1, 1, 3, 1, 1, 0, 0, 0, 78.11, 14.81);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (29, 1, 1, 4, 2, 1, 0, 0, 0, 72.95, 15.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (35, 1, 2, 1, 0, 0, 0, 0, 0, 71.39, 17.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (25, 1, 5, 0, 3, 0, 0, 0, 0, 77.61, 24.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (27, 1, 4, 0, 0, 0, 0, 0, 0, 69.77, 22.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (32, 1, 0, 0, 2, 0, 0, 0, 0, 70.59, 5.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (21, 1, 5, 1, 1, 1, 0, 0, 0, 77.84, 26.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (41, 1, 0, 3, 0, 0, 0, 0, 0, 70.08, 13.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (22, 1, 4, 3, 2, 1, 0, 0, 0, 81.15, 26.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (20, 1, 7, 1, 0, 0, 0, 0, 0, 65.07, 36.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (40, 1, 0, 1, 0, 0, 0, 0, 16, 65.91, 56.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (36, 1, 0, 1, 0, 0, 0, 0, 15, 63.28, 53.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (42, 2, 4, 3, 3, 0, 0, 0, 0, 68.59, 25.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (46, 2, 3, 1, 2, 0, 0, 0, 0, 72.91, 19.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (50, 2, 1, 2, 2, 0, 0, 0, 0, 63.45, 12.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (56, 2, 0, 0, 0, 0, 0, 0, 0, 72.80, 7.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (47, 2, 3, 0, 2, 0, 0, 0, 0, 63.37, 16.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (53, 2, 2, 1, 1, 0, 0, 0, 0, 68.39, 15.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (49, 2, 5, 3, 0, 0, 0, 0, 0, 68.62, 32.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (61, 2, 0, 0, 0, 0, 0, 0, 0, 70.59, 7.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (54, 2, 2, 2, 1, 0, 0, 0, 0, 69.54, 17.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (52, 2, 1, 0, 0, 0, 0, 0, 0, 72.14, 11.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (45, 2, 4, 1, 1, 2, 0, 0, 0, 62.63, 19.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (60, 2, 0, 0, 0, 0, 0, 0, 0, 68.30, 6.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (62, 2, 0, 0, 3, 2, 0, 0, 7, 67.67, 20.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (59, 2, 0, 0, 1, 0, 0, 0, 12, 62.87, 41.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (74, 2, 2, 0, 3, 0, 0, 0, 0, 65.06, 11.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (76, 2, 1, 2, 1, 1, 0, 0, 0, 68.87, 11.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (68, 2, 4, 1, 1, 0, 0, 0, 0, 65.62, 23.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (75, 2, 0, 0, 0, 0, 0, 0, 0, 67.47, 6.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (73, 2, 0, 0, 2, 0, 0, 0, 0, 72.72, 5.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (71, 2, 2, 4, 3, 0, 0, 0, 0, 61.18, 19.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (63, 2, 8, 0, 3, 2, 0, 0, 0, 79.70, 32.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (78, 2, 0, 4, 2, 0, 0, 0, 0, 69.88, 12.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (81, 2, 0, 1, 2, 0, 0, 0, 0, 67.49, 6.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (70, 2, 4, 4, 2, 1, 0, 0, 0, 67.13, 26.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (72, 2, 0, 0, 0, 0, 0, 0, 0, 68.67, 6.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (64, 2, 5, 1, 1, 0, 0, 0, 0, 67.61, 27.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (80, 2, 0, 1, 1, 2, 0, 0, 13, 63.70, 42.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (77, 2, 0, 0, 2, 1, 0, 0, 15, 59.31, 46.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (82, 3, 5, 0, 2, 1, 0, 0, 0, 73.45, 23.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (93, 3, 0, 0, 2, 0, 0, 0, 0, 71.16, 5.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (90, 3, 3, 0, 0, 0, 0, 0, 0, 61.63, 18.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (95, 3, 1, 4, 2, 1, 0, 0, 0, 71.23, 15.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (88, 3, 2, 0, 1, 0, 0, 0, 0, 65.06, 13.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (91, 3, 1, 4, 2, 0, 0, 0, 0, 70.72, 17.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (98, 3, 0, 4, 3, 1, 0, 0, 0, 61.34, 9.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (84, 3, 6, 3, 0, 0, 0, 0, 0, 76.70, 37.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (92, 3, 2, 1, 3, 0, 0, 0, 0, 71.37, 14.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (83, 3, 7, 2, 3, 0, 0, 0, 0, 67.47, 35.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (85, 3, 7, 2, 2, 0, 0, 0, 0, 72.53, 37.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (96, 3, 0, 0, 0, 0, 0, 0, 0, 69.13, 6.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (97, 3, 0, 0, 2, 0, 0, 0, 10, 65.16, 34.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (121, 3, 1, 0, 2, 0, 0, 0, 0, 59.34, 7.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (118, 3, 9, 4, 0, 2, 0, 0, 0, 68.88, 46.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (107, 3, 4, 1, 0, 0, 0, 0, 0, 72.07, 25.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (120, 3, 1, 3, 1, 1, 0, 0, 0, 69.80, 13.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (110, 3, 1, 2, 3, 0, 0, 0, 0, 58.59, 10.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (103, 3, 6, 0, 0, 1, 0, 0, 0, 60.25, 28.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (119, 3, 0, 0, 0, 0, 0, 0, 0, 61.89, 6.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (108, 3, 4, 3, 1, 0, 0, 0, 0, 77.39, 28.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (125, 3, 1, 0, 3, 0, 0, 0, 0, 66.62, 7.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (113, 3, 0, 2, 3, 0, 0, 0, 0, 71.86, 8.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (109, 3, 1, 2, 3, 0, 0, 0, 0, 66.48, 11.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (124, 3, 0, 1, 3, 1, 0, 0, 10, 58.17, 32.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (123, 3, 0, 0, 3, 0, 0, 0, 13, 71.50, 43.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (131, 4, 5, 3, 2, 0, 0, 0, 0, 76.65, 31.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (143, 4, 1, 2, 2, 0, 0, 0, 0, 60.82, 12.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (142, 4, 2, 4, 0, 0, 0, 0, 0, 62.35, 22.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (146, 4, 0, 1, 3, 1, 0, 0, 0, 67.28, 3.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (137, 4, 2, 1, 3, 0, 0, 0, 0, 67.51, 13.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (145, 4, 1, 4, 1, 0, 0, 0, 0, 72.71, 18.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (133, 4, 1, 3, 0, 1, 0, 0, 0, 62.42, 14.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (136, 4, 3, 0, 0, 1, 0, 0, 0, 62.89, 16.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (132, 4, 4, 0, 1, 1, 0, 0, 0, 72.49, 20.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (139, 4, 3, 1, 3, 0, 0, 0, 0, 70.66, 18.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (135, 4, 7, 0, 3, 0, 0, 0, 0, 68.65, 31.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (147, 4, 0, 1, 2, 1, 0, 0, 10, 64.34, 34.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (144, 4, 0, 0, 1, 0, 0, 0, 13, 71.52, 45.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (153, 4, 1, 4, 0, 2, 0, 0, 0, 64.02, 14.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (156, 4, 4, 0, 2, 1, 0, 0, 0, 70.64, 19.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (154, 4, 5, 1, 3, 0, 0, 0, 0, 69.24, 25.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (162, 4, 0, 2, 3, 0, 0, 0, 0, 68.67, 7.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (165, 4, 0, 3, 3, 1, 0, 0, 0, 72.01, 8.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (163, 4, 2, 1, 3, 0, 0, 0, 0, 67.52, 13.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (160, 4, 2, 0, 1, 0, 0, 0, 0, 63.97, 13.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (152, 4, 1, 2, 0, 0, 0, 0, 0, 62.34, 14.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (161, 4, 3, 0, 3, 1, 0, 0, 0, 65.84, 13.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (157, 4, 2, 3, 0, 0, 0, 0, 0, 67.32, 20.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (151, 4, 11, 1, 1, 0, 0, 0, 0, 77.58, 52.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (169, 4, 0, 1, 3, 0, 0, 0, 9, 71.52, 33.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (184, 5, 1, 2, 2, 0, 0, 0, 0, 61.30, 12.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (178, 5, 2, 2, 2, 0, 0, 0, 0, 74.86, 17.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (182, 5, 1, 3, 0, 0, 0, 0, 0, 68.35, 16.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (176, 5, 3, 1, 3, 0, 0, 0, 0, 69.40, 17.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (173, 5, 4, 4, 3, 0, 0, 0, 0, 65.91, 27.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (175, 5, 3, 0, 0, 0, 0, 0, 0, 72.07, 19.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (179, 5, 1, 0, 2, 0, 0, 0, 0, 64.14, 8.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (181, 5, 1, 1, 3, 1, 0, 0, 0, 67.74, 7.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (171, 5, 4, 0, 0, 0, 0, 0, 0, 69.63, 22.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (170, 5, 12, 0, 3, 0, 0, 0, 0, 77.96, 52.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (189, 5, 0, 0, 1, 0, 0, 0, 0, 71.66, 6.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (180, 5, 0, 2, 3, 0, 0, 0, 0, 62.11, 7.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (187, 5, 0, 0, 1, 0, 0, 0, 16, 66.97, 53.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (185, 5, 0, 0, 2, 2, 0, 0, 14, 63.06, 42.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (205, 5, 1, 1, 3, 1, 0, 0, 0, 73.62, 8.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (207, 5, 1, 1, 0, 0, 0, 0, 0, 59.26, 11.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (206, 5, 0, 0, 2, 0, 0, 0, 0, 69.31, 4.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (203, 5, 2, 2, 2, 0, 0, 0, 0, 67.38, 16.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (204, 5, 0, 2, 0, 0, 0, 0, 0, 68.86, 10.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (191, 5, 6, 0, 1, 0, 0, 0, 0, 75.88, 30.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (201, 5, 4, 0, 0, 0, 0, 0, 0, 67.39, 22.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (211, 5, 0, 0, 0, 1, 0, 0, 0, 63.22, 4.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (192, 5, 9, 0, 2, 0, 0, 0, 0, 68.30, 40.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (195, 5, 4, 1, 3, 0, 0, 0, 0, 69.32, 21.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (197, 5, 1, 2, 2, 0, 0, 0, 0, 71.87, 13.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (196, 5, 3, 3, 2, 0, 0, 0, 0, 71.57, 23.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (212, 5, 1, 1, 2, 0, 0, 0, 16, 66.05, 58.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (209, 5, 0, 0, 1, 0, 0, 0, 7, 71.04, 27.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (227, 6, 1, 1, 3, 0, 0, 0, 0, 64.56, 9.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (217, 6, 4, 1, 3, 0, 0, 0, 0, 71.04, 22.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (216, 6, 3, 1, 3, 0, 0, 0, 0, 64.76, 17.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (225, 6, 0, 2, 2, 0, 0, 0, 0, 65.73, 8.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (229, 6, 0, 0, 0, 2, 0, 0, 0, 68.72, 2.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (220, 6, 1, 0, 3, 1, 0, 0, 0, 70.70, 6.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (219, 6, 4, 1, 2, 0, 0, 0, 0, 67.46, 22.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (213, 6, 4, 3, 2, 0, 0, 0, 0, 72.38, 27.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (224, 6, 1, 3, 2, 1, 0, 0, 0, 73.94, 13.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (214, 6, 3, 4, 3, 0, 0, 0, 0, 62.27, 23.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (221, 6, 4, 1, 1, 0, 0, 0, 0, 70.34, 24.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (228, 6, 0, 1, 1, 0, 0, 0, 0, 59.90, 6.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (226, 6, 0, 1, 2, 1, 0, 0, 0, 69.94, 4.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (218, 6, 4, 3, 0, 0, 0, 0, 0, 67.75, 28.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (247, 6, 1, 1, 1, 0, 0, 0, 0, 69.32, 11.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (248, 6, 2, 0, 3, 0, 0, 0, 0, 69.28, 11.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (235, 6, 6, 2, 2, 0, 0, 0, 0, 63.02, 32.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (250, 6, 2, 0, 0, 0, 0, 0, 0, 65.03, 14.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (246, 6, 2, 2, 1, 0, 0, 0, 0, 77.49, 18.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (241, 6, 2, 4, 2, 0, 0, 0, 0, 66.30, 20.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (237, 6, 4, 1, 2, 0, 0, 0, 0, 68.13, 22.81);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (238, 6, 2, 1, 2, 0, 0, 0, 0, 73.42, 15.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (254, 6, 1, 0, 0, 0, 0, 0, 0, 66.25, 10.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (253, 6, 0, 1, 1, 2, 0, 0, 0, 57.75, 2.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (255, 6, 1, 1, 1, 0, 0, 0, 0, 62.66, 11.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (233, 6, 5, 4, 3, 1, 0, 0, 0, 70.04, 30.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (256, 6, 0, 0, 0, 0, 0, 0, 11, 66.90, 39.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (252, 6, 0, 0, 1, 0, 0, 0, 13, 75.29, 45.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (263, 7, 3, 0, 2, 0, 0, 0, 0, 73.09, 17.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (273, 7, 1, 3, 1, 0, 0, 0, 0, 62.25, 15.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (267, 7, 2, 1, 0, 0, 0, 0, 0, 72.72, 17.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (270, 7, 0, 1, 1, 0, 0, 0, 0, 69.84, 7.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (257, 7, 4, 0, 3, 1, 0, 0, 0, 70.40, 18.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (266, 7, 1, 3, 2, 2, 0, 0, 0, 70.03, 11.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (265, 7, 3, 0, 0, 1, 0, 0, 0, 65.92, 16.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (258, 7, 1, 3, 2, 0, 0, 0, 0, 70.91, 15.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (269, 7, 1, 1, 1, 2, 0, 0, 0, 68.16, 7.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (259, 7, 6, 3, 1, 0, 0, 0, 0, 69.08, 35.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (260, 7, 5, 1, 3, 0, 0, 0, 0, 68.63, 25.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (268, 7, 0, 3, 1, 0, 0, 0, 0, 65.38, 11.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (274, 7, 0, 0, 2, 1, 0, 0, 16, 59.83, 49.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (282, 7, 4, 1, 1, 1, 0, 0, 0, 71.43, 22.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (279, 7, 1, 1, 3, 0, 0, 0, 0, 71.98, 10.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (291, 7, 0, 0, 0, 0, 0, 0, 0, 66.90, 6.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (288, 7, 0, 3, 0, 2, 0, 0, 0, 66.86, 8.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (280, 7, 0, 0, 1, 0, 0, 0, 0, 68.82, 5.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (284, 7, 0, 2, 2, 2, 0, 0, 0, 80.27, 6.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (276, 7, 7, 4, 2, 0, 0, 0, 0, 77.59, 41.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (275, 7, 6, 0, 3, 0, 0, 0, 0, 74.34, 28.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (286, 7, 2, 0, 3, 0, 0, 0, 0, 73.57, 12.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (283, 7, 0, 0, 0, 0, 0, 0, 0, 67.41, 6.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (277, 7, 6, 0, 3, 1, 0, 0, 0, 71.12, 26.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (289, 7, 0, 1, 3, 1, 0, 0, 13, 74.23, 43.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (290, 7, 0, 1, 1, 1, 0, 0, 16, 65.89, 53.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (293, 8, 2, 4, 3, 0, 0, 0, 0, 70.96, 20.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (307, 8, 2, 2, 2, 0, 0, 0, 0, 59.45, 15.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (306, 8, 2, 2, 3, 2, 0, 0, 0, 64.02, 11.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (308, 8, 1, 0, 1, 0, 0, 0, 0, 73.86, 10.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (302, 8, 3, 0, 2, 1, 0, 0, 0, 69.84, 14.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (312, 8, 1, 0, 2, 0, 0, 0, 0, 65.37, 8.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (299, 8, 5, 2, 3, 0, 0, 0, 0, 70.13, 28.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (295, 8, 3, 1, 1, 0, 0, 0, 0, 77.67, 20.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (301, 8, 0, 4, 0, 0, 0, 0, 0, 70.38, 15.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (305, 8, 0, 3, 1, 0, 0, 0, 0, 70.55, 12.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (292, 8, 10, 0, 1, 0, 0, 0, 0, 65.47, 45.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (300, 8, 1, 3, 3, 0, 0, 0, 0, 60.79, 13.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (294, 8, 3, 3, 0, 0, 0, 0, 0, 69.66, 24.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (297, 8, 2, 0, 3, 2, 0, 0, 0, 63.53, 7.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (315, 8, 5, 2, 2, 0, 0, 0, 0, 76.60, 29.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (323, 8, 2, 1, 3, 0, 0, 0, 0, 71.44, 14.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (314, 8, 3, 3, 3, 0, 0, 0, 0, 70.82, 22.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (313, 8, 5, 1, 1, 0, 0, 0, 0, 74.22, 28.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (317, 8, 4, 3, 2, 0, 0, 0, 0, 68.76, 26.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (331, 8, 1, 2, 1, 1, 0, 0, 0, 66.71, 11.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (326, 8, 3, 4, 1, 0, 0, 0, 0, 61.89, 25.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (320, 8, 2, 4, 1, 1, 0, 0, 0, 76.33, 20.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (318, 8, 3, 3, 0, 1, 0, 0, 0, 79.48, 23.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (319, 8, 2, 1, 2, 0, 0, 0, 0, 65.01, 14.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (327, 8, 0, 1, 3, 0, 0, 0, 9, 59.53, 31.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (328, 8, 0, 1, 1, 0, 0, 0, 7, 70.37, 29.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (329, 8, 0, 0, 0, 0, 0, 0, 7, 64.73, 27.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (332, 8, 0, 1, 0, 1, 0, 0, 10, 63.76, 36.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (336, 9, 6, 4, 0, 0, 0, 0, 0, 70.72, 39.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (335, 9, 2, 1, 1, 0, 0, 0, 0, 65.85, 15.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (340, 9, 3, 0, 1, 1, 0, 0, 0, 67.30, 15.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (343, 9, 4, 4, 2, 0, 0, 0, 0, 68.35, 28.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (334, 9, 4, 2, 3, 0, 0, 0, 0, 71.79, 24.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (338, 9, 6, 0, 0, 0, 0, 0, 0, 70.11, 31.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (351, 9, 0, 0, 0, 0, 0, 0, 0, 69.93, 6.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (353, 9, 1, 1, 0, 0, 0, 0, 0, 60.06, 12.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (341, 9, 4, 1, 2, 0, 0, 0, 0, 74.85, 23.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (339, 9, 2, 3, 0, 1, 0, 0, 0, 72.01, 19.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (345, 9, 1, 1, 2, 1, 0, 0, 0, 66.74, 8.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (337, 9, 1, 3, 2, 0, 0, 0, 0, 72.65, 15.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (344, 9, 0, 3, 0, 0, 0, 0, 0, 62.37, 12.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (354, 9, 9, 0, 1, 0, 0, 0, 0, 67.31, 41.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (357, 9, 0, 0, 2, 0, 0, 0, 0, 75.13, 5.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (355, 9, 2, 1, 1, 0, 0, 0, 0, 71.67, 16.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (363, 9, 5, 2, 1, 1, 0, 0, 0, 71.05, 28.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (368, 9, 0, 3, 0, 0, 0, 0, 0, 69.06, 12.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (365, 9, 3, 0, 1, 0, 0, 0, 0, 69.86, 17.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (361, 9, 1, 1, 2, 1, 0, 0, 0, 65.63, 8.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (358, 9, 3, 0, 2, 0, 0, 0, 0, 75.76, 17.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (367, 9, 0, 1, 0, 0, 0, 0, 0, 79.18, 9.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (369, 9, 1, 0, 2, 1, 0, 0, 0, 62.99, 6.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (356, 9, 2, 0, 1, 0, 0, 0, 0, 67.24, 13.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (370, 9, 0, 1, 0, 0, 0, 0, 7, 59.19, 28.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (31, 10, 1, 4, 3, 0, 0, 0, 0, 65.50, 15.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (30, 10, 0, 3, 2, 0, 0, 0, 0, 61.66, 10.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (21, 10, 8, 3, 0, 1, 0, 0, 0, 69.30, 42.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (33, 10, 0, 2, 1, 1, 0, 0, 0, 75.59, 8.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (24, 10, 1, 4, 2, 0, 0, 0, 0, 71.34, 17.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (32, 10, 1, 0, 3, 0, 0, 0, 0, 61.90, 7.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (23, 10, 10, 2, 3, 2, 0, 0, 0, 74.48, 44.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (22, 10, 6, 0, 3, 0, 0, 0, 0, 76.23, 28.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (29, 10, 2, 0, 2, 2, 0, 0, 0, 66.41, 8.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (37, 10, 2, 2, 1, 0, 0, 0, 0, 70.21, 18.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (36, 10, 0, 0, 2, 1, 0, 0, 13, 62.62, 41.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (38, 10, 0, 0, 2, 0, 0, 0, 10, 69.62, 34.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (50, 10, 3, 1, 1, 0, 0, 0, 0, 64.86, 19.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (61, 10, 1, 3, 3, 0, 0, 0, 0, 68.75, 13.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (42, 10, 9, 2, 0, 0, 0, 0, 0, 70.86, 47.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (60, 10, 1, 1, 3, 1, 0, 0, 0, 65.12, 7.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (49, 10, 5, 0, 2, 0, 0, 0, 0, 66.06, 24.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (46, 10, 3, 1, 3, 0, 0, 0, 0, 69.50, 17.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (54, 10, 3, 1, 1, 0, 0, 0, 0, 71.00, 20.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (56, 10, 1, 0, 0, 0, 0, 0, 0, 67.51, 10.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (51, 10, 2, 1, 3, 2, 0, 0, 0, 72.86, 10.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (53, 10, 5, 1, 3, 0, 0, 0, 0, 66.76, 25.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (62, 10, 0, 0, 0, 0, 0, 0, 16, 65.38, 54.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (58, 10, 0, 0, 3, 0, 0, 0, 13, 66.54, 42.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (67, 11, 2, 1, 0, 0, 0, 0, 0, 64.40, 16.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (64, 11, 5, 1, 0, 0, 0, 0, 0, 73.90, 29.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (76, 11, 1, 1, 0, 0, 0, 0, 0, 68.51, 12.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (81, 11, 2, 0, 0, 0, 0, 0, 0, 68.93, 14.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (71, 11, 0, 3, 2, 1, 0, 0, 0, 69.00, 8.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (66, 11, 2, 0, 0, 0, 0, 0, 0, 64.71, 14.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (79, 11, 1, 2, 1, 1, 0, 0, 0, 66.92, 11.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (72, 11, 1, 0, 2, 0, 0, 0, 0, 73.91, 9.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (63, 11, 3, 1, 1, 0, 0, 0, 0, 75.97, 20.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (69, 11, 4, 0, 2, 1, 0, 0, 0, 67.64, 18.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (73, 11, 2, 1, 3, 0, 0, 0, 0, 69.63, 13.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (75, 11, 1, 2, 2, 0, 0, 0, 0, 63.20, 12.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (78, 11, 1, 1, 0, 1, 0, 0, 0, 69.53, 10.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (77, 11, 0, 0, 2, 1, 0, 0, 11, 67.21, 35.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (90, 11, 0, 4, 0, 1, 0, 0, 0, 63.50, 12.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (89, 11, 3, 3, 0, 0, 0, 0, 0, 67.50, 24.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (92, 11, 1, 1, 0, 0, 0, 0, 0, 67.86, 12.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (85, 11, 2, 2, 3, 0, 0, 0, 0, 69.81, 15.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (96, 11, 2, 1, 3, 1, 0, 0, 0, 66.91, 11.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (86, 11, 1, 4, 0, 1, 0, 0, 0, 74.25, 17.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (84, 11, 7, 0, 2, 0, 0, 0, 0, 69.55, 32.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (98, 11, 1, 2, 3, 0, 0, 0, 0, 67.48, 11.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (82, 11, 6, 0, 1, 1, 0, 0, 0, 72.27, 28.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (91, 11, 3, 4, 0, 0, 0, 0, 0, 71.92, 27.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (99, 11, 0, 1, 2, 0, 0, 0, 14, 60.33, 48.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (97, 11, 0, 1, 2, 0, 0, 0, 7, 62.31, 27.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (103, 12, 5, 2, 2, 0, 0, 0, 0, 67.46, 28.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (121, 12, 2, 1, 0, 0, 0, 0, 0, 57.55, 15.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (120, 12, 0, 2, 0, 0, 0, 0, 0, 59.61, 9.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (102, 12, 5, 0, 0, 2, 0, 0, 0, 73.55, 23.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (106, 12, 4, 1, 0, 1, 0, 0, 0, 73.79, 23.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (108, 12, 4, 1, 3, 1, 0, 0, 0, 66.22, 19.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (101, 12, 4, 0, 0, 0, 0, 0, 0, 67.15, 22.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (115, 12, 0, 0, 2, 0, 0, 0, 0, 75.79, 5.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (114, 12, 0, 2, 2, 1, 0, 0, 0, 70.83, 7.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (104, 12, 2, 4, 2, 0, 0, 0, 0, 68.87, 20.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (107, 12, 3, 1, 2, 1, 0, 0, 0, 73.10, 17.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (124, 12, 0, 1, 0, 0, 1, 0, 16, 64.71, 51.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (123, 12, 0, 0, 0, 0, 0, 0, 9, 68.13, 33.81);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (141, 12, 2, 1, 2, 0, 0, 0, 0, 67.77, 14.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (146, 12, 0, 1, 2, 0, 0, 0, 0, 64.14, 6.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (134, 12, 1, 4, 1, 1, 0, 0, 0, 70.95, 16.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (131, 12, 2, 1, 2, 0, 0, 0, 0, 78.90, 15.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (139, 12, 0, 1, 1, 1, 0, 0, 0, 75.83, 6.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (129, 12, 1, 0, 2, 1, 0, 0, 0, 77.87, 7.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (130, 12, 3, 1, 2, 1, 0, 0, 0, 68.87, 16.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (132, 12, 8, 4, 0, 1, 0, 0, 0, 74.28, 45.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (143, 12, 3, 3, 3, 1, 0, 0, 0, 67.97, 19.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (142, 12, 1, 3, 1, 0, 0, 0, 0, 63.09, 15.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (149, 12, 0, 0, 0, 0, 0, 0, 0, 71.30, 7.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (135, 12, 9, 1, 2, 0, 0, 0, 0, 75.50, 43.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (136, 12, 2, 3, 0, 1, 0, 0, 0, 72.21, 19.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (147, 12, 0, 1, 3, 1, 0, 0, 12, 65.13, 39.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (151, 13, 5, 0, 2, 0, 0, 0, 0, 74.56, 25.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (162, 13, 1, 0, 2, 0, 0, 0, 0, 71.18, 9.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (163, 13, 0, 1, 1, 1, 0, 0, 0, 72.98, 6.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (152, 13, 7, 2, 1, 0, 0, 0, 0, 66.07, 37.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (159, 13, 0, 0, 0, 0, 0, 0, 0, 71.12, 7.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (164, 13, 1, 3, 3, 0, 0, 0, 0, 77.02, 14.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (156, 13, 6, 1, 2, 0, 0, 0, 0, 78.60, 31.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (153, 13, 1, 4, 1, 1, 0, 0, 0, 64.84, 15.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (155, 13, 4, 0, 0, 1, 0, 0, 0, 71.47, 21.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (157, 13, 4, 3, 0, 0, 0, 0, 0, 75.15, 29.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (160, 13, 1, 1, 3, 0, 0, 0, 0, 72.44, 10.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (169, 13, 0, 1, 1, 0, 0, 0, 15, 68.74, 52.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (166, 13, 0, 0, 2, 0, 0, 0, 9, 70.11, 32.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (182, 13, 1, 2, 2, 1, 0, 0, 0, 78.46, 11.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (189, 13, 0, 0, 2, 0, 0, 0, 0, 70.68, 5.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (171, 13, 3, 0, 0, 1, 0, 0, 0, 72.62, 17.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (184, 13, 1, 4, 1, 0, 0, 0, 0, 69.64, 17.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (180, 13, 0, 4, 2, 0, 0, 0, 0, 66.35, 12.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (181, 13, 0, 0, 0, 0, 0, 0, 0, 62.93, 6.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (188, 13, 0, 2, 2, 1, 0, 0, 0, 59.16, 5.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (179, 13, 1, 1, 3, 0, 0, 0, 0, 74.38, 10.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (178, 13, 3, 2, 1, 0, 0, 0, 0, 69.94, 21.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (175, 13, 0, 1, 1, 0, 0, 0, 0, 70.90, 8.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (173, 13, 6, 3, 1, 0, 0, 0, 0, 61.53, 35.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (170, 13, 12, 1, 2, 0, 0, 0, 0, 82.01, 56.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (185, 13, 0, 1, 3, 0, 0, 0, 16, 69.85, 53.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (183, 13, 0, 0, 3, 0, 0, 0, 11, 69.78, 36.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (200, 14, 3, 1, 2, 0, 0, 0, 0, 72.30, 19.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (201, 14, 2, 1, 3, 1, 0, 0, 0, 68.05, 11.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (197, 14, 1, 2, 2, 0, 0, 0, 0, 65.72, 12.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (208, 14, 0, 1, 0, 0, 0, 0, 0, 72.72, 9.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (203, 14, 3, 0, 2, 0, 0, 0, 0, 61.54, 16.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (202, 14, 1, 1, 3, 0, 0, 0, 0, 68.95, 9.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (192, 14, 5, 0, 1, 0, 0, 0, 0, 72.17, 26.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (196, 14, 3, 4, 0, 0, 0, 0, 0, 63.18, 26.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (206, 14, 1, 4, 1, 1, 0, 0, 0, 66.32, 15.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (193, 14, 3, 2, 0, 0, 0, 0, 0, 74.38, 23.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (198, 14, 4, 0, 1, 0, 0, 0, 0, 75.09, 22.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (199, 14, 1, 1, 1, 0, 0, 0, 0, 71.04, 12.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (209, 14, 1, 1, 1, 1, 0, 0, 16, 68.64, 57.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (212, 14, 0, 0, 3, 0, 0, 0, 12, 63.94, 39.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (220, 14, 5, 1, 1, 1, 0, 0, 0, 68.71, 25.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (213, 14, 4, 1, 0, 0, 0, 0, 0, 72.08, 25.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (224, 14, 3, 0, 0, 1, 0, 0, 0, 70.50, 17.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (217, 14, 5, 2, 3, 1, 0, 0, 0, 71.10, 26.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (215, 14, 7, 3, 2, 1, 0, 0, 0, 73.35, 37.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (225, 14, 1, 3, 1, 0, 0, 0, 0, 67.38, 15.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (229, 14, 1, 1, 2, 0, 0, 0, 0, 63.07, 10.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (228, 14, 2, 3, 2, 0, 0, 0, 0, 70.15, 19.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (221, 14, 2, 0, 0, 0, 0, 0, 0, 72.16, 15.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (218, 14, 2, 3, 3, 0, 0, 0, 0, 65.59, 17.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (226, 14, 1, 1, 0, 0, 0, 0, 0, 70.09, 13.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (227, 14, 0, 1, 1, 0, 0, 0, 0, 65.75, 7.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (230, 14, 0, 1, 3, 0, 0, 0, 7, 70.06, 27.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (243, 15, 3, 0, 3, 1, 0, 0, 0, 69.91, 13.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (235, 15, 4, 1, 0, 0, 0, 0, 0, 67.68, 24.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (244, 15, 1, 0, 3, 1, 0, 0, 0, 70.26, 6.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (254, 15, 1, 0, 1, 0, 0, 0, 0, 73.95, 10.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (240, 15, 2, 2, 1, 1, 0, 0, 0, 70.91, 16.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (237, 15, 4, 1, 2, 0, 0, 0, 0, 77.85, 23.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (255, 15, 1, 2, 0, 0, 0, 0, 0, 69.08, 14.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (253, 15, 0, 0, 3, 0, 1, 0, 0, 63.77, -1.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (247, 15, 0, 0, 0, 1, 0, 0, 0, 71.99, 5.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (249, 15, 0, 4, 3, 1, 0, 0, 0, 69.03, 9.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (234, 15, 9, 1, 3, 0, 0, 0, 0, 70.00, 42.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (250, 15, 4, 0, 0, 0, 0, 0, 0, 63.96, 22.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (256, 15, 0, 0, 1, 0, 0, 0, 12, 67.32, 41.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (269, 15, 0, 1, 1, 0, 0, 0, 0, 69.65, 7.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (265, 15, 2, 3, 2, 1, 0, 0, 0, 65.87, 16.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (257, 15, 3, 0, 1, 0, 0, 0, 0, 73.79, 18.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (262, 15, 4, 2, 3, 0, 0, 0, 0, 74.71, 24.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (259, 15, 10, 2, 1, 0, 0, 0, 0, 78.34, 50.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (263, 15, 2, 0, 2, 1, 0, 0, 0, 71.73, 11.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (268, 15, 1, 0, 3, 0, 0, 0, 0, 66.96, 7.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (260, 15, 1, 0, 2, 0, 0, 0, 0, 68.56, 8.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (273, 15, 0, 4, 0, 2, 0, 0, 0, 70.31, 11.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (270, 15, 0, 2, 2, 1, 0, 0, 0, 69.76, 6.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (271, 15, 0, 1, 3, 0, 0, 0, 14, 62.68, 47.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (274, 15, 0, 1, 0, 1, 0, 0, 9, 58.82, 32.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (272, 15, 0, 1, 1, 1, 0, 0, 8, 65.49, 29.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (279, 16, 4, 0, 0, 0, 0, 0, 0, 74.37, 23.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (287, 16, 0, 2, 3, 0, 0, 0, 0, 63.10, 7.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (286, 16, 0, 0, 3, 0, 0, 0, 0, 70.41, 4.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (283, 16, 2, 4, 2, 1, 0, 0, 0, 72.76, 19.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (281, 16, 2, 1, 2, 0, 0, 0, 0, 72.32, 15.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (288, 16, 0, 1, 2, 0, 0, 0, 0, 74.17, 7.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (278, 16, 1, 2, 3, 0, 0, 0, 0, 65.91, 11.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (276, 16, 4, 4, 3, 0, 0, 0, 0, 79.98, 29.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (275, 16, 4, 1, 3, 0, 0, 0, 0, 72.82, 22.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (291, 16, 2, 0, 1, 0, 0, 0, 0, 70.44, 14.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (284, 16, 0, 3, 3, 0, 0, 0, 0, 80.82, 11.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (277, 16, 4, 0, 3, 0, 0, 0, 0, 64.42, 19.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (285, 16, 2, 1, 2, 1, 0, 0, 0, 63.61, 12.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (289, 16, 0, 0, 3, 1, 0, 0, 14, 71.62, 44.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (299, 16, 6, 0, 3, 0, 0, 0, 0, 65.06, 27.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (307, 16, 0, 1, 0, 0, 0, 0, 0, 60.40, 8.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (297, 16, 3, 2, 0, 0, 0, 0, 0, 65.42, 22.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (292, 16, 3, 0, 1, 0, 0, 0, 0, 65.76, 17.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (304, 16, 1, 1, 1, 0, 0, 0, 0, 64.74, 11.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (308, 16, 0, 1, 3, 0, 0, 0, 0, 75.03, 6.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (302, 16, 2, 3, 0, 0, 0, 0, 0, 70.64, 21.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (293, 16, 0, 3, 0, 1, 0, 0, 0, 68.21, 10.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (306, 16, 3, 0, 1, 1, 0, 0, 0, 63.63, 15.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (294, 16, 3, 0, 1, 0, 0, 0, 0, 73.75, 18.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (300, 16, 2, 1, 2, 0, 0, 0, 0, 64.21, 14.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (298, 16, 5, 2, 0, 0, 0, 0, 0, 63.21, 30.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (310, 16, 0, 0, 0, 0, 0, 0, 15, 74.19, 52.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (325, 17, 2, 1, 3, 2, 0, 0, 0, 63.33, 9.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (317, 17, 9, 1, 0, 1, 0, 0, 0, 70.05, 43.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (313, 17, 6, 1, 1, 0, 0, 0, 0, 75.41, 32.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (331, 17, 1, 0, 2, 0, 0, 0, 0, 61.35, 8.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (321, 17, 0, 1, 3, 0, 0, 0, 0, 72.76, 6.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (326, 17, 0, 4, 3, 0, 0, 0, 0, 69.95, 12.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (319, 17, 4, 0, 0, 0, 0, 0, 0, 64.03, 22.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (323, 17, 0, 0, 1, 0, 0, 0, 0, 80.67, 7.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (315, 17, 4, 1, 0, 0, 0, 0, 0, 72.17, 25.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (318, 17, 2, 1, 2, 2, 0, 0, 0, 72.76, 11.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (322, 17, 3, 2, 0, 2, 0, 0, 0, 70.56, 19.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (332, 17, 0, 0, 2, 0, 0, 0, 13, 60.63, 43.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (328, 17, 0, 0, 0, 0, 0, 0, 12, 63.55, 42.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (344, 17, 4, 2, 1, 1, 0, 0, 0, 72.48, 24.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (337, 17, 2, 3, 2, 0, 0, 0, 0, 72.57, 19.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (340, 17, 3, 0, 2, 1, 0, 0, 0, 66.77, 14.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (347, 17, 1, 0, 1, 1, 0, 0, 0, 67.42, 7.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (345, 17, 1, 1, 1, 0, 0, 0, 0, 72.58, 12.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (350, 17, 1, 3, 3, 0, 0, 0, 0, 64.49, 13.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (351, 17, 0, 1, 0, 0, 0, 0, 0, 69.44, 8.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (333, 17, 4, 0, 1, 1, 0, 0, 0, 77.12, 20.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (339, 17, 4, 4, 1, 1, 0, 0, 0, 67.93, 27.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (349, 17, 2, 4, 1, 0, 0, 0, 0, 67.84, 21.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (346, 17, 3, 2, 3, 1, 0, 0, 0, 64.36, 17.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (353, 17, 0, 3, 3, 1, 0, 0, 0, 70.97, 8.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (348, 17, 1, 1, 0, 2, 0, 0, 15, 66.95, 53.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (359, 18, 8, 3, 1, 0, 0, 0, 0, 70.25, 44.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (364, 18, 2, 0, 2, 1, 0, 0, 0, 63.56, 10.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (365, 18, 1, 0, 3, 0, 1, 0, 0, 70.41, 3.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (363, 18, 2, 4, 1, 0, 0, 0, 0, 71.41, 22.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (368, 18, 0, 1, 3, 0, 0, 0, 0, 62.81, 5.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (361, 18, 5, 4, 2, 0, 0, 0, 0, 61.32, 32.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (357, 18, 2, 0, 3, 0, 0, 0, 0, 66.95, 11.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (356, 18, 4, 1, 2, 0, 0, 0, 0, 66.14, 22.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (360, 18, 2, 0, 0, 0, 0, 0, 0, 77.13, 15.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (354, 18, 2, 4, 1, 0, 0, 0, 0, 74.70, 22.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (369, 18, 2, 1, 2, 0, 0, 0, 0, 64.45, 14.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (370, 18, 0, 0, 0, 0, 0, 0, 14, 69.10, 48.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (6, 18, 4, 0, 0, 0, 0, 0, 0, 73.33, 23.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (16, 18, 2, 2, 2, 1, 0, 0, 0, 62.47, 14.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (13, 18, 1, 1, 1, 0, 0, 0, 0, 73.96, 12.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (5, 18, 1, 2, 0, 0, 0, 0, 0, 69.58, 14.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (18, 18, 2, 3, 0, 1, 0, 0, 0, 68.36, 18.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (9, 18, 0, 0, 1, 1, 0, 0, 0, 66.45, 3.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (7, 18, 6, 2, 0, 1, 0, 0, 0, 62.27, 32.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (8, 18, 3, 2, 0, 0, 0, 0, 0, 62.91, 22.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (2, 18, 5, 3, 0, 0, 0, 0, 0, 73.11, 33.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (3, 18, 5, 2, 0, 1, 0, 0, 0, 72.11, 29.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (10, 18, 0, 4, 2, 0, 0, 0, 0, 66.95, 12.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (1, 18, 3, 0, 2, 0, 0, 0, 0, 69.84, 16.98);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (14, 18, 1, 1, 0, 0, 0, 0, 8, 69.49, 36.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (17, 18, 0, 1, 2, 0, 0, 0, 15, 59.06, 50.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (7, 19, 3, 3, 3, 0, 0, 0, 0, 70.65, 22.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (18, 19, 0, 1, 0, 1, 0, 0, 0, 69.94, 6.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (4, 19, 1, 2, 0, 0, 0, 0, 0, 62.20, 14.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (8, 19, 2, 4, 0, 0, 0, 0, 0, 63.96, 22.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (9, 19, 1, 1, 0, 0, 0, 0, 0, 66.92, 12.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (15, 19, 1, 2, 3, 0, 0, 0, 0, 66.96, 11.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (12, 19, 1, 2, 3, 0, 0, 0, 0, 66.03, 11.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (10, 19, 3, 2, 0, 1, 0, 0, 0, 74.76, 21.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (2, 19, 5, 1, 2, 1, 0, 0, 0, 70.26, 25.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (6, 19, 2, 1, 2, 1, 0, 0, 0, 64.23, 12.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (5, 19, 6, 1, 0, 0, 0, 0, 0, 64.07, 32.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (16, 19, 0, 3, 0, 0, 0, 0, 0, 68.72, 12.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (50, 19, 3, 4, 0, 0, 0, 0, 0, 63.79, 26.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (53, 19, 2, 1, 1, 1, 0, 0, 0, 73.92, 14.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (45, 19, 6, 3, 3, 0, 0, 0, 0, 69.33, 33.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (56, 19, 0, 0, 0, 0, 0, 0, 0, 68.39, 6.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (51, 19, 0, 0, 0, 0, 0, 0, 0, 67.72, 6.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (47, 19, 2, 0, 0, 1, 0, 0, 0, 69.68, 12.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (43, 19, 11, 4, 2, 2, 0, 0, 0, 67.34, 52.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (61, 19, 1, 3, 1, 0, 0, 0, 0, 67.57, 15.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (49, 19, 2, 4, 2, 1, 0, 0, 0, 63.13, 18.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (55, 19, 1, 2, 3, 1, 0, 0, 0, 67.39, 9.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (58, 19, 1, 0, 1, 2, 0, 0, 13, 63.81, 44.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (62, 19, 0, 1, 0, 1, 0, 0, 12, 74.79, 43.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (59, 19, 0, 0, 3, 0, 0, 0, 16, 69.74, 51.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (27, 20, 7, 1, 1, 0, 0, 0, 0, 71.43, 36.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (24, 20, 4, 4, 1, 0, 1, 0, 0, 66.82, 24.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (37, 20, 1, 2, 0, 1, 0, 0, 0, 73.45, 13.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (23, 20, 5, 3, 3, 1, 0, 0, 0, 68.73, 27.87);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (31, 20, 0, 0, 3, 1, 0, 0, 0, 64.42, 1.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (25, 20, 1, 1, 1, 0, 0, 0, 0, 75.24, 12.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (29, 20, 0, 1, 0, 0, 0, 0, 0, 67.76, 8.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (41, 20, 1, 4, 3, 1, 0, 0, 0, 65.67, 13.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (19, 20, 7, 0, 1, 2, 0, 0, 0, 76.72, 30.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (22, 20, 6, 2, 0, 0, 0, 0, 0, 72.39, 35.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (38, 20, 0, 1, 3, 0, 0, 0, 10, 61.45, 35.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (40, 20, 0, 0, 2, 0, 0, 0, 7, 65.36, 25.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (36, 20, 0, 0, 3, 0, 0, 0, 7, 70.92, 25.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (76, 20, 1, 4, 2, 0, 0, 0, 0, 64.51, 16.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (63, 20, 5, 1, 0, 0, 0, 0, 0, 70.78, 29.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (65, 20, 0, 4, 0, 0, 0, 0, 0, 65.52, 14.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (75, 20, 1, 4, 1, 0, 0, 0, 0, 69.52, 17.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (68, 20, 6, 0, 2, 0, 0, 0, 0, 75.72, 29.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (79, 20, 0, 1, 3, 0, 0, 0, 0, 62.49, 5.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (71, 20, 1, 3, 2, 0, 0, 0, 0, 66.46, 14.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (64, 20, 5, 0, 1, 1, 0, 0, 0, 66.16, 23.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (78, 20, 1, 1, 0, 1, 0, 0, 0, 73.22, 11.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (74, 20, 1, 1, 3, 0, 0, 0, 0, 69.24, 9.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (73, 20, 2, 0, 1, 0, 0, 0, 0, 71.57, 14.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (80, 20, 0, 0, 1, 0, 0, 0, 12, 65.50, 41.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (96, 21, 1, 4, 3, 0, 0, 0, 0, 75.41, 16.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (84, 21, 2, 1, 0, 0, 0, 0, 0, 72.96, 17.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (95, 21, 1, 0, 1, 1, 0, 0, 0, 69.16, 7.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (87, 21, 6, 1, 1, 0, 0, 0, 0, 70.50, 32.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (93, 21, 2, 0, 2, 2, 0, 0, 0, 64.19, 8.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (82, 21, 6, 1, 0, 0, 0, 0, 0, 71.92, 33.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (83, 21, 2, 1, 2, 0, 0, 0, 0, 71.20, 15.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (85, 21, 2, 0, 3, 1, 0, 0, 0, 69.52, 9.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (88, 21, 3, 1, 3, 0, 0, 0, 0, 63.08, 17.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (90, 21, 3, 2, 0, 1, 0, 0, 0, 64.64, 20.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (98, 21, 1, 1, 2, 0, 0, 0, 0, 65.67, 10.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (97, 21, 0, 1, 2, 0, 0, 0, 12, 73.28, 43.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (134, 21, 4, 3, 3, 0, 0, 0, 0, 66.81, 25.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (132, 21, 6, 4, 3, 0, 0, 0, 0, 66.70, 35.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (133, 21, 3, 4, 1, 0, 0, 0, 0, 63.25, 25.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (137, 21, 5, 1, 0, 0, 0, 0, 0, 69.64, 28.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (131, 21, 3, 0, 1, 0, 0, 0, 0, 79.31, 18.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (149, 21, 0, 2, 1, 1, 0, 0, 0, 75.59, 8.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (142, 21, 5, 2, 2, 0, 0, 0, 0, 60.10, 28.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (135, 21, 1, 1, 0, 1, 0, 0, 0, 69.74, 10.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (140, 21, 3, 3, 0, 1, 0, 0, 0, 75.41, 23.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (145, 21, 0, 2, 0, 0, 0, 0, 0, 73.80, 11.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (144, 21, 1, 1, 3, 1, 0, 0, 12, 67.91, 43.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (147, 21, 0, 0, 1, 1, 0, 0, 12, 68.86, 39.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (117, 22, 3, 3, 3, 1, 0, 0, 0, 64.20, 19.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (116, 22, 6, 0, 3, 1, 0, 0, 0, 78.83, 26.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (115, 22, 1, 4, 2, 0, 0, 0, 0, 76.08, 17.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (125, 22, 0, 1, 0, 0, 0, 0, 0, 68.42, 8.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (107, 22, 3, 1, 1, 0, 0, 0, 0, 73.14, 20.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (102, 22, 2, 1, 0, 0, 0, 0, 0, 71.74, 17.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (110, 22, 1, 0, 1, 0, 0, 0, 0, 66.20, 9.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (113, 22, 2, 4, 3, 0, 0, 0, 0, 64.88, 19.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (103, 22, 5, 1, 1, 0, 0, 0, 0, 67.62, 27.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (108, 22, 4, 1, 1, 0, 0, 0, 0, 71.21, 24.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (122, 22, 0, 3, 3, 0, 0, 0, 0, 66.62, 9.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (105, 22, 3, 4, 1, 2, 0, 0, 0, 64.51, 21.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (124, 22, 0, 1, 1, 0, 0, 0, 13, 69.91, 46.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (161, 22, 2, 1, 2, 1, 0, 0, 0, 64.04, 12.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (162, 22, 0, 1, 0, 0, 0, 0, 0, 67.04, 8.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (157, 22, 3, 1, 1, 0, 0, 0, 0, 75.91, 20.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (158, 22, 2, 3, 0, 1, 0, 0, 0, 66.06, 18.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (151, 22, 3, 0, 0, 0, 0, 0, 0, 71.99, 19.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (154, 22, 4, 0, 3, 1, 0, 0, 0, 65.41, 17.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (152, 22, 3, 2, 3, 1, 0, 0, 0, 69.17, 17.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (164, 22, 1, 2, 0, 0, 0, 0, 0, 72.12, 15.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (165, 22, 0, 4, 3, 0, 0, 0, 0, 72.71, 12.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (156, 22, 4, 1, 0, 0, 0, 0, 0, 78.43, 25.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (163, 22, 1, 0, 2, 0, 0, 0, 0, 63.67, 8.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (159, 22, 1, 0, 2, 0, 0, 0, 0, 75.19, 9.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (160, 22, 0, 2, 0, 1, 0, 0, 0, 69.15, 8.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (169, 22, 0, 1, 0, 0, 0, 0, 11, 65.63, 41.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (180, 23, 0, 0, 3, 0, 0, 0, 0, 65.05, 3.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (172, 23, 8, 1, 3, 0, 0, 0, 0, 70.12, 38.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (176, 23, 4, 3, 3, 0, 0, 0, 0, 63.14, 25.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (174, 23, 5, 0, 0, 1, 0, 0, 0, 78.51, 25.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (173, 23, 10, 1, 2, 0, 0, 0, 0, 63.06, 46.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (188, 23, 0, 2, 0, 0, 0, 0, 0, 67.49, 10.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (189, 23, 2, 0, 3, 0, 0, 0, 0, 70.90, 12.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (178, 23, 2, 1, 1, 0, 0, 0, 0, 67.68, 15.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (184, 23, 0, 3, 3, 0, 0, 0, 0, 62.32, 9.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (181, 23, 1, 1, 1, 1, 0, 0, 0, 61.19, 9.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (185, 23, 0, 1, 2, 1, 0, 0, 10, 66.91, 34.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (186, 23, 0, 0, 0, 0, 0, 0, 16, 61.99, 54.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (187, 23, 0, 0, 3, 0, 0, 0, 10, 66.82, 33.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (220, 23, 4, 0, 3, 0, 0, 0, 0, 68.84, 19.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (225, 23, 1, 3, 2, 1, 0, 0, 0, 68.85, 12.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (215, 23, 1, 2, 2, 1, 0, 0, 0, 69.27, 10.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (226, 23, 0, 1, 1, 0, 0, 0, 0, 71.07, 8.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (214, 23, 4, 4, 1, 0, 0, 0, 0, 69.53, 29.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (228, 23, 1, 4, 1, 2, 0, 0, 0, 65.62, 13.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (222, 23, 1, 4, 2, 0, 0, 0, 0, 66.93, 16.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (223, 23, 4, 4, 0, 0, 0, 0, 0, 68.31, 30.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (224, 23, 2, 1, 3, 0, 0, 0, 0, 68.05, 13.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (218, 23, 1, 0, 0, 0, 0, 0, 0, 71.73, 11.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (227, 23, 0, 0, 0, 0, 0, 0, 0, 67.45, 6.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (231, 23, 0, 4, 1, 0, 0, 0, 0, 66.06, 13.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (219, 23, 10, 0, 1, 0, 0, 0, 0, 68.96, 45.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (232, 23, 0, 1, 0, 1, 0, 0, 13, 69.07, 45.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (190, 24, 7, 4, 0, 0, 0, 0, 0, 72.31, 43.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (191, 24, 4, 1, 2, 1, 0, 0, 0, 70.36, 21.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (198, 24, 1, 4, 1, 0, 0, 0, 0, 80.79, 19.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (207, 24, 0, 2, 2, 0, 0, 0, 0, 59.13, 7.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (194, 24, 1, 0, 1, 0, 0, 0, 0, 65.59, 9.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (193, 24, 3, 1, 2, 0, 0, 0, 0, 64.75, 18.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (204, 24, 0, 3, 0, 0, 0, 0, 0, 73.68, 13.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (205, 24, 0, 3, 1, 0, 0, 0, 0, 68.28, 11.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (211, 24, 0, 1, 3, 1, 0, 0, 0, 60.11, 3.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (203, 24, 2, 4, 1, 0, 0, 0, 0, 66.78, 21.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (202, 24, 0, 3, 3, 1, 0, 0, 0, 61.10, 7.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (192, 24, 7, 0, 0, 2, 0, 0, 0, 71.71, 31.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (201, 24, 1, 0, 0, 2, 0, 0, 0, 69.53, 6.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (238, 24, 2, 4, 3, 1, 0, 0, 0, 64.37, 17.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (248, 24, 3, 1, 2, 0, 0, 0, 0, 72.31, 19.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (246, 24, 0, 3, 2, 0, 0, 0, 0, 66.84, 10.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (234, 24, 4, 1, 2, 1, 0, 0, 0, 70.27, 21.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (243, 24, 3, 0, 1, 0, 0, 0, 0, 70.76, 18.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (245, 24, 0, 0, 1, 0, 0, 0, 0, 69.09, 5.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (239, 24, 3, 2, 2, 1, 0, 0, 0, 69.20, 18.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (233, 24, 3, 4, 0, 0, 0, 0, 0, 72.67, 27.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (254, 24, 1, 0, 2, 1, 0, 0, 0, 68.23, 6.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (241, 24, 3, 4, 1, 2, 0, 0, 0, 72.45, 22.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (242, 24, 2, 1, 1, 0, 0, 0, 0, 65.95, 15.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (251, 24, 0, 0, 1, 0, 0, 0, 7, 71.21, 27.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (252, 24, 0, 1, 1, 1, 0, 0, 11, 72.55, 39.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (267, 25, 0, 0, 2, 0, 0, 0, 0, 68.61, 4.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (260, 25, 2, 0, 0, 0, 0, 0, 0, 67.71, 14.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (257, 25, 3, 1, 2, 0, 0, 0, 0, 78.40, 19.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (258, 25, 3, 2, 0, 1, 0, 0, 0, 79.95, 22.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (262, 25, 2, 4, 0, 0, 0, 0, 0, 75.43, 23.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (270, 25, 2, 2, 1, 1, 0, 0, 0, 63.19, 15.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (268, 25, 2, 1, 0, 0, 0, 0, 0, 69.95, 17.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (261, 25, 2, 1, 3, 0, 0, 0, 0, 75.73, 14.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (266, 25, 1, 0, 3, 0, 0, 0, 0, 75.19, 8.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (263, 25, 1, 1, 1, 0, 0, 0, 0, 75.80, 12.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (259, 25, 7, 0, 1, 1, 0, 0, 0, 70.60, 32.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (274, 25, 0, 1, 0, 0, 0, 0, 10, 63.32, 38.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (272, 25, 0, 0, 0, 0, 0, 0, 12, 65.22, 42.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (271, 25, 1, 0, 0, 0, 0, 0, 13, 65.33, 49.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (303, 25, 1, 3, 3, 0, 0, 0, 0, 71.09, 14.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (295, 25, 3, 1, 0, 0, 0, 0, 0, 77.39, 21.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (307, 25, 0, 0, 2, 2, 0, 0, 0, 59.38, -0.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (294, 25, 0, 3, 1, 0, 0, 0, 0, 62.33, 11.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (302, 25, 3, 4, 3, 0, 0, 0, 0, 70.70, 24.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (301, 25, 4, 4, 1, 1, 0, 0, 0, 72.31, 28.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (300, 25, 4, 3, 3, 0, 0, 0, 0, 66.40, 25.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (312, 25, 0, 0, 3, 0, 0, 0, 0, 68.09, 3.81);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (306, 25, 0, 3, 1, 0, 0, 0, 0, 72.53, 12.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (293, 25, 4, 1, 3, 1, 1, 0, 0, 69.51, 14.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (292, 25, 6, 0, 3, 1, 0, 0, 0, 66.14, 25.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (308, 25, 1, 1, 2, 2, 0, 0, 0, 70.24, 7.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (309, 25, 0, 0, 1, 1, 0, 0, 9, 63.97, 30.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (288, 26, 2, 4, 1, 2, 0, 0, 0, 69.92, 17.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (279, 26, 2, 3, 3, 1, 0, 0, 0, 69.19, 15.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (275, 26, 7, 0, 3, 2, 0, 0, 0, 68.44, 27.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (285, 26, 0, 4, 0, 0, 0, 0, 0, 70.97, 15.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (291, 26, 0, 1, 3, 0, 0, 0, 0, 62.35, 5.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (276, 26, 4, 4, 2, 0, 0, 0, 0, 84.20, 30.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (277, 26, 7, 1, 1, 0, 0, 0, 0, 68.78, 35.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (278, 26, 6, 2, 1, 0, 0, 0, 0, 72.85, 34.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (280, 26, 2, 3, 0, 1, 0, 0, 0, 65.28, 18.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (287, 26, 1, 2, 2, 0, 0, 0, 0, 72.29, 13.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (282, 26, 2, 1, 1, 0, 0, 0, 0, 71.36, 16.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (290, 26, 0, 1, 3, 0, 0, 0, 7, 76.15, 27.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (315, 26, 4, 2, 3, 0, 0, 0, 0, 72.71, 24.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (322, 26, 3, 4, 1, 0, 0, 0, 0, 74.31, 26.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (318, 26, 6, 3, 0, 1, 0, 0, 0, 74.49, 35.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (325, 26, 2, 0, 0, 1, 0, 0, 0, 70.89, 13.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (313, 26, 6, 0, 0, 1, 0, 0, 0, 73.40, 29.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (326, 26, 0, 0, 1, 0, 0, 0, 0, 70.36, 6.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (320, 26, 1, 0, 0, 1, 0, 0, 0, 69.39, 8.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (314, 26, 5, 1, 2, 0, 0, 0, 0, 66.63, 26.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (324, 26, 1, 0, 1, 1, 0, 0, 0, 62.54, 7.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (323, 26, 2, 1, 1, 0, 0, 0, 0, 71.32, 16.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (329, 26, 0, 1, 3, 0, 0, 0, 8, 61.26, 29.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (327, 26, 0, 1, 1, 0, 0, 0, 12, 60.97, 43.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (332, 26, 0, 0, 0, 0, 0, 0, 11, 66.71, 39.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (338, 27, 4, 4, 2, 0, 0, 0, 0, 72.03, 29.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (333, 27, 5, 1, 3, 0, 0, 0, 0, 76.57, 26.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (344, 27, 1, 0, 1, 0, 0, 0, 0, 69.67, 9.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (334, 27, 2, 3, 2, 0, 0, 0, 0, 70.04, 19.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (339, 27, 1, 4, 3, 0, 0, 0, 0, 71.43, 16.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (335, 27, 2, 4, 1, 0, 0, 0, 0, 66.55, 21.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (345, 27, 3, 1, 0, 0, 0, 0, 0, 69.72, 20.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (349, 27, 2, 1, 1, 0, 0, 0, 0, 68.02, 15.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (336, 27, 2, 3, 3, 1, 0, 0, 0, 68.19, 15.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (346, 27, 0, 3, 0, 0, 0, 0, 0, 68.88, 12.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (353, 27, 2, 2, 3, 1, 0, 0, 0, 65.85, 13.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (341, 27, 3, 3, 1, 0, 0, 0, 0, 64.58, 23.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (350, 27, 1, 1, 0, 1, 0, 0, 0, 70.24, 11.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (29, 27, 2, 2, 3, 0, 0, 0, 0, 72.65, 16.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (37, 27, 0, 2, 1, 2, 0, 0, 0, 76.13, 6.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (24, 27, 3, 1, 3, 0, 0, 0, 0, 73.93, 18.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (31, 27, 1, 2, 1, 0, 0, 0, 0, 71.20, 14.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (30, 27, 0, 0, 2, 0, 0, 0, 0, 66.35, 4.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (20, 27, 6, 2, 3, 1, 0, 0, 0, 70.63, 30.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (22, 27, 5, 3, 1, 0, 0, 0, 0, 81.70, 33.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (19, 27, 7, 1, 2, 0, 0, 0, 0, 76.77, 35.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (35, 27, 1, 1, 2, 0, 0, 0, 0, 68.00, 10.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (23, 27, 3, 2, 2, 1, 0, 0, 0, 76.14, 19.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (28, 27, 5, 1, 3, 0, 0, 0, 0, 75.20, 26.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (39, 27, 0, 0, 3, 0, 0, 0, 8, 66.58, 27.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (36, 27, 0, 1, 1, 0, 0, 0, 16, 63.04, 55.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (55, 28, 2, 3, 2, 0, 0, 0, 0, 61.19, 18.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (50, 28, 9, 4, 3, 2, 0, 0, 0, 63.18, 43.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (52, 28, 1, 1, 0, 0, 0, 0, 0, 66.71, 12.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (49, 28, 1, 4, 2, 1, 0, 0, 0, 59.87, 13.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (51, 28, 5, 0, 0, 1, 0, 0, 0, 74.43, 25.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (61, 28, 1, 0, 3, 1, 0, 0, 0, 62.64, 5.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (45, 28, 5, 2, 0, 1, 0, 0, 0, 71.17, 29.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (42, 28, 6, 3, 0, 1, 0, 0, 0, 69.97, 35.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (57, 28, 1, 4, 3, 0, 0, 0, 0, 69.17, 15.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (47, 28, 2, 1, 0, 0, 0, 0, 0, 65.55, 16.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (59, 28, 0, 0, 2, 1, 0, 0, 11, 64.08, 35.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (58, 28, 0, 1, 1, 2, 0, 0, 15, 63.29, 48.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (62, 28, 0, 0, 3, 0, 0, 0, 8, 71.16, 28.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (92, 28, 1, 1, 2, 0, 0, 0, 0, 76.48, 11.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (93, 28, 3, 0, 3, 1, 0, 0, 0, 67.13, 13.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (85, 28, 6, 0, 2, 2, 0, 0, 0, 72.04, 25.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (82, 28, 6, 1, 1, 0, 0, 0, 0, 77.47, 32.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (96, 28, 3, 0, 1, 1, 0, 0, 0, 67.03, 15.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (88, 28, 5, 1, 0, 1, 0, 0, 0, 66.38, 26.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (95, 28, 1, 1, 0, 0, 0, 0, 0, 63.01, 12.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (86, 28, 1, 2, 0, 0, 0, 0, 0, 66.97, 14.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (87, 28, 3, 0, 1, 0, 0, 0, 0, 70.10, 18.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (94, 28, 0, 1, 1, 1, 0, 0, 0, 77.62, 6.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (83, 28, 4, 4, 1, 0, 0, 0, 0, 67.96, 29.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (97, 28, 0, 0, 2, 0, 0, 0, 16, 64.92, 52.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (78, 29, 2, 2, 1, 0, 0, 0, 0, 71.47, 18.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (75, 29, 0, 3, 3, 0, 0, 0, 0, 71.86, 10.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (63, 29, 3, 1, 1, 0, 0, 0, 0, 76.12, 20.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (76, 29, 0, 3, 2, 0, 0, 0, 0, 70.00, 11.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (74, 29, 0, 0, 2, 0, 0, 0, 0, 62.80, 4.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (68, 29, 4, 1, 2, 1, 0, 0, 0, 73.86, 21.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (65, 29, 4, 4, 1, 1, 0, 0, 0, 71.25, 28.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (67, 29, 3, 1, 1, 0, 0, 0, 0, 70.60, 20.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (64, 29, 6, 2, 3, 0, 0, 0, 0, 65.86, 31.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (79, 29, 0, 1, 3, 0, 0, 0, 0, 68.37, 5.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (70, 29, 3, 4, 3, 0, 0, 0, 0, 70.16, 24.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (71, 29, 1, 2, 0, 0, 0, 0, 0, 61.38, 14.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (69, 29, 3, 3, 1, 0, 0, 0, 0, 67.01, 23.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (77, 29, 0, 1, 1, 0, 0, 0, 11, 69.58, 40.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (127, 29, 1, 4, 2, 1, 0, 0, 0, 74.73, 15.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (116, 29, 0, 2, 2, 0, 0, 0, 0, 70.75, 9.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (105, 29, 5, 1, 0, 1, 0, 0, 0, 66.41, 26.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (117, 29, 1, 2, 1, 0, 0, 0, 0, 60.64, 13.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (107, 29, 3, 1, 2, 0, 0, 0, 0, 64.71, 18.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (120, 29, 3, 2, 2, 1, 0, 0, 0, 68.62, 18.86);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (115, 29, 1, 3, 3, 0, 0, 0, 0, 65.29, 13.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (106, 29, 0, 0, 2, 0, 0, 0, 0, 68.45, 4.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (103, 29, 3, 2, 3, 0, 0, 0, 0, 60.56, 19.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (114, 29, 0, 2, 1, 0, 0, 0, 0, 67.39, 9.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (110, 29, 2, 2, 2, 0, 0, 0, 0, 59.95, 16.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (111, 29, 5, 1, 3, 0, 0, 0, 0, 63.96, 25.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (112, 29, 0, 0, 2, 0, 0, 0, 0, 73.07, 5.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (122, 29, 0, 3, 0, 0, 0, 0, 0, 63.49, 12.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (131, 30, 4, 3, 1, 0, 0, 0, 0, 70.81, 28.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (137, 30, 1, 1, 1, 1, 0, 0, 0, 62.33, 9.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (138, 30, 3, 4, 3, 1, 0, 0, 0, 67.60, 21.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (133, 30, 4, 1, 2, 1, 0, 0, 0, 72.90, 21.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (143, 30, 5, 2, 3, 0, 0, 0, 0, 59.03, 26.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (148, 30, 0, 0, 0, 1, 0, 0, 0, 69.13, 4.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (136, 30, 1, 2, 2, 0, 0, 0, 0, 67.44, 12.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (150, 30, 1, 1, 3, 0, 0, 0, 0, 70.13, 10.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (149, 30, 2, 0, 3, 0, 0, 0, 0, 71.18, 12.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (139, 30, 1, 0, 3, 1, 0, 0, 0, 81.27, 7.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (132, 30, 6, 4, 0, 0, 0, 0, 0, 67.86, 38.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (140, 30, 1, 0, 1, 0, 0, 0, 0, 72.38, 10.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (142, 30, 6, 1, 3, 0, 0, 0, 0, 62.87, 29.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (178, 30, 1, 4, 0, 0, 0, 0, 0, 71.52, 19.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (171, 30, 5, 3, 3, 0, 0, 0, 0, 75.59, 30.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (180, 30, 0, 0, 2, 0, 0, 0, 0, 65.76, 4.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (173, 30, 6, 4, 2, 0, 0, 0, 0, 63.65, 36.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (177, 30, 2, 4, 1, 1, 0, 0, 0, 73.37, 20.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (188, 30, 0, 0, 1, 1, 0, 0, 0, 60.19, 3.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (184, 30, 1, 2, 0, 0, 0, 0, 0, 69.19, 14.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (172, 30, 2, 0, 2, 1, 0, 0, 0, 80.70, 12.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (181, 30, 0, 1, 3, 0, 0, 0, 0, 62.74, 5.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (170, 30, 8, 0, 0, 2, 0, 0, 0, 80.46, 36.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (183, 30, 0, 0, 1, 0, 0, 0, 14, 73.62, 48.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (187, 30, 0, 0, 0, 0, 0, 0, 11, 69.50, 39.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (156, 31, 6, 1, 2, 0, 0, 0, 0, 78.31, 31.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (155, 31, 5, 0, 0, 0, 0, 0, 0, 70.08, 27.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (160, 31, 3, 2, 2, 1, 0, 0, 0, 64.81, 18.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (151, 31, 4, 2, 2, 0, 0, 0, 0, 69.39, 24.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (159, 31, 2, 1, 1, 0, 0, 0, 0, 72.57, 16.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (163, 31, 1, 0, 3, 0, 0, 0, 0, 66.61, 7.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (165, 31, 2, 0, 3, 1, 0, 0, 0, 66.97, 9.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (157, 31, 3, 2, 0, 0, 0, 0, 0, 68.31, 22.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (154, 31, 2, 0, 1, 0, 0, 0, 0, 73.33, 14.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (158, 31, 4, 0, 0, 0, 0, 0, 0, 69.73, 22.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (166, 31, 0, 1, 0, 0, 0, 0, 16, 69.06, 56.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (168, 31, 0, 1, 1, 0, 0, 0, 7, 62.70, 28.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (198, 31, 3, 4, 2, 0, 0, 0, 0, 77.51, 25.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (200, 31, 3, 1, 3, 1, 0, 0, 0, 65.16, 15.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (202, 31, 1, 1, 2, 1, 0, 0, 0, 64.57, 8.46);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (207, 31, 0, 4, 1, 1, 0, 0, 0, 68.49, 11.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (204, 31, 1, 2, 0, 0, 0, 0, 0, 70.30, 15.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (192, 31, 5, 1, 3, 0, 0, 0, 0, 65.67, 25.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (201, 31, 3, 0, 3, 0, 0, 0, 0, 72.94, 16.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (194, 31, 9, 0, 3, 0, 0, 0, 0, 70.61, 40.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (211, 31, 0, 0, 0, 0, 0, 0, 0, 60.99, 6.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (203, 31, 3, 2, 1, 0, 0, 0, 0, 71.35, 22.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (206, 31, 1, 2, 1, 0, 0, 0, 0, 66.91, 13.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (191, 31, 4, 0, 3, 1, 0, 0, 0, 74.81, 18.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (212, 31, 0, 1, 2, 1, 0, 0, 11, 64.25, 37.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (218, 32, 6, 1, 1, 0, 0, 0, 0, 73.26, 32.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (228, 32, 1, 1, 2, 0, 0, 0, 0, 70.01, 11.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (224, 32, 4, 1, 1, 2, 0, 0, 0, 75.69, 20.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (226, 32, 1, 1, 1, 0, 0, 0, 0, 73.66, 12.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (220, 32, 4, 1, 1, 0, 0, 0, 0, 67.66, 23.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (213, 32, 4, 4, 1, 1, 0, 0, 0, 67.74, 27.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (221, 32, 2, 1, 0, 0, 0, 0, 0, 69.46, 16.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (216, 32, 8, 4, 2, 0, 0, 0, 0, 73.42, 45.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (225, 32, 1, 2, 3, 0, 0, 0, 0, 70.13, 12.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (215, 32, 3, 1, 1, 0, 0, 0, 0, 65.01, 19.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (229, 32, 0, 1, 3, 0, 0, 0, 0, 71.92, 6.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (222, 32, 0, 2, 1, 0, 0, 0, 0, 68.85, 9.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (230, 32, 0, 0, 2, 1, 0, 0, 12, 74.46, 39.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (232, 32, 0, 1, 0, 1, 0, 0, 16, 62.79, 54.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (270, 32, 1, 4, 0, 0, 0, 0, 0, 62.89, 18.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (257, 32, 11, 0, 3, 2, 0, 0, 0, 74.91, 44.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (267, 32, 0, 0, 3, 0, 0, 0, 0, 68.01, 3.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (273, 32, 0, 1, 3, 0, 0, 0, 0, 69.49, 5.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (263, 32, 4, 0, 0, 1, 0, 0, 0, 70.86, 21.09);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (268, 32, 1, 2, 3, 0, 0, 0, 0, 71.81, 12.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (262, 32, 3, 2, 1, 1, 0, 0, 0, 84.10, 21.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (266, 32, 3, 4, 1, 0, 0, 0, 0, 66.30, 25.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (265, 32, 2, 0, 1, 0, 0, 0, 0, 66.93, 13.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (261, 32, 6, 3, 1, 0, 0, 0, 0, 70.34, 36.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (269, 32, 2, 1, 1, 0, 0, 0, 0, 65.01, 15.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (271, 32, 0, 0, 0, 0, 0, 0, 9, 64.65, 33.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (272, 32, 0, 0, 1, 1, 0, 0, 8, 62.08, 27.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (274, 32, 0, 0, 2, 0, 0, 0, 10, 68.99, 34.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (242, 33, 7, 0, 2, 0, 0, 0, 0, 74.80, 33.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (243, 33, 5, 3, 0, 0, 0, 0, 0, 62.91, 32.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (237, 33, 8, 1, 1, 1, 0, 0, 0, 75.15, 38.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (253, 33, 1, 0, 1, 2, 0, 0, 0, 68.88, 5.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (255, 33, 0, 1, 0, 0, 0, 0, 0, 63.76, 8.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (239, 33, 5, 3, 0, 0, 0, 0, 0, 71.11, 33.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (234, 33, 6, 1, 0, 1, 0, 0, 0, 74.83, 31.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (254, 33, 0, 1, 2, 0, 0, 0, 0, 67.92, 6.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (246, 33, 0, 0, 2, 0, 0, 0, 0, 73.00, 5.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (244, 33, 0, 0, 1, 0, 0, 0, 0, 73.74, 6.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (252, 33, 0, 1, 3, 0, 0, 0, 13, 64.91, 44.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (251, 33, 0, 1, 0, 1, 0, 0, 8, 69.29, 30.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (285, 33, 2, 3, 1, 0, 0, 0, 0, 71.65, 20.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (286, 33, 1, 1, 0, 0, 0, 0, 0, 67.36, 12.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (275, 33, 3, 1, 3, 1, 0, 0, 0, 72.22, 16.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (280, 33, 2, 4, 3, 0, 0, 0, 0, 69.25, 19.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (283, 33, 5, 0, 1, 0, 0, 0, 0, 73.95, 26.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (287, 33, 2, 0, 3, 1, 0, 0, 0, 72.02, 10.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (276, 33, 5, 1, 3, 1, 0, 0, 0, 80.65, 25.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (288, 33, 0, 0, 3, 0, 0, 0, 0, 69.34, 3.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (284, 33, 3, 0, 1, 1, 0, 0, 0, 78.00, 16.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (282, 33, 3, 3, 1, 0, 0, 0, 0, 66.00, 23.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (290, 33, 1, 0, 2, 0, 0, 0, 8, 65.35, 32.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (289, 33, 1, 0, 2, 0, 1, 0, 8, 65.67, 27.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (305, 34, 0, 4, 2, 0, 0, 0, 0, 75.38, 13.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (298, 34, 3, 3, 3, 0, 0, 0, 0, 59.39, 20.94);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (304, 34, 1, 0, 3, 0, 0, 0, 0, 74.02, 8.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (311, 34, 0, 2, 1, 0, 0, 0, 0, 68.01, 9.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (302, 34, 5, 3, 3, 0, 0, 0, 0, 70.67, 30.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (296, 34, 1, 0, 0, 0, 0, 0, 0, 71.13, 11.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (301, 34, 3, 2, 1, 1, 0, 0, 0, 68.78, 19.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (300, 34, 2, 4, 0, 1, 0, 0, 0, 66.79, 20.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (297, 34, 4, 0, 1, 1, 0, 0, 0, 66.26, 19.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (294, 34, 5, 1, 0, 0, 0, 0, 0, 72.57, 29.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (293, 34, 6, 1, 2, 0, 1, 0, 0, 71.49, 26.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (312, 34, 2, 0, 0, 0, 0, 0, 0, 60.51, 14.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (306, 34, 3, 1, 3, 1, 0, 0, 0, 64.06, 15.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (310, 34, 0, 0, 2, 0, 0, 0, 14, 73.97, 47.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (336, 34, 4, 4, 1, 0, 0, 0, 0, 71.31, 30.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (341, 34, 2, 2, 1, 2, 0, 0, 0, 65.62, 13.56);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (342, 34, 2, 2, 3, 2, 0, 0, 0, 67.95, 11.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (346, 34, 3, 3, 3, 0, 0, 0, 0, 68.88, 21.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (353, 34, 0, 1, 0, 1, 0, 0, 0, 62.10, 6.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (333, 34, 4, 0, 3, 0, 0, 0, 0, 78.19, 20.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (338, 34, 5, 1, 3, 0, 0, 0, 0, 68.77, 25.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (340, 34, 4, 0, 2, 0, 0, 0, 0, 71.22, 21.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (350, 34, 1, 3, 0, 0, 0, 0, 0, 70.73, 17.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (339, 34, 1, 1, 1, 0, 0, 0, 0, 68.45, 11.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (343, 34, 4, 3, 3, 0, 0, 0, 0, 69.46, 25.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (351, 34, 0, 1, 2, 0, 0, 0, 0, 69.10, 6.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (352, 34, 1, 1, 0, 1, 0, 0, 14, 77.66, 53.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (348, 34, 0, 1, 2, 0, 0, 0, 12, 68.95, 42.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (318, 35, 4, 4, 3, 0, 0, 0, 0, 72.02, 28.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (322, 35, 2, 2, 1, 1, 0, 0, 0, 73.13, 16.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (320, 35, 1, 1, 2, 0, 0, 0, 0, 73.74, 11.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (324, 35, 0, 2, 2, 0, 0, 0, 0, 64.91, 8.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (317, 35, 2, 0, 2, 0, 0, 0, 0, 69.28, 12.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (315, 35, 1, 4, 2, 1, 0, 0, 0, 77.42, 15.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (316, 35, 6, 0, 2, 0, 0, 0, 0, 69.13, 28.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (313, 35, 5, 0, 2, 0, 0, 0, 0, 70.38, 25.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (319, 35, 2, 3, 0, 1, 0, 0, 0, 64.08, 18.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (314, 35, 6, 2, 0, 0, 0, 0, 0, 70.01, 35.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (323, 35, 2, 1, 3, 1, 0, 0, 0, 73.99, 12.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (326, 35, 0, 3, 1, 0, 0, 0, 0, 65.79, 11.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (327, 35, 1, 1, 2, 0, 0, 0, 7, 55.55, 30.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (330, 35, 0, 1, 2, 0, 0, 0, 15, 68.43, 51.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (356, 35, 0, 1, 1, 1, 0, 0, 0, 71.81, 6.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (358, 35, 3, 1, 0, 0, 0, 0, 0, 75.37, 21.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (354, 35, 7, 4, 2, 0, 0, 0, 0, 74.85, 41.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (361, 35, 1, 3, 0, 0, 0, 0, 0, 72.66, 17.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (362, 35, 0, 3, 2, 0, 0, 0, 0, 63.48, 10.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (355, 35, 5, 1, 1, 0, 0, 0, 0, 65.74, 27.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (359, 35, 4, 1, 1, 0, 0, 0, 0, 68.76, 23.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (369, 35, 0, 1, 2, 0, 0, 0, 0, 66.95, 6.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (360, 35, 4, 3, 0, 0, 0, 0, 0, 67.78, 28.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (357, 35, 2, 1, 3, 1, 0, 0, 0, 73.09, 12.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (367, 35, 0, 2, 1, 0, 0, 0, 0, 74.08, 10.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (363, 35, 5, 0, 2, 0, 0, 0, 0, 68.03, 24.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (372, 35, 0, 0, 3, 0, 0, 0, 12, 62.17, 39.22);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (371, 35, 1, 0, 2, 0, 0, 0, 15, 65.83, 53.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (7, 36, 6, 3, 1, 1, 0, 0, 0, 66.54, 33.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (8, 36, 2, 0, 3, 0, 0, 0, 0, 71.65, 12.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (2, 36, 5, 2, 3, 0, 0, 0, 0, 63.63, 27.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (13, 36, 0, 2, 1, 0, 0, 0, 0, 73.01, 10.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (15, 36, 0, 1, 3, 0, 0, 0, 0, 68.47, 5.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (12, 36, 0, 0, 1, 0, 0, 0, 0, 67.17, 5.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (5, 36, 0, 4, 2, 1, 0, 0, 0, 62.95, 10.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (16, 36, 0, 1, 1, 0, 0, 0, 0, 63.04, 7.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (3, 36, 2, 3, 3, 1, 0, 0, 0, 65.55, 15.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (1, 36, 4, 0, 3, 1, 0, 0, 0, 72.92, 18.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (10, 36, 2, 0, 1, 0, 0, 0, 0, 66.93, 13.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (11, 36, 0, 1, 1, 0, 0, 0, 0, 71.17, 8.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (18, 36, 0, 0, 1, 1, 0, 0, 0, 63.68, 3.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (4, 36, 7, 3, 0, 0, 0, 0, 0, 67.88, 40.79);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (63, 36, 5, 1, 2, 0, 0, 0, 0, 76.46, 27.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (65, 36, 4, 2, 2, 1, 0, 0, 0, 68.43, 22.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (78, 36, 0, 4, 0, 0, 0, 0, 0, 68.18, 14.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (67, 36, 4, 4, 3, 1, 0, 0, 0, 61.04, 25.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (70, 36, 2, 1, 2, 0, 0, 0, 0, 68.89, 14.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (74, 36, 1, 0, 0, 0, 0, 0, 0, 63.08, 10.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (66, 36, 5, 2, 3, 0, 0, 0, 0, 65.41, 27.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (72, 36, 0, 1, 2, 0, 0, 0, 0, 77.62, 7.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (68, 36, 5, 0, 3, 0, 0, 0, 0, 67.96, 23.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (79, 36, 0, 2, 3, 0, 0, 0, 0, 71.84, 8.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (75, 36, 0, 1, 3, 2, 0, 0, 0, 64.34, 1.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (64, 36, 3, 0, 0, 1, 0, 0, 0, 64.19, 16.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (73, 36, 2, 1, 0, 0, 0, 0, 0, 69.95, 17.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (80, 36, 0, 1, 3, 0, 0, 0, 16, 67.68, 53.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (88, 37, 2, 1, 1, 0, 0, 0, 0, 71.47, 16.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (94, 37, 0, 3, 0, 0, 0, 0, 0, 76.26, 13.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (96, 37, 1, 0, 2, 2, 0, 0, 0, 69.35, 4.93);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (98, 37, 0, 1, 3, 1, 0, 0, 0, 64.50, 3.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (87, 37, 1, 1, 2, 2, 0, 0, 0, 64.28, 6.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (82, 37, 5, 1, 3, 0, 0, 0, 0, 74.21, 26.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (90, 37, 1, 3, 1, 0, 0, 0, 0, 69.05, 15.90);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (83, 37, 4, 1, 3, 0, 0, 0, 0, 72.53, 22.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (85, 37, 3, 3, 3, 0, 1, 0, 0, 77.16, 17.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (93, 37, 1, 1, 0, 0, 0, 0, 0, 71.20, 13.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (84, 37, 6, 4, 2, 1, 0, 0, 0, 69.99, 35.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (92, 37, 1, 1, 2, 1, 0, 0, 0, 68.47, 8.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (97, 37, 0, 0, 0, 0, 0, 0, 7, 67.60, 27.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (99, 37, 0, 0, 3, 0, 0, 0, 11, 63.68, 36.37);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (158, 37, 4, 4, 2, 1, 0, 0, 0, 65.94, 26.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (164, 37, 0, 4, 0, 0, 0, 0, 0, 67.11, 14.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (160, 37, 2, 0, 3, 0, 0, 0, 0, 69.54, 11.95);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (152, 37, 3, 3, 0, 1, 0, 0, 0, 71.26, 23.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (167, 37, 0, 3, 1, 1, 0, 0, 0, 66.34, 9.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (165, 37, 0, 3, 0, 0, 0, 0, 0, 71.41, 13.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (163, 37, 0, 1, 3, 0, 0, 0, 0, 62.49, 5.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (159, 37, 0, 0, 2, 0, 0, 0, 0, 66.31, 4.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (157, 37, 3, 4, 0, 0, 0, 0, 0, 73.86, 27.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (154, 37, 4, 1, 1, 0, 0, 0, 0, 76.76, 24.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (156, 37, 7, 0, 2, 1, 0, 0, 0, 67.96, 30.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (151, 37, 5, 2, 1, 0, 0, 0, 0, 66.72, 29.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (125, 38, 1, 1, 3, 0, 0, 0, 0, 70.81, 10.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (108, 38, 3, 2, 1, 0, 0, 0, 0, 75.73, 22.57);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (101, 38, 7, 0, 0, 1, 0, 0, 0, 70.98, 33.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (121, 38, 0, 1, 3, 0, 0, 0, 0, 67.44, 5.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (107, 38, 6, 0, 3, 0, 0, 0, 0, 74.30, 28.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (119, 38, 0, 2, 1, 0, 0, 0, 0, 63.82, 9.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (113, 38, 3, 0, 3, 1, 0, 0, 0, 64.88, 13.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (105, 38, 2, 4, 2, 1, 0, 0, 0, 69.16, 18.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (103, 38, 5, 1, 3, 0, 0, 0, 0, 63.40, 25.34);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (117, 38, 1, 1, 1, 0, 0, 0, 0, 65.53, 11.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (112, 38, 1, 1, 0, 2, 0, 0, 0, 69.75, 8.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (114, 38, 1, 0, 1, 0, 0, 0, 0, 65.47, 9.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (126, 38, 0, 1, 2, 1, 0, 0, 16, 58.27, 51.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (180, 38, 2, 4, 2, 0, 0, 0, 0, 61.75, 20.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (176, 38, 7, 1, 0, 0, 0, 0, 0, 71.61, 37.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (188, 38, 0, 3, 2, 1, 0, 0, 0, 59.88, 7.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (181, 38, 1, 1, 3, 0, 0, 0, 0, 63.32, 9.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (170, 38, 13, 1, 1, 1, 0, 0, 0, 81.79, 59.18);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (171, 38, 4, 2, 3, 1, 0, 0, 0, 75.40, 22.54);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (182, 38, 0, 1, 1, 0, 0, 0, 0, 77.15, 8.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (189, 38, 1, 0, 0, 0, 0, 0, 0, 73.63, 11.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (177, 38, 3, 3, 3, 0, 0, 0, 0, 71.53, 22.15);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (184, 38, 0, 3, 0, 0, 0, 0, 0, 70.08, 13.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (185, 38, 0, 1, 1, 0, 0, 0, 13, 63.22, 46.32);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (183, 38, 0, 0, 3, 0, 0, 0, 11, 64.15, 36.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (186, 38, 0, 1, 1, 0, 0, 0, 13, 60.24, 46.02);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (187, 38, 0, 1, 3, 1, 0, 0, 12, 58.45, 38.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (131, 39, 3, 1, 1, 0, 0, 0, 0, 72.54, 20.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (146, 39, 2, 0, 3, 0, 0, 0, 0, 71.65, 12.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (135, 39, 3, 1, 1, 0, 0, 0, 0, 69.08, 19.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (138, 39, 3, 2, 0, 0, 0, 0, 0, 68.21, 22.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (143, 39, 3, 3, 0, 1, 0, 0, 0, 62.65, 22.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (145, 39, 1, 4, 3, 1, 0, 0, 0, 69.95, 14.00);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (150, 39, 0, 1, 0, 0, 0, 0, 0, 67.61, 8.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (137, 39, 1, 1, 2, 0, 0, 0, 0, 68.86, 10.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (129, 39, 4, 0, 2, 0, 0, 0, 0, 72.06, 21.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (148, 39, 1, 1, 2, 0, 0, 0, 0, 72.71, 11.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (130, 39, 5, 1, 3, 1, 0, 0, 0, 72.90, 24.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (144, 39, 0, 1, 2, 1, 0, 0, 10, 74.26, 35.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (190, 39, 3, 3, 3, 1, 0, 0, 0, 67.45, 19.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (193, 39, 4, 1, 2, 0, 0, 0, 0, 70.07, 23.01);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (197, 39, 1, 4, 1, 1, 0, 0, 0, 65.26, 15.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (196, 39, 4, 3, 2, 1, 0, 0, 0, 69.13, 24.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (206, 39, 1, 0, 2, 0, 0, 0, 0, 62.44, 8.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (199, 39, 2, 0, 0, 0, 0, 0, 0, 70.96, 15.10);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (192, 39, 7, 4, 0, 0, 0, 0, 0, 63.60, 42.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (202, 39, 0, 2, 1, 0, 0, 0, 0, 60.44, 9.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (207, 39, 0, 2, 2, 1, 0, 0, 0, 66.95, 6.70);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (203, 39, 0, 1, 2, 0, 0, 0, 0, 63.01, 6.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (191, 39, 5, 1, 1, 0, 0, 0, 0, 73.27, 28.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (212, 39, 0, 0, 3, 0, 0, 0, 13, 59.67, 41.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (209, 39, 0, 0, 1, 1, 0, 0, 12, 72.39, 40.24);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (220, 40, 1, 0, 3, 0, 0, 0, 0, 68.54, 7.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (229, 40, 1, 0, 3, 1, 0, 0, 0, 64.51, 5.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (227, 40, 2, 0, 0, 0, 0, 0, 0, 66.43, 14.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (223, 40, 4, 4, 0, 1, 0, 0, 0, 72.80, 29.28);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (225, 40, 4, 0, 2, 2, 0, 0, 0, 61.15, 16.12);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (231, 40, 2, 0, 0, 1, 0, 0, 0, 72.96, 13.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (214, 40, 4, 1, 3, 0, 0, 0, 0, 64.83, 21.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (218, 40, 8, 1, 1, 0, 0, 0, 0, 72.25, 40.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (228, 40, 0, 1, 1, 0, 0, 0, 0, 62.96, 7.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (224, 40, 0, 1, 0, 0, 0, 0, 0, 68.90, 8.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (213, 40, 5, 0, 1, 0, 0, 0, 0, 72.53, 26.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (226, 40, 0, 1, 3, 0, 0, 0, 0, 65.15, 5.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (230, 40, 0, 1, 2, 0, 0, 0, 11, 76.35, 40.63);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (277, 40, 2, 0, 0, 1, 0, 0, 0, 66.60, 12.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (286, 40, 0, 1, 0, 1, 0, 0, 0, 67.68, 6.77);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (280, 40, 6, 0, 1, 0, 0, 0, 0, 65.16, 29.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (284, 40, 1, 4, 0, 0, 0, 0, 0, 79.72, 19.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (283, 40, 2, 2, 1, 1, 0, 0, 0, 78.16, 16.82);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (285, 40, 2, 3, 3, 0, 0, 0, 0, 70.55, 18.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (279, 40, 3, 0, 3, 0, 0, 0, 0, 75.51, 16.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (282, 40, 0, 1, 1, 0, 0, 0, 0, 71.33, 8.13);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (281, 40, 3, 3, 0, 1, 0, 0, 0, 74.41, 23.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (291, 40, 0, 1, 0, 0, 0, 0, 0, 66.76, 8.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (276, 40, 4, 1, 2, 0, 0, 0, 0, 74.27, 23.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (275, 40, 2, 1, 3, 1, 0, 0, 0, 68.91, 11.89);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (278, 40, 4, 2, 3, 1, 0, 0, 0, 74.51, 22.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (290, 40, 0, 0, 3, 0, 0, 0, 13, 72.12, 43.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (237, 41, 5, 0, 3, 1, 0, 0, 0, 67.38, 21.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (250, 41, 2, 0, 3, 1, 0, 0, 0, 64.02, 9.40);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (242, 41, 1, 0, 0, 0, 0, 0, 0, 74.24, 11.42);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (241, 41, 5, 0, 1, 0, 0, 0, 0, 74.41, 26.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (238, 41, 4, 4, 3, 1, 0, 0, 0, 75.06, 26.51);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (254, 41, 1, 0, 2, 1, 0, 0, 0, 66.22, 6.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (246, 41, 0, 1, 3, 0, 0, 0, 0, 77.34, 6.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (233, 41, 10, 2, 3, 1, 0, 0, 0, 76.76, 46.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (234, 41, 5, 0, 3, 0, 0, 0, 0, 76.05, 24.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (253, 41, 1, 1, 1, 0, 0, 0, 0, 66.41, 11.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (247, 41, 0, 0, 2, 0, 0, 0, 0, 68.54, 4.85);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (252, 41, 1, 1, 3, 1, 0, 0, 12, 74.96, 44.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (251, 41, 0, 0, 3, 1, 0, 0, 10, 67.06, 31.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (256, 41, 0, 0, 0, 0, 0, 0, 9, 66.75, 33.67);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (294, 41, 4, 0, 2, 0, 0, 0, 0, 66.58, 20.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (299, 41, 2, 2, 3, 0, 0, 0, 0, 65.91, 15.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (296, 41, 3, 1, 2, 0, 0, 0, 0, 74.28, 19.43);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (295, 41, 5, 0, 0, 0, 0, 0, 0, 68.26, 26.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (293, 41, 8, 1, 3, 0, 0, 0, 0, 62.29, 37.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (311, 41, 1, 4, 2, 0, 0, 0, 0, 72.94, 17.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (312, 41, 0, 0, 0, 0, 0, 0, 0, 66.60, 6.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (303, 41, 1, 3, 1, 0, 0, 0, 0, 73.77, 16.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (292, 41, 1, 0, 2, 0, 0, 0, 0, 71.68, 9.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (305, 41, 0, 3, 0, 2, 0, 0, 0, 77.05, 9.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (304, 41, 2, 0, 2, 0, 0, 0, 0, 64.73, 12.47);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (310, 41, 0, 0, 1, 0, 0, 0, 16, 72.55, 54.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (258, 42, 7, 4, 3, 0, 0, 0, 0, 76.12, 40.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (264, 42, 4, 1, 0, 1, 1, 0, 0, 63.79, 17.38);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (270, 42, 1, 0, 3, 0, 0, 0, 0, 66.80, 7.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (262, 42, 5, 2, 1, 0, 0, 0, 0, 73.87, 30.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (261, 42, 4, 4, 3, 1, 0, 0, 0, 77.97, 26.80);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (266, 42, 2, 0, 3, 1, 0, 0, 0, 70.41, 10.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (268, 42, 0, 1, 3, 0, 0, 0, 0, 73.60, 6.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (265, 42, 1, 4, 1, 1, 0, 0, 0, 66.07, 15.61);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (267, 42, 0, 1, 2, 1, 0, 0, 0, 72.92, 5.29);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (269, 42, 1, 1, 1, 0, 0, 0, 0, 64.47, 11.45);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (257, 42, 8, 2, 1, 0, 0, 0, 0, 75.48, 42.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (271, 42, 0, 0, 3, 0, 0, 0, 14, 65.95, 45.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (272, 42, 0, 0, 1, 0, 0, 0, 9, 71.72, 33.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (323, 42, 4, 0, 0, 0, 0, 0, 0, 72.65, 23.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (325, 42, 0, 0, 0, 0, 0, 0, 0, 67.16, 6.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (324, 42, 1, 1, 0, 1, 0, 0, 0, 68.79, 10.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (317, 42, 4, 0, 1, 0, 0, 0, 0, 68.81, 21.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (316, 42, 7, 0, 1, 0, 0, 0, 0, 72.46, 34.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (331, 42, 0, 4, 1, 0, 0, 0, 0, 67.15, 13.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (319, 42, 5, 4, 1, 1, 0, 0, 0, 71.40, 32.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (326, 42, 0, 4, 0, 1, 0, 0, 0, 69.87, 12.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (314, 42, 5, 4, 3, 1, 0, 0, 0, 64.06, 29.41);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (328, 42, 0, 0, 1, 1, 0, 0, 7, 64.83, 24.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (329, 42, 0, 1, 2, 0, 0, 0, 13, 60.42, 45.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (332, 42, 0, 1, 1, 1, 0, 0, 15, 60.54, 50.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (330, 42, 0, 1, 1, 0, 0, 0, 14, 63.10, 49.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (342, 43, 0, 1, 3, 0, 0, 0, 0, 67.37, 5.74);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (335, 43, 5, 3, 3, 0, 0, 0, 0, 74.44, 30.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (350, 43, 1, 3, 3, 0, 0, 0, 0, 66.79, 13.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (351, 43, 1, 0, 3, 0, 0, 0, 0, 62.54, 7.25);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (345, 43, 3, 0, 1, 0, 0, 0, 0, 68.34, 17.83);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (344, 43, 3, 3, 0, 1, 0, 0, 0, 61.71, 22.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (349, 43, 1, 1, 2, 0, 0, 0, 0, 67.55, 10.75);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (353, 43, 0, 1, 3, 0, 0, 0, 0, 70.83, 6.08);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (337, 43, 6, 4, 0, 0, 0, 0, 0, 70.41, 39.04);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (334, 43, 7, 0, 1, 0, 0, 0, 0, 75.25, 34.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (333, 43, 6, 0, 1, 0, 0, 0, 0, 79.67, 30.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (352, 43, 0, 0, 2, 2, 0, 0, 8, 77.84, 25.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (16, 43, 1, 1, 2, 0, 0, 0, 0, 61.38, 10.14);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (4, 43, 5, 2, 1, 1, 0, 0, 0, 68.76, 27.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (7, 43, 4, 2, 0, 0, 0, 0, 0, 69.62, 26.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (2, 43, 4, 4, 1, 0, 0, 0, 0, 67.27, 29.73);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (8, 43, 3, 2, 2, 0, 0, 0, 0, 69.06, 20.91);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (12, 43, 0, 2, 3, 1, 0, 0, 0, 63.32, 5.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (6, 43, 2, 0, 1, 0, 0, 0, 0, 75.30, 14.53);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (13, 43, 1, 4, 2, 0, 0, 0, 0, 65.94, 16.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (11, 43, 3, 0, 2, 2, 0, 0, 0, 73.31, 13.33);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (1, 43, 5, 1, 3, 0, 0, 0, 0, 67.23, 25.72);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (10, 43, 2, 4, 2, 0, 0, 0, 0, 70.28, 21.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (15, 43, 0, 4, 1, 1, 0, 0, 0, 61.14, 11.11);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (17, 43, 1, 1, 2, 0, 0, 0, 8, 65.49, 34.55);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (14, 43, 0, 1, 1, 0, 0, 0, 7, 66.87, 28.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (359, 44, 7, 2, 0, 1, 0, 0, 0, 72.69, 37.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (354, 44, 3, 1, 1, 0, 0, 0, 0, 66.89, 19.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (358, 44, 3, 4, 0, 0, 0, 0, 0, 67.08, 26.71);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (357, 44, 2, 1, 2, 0, 0, 0, 0, 67.75, 14.78);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (363, 44, 1, 3, 1, 1, 0, 0, 0, 70.54, 14.05);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (362, 44, 0, 2, 1, 2, 0, 0, 0, 69.61, 5.96);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (360, 44, 1, 2, 2, 0, 0, 0, 0, 69.15, 12.92);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (367, 44, 1, 2, 1, 1, 0, 0, 0, 76.50, 12.65);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (365, 44, 3, 0, 3, 1, 0, 0, 0, 72.56, 14.26);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (368, 44, 2, 3, 1, 0, 0, 0, 0, 70.27, 20.03);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (361, 44, 2, 1, 2, 0, 0, 0, 0, 61.85, 14.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (371, 44, 0, 1, 1, 1, 0, 0, 16, 65.87, 53.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (22, 44, 4, 2, 2, 0, 0, 0, 0, 71.92, 25.19);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (20, 44, 2, 1, 2, 0, 0, 0, 0, 68.80, 14.88);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (24, 44, 4, 0, 1, 2, 0, 0, 0, 63.88, 17.39);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (33, 44, 0, 1, 3, 0, 0, 0, 0, 76.87, 6.69);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (21, 44, 4, 0, 0, 2, 0, 0, 0, 70.58, 19.06);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (35, 44, 3, 0, 0, 0, 0, 0, 0, 74.75, 19.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (23, 44, 5, 2, 0, 1, 0, 0, 0, 68.39, 28.84);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (25, 44, 6, 0, 1, 1, 0, 0, 0, 71.71, 28.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (31, 44, 1, 3, 1, 0, 0, 0, 0, 62.67, 15.27);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (27, 44, 3, 4, 2, 0, 0, 0, 0, 65.78, 24.58);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (38, 44, 0, 0, 0, 0, 0, 0, 13, 62.11, 45.21);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (36, 44, 0, 0, 1, 1, 0, 0, 10, 66.01, 33.60);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (48, 45, 2, 0, 0, 0, 0, 0, 0, 73.51, 15.35);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (44, 45, 11, 0, 0, 0, 0, 0, 0, 76.62, 51.66);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (57, 45, 2, 4, 0, 0, 0, 0, 0, 69.66, 22.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (53, 45, 5, 0, 1, 0, 0, 0, 0, 69.73, 25.97);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (51, 45, 1, 0, 1, 0, 0, 0, 0, 65.16, 9.52);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (50, 45, 3, 1, 2, 0, 0, 0, 0, 64.94, 18.49);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (54, 45, 3, 3, 0, 1, 0, 0, 0, 66.21, 22.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (49, 45, 3, 0, 1, 0, 0, 0, 0, 65.95, 17.59);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (52, 45, 3, 0, 3, 0, 0, 0, 0, 69.87, 15.99);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (61, 45, 0, 3, 2, 0, 0, 0, 0, 63.59, 10.36);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (59, 45, 0, 0, 1, 1, 0, 0, 16, 63.11, 51.31);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (62, 45, 1, 0, 2, 0, 0, 0, 12, 67.58, 44.76);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (58, 45, 0, 1, 3, 0, 0, 0, 9, 73.05, 33.30);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (133, 45, 6, 3, 3, 0, 0, 0, 0, 66.43, 33.64);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (129, 45, 7, 0, 2, 0, 0, 0, 0, 76.25, 33.62);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (135, 45, 4, 0, 1, 0, 0, 0, 0, 72.04, 22.20);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (142, 45, 2, 0, 0, 2, 0, 0, 0, 64.79, 10.48);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (136, 45, 2, 1, 1, 0, 0, 0, 0, 71.67, 16.17);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (149, 45, 0, 3, 2, 0, 0, 0, 0, 72.32, 11.23);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (138, 45, 1, 3, 2, 0, 0, 0, 0, 64.40, 14.44);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (140, 45, 2, 1, 2, 0, 0, 0, 0, 74.98, 15.50);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (150, 45, 1, 0, 3, 1, 0, 0, 0, 71.57, 6.16);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (148, 45, 0, 2, 3, 0, 0, 0, 0, 66.82, 7.68);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (139, 45, 5, 0, 0, 0, 0, 0, 0, 80.72, 28.07);
-INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES (144, 45, 0, 0, 0, 0, 0, 0, 7, 70.82, 28.08);
+INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES
+    (6, 1, 1, 0, 1, 0, 0, 0, 0, 67.48, 9.75),
+    (13, 1, 0, 4, 2, 0, 0, 0, 0, 69.36, 12.94),
+    (12, 1, 4, 3, 3, 0, 0, 0, 0, 69.82, 25.98),
+    (7, 1, 4, 2, 1, 0, 0, 0, 0, 71.20, 26.12),
+    (9, 1, 0, 1, 2, 1, 0, 0, 0, 72.34, 5.23),
+    (2, 1, 5, 1, 0, 0, 0, 0, 0, 62.61, 28.26),
+    (16, 1, 0, 4, 1, 0, 0, 0, 0, 69.65, 13.96),
+    (10, 1, 0, 4, 2, 2, 0, 0, 0, 66.31, 8.63),
+    (8, 1, 5, 4, 0, 0, 0, 0, 0, 72.24, 35.22),
+    (3, 1, 1, 3, 1, 0, 0, 0, 0, 67.54, 15.75),
+    (1, 1, 7, 1, 1, 1, 0, 0, 0, 73.06, 34.31),
+    (17, 1, 0, 0, 1, 1, 0, 0, 14, 60.54, 45.05),
+    (14, 1, 0, 0, 0, 0, 0, 0, 13, 60.44, 45.04),
+    (34, 1, 1, 0, 0, 0, 0, 0, 0, 64.59, 10.46),
+    (33, 1, 1, 3, 1, 1, 0, 0, 0, 78.11, 14.81),
+    (29, 1, 1, 4, 2, 1, 0, 0, 0, 72.95, 15.29),
+    (35, 1, 2, 1, 0, 0, 0, 0, 0, 71.39, 17.14),
+    (25, 1, 5, 0, 3, 0, 0, 0, 0, 77.61, 24.76),
+    (27, 1, 4, 0, 0, 0, 0, 0, 0, 69.77, 22.98),
+    (32, 1, 0, 0, 2, 0, 0, 0, 0, 70.59, 5.06),
+    (21, 1, 5, 1, 1, 1, 0, 0, 0, 77.84, 26.78),
+    (41, 1, 0, 3, 0, 0, 0, 0, 0, 70.08, 13.01),
+    (22, 1, 4, 3, 2, 1, 0, 0, 0, 81.15, 26.12),
+    (20, 1, 7, 1, 0, 0, 0, 0, 0, 65.07, 36.51),
+    (40, 1, 0, 1, 0, 0, 0, 0, 16, 65.91, 56.59),
+    (36, 1, 0, 1, 0, 0, 0, 0, 15, 63.28, 53.33),
+    (42, 2, 4, 3, 3, 0, 0, 0, 0, 68.59, 25.86),
+    (46, 2, 3, 1, 2, 0, 0, 0, 0, 72.91, 19.29),
+    (50, 2, 1, 2, 2, 0, 0, 0, 0, 63.45, 12.35),
+    (56, 2, 0, 0, 0, 0, 0, 0, 0, 72.80, 7.28),
+    (47, 2, 3, 0, 2, 0, 0, 0, 0, 63.37, 16.34),
+    (53, 2, 2, 1, 1, 0, 0, 0, 0, 68.39, 15.84),
+    (49, 2, 5, 3, 0, 0, 0, 0, 0, 68.62, 32.86),
+    (61, 2, 0, 0, 0, 0, 0, 0, 0, 70.59, 7.06),
+    (54, 2, 2, 2, 1, 0, 0, 0, 0, 69.54, 17.95),
+    (52, 2, 1, 0, 0, 0, 0, 0, 0, 72.14, 11.21),
+    (45, 2, 4, 1, 1, 2, 0, 0, 0, 62.63, 19.26),
+    (60, 2, 0, 0, 0, 0, 0, 0, 0, 68.30, 6.83),
+    (62, 2, 0, 0, 3, 2, 0, 0, 7, 67.67, 20.77),
+    (59, 2, 0, 0, 1, 0, 0, 0, 12, 62.87, 41.29),
+    (74, 2, 2, 0, 3, 0, 0, 0, 0, 65.06, 11.51),
+    (76, 2, 1, 2, 1, 1, 0, 0, 0, 68.87, 11.89),
+    (68, 2, 4, 1, 1, 0, 0, 0, 0, 65.62, 23.56),
+    (75, 2, 0, 0, 0, 0, 0, 0, 0, 67.47, 6.75),
+    (73, 2, 0, 0, 2, 0, 0, 0, 0, 72.72, 5.27),
+    (71, 2, 2, 4, 3, 0, 0, 0, 0, 61.18, 19.12),
+    (63, 2, 8, 0, 3, 2, 0, 0, 0, 79.70, 32.97),
+    (78, 2, 0, 4, 2, 0, 0, 0, 0, 69.88, 12.99),
+    (81, 2, 0, 1, 2, 0, 0, 0, 0, 67.49, 6.75),
+    (70, 2, 4, 4, 2, 1, 0, 0, 0, 67.13, 26.71),
+    (72, 2, 0, 0, 0, 0, 0, 0, 0, 68.67, 6.87),
+    (64, 2, 5, 1, 1, 0, 0, 0, 0, 67.61, 27.76),
+    (80, 2, 0, 1, 1, 2, 0, 0, 13, 63.70, 42.37),
+    (77, 2, 0, 0, 2, 1, 0, 0, 15, 59.31, 46.93),
+    (82, 3, 5, 0, 2, 1, 0, 0, 0, 73.45, 23.34),
+    (93, 3, 0, 0, 2, 0, 0, 0, 0, 71.16, 5.12),
+    (90, 3, 3, 0, 0, 0, 0, 0, 0, 61.63, 18.16),
+    (95, 3, 1, 4, 2, 1, 0, 0, 0, 71.23, 15.12),
+    (88, 3, 2, 0, 1, 0, 0, 0, 0, 65.06, 13.51),
+    (91, 3, 1, 4, 2, 0, 0, 0, 0, 70.72, 17.07),
+    (98, 3, 0, 4, 3, 1, 0, 0, 0, 61.34, 9.13),
+    (84, 3, 6, 3, 0, 0, 0, 0, 0, 76.70, 37.67),
+    (92, 3, 2, 1, 3, 0, 0, 0, 0, 71.37, 14.14),
+    (83, 3, 7, 2, 3, 0, 0, 0, 0, 67.47, 35.75),
+    (85, 3, 7, 2, 2, 0, 0, 0, 0, 72.53, 37.25),
+    (96, 3, 0, 0, 0, 0, 0, 0, 0, 69.13, 6.91),
+    (97, 3, 0, 0, 2, 0, 0, 0, 10, 65.16, 34.52),
+    (121, 3, 1, 0, 2, 0, 0, 0, 0, 59.34, 7.93),
+    (118, 3, 9, 4, 0, 2, 0, 0, 0, 68.88, 46.89),
+    (107, 3, 4, 1, 0, 0, 0, 0, 0, 72.07, 25.21),
+    (120, 3, 1, 3, 1, 1, 0, 0, 0, 69.80, 13.98),
+    (110, 3, 1, 2, 3, 0, 0, 0, 0, 58.59, 10.86),
+    (103, 3, 6, 0, 0, 1, 0, 0, 0, 60.25, 28.02),
+    (119, 3, 0, 0, 0, 0, 0, 0, 0, 61.89, 6.19),
+    (108, 3, 4, 3, 1, 0, 0, 0, 0, 77.39, 28.74),
+    (125, 3, 1, 0, 3, 0, 0, 0, 0, 66.62, 7.66),
+    (113, 3, 0, 2, 3, 0, 0, 0, 0, 71.86, 8.19),
+    (109, 3, 1, 2, 3, 0, 0, 0, 0, 66.48, 11.65),
+    (124, 3, 0, 1, 3, 1, 0, 0, 10, 58.17, 32.82),
+    (123, 3, 0, 0, 3, 0, 0, 0, 13, 71.50, 43.15),
+    (131, 4, 5, 3, 2, 0, 0, 0, 0, 76.65, 31.66),
+    (143, 4, 1, 2, 2, 0, 0, 0, 0, 60.82, 12.08),
+    (142, 4, 2, 4, 0, 0, 0, 0, 0, 62.35, 22.23),
+    (146, 4, 0, 1, 3, 1, 0, 0, 0, 67.28, 3.73),
+    (137, 4, 2, 1, 3, 0, 0, 0, 0, 67.51, 13.75),
+    (145, 4, 1, 4, 1, 0, 0, 0, 0, 72.71, 18.27),
+    (133, 4, 1, 3, 0, 1, 0, 0, 0, 62.42, 14.24),
+    (136, 4, 3, 0, 0, 1, 0, 0, 0, 62.89, 16.29),
+    (132, 4, 4, 0, 1, 1, 0, 0, 0, 72.49, 20.25),
+    (139, 4, 3, 1, 3, 0, 0, 0, 0, 70.66, 18.07),
+    (135, 4, 7, 0, 3, 0, 0, 0, 0, 68.65, 31.87),
+    (147, 4, 0, 1, 2, 1, 0, 0, 10, 64.34, 34.43),
+    (144, 4, 0, 0, 1, 0, 0, 0, 13, 71.52, 45.15),
+    (153, 4, 1, 4, 0, 2, 0, 0, 0, 64.02, 14.40),
+    (156, 4, 4, 0, 2, 1, 0, 0, 0, 70.64, 19.06),
+    (154, 4, 5, 1, 3, 0, 0, 0, 0, 69.24, 25.92),
+    (162, 4, 0, 2, 3, 0, 0, 0, 0, 68.67, 7.87),
+    (165, 4, 0, 3, 3, 1, 0, 0, 0, 72.01, 8.20),
+    (163, 4, 2, 1, 3, 0, 0, 0, 0, 67.52, 13.75),
+    (160, 4, 2, 0, 1, 0, 0, 0, 0, 63.97, 13.40),
+    (152, 4, 1, 2, 0, 0, 0, 0, 0, 62.34, 14.23),
+    (161, 4, 3, 0, 3, 1, 0, 0, 0, 65.84, 13.58),
+    (157, 4, 2, 3, 0, 0, 0, 0, 0, 67.32, 20.73),
+    (151, 4, 11, 1, 1, 0, 0, 0, 0, 77.58, 52.76),
+    (169, 4, 0, 1, 3, 0, 0, 0, 9, 71.52, 33.15),
+    (184, 5, 1, 2, 2, 0, 0, 0, 0, 61.30, 12.13),
+    (178, 5, 2, 2, 2, 0, 0, 0, 0, 74.86, 17.49),
+    (182, 5, 1, 3, 0, 0, 0, 0, 0, 68.35, 16.84),
+    (176, 5, 3, 1, 3, 0, 0, 0, 0, 69.40, 17.94),
+    (173, 5, 4, 4, 3, 0, 0, 0, 0, 65.91, 27.59),
+    (175, 5, 3, 0, 0, 0, 0, 0, 0, 72.07, 19.21),
+    (179, 5, 1, 0, 2, 0, 0, 0, 0, 64.14, 8.41),
+    (181, 5, 1, 1, 3, 1, 0, 0, 0, 67.74, 7.77),
+    (171, 5, 4, 0, 0, 0, 0, 0, 0, 69.63, 22.96),
+    (170, 5, 12, 0, 3, 0, 0, 0, 0, 77.96, 52.80),
+    (189, 5, 0, 0, 1, 0, 0, 0, 0, 71.66, 6.17),
+    (180, 5, 0, 2, 3, 0, 0, 0, 0, 62.11, 7.21),
+    (187, 5, 0, 0, 1, 0, 0, 0, 16, 66.97, 53.70),
+    (185, 5, 0, 0, 2, 2, 0, 0, 14, 63.06, 42.31),
+    (205, 5, 1, 1, 3, 1, 0, 0, 0, 73.62, 8.36),
+    (207, 5, 1, 1, 0, 0, 0, 0, 0, 59.26, 11.93),
+    (206, 5, 0, 0, 2, 0, 0, 0, 0, 69.31, 4.93),
+    (203, 5, 2, 2, 2, 0, 0, 0, 0, 67.38, 16.74),
+    (204, 5, 0, 2, 0, 0, 0, 0, 0, 68.86, 10.89),
+    (191, 5, 6, 0, 1, 0, 0, 0, 0, 75.88, 30.59),
+    (201, 5, 4, 0, 0, 0, 0, 0, 0, 67.39, 22.74),
+    (211, 5, 0, 0, 0, 1, 0, 0, 0, 63.22, 4.32),
+    (192, 5, 9, 0, 2, 0, 0, 0, 0, 68.30, 40.83),
+    (195, 5, 4, 1, 3, 0, 0, 0, 0, 69.32, 21.93),
+    (197, 5, 1, 2, 2, 0, 0, 0, 0, 71.87, 13.19),
+    (196, 5, 3, 3, 2, 0, 0, 0, 0, 71.57, 23.16),
+    (212, 5, 1, 1, 2, 0, 0, 0, 16, 66.05, 58.60),
+    (209, 5, 0, 0, 1, 0, 0, 0, 7, 71.04, 27.10),
+    (227, 6, 1, 1, 3, 0, 0, 0, 0, 64.56, 9.46),
+    (217, 6, 4, 1, 3, 0, 0, 0, 0, 71.04, 22.10),
+    (216, 6, 3, 1, 3, 0, 0, 0, 0, 64.76, 17.48),
+    (225, 6, 0, 2, 2, 0, 0, 0, 0, 65.73, 8.57),
+    (229, 6, 0, 0, 0, 2, 0, 0, 0, 68.72, 2.87),
+    (220, 6, 1, 0, 3, 1, 0, 0, 0, 70.70, 6.07),
+    (219, 6, 4, 1, 2, 0, 0, 0, 0, 67.46, 22.75),
+    (213, 6, 4, 3, 2, 0, 0, 0, 0, 72.38, 27.24),
+    (224, 6, 1, 3, 2, 1, 0, 0, 0, 73.94, 13.39),
+    (214, 6, 3, 4, 3, 0, 0, 0, 0, 62.27, 23.23),
+    (221, 6, 4, 1, 1, 0, 0, 0, 0, 70.34, 24.03),
+    (228, 6, 0, 1, 1, 0, 0, 0, 0, 59.90, 6.99),
+    (226, 6, 0, 1, 2, 1, 0, 0, 0, 69.94, 4.99),
+    (218, 6, 4, 3, 0, 0, 0, 0, 0, 67.75, 28.77),
+    (247, 6, 1, 1, 1, 0, 0, 0, 0, 69.32, 11.93),
+    (248, 6, 2, 0, 3, 0, 0, 0, 0, 69.28, 11.93),
+    (235, 6, 6, 2, 2, 0, 0, 0, 0, 63.02, 32.30),
+    (250, 6, 2, 0, 0, 0, 0, 0, 0, 65.03, 14.50),
+    (246, 6, 2, 2, 1, 0, 0, 0, 0, 77.49, 18.75),
+    (241, 6, 2, 4, 2, 0, 0, 0, 0, 66.30, 20.63),
+    (237, 6, 4, 1, 2, 0, 0, 0, 0, 68.13, 22.81),
+    (238, 6, 2, 1, 2, 0, 0, 0, 0, 73.42, 15.34),
+    (254, 6, 1, 0, 0, 0, 0, 0, 0, 66.25, 10.62),
+    (253, 6, 0, 1, 1, 2, 0, 0, 0, 57.75, 2.78),
+    (255, 6, 1, 1, 1, 0, 0, 0, 0, 62.66, 11.27),
+    (233, 6, 5, 4, 3, 1, 0, 0, 0, 70.04, 30.00),
+    (256, 6, 0, 0, 0, 0, 0, 0, 11, 66.90, 39.69),
+    (252, 6, 0, 0, 1, 0, 0, 0, 13, 75.29, 45.53),
+    (263, 7, 3, 0, 2, 0, 0, 0, 0, 73.09, 17.31),
+    (273, 7, 1, 3, 1, 0, 0, 0, 0, 62.25, 15.22),
+    (267, 7, 2, 1, 0, 0, 0, 0, 0, 72.72, 17.27),
+    (270, 7, 0, 1, 1, 0, 0, 0, 0, 69.84, 7.98),
+    (257, 7, 4, 0, 3, 1, 0, 0, 0, 70.40, 18.04),
+    (266, 7, 1, 3, 2, 2, 0, 0, 0, 70.03, 11.00),
+    (265, 7, 3, 0, 0, 1, 0, 0, 0, 65.92, 16.59),
+    (258, 7, 1, 3, 2, 0, 0, 0, 0, 70.91, 15.09),
+    (269, 7, 1, 1, 1, 2, 0, 0, 0, 68.16, 7.82),
+    (259, 7, 6, 3, 1, 0, 0, 0, 0, 69.08, 35.91),
+    (260, 7, 5, 1, 3, 0, 0, 0, 0, 68.63, 25.86),
+    (268, 7, 0, 3, 1, 0, 0, 0, 0, 65.38, 11.54),
+    (274, 7, 0, 0, 2, 1, 0, 0, 16, 59.83, 49.98),
+    (282, 7, 4, 1, 1, 1, 0, 0, 0, 71.43, 22.14),
+    (279, 7, 1, 1, 3, 0, 0, 0, 0, 71.98, 10.20),
+    (291, 7, 0, 0, 0, 0, 0, 0, 0, 66.90, 6.69),
+    (288, 7, 0, 3, 0, 2, 0, 0, 0, 66.86, 8.69),
+    (280, 7, 0, 0, 1, 0, 0, 0, 0, 68.82, 5.88),
+    (284, 7, 0, 2, 2, 2, 0, 0, 0, 80.27, 6.03),
+    (276, 7, 7, 4, 2, 0, 0, 0, 0, 77.59, 41.76),
+    (275, 7, 6, 0, 3, 0, 0, 0, 0, 74.34, 28.43),
+    (286, 7, 2, 0, 3, 0, 0, 0, 0, 73.57, 12.36),
+    (283, 7, 0, 0, 0, 0, 0, 0, 0, 67.41, 6.74),
+    (277, 7, 6, 0, 3, 1, 0, 0, 0, 71.12, 26.11),
+    (289, 7, 0, 1, 3, 1, 0, 0, 13, 74.23, 43.42),
+    (290, 7, 0, 1, 1, 1, 0, 0, 16, 65.89, 53.59),
+    (293, 8, 2, 4, 3, 0, 0, 0, 0, 70.96, 20.10),
+    (307, 8, 2, 2, 2, 0, 0, 0, 0, 59.45, 15.95),
+    (306, 8, 2, 2, 3, 2, 0, 0, 0, 64.02, 11.40),
+    (308, 8, 1, 0, 1, 0, 0, 0, 0, 73.86, 10.39),
+    (302, 8, 3, 0, 2, 1, 0, 0, 0, 69.84, 14.98),
+    (312, 8, 1, 0, 2, 0, 0, 0, 0, 65.37, 8.54),
+    (299, 8, 5, 2, 3, 0, 0, 0, 0, 70.13, 28.01),
+    (295, 8, 3, 1, 1, 0, 0, 0, 0, 77.67, 20.77),
+    (301, 8, 0, 4, 0, 0, 0, 0, 0, 70.38, 15.04),
+    (305, 8, 0, 3, 1, 0, 0, 0, 0, 70.55, 12.05),
+    (292, 8, 10, 0, 1, 0, 0, 0, 0, 65.47, 45.55),
+    (300, 8, 1, 3, 3, 0, 0, 0, 0, 60.79, 13.08),
+    (294, 8, 3, 3, 0, 0, 0, 0, 0, 69.66, 24.97),
+    (297, 8, 2, 0, 3, 2, 0, 0, 0, 63.53, 7.35),
+    (315, 8, 5, 2, 2, 0, 0, 0, 0, 76.60, 29.66),
+    (323, 8, 2, 1, 3, 0, 0, 0, 0, 71.44, 14.14),
+    (314, 8, 3, 3, 3, 0, 0, 0, 0, 70.82, 22.08),
+    (313, 8, 5, 1, 1, 0, 0, 0, 0, 74.22, 28.42),
+    (317, 8, 4, 3, 2, 0, 0, 0, 0, 68.76, 26.88),
+    (331, 8, 1, 2, 1, 1, 0, 0, 0, 66.71, 11.67),
+    (326, 8, 3, 4, 1, 0, 0, 0, 0, 61.89, 25.19),
+    (320, 8, 2, 4, 1, 1, 0, 0, 0, 76.33, 20.63),
+    (318, 8, 3, 3, 0, 1, 0, 0, 0, 79.48, 23.95),
+    (319, 8, 2, 1, 2, 0, 0, 0, 0, 65.01, 14.50),
+    (327, 8, 0, 1, 3, 0, 0, 0, 9, 59.53, 31.95),
+    (328, 8, 0, 1, 1, 0, 0, 0, 7, 70.37, 29.04),
+    (329, 8, 0, 0, 0, 0, 0, 0, 7, 64.73, 27.47),
+    (332, 8, 0, 1, 0, 1, 0, 0, 10, 63.76, 36.38),
+    (336, 9, 6, 4, 0, 0, 0, 0, 0, 70.72, 39.07),
+    (335, 9, 2, 1, 1, 0, 0, 0, 0, 65.85, 15.58),
+    (340, 9, 3, 0, 1, 1, 0, 0, 0, 67.30, 15.73),
+    (343, 9, 4, 4, 2, 0, 0, 0, 0, 68.35, 28.84),
+    (334, 9, 4, 2, 3, 0, 0, 0, 0, 71.79, 24.18),
+    (338, 9, 6, 0, 0, 0, 0, 0, 0, 70.11, 31.01),
+    (351, 9, 0, 0, 0, 0, 0, 0, 0, 69.93, 6.99),
+    (353, 9, 1, 1, 0, 0, 0, 0, 0, 60.06, 12.01),
+    (341, 9, 4, 1, 2, 0, 0, 0, 0, 74.85, 23.48),
+    (339, 9, 2, 3, 0, 1, 0, 0, 0, 72.01, 19.20),
+    (345, 9, 1, 1, 2, 1, 0, 0, 0, 66.74, 8.67),
+    (337, 9, 1, 3, 2, 0, 0, 0, 0, 72.65, 15.27),
+    (344, 9, 0, 3, 0, 0, 0, 0, 0, 62.37, 12.24),
+    (354, 9, 9, 0, 1, 0, 0, 0, 0, 67.31, 41.73),
+    (357, 9, 0, 0, 2, 0, 0, 0, 0, 75.13, 5.51),
+    (355, 9, 2, 1, 1, 0, 0, 0, 0, 71.67, 16.17),
+    (363, 9, 5, 2, 1, 1, 0, 0, 0, 71.05, 28.11),
+    (368, 9, 0, 3, 0, 0, 0, 0, 0, 69.06, 12.91),
+    (365, 9, 3, 0, 1, 0, 0, 0, 0, 69.86, 17.99),
+    (361, 9, 1, 1, 2, 1, 0, 0, 0, 65.63, 8.56),
+    (358, 9, 3, 0, 2, 0, 0, 0, 0, 75.76, 17.58),
+    (367, 9, 0, 1, 0, 0, 0, 0, 0, 79.18, 9.92),
+    (369, 9, 1, 0, 2, 1, 0, 0, 0, 62.99, 6.30),
+    (356, 9, 2, 0, 1, 0, 0, 0, 0, 67.24, 13.72),
+    (370, 9, 0, 1, 0, 0, 0, 0, 7, 59.19, 28.92),
+    (31, 10, 1, 4, 3, 0, 0, 0, 0, 65.50, 15.55),
+    (30, 10, 0, 3, 2, 0, 0, 0, 0, 61.66, 10.17),
+    (21, 10, 8, 3, 0, 1, 0, 0, 0, 69.30, 42.93),
+    (33, 10, 0, 2, 1, 1, 0, 0, 0, 75.59, 8.56),
+    (24, 10, 1, 4, 2, 0, 0, 0, 0, 71.34, 17.13),
+    (32, 10, 1, 0, 3, 0, 0, 0, 0, 61.90, 7.19),
+    (23, 10, 10, 2, 3, 2, 0, 0, 0, 74.48, 44.45),
+    (22, 10, 6, 0, 3, 0, 0, 0, 0, 76.23, 28.62),
+    (29, 10, 2, 0, 2, 2, 0, 0, 0, 66.41, 8.64),
+    (37, 10, 2, 2, 1, 0, 0, 0, 0, 70.21, 18.02),
+    (36, 10, 0, 0, 2, 1, 0, 0, 13, 62.62, 41.26),
+    (38, 10, 0, 0, 2, 0, 0, 0, 10, 69.62, 34.96),
+    (50, 10, 3, 1, 1, 0, 0, 0, 0, 64.86, 19.49),
+    (61, 10, 1, 3, 3, 0, 0, 0, 0, 68.75, 13.88),
+    (42, 10, 9, 2, 0, 0, 0, 0, 0, 70.86, 47.09),
+    (60, 10, 1, 1, 3, 1, 0, 0, 0, 65.12, 7.51),
+    (49, 10, 5, 0, 2, 0, 0, 0, 0, 66.06, 24.61),
+    (46, 10, 3, 1, 3, 0, 0, 0, 0, 69.50, 17.95),
+    (54, 10, 3, 1, 1, 0, 0, 0, 0, 71.00, 20.10),
+    (56, 10, 1, 0, 0, 0, 0, 0, 0, 67.51, 10.75),
+    (51, 10, 2, 1, 3, 2, 0, 0, 0, 72.86, 10.29),
+    (53, 10, 5, 1, 3, 0, 0, 0, 0, 66.76, 25.68),
+    (62, 10, 0, 0, 0, 0, 0, 0, 16, 65.38, 54.54),
+    (58, 10, 0, 0, 3, 0, 0, 0, 13, 66.54, 42.65),
+    (67, 11, 2, 1, 0, 0, 0, 0, 0, 64.40, 16.44),
+    (64, 11, 5, 1, 0, 0, 0, 0, 0, 73.90, 29.39),
+    (76, 11, 1, 1, 0, 0, 0, 0, 0, 68.51, 12.85),
+    (81, 11, 2, 0, 0, 0, 0, 0, 0, 68.93, 14.89),
+    (71, 11, 0, 3, 2, 1, 0, 0, 0, 69.00, 8.90),
+    (66, 11, 2, 0, 0, 0, 0, 0, 0, 64.71, 14.47),
+    (79, 11, 1, 2, 1, 1, 0, 0, 0, 66.92, 11.69),
+    (72, 11, 1, 0, 2, 0, 0, 0, 0, 73.91, 9.39),
+    (63, 11, 3, 1, 1, 0, 0, 0, 0, 75.97, 20.60),
+    (69, 11, 4, 0, 2, 1, 0, 0, 0, 67.64, 18.76),
+    (73, 11, 2, 1, 3, 0, 0, 0, 0, 69.63, 13.96),
+    (75, 11, 1, 2, 2, 0, 0, 0, 0, 63.20, 12.32),
+    (78, 11, 1, 1, 0, 1, 0, 0, 0, 69.53, 10.95),
+    (77, 11, 0, 0, 2, 1, 0, 0, 11, 67.21, 35.72),
+    (90, 11, 0, 4, 0, 1, 0, 0, 0, 63.50, 12.35),
+    (89, 11, 3, 3, 0, 0, 0, 0, 0, 67.50, 24.75),
+    (92, 11, 1, 1, 0, 0, 0, 0, 0, 67.86, 12.79),
+    (85, 11, 2, 2, 3, 0, 0, 0, 0, 69.81, 15.98),
+    (96, 11, 2, 1, 3, 1, 0, 0, 0, 66.91, 11.69),
+    (86, 11, 1, 4, 0, 1, 0, 0, 0, 74.25, 17.43),
+    (84, 11, 7, 0, 2, 0, 0, 0, 0, 69.55, 32.95),
+    (98, 11, 1, 2, 3, 0, 0, 0, 0, 67.48, 11.75),
+    (82, 11, 6, 0, 1, 1, 0, 0, 0, 72.27, 28.23),
+    (91, 11, 3, 4, 0, 0, 0, 0, 0, 71.92, 27.19),
+    (99, 11, 0, 1, 2, 0, 0, 0, 14, 60.33, 48.03),
+    (97, 11, 0, 1, 2, 0, 0, 0, 7, 62.31, 27.23),
+    (103, 12, 5, 2, 2, 0, 0, 0, 0, 67.46, 28.75),
+    (121, 12, 2, 1, 0, 0, 0, 0, 0, 57.55, 15.75),
+    (120, 12, 0, 2, 0, 0, 0, 0, 0, 59.61, 9.96),
+    (102, 12, 5, 0, 0, 2, 0, 0, 0, 73.55, 23.36),
+    (106, 12, 4, 1, 0, 1, 0, 0, 0, 73.79, 23.38),
+    (108, 12, 4, 1, 3, 1, 0, 0, 0, 66.22, 19.62),
+    (101, 12, 4, 0, 0, 0, 0, 0, 0, 67.15, 22.71),
+    (115, 12, 0, 0, 2, 0, 0, 0, 0, 75.79, 5.58),
+    (114, 12, 0, 2, 2, 1, 0, 0, 0, 70.83, 7.08),
+    (104, 12, 2, 4, 2, 0, 0, 0, 0, 68.87, 20.89),
+    (107, 12, 3, 1, 2, 1, 0, 0, 0, 73.10, 17.31),
+    (124, 12, 0, 1, 0, 0, 1, 0, 16, 64.71, 51.47),
+    (123, 12, 0, 0, 0, 0, 0, 0, 9, 68.13, 33.81),
+    (141, 12, 2, 1, 2, 0, 0, 0, 0, 67.77, 14.78),
+    (146, 12, 0, 1, 2, 0, 0, 0, 0, 64.14, 6.41),
+    (134, 12, 1, 4, 1, 1, 0, 0, 0, 70.95, 16.09),
+    (131, 12, 2, 1, 2, 0, 0, 0, 0, 78.90, 15.89),
+    (139, 12, 0, 1, 1, 1, 0, 0, 0, 75.83, 6.58),
+    (129, 12, 1, 0, 2, 1, 0, 0, 0, 77.87, 7.79),
+    (130, 12, 3, 1, 2, 1, 0, 0, 0, 68.87, 16.89),
+    (132, 12, 8, 4, 0, 1, 0, 0, 0, 74.28, 45.43),
+    (143, 12, 3, 3, 3, 1, 0, 0, 0, 67.97, 19.80),
+    (142, 12, 1, 3, 1, 0, 0, 0, 0, 63.09, 15.31),
+    (149, 12, 0, 0, 0, 0, 0, 0, 0, 71.30, 7.13),
+    (135, 12, 9, 1, 2, 0, 0, 0, 0, 75.50, 43.55),
+    (136, 12, 2, 3, 0, 1, 0, 0, 0, 72.21, 19.22),
+    (147, 12, 0, 1, 3, 1, 0, 0, 12, 65.13, 39.51),
+    (151, 13, 5, 0, 2, 0, 0, 0, 0, 74.56, 25.46),
+    (162, 13, 1, 0, 2, 0, 0, 0, 0, 71.18, 9.12),
+    (163, 13, 0, 1, 1, 1, 0, 0, 0, 72.98, 6.30),
+    (152, 13, 7, 2, 1, 0, 0, 0, 0, 66.07, 37.61),
+    (159, 13, 0, 0, 0, 0, 0, 0, 0, 71.12, 7.11),
+    (164, 13, 1, 3, 3, 0, 0, 0, 0, 77.02, 14.70),
+    (156, 13, 6, 1, 2, 0, 0, 0, 0, 78.60, 31.86),
+    (153, 13, 1, 4, 1, 1, 0, 0, 0, 64.84, 15.48),
+    (155, 13, 4, 0, 0, 1, 0, 0, 0, 71.47, 21.15),
+    (157, 13, 4, 3, 0, 0, 0, 0, 0, 75.15, 29.52),
+    (160, 13, 1, 1, 3, 0, 0, 0, 0, 72.44, 10.24),
+    (169, 13, 0, 1, 1, 0, 0, 0, 15, 68.74, 52.87),
+    (166, 13, 0, 0, 2, 0, 0, 0, 9, 70.11, 32.01),
+    (182, 13, 1, 2, 2, 1, 0, 0, 0, 78.46, 11.85),
+    (189, 13, 0, 0, 2, 0, 0, 0, 0, 70.68, 5.07),
+    (171, 13, 3, 0, 0, 1, 0, 0, 0, 72.62, 17.26),
+    (184, 13, 1, 4, 1, 0, 0, 0, 0, 69.64, 17.96),
+    (180, 13, 0, 4, 2, 0, 0, 0, 0, 66.35, 12.63),
+    (181, 13, 0, 0, 0, 0, 0, 0, 0, 62.93, 6.29),
+    (188, 13, 0, 2, 2, 1, 0, 0, 0, 59.16, 5.92),
+    (179, 13, 1, 1, 3, 0, 0, 0, 0, 74.38, 10.44),
+    (178, 13, 3, 2, 1, 0, 0, 0, 0, 69.94, 21.99),
+    (175, 13, 0, 1, 1, 0, 0, 0, 0, 70.90, 8.09),
+    (173, 13, 6, 3, 1, 0, 0, 0, 0, 61.53, 35.15),
+    (170, 13, 12, 1, 2, 0, 0, 0, 0, 82.01, 56.20),
+    (185, 13, 0, 1, 3, 0, 0, 0, 16, 69.85, 53.98),
+    (183, 13, 0, 0, 3, 0, 0, 0, 11, 69.78, 36.98),
+    (200, 14, 3, 1, 2, 0, 0, 0, 0, 72.30, 19.23),
+    (201, 14, 2, 1, 3, 1, 0, 0, 0, 68.05, 11.80),
+    (197, 14, 1, 2, 2, 0, 0, 0, 0, 65.72, 12.57),
+    (208, 14, 0, 1, 0, 0, 0, 0, 0, 72.72, 9.27),
+    (203, 14, 3, 0, 2, 0, 0, 0, 0, 61.54, 16.15),
+    (202, 14, 1, 1, 3, 0, 0, 0, 0, 68.95, 9.89),
+    (192, 14, 5, 0, 1, 0, 0, 0, 0, 72.17, 26.22),
+    (196, 14, 3, 4, 0, 0, 0, 0, 0, 63.18, 26.32),
+    (206, 14, 1, 4, 1, 1, 0, 0, 0, 66.32, 15.63),
+    (193, 14, 3, 2, 0, 0, 0, 0, 0, 74.38, 23.44),
+    (198, 14, 4, 0, 1, 0, 0, 0, 0, 75.09, 22.51),
+    (199, 14, 1, 1, 1, 0, 0, 0, 0, 71.04, 12.10),
+    (209, 14, 1, 1, 1, 1, 0, 0, 16, 68.64, 57.86),
+    (212, 14, 0, 0, 3, 0, 0, 0, 12, 63.94, 39.39),
+    (220, 14, 5, 1, 1, 1, 0, 0, 0, 68.71, 25.87),
+    (213, 14, 4, 1, 0, 0, 0, 0, 0, 72.08, 25.21),
+    (224, 14, 3, 0, 0, 1, 0, 0, 0, 70.50, 17.05),
+    (217, 14, 5, 2, 3, 1, 0, 0, 0, 71.10, 26.11),
+    (215, 14, 7, 3, 2, 1, 0, 0, 0, 73.35, 37.34),
+    (225, 14, 1, 3, 1, 0, 0, 0, 0, 67.38, 15.74),
+    (229, 14, 1, 1, 2, 0, 0, 0, 0, 63.07, 10.31),
+    (228, 14, 2, 3, 2, 0, 0, 0, 0, 70.15, 19.02),
+    (221, 14, 2, 0, 0, 0, 0, 0, 0, 72.16, 15.22),
+    (218, 14, 2, 3, 3, 0, 0, 0, 0, 65.59, 17.56),
+    (226, 14, 1, 1, 0, 0, 0, 0, 0, 70.09, 13.01),
+    (227, 14, 0, 1, 1, 0, 0, 0, 0, 65.75, 7.58),
+    (230, 14, 0, 1, 3, 0, 0, 0, 7, 70.06, 27.01),
+    (243, 15, 3, 0, 3, 1, 0, 0, 0, 69.91, 13.99),
+    (235, 15, 4, 1, 0, 0, 0, 0, 0, 67.68, 24.77),
+    (244, 15, 1, 0, 3, 1, 0, 0, 0, 70.26, 6.03),
+    (254, 15, 1, 0, 1, 0, 0, 0, 0, 73.95, 10.39),
+    (240, 15, 2, 2, 1, 1, 0, 0, 0, 70.91, 16.09),
+    (237, 15, 4, 1, 2, 0, 0, 0, 0, 77.85, 23.79),
+    (255, 15, 1, 2, 0, 0, 0, 0, 0, 69.08, 14.91),
+    (253, 15, 0, 0, 3, 0, 1, 0, 0, 63.77, -1.62),
+    (247, 15, 0, 0, 0, 1, 0, 0, 0, 71.99, 5.20),
+    (249, 15, 0, 4, 3, 1, 0, 0, 0, 69.03, 9.90),
+    (234, 15, 9, 1, 3, 0, 0, 0, 0, 70.00, 42.00),
+    (250, 15, 4, 0, 0, 0, 0, 0, 0, 63.96, 22.40),
+    (256, 15, 0, 0, 1, 0, 0, 0, 12, 67.32, 41.73),
+    (269, 15, 0, 1, 1, 0, 0, 0, 0, 69.65, 7.97),
+    (265, 15, 2, 3, 2, 1, 0, 0, 0, 65.87, 16.59),
+    (257, 15, 3, 0, 1, 0, 0, 0, 0, 73.79, 18.38),
+    (262, 15, 4, 2, 3, 0, 0, 0, 0, 74.71, 24.47),
+    (259, 15, 10, 2, 1, 0, 0, 0, 0, 78.34, 50.83),
+    (263, 15, 2, 0, 2, 1, 0, 0, 0, 71.73, 11.17),
+    (268, 15, 1, 0, 3, 0, 0, 0, 0, 66.96, 7.70),
+    (260, 15, 1, 0, 2, 0, 0, 0, 0, 68.56, 8.86),
+    (273, 15, 0, 4, 0, 2, 0, 0, 0, 70.31, 11.03),
+    (270, 15, 0, 2, 2, 1, 0, 0, 0, 69.76, 6.98),
+    (271, 15, 0, 1, 3, 0, 0, 0, 14, 62.68, 47.27),
+    (274, 15, 0, 1, 0, 1, 0, 0, 9, 58.82, 32.88),
+    (272, 15, 0, 1, 1, 1, 0, 0, 8, 65.49, 29.55),
+    (279, 16, 4, 0, 0, 0, 0, 0, 0, 74.37, 23.44),
+    (287, 16, 0, 2, 3, 0, 0, 0, 0, 63.10, 7.31),
+    (286, 16, 0, 0, 3, 0, 0, 0, 0, 70.41, 4.04),
+    (283, 16, 2, 4, 2, 1, 0, 0, 0, 72.76, 19.28),
+    (281, 16, 2, 1, 2, 0, 0, 0, 0, 72.32, 15.23),
+    (288, 16, 0, 1, 2, 0, 0, 0, 0, 74.17, 7.42),
+    (278, 16, 1, 2, 3, 0, 0, 0, 0, 65.91, 11.59),
+    (276, 16, 4, 4, 3, 0, 0, 0, 0, 79.98, 29.00),
+    (275, 16, 4, 1, 3, 0, 0, 0, 0, 72.82, 22.28),
+    (291, 16, 2, 0, 1, 0, 0, 0, 0, 70.44, 14.04),
+    (284, 16, 0, 3, 3, 0, 0, 0, 0, 80.82, 11.08),
+    (277, 16, 4, 0, 3, 0, 0, 0, 0, 64.42, 19.44),
+    (285, 16, 2, 1, 2, 1, 0, 0, 0, 63.61, 12.36),
+    (289, 16, 0, 0, 3, 1, 0, 0, 14, 71.62, 44.16),
+    (299, 16, 6, 0, 3, 0, 0, 0, 0, 65.06, 27.51),
+    (307, 16, 0, 1, 0, 0, 0, 0, 0, 60.40, 8.04),
+    (297, 16, 3, 2, 0, 0, 0, 0, 0, 65.42, 22.54),
+    (292, 16, 3, 0, 1, 0, 0, 0, 0, 65.76, 17.58),
+    (304, 16, 1, 1, 1, 0, 0, 0, 0, 64.74, 11.47),
+    (308, 16, 0, 1, 3, 0, 0, 0, 0, 75.03, 6.50),
+    (302, 16, 2, 3, 0, 0, 0, 0, 0, 70.64, 21.06),
+    (293, 16, 0, 3, 0, 1, 0, 0, 0, 68.21, 10.82),
+    (306, 16, 3, 0, 1, 1, 0, 0, 0, 63.63, 15.36),
+    (294, 16, 3, 0, 1, 0, 0, 0, 0, 73.75, 18.38),
+    (300, 16, 2, 1, 2, 0, 0, 0, 0, 64.21, 14.42),
+    (298, 16, 5, 2, 0, 0, 0, 0, 0, 63.21, 30.32),
+    (310, 16, 0, 0, 0, 0, 0, 0, 15, 74.19, 52.42),
+    (325, 17, 2, 1, 3, 2, 0, 0, 0, 63.33, 9.33),
+    (317, 17, 9, 1, 0, 1, 0, 0, 0, 70.05, 43.01),
+    (313, 17, 6, 1, 1, 0, 0, 0, 0, 75.41, 32.54),
+    (331, 17, 1, 0, 2, 0, 0, 0, 0, 61.35, 8.13),
+    (321, 17, 0, 1, 3, 0, 0, 0, 0, 72.76, 6.28),
+    (326, 17, 0, 4, 3, 0, 0, 0, 0, 69.95, 12.00),
+    (319, 17, 4, 0, 0, 0, 0, 0, 0, 64.03, 22.40),
+    (323, 17, 0, 0, 1, 0, 0, 0, 0, 80.67, 7.07),
+    (315, 17, 4, 1, 0, 0, 0, 0, 0, 72.17, 25.22),
+    (318, 17, 2, 1, 2, 2, 0, 0, 0, 72.76, 11.28),
+    (322, 17, 3, 2, 0, 2, 0, 0, 0, 70.56, 19.06),
+    (332, 17, 0, 0, 2, 0, 0, 0, 13, 60.63, 43.06),
+    (328, 17, 0, 0, 0, 0, 0, 0, 12, 63.55, 42.35),
+    (344, 17, 4, 2, 1, 1, 0, 0, 0, 72.48, 24.25),
+    (337, 17, 2, 3, 2, 0, 0, 0, 0, 72.57, 19.26),
+    (340, 17, 3, 0, 2, 1, 0, 0, 0, 66.77, 14.68),
+    (347, 17, 1, 0, 1, 1, 0, 0, 0, 67.42, 7.74),
+    (345, 17, 1, 1, 1, 0, 0, 0, 0, 72.58, 12.26),
+    (350, 17, 1, 3, 3, 0, 0, 0, 0, 64.49, 13.45),
+    (351, 17, 0, 1, 0, 0, 0, 0, 0, 69.44, 8.94),
+    (333, 17, 4, 0, 1, 1, 0, 0, 0, 77.12, 20.71),
+    (339, 17, 4, 4, 1, 1, 0, 0, 0, 67.93, 27.79),
+    (349, 17, 2, 4, 1, 0, 0, 0, 0, 67.84, 21.78),
+    (346, 17, 3, 2, 3, 1, 0, 0, 0, 64.36, 17.44),
+    (353, 17, 0, 3, 3, 1, 0, 0, 0, 70.97, 8.10),
+    (348, 17, 1, 1, 0, 2, 0, 0, 15, 66.95, 53.70),
+    (359, 18, 8, 3, 1, 0, 0, 0, 0, 70.25, 44.02),
+    (364, 18, 2, 0, 2, 1, 0, 0, 0, 63.56, 10.36),
+    (365, 18, 1, 0, 3, 0, 1, 0, 0, 70.41, 3.04),
+    (363, 18, 2, 4, 1, 0, 0, 0, 0, 71.41, 22.14),
+    (368, 18, 0, 1, 3, 0, 0, 0, 0, 62.81, 5.28),
+    (361, 18, 5, 4, 2, 0, 0, 0, 0, 61.32, 32.13),
+    (357, 18, 2, 0, 3, 0, 0, 0, 0, 66.95, 11.70),
+    (356, 18, 4, 1, 2, 0, 0, 0, 0, 66.14, 22.61),
+    (360, 18, 2, 0, 0, 0, 0, 0, 0, 77.13, 15.71),
+    (354, 18, 2, 4, 1, 0, 0, 0, 0, 74.70, 22.47),
+    (369, 18, 2, 1, 2, 0, 0, 0, 0, 64.45, 14.45),
+    (370, 18, 0, 0, 0, 0, 0, 0, 14, 69.10, 48.91),
+    (6, 18, 4, 0, 0, 0, 0, 0, 0, 73.33, 23.33),
+    (16, 18, 2, 2, 2, 1, 0, 0, 0, 62.47, 14.25),
+    (13, 18, 1, 1, 1, 0, 0, 0, 0, 73.96, 12.40),
+    (5, 18, 1, 2, 0, 0, 0, 0, 0, 69.58, 14.96),
+    (18, 18, 2, 3, 0, 1, 0, 0, 0, 68.36, 18.84),
+    (9, 18, 0, 0, 1, 1, 0, 0, 0, 66.45, 3.65),
+    (7, 18, 6, 2, 0, 1, 0, 0, 0, 62.27, 32.23),
+    (8, 18, 3, 2, 0, 0, 0, 0, 0, 62.91, 22.29),
+    (2, 18, 5, 3, 0, 0, 0, 0, 0, 73.11, 33.31),
+    (3, 18, 5, 2, 0, 1, 0, 0, 0, 72.11, 29.21),
+    (10, 18, 0, 4, 2, 0, 0, 0, 0, 66.95, 12.70),
+    (1, 18, 3, 0, 2, 0, 0, 0, 0, 69.84, 16.98),
+    (14, 18, 1, 1, 0, 0, 0, 0, 8, 69.49, 36.95),
+    (17, 18, 0, 1, 2, 0, 0, 0, 15, 59.06, 50.91),
+    (7, 19, 3, 3, 3, 0, 0, 0, 0, 70.65, 22.07),
+    (18, 19, 0, 1, 0, 1, 0, 0, 0, 69.94, 6.99),
+    (4, 19, 1, 2, 0, 0, 0, 0, 0, 62.20, 14.22),
+    (8, 19, 2, 4, 0, 0, 0, 0, 0, 63.96, 22.40),
+    (9, 19, 1, 1, 0, 0, 0, 0, 0, 66.92, 12.69),
+    (15, 19, 1, 2, 3, 0, 0, 0, 0, 66.96, 11.70),
+    (12, 19, 1, 2, 3, 0, 0, 0, 0, 66.03, 11.60),
+    (10, 19, 3, 2, 0, 1, 0, 0, 0, 74.76, 21.48),
+    (2, 19, 5, 1, 2, 1, 0, 0, 0, 70.26, 25.03),
+    (6, 19, 2, 1, 2, 1, 0, 0, 0, 64.23, 12.42),
+    (5, 19, 6, 1, 0, 0, 0, 0, 0, 64.07, 32.41),
+    (16, 19, 0, 3, 0, 0, 0, 0, 0, 68.72, 12.87),
+    (50, 19, 3, 4, 0, 0, 0, 0, 0, 63.79, 26.38),
+    (53, 19, 2, 1, 1, 1, 0, 0, 0, 73.92, 14.39),
+    (45, 19, 6, 3, 3, 0, 0, 0, 0, 69.33, 33.93),
+    (56, 19, 0, 0, 0, 0, 0, 0, 0, 68.39, 6.84),
+    (51, 19, 0, 0, 0, 0, 0, 0, 0, 67.72, 6.77),
+    (47, 19, 2, 0, 0, 1, 0, 0, 0, 69.68, 12.97),
+    (43, 19, 11, 4, 2, 2, 0, 0, 0, 67.34, 52.73),
+    (61, 19, 1, 3, 1, 0, 0, 0, 0, 67.57, 15.76),
+    (49, 19, 2, 4, 2, 1, 0, 0, 0, 63.13, 18.31),
+    (55, 19, 1, 2, 3, 1, 0, 0, 0, 67.39, 9.74),
+    (58, 19, 1, 0, 1, 2, 0, 0, 13, 63.81, 44.38),
+    (62, 19, 0, 1, 0, 1, 0, 0, 12, 74.79, 43.48);
+
+INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES
+    (59, 19, 0, 0, 3, 0, 0, 0, 16, 69.74, 51.97),
+    (27, 20, 7, 1, 1, 0, 0, 0, 0, 71.43, 36.14),
+    (24, 20, 4, 4, 1, 0, 1, 0, 0, 66.82, 24.68),
+    (37, 20, 1, 2, 0, 1, 0, 0, 0, 73.45, 13.35),
+    (23, 20, 5, 3, 3, 1, 0, 0, 0, 68.73, 27.87),
+    (31, 20, 0, 0, 3, 1, 0, 0, 0, 64.42, 1.44),
+    (25, 20, 1, 1, 1, 0, 0, 0, 0, 75.24, 12.52),
+    (29, 20, 0, 1, 0, 0, 0, 0, 0, 67.76, 8.78),
+    (41, 20, 1, 4, 3, 1, 0, 0, 0, 65.67, 13.57),
+    (19, 20, 7, 0, 1, 2, 0, 0, 0, 76.72, 30.67),
+    (22, 20, 6, 2, 0, 0, 0, 0, 0, 72.39, 35.24),
+    (38, 20, 0, 1, 3, 0, 0, 0, 10, 61.45, 35.15),
+    (40, 20, 0, 0, 2, 0, 0, 0, 7, 65.36, 25.54),
+    (36, 20, 0, 0, 3, 0, 0, 0, 7, 70.92, 25.09),
+    (76, 20, 1, 4, 2, 0, 0, 0, 0, 64.51, 16.45),
+    (63, 20, 5, 1, 0, 0, 0, 0, 0, 70.78, 29.08),
+    (65, 20, 0, 4, 0, 0, 0, 0, 0, 65.52, 14.55),
+    (75, 20, 1, 4, 1, 0, 0, 0, 0, 69.52, 17.95),
+    (68, 20, 6, 0, 2, 0, 0, 0, 0, 75.72, 29.57),
+    (79, 20, 0, 1, 3, 0, 0, 0, 0, 62.49, 5.25),
+    (71, 20, 1, 3, 2, 0, 0, 0, 0, 66.46, 14.65),
+    (64, 20, 5, 0, 1, 1, 0, 0, 0, 66.16, 23.62),
+    (78, 20, 1, 1, 0, 1, 0, 0, 0, 73.22, 11.32),
+    (74, 20, 1, 1, 3, 0, 0, 0, 0, 69.24, 9.92),
+    (73, 20, 2, 0, 1, 0, 0, 0, 0, 71.57, 14.16),
+    (80, 20, 0, 0, 1, 0, 0, 0, 12, 65.50, 41.55),
+    (96, 21, 1, 4, 3, 0, 0, 0, 0, 75.41, 16.54),
+    (84, 21, 2, 1, 0, 0, 0, 0, 0, 72.96, 17.30),
+    (95, 21, 1, 0, 1, 1, 0, 0, 0, 69.16, 7.92),
+    (87, 21, 6, 1, 1, 0, 0, 0, 0, 70.50, 32.05),
+    (93, 21, 2, 0, 2, 2, 0, 0, 0, 64.19, 8.42),
+    (82, 21, 6, 1, 0, 0, 0, 0, 0, 71.92, 33.19),
+    (83, 21, 2, 1, 2, 0, 0, 0, 0, 71.20, 15.12),
+    (85, 21, 2, 0, 3, 1, 0, 0, 0, 69.52, 9.95),
+    (88, 21, 3, 1, 3, 0, 0, 0, 0, 63.08, 17.31),
+    (90, 21, 3, 2, 0, 1, 0, 0, 0, 64.64, 20.46),
+    (98, 21, 1, 1, 2, 0, 0, 0, 0, 65.67, 10.57),
+    (97, 21, 0, 1, 2, 0, 0, 0, 12, 73.28, 43.33),
+    (134, 21, 4, 3, 3, 0, 0, 0, 0, 66.81, 25.68),
+    (132, 21, 6, 4, 3, 0, 0, 0, 0, 66.70, 35.67),
+    (133, 21, 3, 4, 1, 0, 0, 0, 0, 63.25, 25.32),
+    (137, 21, 5, 1, 0, 0, 0, 0, 0, 69.64, 28.96),
+    (131, 21, 3, 0, 1, 0, 0, 0, 0, 79.31, 18.93),
+    (149, 21, 0, 2, 1, 1, 0, 0, 0, 75.59, 8.56),
+    (142, 21, 5, 2, 2, 0, 0, 0, 0, 60.10, 28.01),
+    (135, 21, 1, 1, 0, 1, 0, 0, 0, 69.74, 10.97),
+    (140, 21, 3, 3, 0, 1, 0, 0, 0, 75.41, 23.54),
+    (145, 21, 0, 2, 0, 0, 0, 0, 0, 73.80, 11.38),
+    (144, 21, 1, 1, 3, 1, 0, 0, 12, 67.91, 43.79),
+    (147, 21, 0, 0, 1, 1, 0, 0, 12, 68.86, 39.89),
+    (117, 22, 3, 3, 3, 1, 0, 0, 0, 64.20, 19.42),
+    (116, 22, 6, 0, 3, 1, 0, 0, 0, 78.83, 26.88),
+    (115, 22, 1, 4, 2, 0, 0, 0, 0, 76.08, 17.61),
+    (125, 22, 0, 1, 0, 0, 0, 0, 0, 68.42, 8.84),
+    (107, 22, 3, 1, 1, 0, 0, 0, 0, 73.14, 20.31),
+    (102, 22, 2, 1, 0, 0, 0, 0, 0, 71.74, 17.17),
+    (110, 22, 1, 0, 1, 0, 0, 0, 0, 66.20, 9.62),
+    (113, 22, 2, 4, 3, 0, 0, 0, 0, 64.88, 19.49),
+    (103, 22, 5, 1, 1, 0, 0, 0, 0, 67.62, 27.76),
+    (108, 22, 4, 1, 1, 0, 0, 0, 0, 71.21, 24.12),
+    (122, 22, 0, 3, 3, 0, 0, 0, 0, 66.62, 9.66),
+    (105, 22, 3, 4, 1, 2, 0, 0, 0, 64.51, 21.45),
+    (124, 22, 0, 1, 1, 0, 0, 0, 13, 69.91, 46.99),
+    (161, 22, 2, 1, 2, 1, 0, 0, 0, 64.04, 12.40),
+    (162, 22, 0, 1, 0, 0, 0, 0, 0, 67.04, 8.70),
+    (157, 22, 3, 1, 1, 0, 0, 0, 0, 75.91, 20.59),
+    (158, 22, 2, 3, 0, 1, 0, 0, 0, 66.06, 18.61),
+    (151, 22, 3, 0, 0, 0, 0, 0, 0, 71.99, 19.20),
+    (154, 22, 4, 0, 3, 1, 0, 0, 0, 65.41, 17.54),
+    (152, 22, 3, 2, 3, 1, 0, 0, 0, 69.17, 17.92),
+    (164, 22, 1, 2, 0, 0, 0, 0, 0, 72.12, 15.21),
+    (165, 22, 0, 4, 3, 0, 0, 0, 0, 72.71, 12.27),
+    (156, 22, 4, 1, 0, 0, 0, 0, 0, 78.43, 25.84),
+    (163, 22, 1, 0, 2, 0, 0, 0, 0, 63.67, 8.37),
+    (159, 22, 1, 0, 2, 0, 0, 0, 0, 75.19, 9.52),
+    (160, 22, 0, 2, 0, 1, 0, 0, 0, 69.15, 8.92),
+    (169, 22, 0, 1, 0, 0, 0, 0, 11, 65.63, 41.56),
+    (180, 23, 0, 0, 3, 0, 0, 0, 0, 65.05, 3.50),
+    (172, 23, 8, 1, 3, 0, 0, 0, 0, 70.12, 38.01),
+    (176, 23, 4, 3, 3, 0, 0, 0, 0, 63.14, 25.31),
+    (174, 23, 5, 0, 0, 1, 0, 0, 0, 78.51, 25.85),
+    (173, 23, 10, 1, 2, 0, 0, 0, 0, 63.06, 46.31),
+    (188, 23, 0, 2, 0, 0, 0, 0, 0, 67.49, 10.75),
+    (189, 23, 2, 0, 3, 0, 0, 0, 0, 70.90, 12.09),
+    (178, 23, 2, 1, 1, 0, 0, 0, 0, 67.68, 15.77),
+    (184, 23, 0, 3, 3, 0, 0, 0, 0, 62.32, 9.23),
+    (181, 23, 1, 1, 1, 1, 0, 0, 0, 61.19, 9.12),
+    (185, 23, 0, 1, 2, 1, 0, 0, 10, 66.91, 34.69),
+    (186, 23, 0, 0, 0, 0, 0, 0, 16, 61.99, 54.20),
+    (187, 23, 0, 0, 3, 0, 0, 0, 10, 66.82, 33.68),
+    (220, 23, 4, 0, 3, 0, 0, 0, 0, 68.84, 19.88),
+    (225, 23, 1, 3, 2, 1, 0, 0, 0, 68.85, 12.88),
+    (215, 23, 1, 2, 2, 1, 0, 0, 0, 69.27, 10.93),
+    (226, 23, 0, 1, 1, 0, 0, 0, 0, 71.07, 8.11),
+    (214, 23, 4, 4, 1, 0, 0, 0, 0, 69.53, 29.95),
+    (228, 23, 1, 4, 1, 2, 0, 0, 0, 65.62, 13.56),
+    (222, 23, 1, 4, 2, 0, 0, 0, 0, 66.93, 16.69),
+    (223, 23, 4, 4, 0, 0, 0, 0, 0, 68.31, 30.83),
+    (224, 23, 2, 1, 3, 0, 0, 0, 0, 68.05, 13.80),
+    (218, 23, 1, 0, 0, 0, 0, 0, 0, 71.73, 11.17),
+    (227, 23, 0, 0, 0, 0, 0, 0, 0, 67.45, 6.75),
+    (231, 23, 0, 4, 1, 0, 0, 0, 0, 66.06, 13.61),
+    (219, 23, 10, 0, 1, 0, 0, 0, 0, 68.96, 45.90),
+    (232, 23, 0, 1, 0, 1, 0, 0, 13, 69.07, 45.91),
+    (190, 24, 7, 4, 0, 0, 0, 0, 0, 72.31, 43.23),
+    (191, 24, 4, 1, 2, 1, 0, 0, 0, 70.36, 21.04),
+    (198, 24, 1, 4, 1, 0, 0, 0, 0, 80.79, 19.08),
+    (207, 24, 0, 2, 2, 0, 0, 0, 0, 59.13, 7.91),
+    (194, 24, 1, 0, 1, 0, 0, 0, 0, 65.59, 9.56),
+    (193, 24, 3, 1, 2, 0, 0, 0, 0, 64.75, 18.48),
+    (204, 24, 0, 3, 0, 0, 0, 0, 0, 73.68, 13.37),
+    (205, 24, 0, 3, 1, 0, 0, 0, 0, 68.28, 11.83),
+    (211, 24, 0, 1, 3, 1, 0, 0, 0, 60.11, 3.01),
+    (203, 24, 2, 4, 1, 0, 0, 0, 0, 66.78, 21.68),
+    (202, 24, 0, 3, 3, 1, 0, 0, 0, 61.10, 7.11),
+    (192, 24, 7, 0, 0, 2, 0, 0, 0, 71.71, 31.17),
+    (201, 24, 1, 0, 0, 2, 0, 0, 0, 69.53, 6.95),
+    (238, 24, 2, 4, 3, 1, 0, 0, 0, 64.37, 17.44),
+    (248, 24, 3, 1, 2, 0, 0, 0, 0, 72.31, 19.23),
+    (246, 24, 0, 3, 2, 0, 0, 0, 0, 66.84, 10.68),
+    (234, 24, 4, 1, 2, 1, 0, 0, 0, 70.27, 21.03),
+    (243, 24, 3, 0, 1, 0, 0, 0, 0, 70.76, 18.08),
+    (245, 24, 0, 0, 1, 0, 0, 0, 0, 69.09, 5.91),
+    (239, 24, 3, 2, 2, 1, 0, 0, 0, 69.20, 18.92),
+    (233, 24, 3, 4, 0, 0, 0, 0, 0, 72.67, 27.27),
+    (254, 24, 1, 0, 2, 1, 0, 0, 0, 68.23, 6.82),
+    (241, 24, 3, 4, 1, 2, 0, 0, 0, 72.45, 22.25),
+    (242, 24, 2, 1, 1, 0, 0, 0, 0, 65.95, 15.60),
+    (251, 24, 0, 0, 1, 0, 0, 0, 7, 71.21, 27.12),
+    (252, 24, 0, 1, 1, 1, 0, 0, 11, 72.55, 39.26),
+    (267, 25, 0, 0, 2, 0, 0, 0, 0, 68.61, 4.86),
+    (260, 25, 2, 0, 0, 0, 0, 0, 0, 67.71, 14.77),
+    (257, 25, 3, 1, 2, 0, 0, 0, 0, 78.40, 19.84),
+    (258, 25, 3, 2, 0, 1, 0, 0, 0, 79.95, 22.00),
+    (262, 25, 2, 4, 0, 0, 0, 0, 0, 75.43, 23.54),
+    (270, 25, 2, 2, 1, 1, 0, 0, 0, 63.19, 15.32),
+    (268, 25, 2, 1, 0, 0, 0, 0, 0, 69.95, 17.00),
+    (261, 25, 2, 1, 3, 0, 0, 0, 0, 75.73, 14.57),
+    (266, 25, 1, 0, 3, 0, 0, 0, 0, 75.19, 8.52),
+    (263, 25, 1, 1, 1, 0, 0, 0, 0, 75.80, 12.58),
+    (259, 25, 7, 0, 1, 1, 0, 0, 0, 70.60, 32.06),
+    (274, 25, 0, 1, 0, 0, 0, 0, 10, 63.32, 38.33),
+    (272, 25, 0, 0, 0, 0, 0, 0, 12, 65.22, 42.52),
+    (271, 25, 1, 0, 0, 0, 0, 0, 13, 65.33, 49.53),
+    (303, 25, 1, 3, 3, 0, 0, 0, 0, 71.09, 14.11),
+    (295, 25, 3, 1, 0, 0, 0, 0, 0, 77.39, 21.74),
+    (307, 25, 0, 0, 2, 2, 0, 0, 0, 59.38, -0.06),
+    (294, 25, 0, 3, 1, 0, 0, 0, 0, 62.33, 11.23),
+    (302, 25, 3, 4, 3, 0, 0, 0, 0, 70.70, 24.07),
+    (301, 25, 4, 4, 1, 1, 0, 0, 0, 72.31, 28.23),
+    (300, 25, 4, 3, 3, 0, 0, 0, 0, 66.40, 25.64),
+    (312, 25, 0, 0, 3, 0, 0, 0, 0, 68.09, 3.81),
+    (306, 25, 0, 3, 1, 0, 0, 0, 0, 72.53, 12.25),
+    (293, 25, 4, 1, 3, 1, 1, 0, 0, 69.51, 14.95),
+    (292, 25, 6, 0, 3, 1, 0, 0, 0, 66.14, 25.61),
+    (308, 25, 1, 1, 2, 2, 0, 0, 0, 70.24, 7.02),
+    (309, 25, 0, 0, 1, 1, 0, 0, 9, 63.97, 30.40),
+    (288, 26, 2, 4, 1, 2, 0, 0, 0, 69.92, 17.99),
+    (279, 26, 2, 3, 3, 1, 0, 0, 0, 69.19, 15.92),
+    (275, 26, 7, 0, 3, 2, 0, 0, 0, 68.44, 27.84),
+    (285, 26, 0, 4, 0, 0, 0, 0, 0, 70.97, 15.10),
+    (291, 26, 0, 1, 3, 0, 0, 0, 0, 62.35, 5.24),
+    (276, 26, 4, 4, 2, 0, 0, 0, 0, 84.20, 30.42),
+    (277, 26, 7, 1, 1, 0, 0, 0, 0, 68.78, 35.88),
+    (278, 26, 6, 2, 1, 0, 0, 0, 0, 72.85, 34.28),
+    (280, 26, 2, 3, 0, 1, 0, 0, 0, 65.28, 18.53),
+    (287, 26, 1, 2, 2, 0, 0, 0, 0, 72.29, 13.23),
+    (282, 26, 2, 1, 1, 0, 0, 0, 0, 71.36, 16.14),
+    (290, 26, 0, 1, 3, 0, 0, 0, 7, 76.15, 27.62),
+    (315, 26, 4, 2, 3, 0, 0, 0, 0, 72.71, 24.27),
+    (322, 26, 3, 4, 1, 0, 0, 0, 0, 74.31, 26.43),
+    (318, 26, 6, 3, 0, 1, 0, 0, 0, 74.49, 35.45),
+    (325, 26, 2, 0, 0, 1, 0, 0, 0, 70.89, 13.09),
+    (313, 26, 6, 0, 0, 1, 0, 0, 0, 73.40, 29.34),
+    (326, 26, 0, 0, 1, 0, 0, 0, 0, 70.36, 6.04),
+    (320, 26, 1, 0, 0, 1, 0, 0, 0, 69.39, 8.94),
+    (314, 26, 5, 1, 2, 0, 0, 0, 0, 66.63, 26.66),
+    (324, 26, 1, 0, 1, 1, 0, 0, 0, 62.54, 7.25),
+    (323, 26, 2, 1, 1, 0, 0, 0, 0, 71.32, 16.13),
+    (329, 26, 0, 1, 3, 0, 0, 0, 8, 61.26, 29.13),
+    (327, 26, 0, 1, 1, 0, 0, 0, 12, 60.97, 43.10),
+    (332, 26, 0, 0, 0, 0, 0, 0, 11, 66.71, 39.67),
+    (338, 27, 4, 4, 2, 0, 0, 0, 0, 72.03, 29.20),
+    (333, 27, 5, 1, 3, 0, 0, 0, 0, 76.57, 26.66),
+    (344, 27, 1, 0, 1, 0, 0, 0, 0, 69.67, 9.97),
+    (334, 27, 2, 3, 2, 0, 0, 0, 0, 70.04, 19.00),
+    (339, 27, 1, 4, 3, 0, 0, 0, 0, 71.43, 16.14),
+    (335, 27, 2, 4, 1, 0, 0, 0, 0, 66.55, 21.66),
+    (345, 27, 3, 1, 0, 0, 0, 0, 0, 69.72, 20.97),
+    (349, 27, 2, 1, 1, 0, 0, 0, 0, 68.02, 15.80),
+    (336, 27, 2, 3, 3, 1, 0, 0, 0, 68.19, 15.82),
+    (346, 27, 0, 3, 0, 0, 0, 0, 0, 68.88, 12.89),
+    (353, 27, 2, 2, 3, 1, 0, 0, 0, 65.85, 13.58),
+    (341, 27, 3, 3, 1, 0, 0, 0, 0, 64.58, 23.46),
+    (350, 27, 1, 1, 0, 1, 0, 0, 0, 70.24, 11.02),
+    (29, 27, 2, 2, 3, 0, 0, 0, 0, 72.65, 16.27),
+    (37, 27, 0, 2, 1, 2, 0, 0, 0, 76.13, 6.61),
+    (24, 27, 3, 1, 3, 0, 0, 0, 0, 73.93, 18.39),
+    (31, 27, 1, 2, 1, 0, 0, 0, 0, 71.20, 14.12),
+    (30, 27, 0, 0, 2, 0, 0, 0, 0, 66.35, 4.63),
+    (20, 27, 6, 2, 3, 1, 0, 0, 0, 70.63, 30.06),
+    (22, 27, 5, 3, 1, 0, 0, 0, 0, 81.70, 33.17),
+    (19, 27, 7, 1, 2, 0, 0, 0, 0, 76.77, 35.68),
+    (35, 27, 1, 1, 2, 0, 0, 0, 0, 68.00, 10.80),
+    (23, 27, 3, 2, 2, 1, 0, 0, 0, 76.14, 19.61),
+    (28, 27, 5, 1, 3, 0, 0, 0, 0, 75.20, 26.52),
+    (39, 27, 0, 0, 3, 0, 0, 0, 8, 66.58, 27.66),
+    (36, 27, 0, 1, 1, 0, 0, 0, 16, 63.04, 55.30),
+    (55, 28, 2, 3, 2, 0, 0, 0, 0, 61.19, 18.12),
+    (50, 28, 9, 4, 3, 2, 0, 0, 0, 63.18, 43.32),
+    (52, 28, 1, 1, 0, 0, 0, 0, 0, 66.71, 12.67),
+    (49, 28, 1, 4, 2, 1, 0, 0, 0, 59.87, 13.99),
+    (51, 28, 5, 0, 0, 1, 0, 0, 0, 74.43, 25.44),
+    (61, 28, 1, 0, 3, 1, 0, 0, 0, 62.64, 5.26),
+    (45, 28, 5, 2, 0, 1, 0, 0, 0, 71.17, 29.12),
+    (42, 28, 6, 3, 0, 1, 0, 0, 0, 69.97, 35.00),
+    (57, 28, 1, 4, 3, 0, 0, 0, 0, 69.17, 15.92),
+    (47, 28, 2, 1, 0, 0, 0, 0, 0, 65.55, 16.55),
+    (59, 28, 0, 0, 2, 1, 0, 0, 11, 64.08, 35.41),
+    (58, 28, 0, 1, 1, 2, 0, 0, 15, 63.29, 48.33),
+    (62, 28, 0, 0, 3, 0, 0, 0, 8, 71.16, 28.12),
+    (92, 28, 1, 1, 2, 0, 0, 0, 0, 76.48, 11.65),
+    (93, 28, 3, 0, 3, 1, 0, 0, 0, 67.13, 13.71),
+    (85, 28, 6, 0, 2, 2, 0, 0, 0, 72.04, 25.20),
+    (82, 28, 6, 1, 1, 0, 0, 0, 0, 77.47, 32.75),
+    (96, 28, 3, 0, 1, 1, 0, 0, 0, 67.03, 15.70),
+    (88, 28, 5, 1, 0, 1, 0, 0, 0, 66.38, 26.64),
+    (95, 28, 1, 1, 0, 0, 0, 0, 0, 63.01, 12.30),
+    (86, 28, 1, 2, 0, 0, 0, 0, 0, 66.97, 14.70),
+    (87, 28, 3, 0, 1, 0, 0, 0, 0, 70.10, 18.01),
+    (94, 28, 0, 1, 1, 1, 0, 0, 0, 77.62, 6.76),
+    (83, 28, 4, 4, 1, 0, 0, 0, 0, 67.96, 29.80),
+    (97, 28, 0, 0, 2, 0, 0, 0, 16, 64.92, 52.49),
+    (78, 29, 2, 2, 1, 0, 0, 0, 0, 71.47, 18.15),
+    (75, 29, 0, 3, 3, 0, 0, 0, 0, 71.86, 10.19),
+    (63, 29, 3, 1, 1, 0, 0, 0, 0, 76.12, 20.61),
+    (76, 29, 0, 3, 2, 0, 0, 0, 0, 70.00, 11.00),
+    (74, 29, 0, 0, 2, 0, 0, 0, 0, 62.80, 4.28),
+    (68, 29, 4, 1, 2, 1, 0, 0, 0, 73.86, 21.39),
+    (65, 29, 4, 4, 1, 1, 0, 0, 0, 71.25, 28.12),
+    (67, 29, 3, 1, 1, 0, 0, 0, 0, 70.60, 20.06),
+    (64, 29, 6, 2, 3, 0, 0, 0, 0, 65.86, 31.59),
+    (79, 29, 0, 1, 3, 0, 0, 0, 0, 68.37, 5.84),
+    (70, 29, 3, 4, 3, 0, 0, 0, 0, 70.16, 24.02),
+    (71, 29, 1, 2, 0, 0, 0, 0, 0, 61.38, 14.14),
+    (69, 29, 3, 3, 1, 0, 0, 0, 0, 67.01, 23.70),
+    (77, 29, 0, 1, 1, 0, 0, 0, 11, 69.58, 40.96),
+    (127, 29, 1, 4, 2, 1, 0, 0, 0, 74.73, 15.47),
+    (116, 29, 0, 2, 2, 0, 0, 0, 0, 70.75, 9.07),
+    (105, 29, 5, 1, 0, 1, 0, 0, 0, 66.41, 26.64),
+    (117, 29, 1, 2, 1, 0, 0, 0, 0, 60.64, 13.06),
+    (107, 29, 3, 1, 2, 0, 0, 0, 0, 64.71, 18.47),
+    (120, 29, 3, 2, 2, 1, 0, 0, 0, 68.62, 18.86),
+    (115, 29, 1, 3, 3, 0, 0, 0, 0, 65.29, 13.53),
+    (106, 29, 0, 0, 2, 0, 0, 0, 0, 68.45, 4.85),
+    (103, 29, 3, 2, 3, 0, 0, 0, 0, 60.56, 19.06),
+    (114, 29, 0, 2, 1, 0, 0, 0, 0, 67.39, 9.74),
+    (110, 29, 2, 2, 2, 0, 0, 0, 0, 59.95, 16.00),
+    (111, 29, 5, 1, 3, 0, 0, 0, 0, 63.96, 25.40),
+    (112, 29, 0, 0, 2, 0, 0, 0, 0, 73.07, 5.31),
+    (122, 29, 0, 3, 0, 0, 0, 0, 0, 63.49, 12.35),
+    (131, 30, 4, 3, 1, 0, 0, 0, 0, 70.81, 28.08),
+    (137, 30, 1, 1, 1, 1, 0, 0, 0, 62.33, 9.23),
+    (138, 30, 3, 4, 3, 1, 0, 0, 0, 67.60, 21.76),
+    (133, 30, 4, 1, 2, 1, 0, 0, 0, 72.90, 21.29),
+    (143, 30, 5, 2, 3, 0, 0, 0, 0, 59.03, 26.90),
+    (148, 30, 0, 0, 0, 1, 0, 0, 0, 69.13, 4.91),
+    (136, 30, 1, 2, 2, 0, 0, 0, 0, 67.44, 12.74),
+    (150, 30, 1, 1, 3, 0, 0, 0, 0, 70.13, 10.01),
+    (149, 30, 2, 0, 3, 0, 0, 0, 0, 71.18, 12.12),
+    (139, 30, 1, 0, 3, 1, 0, 0, 0, 81.27, 7.13),
+    (132, 30, 6, 4, 0, 0, 0, 0, 0, 67.86, 38.79),
+    (140, 30, 1, 0, 1, 0, 0, 0, 0, 72.38, 10.24),
+    (142, 30, 6, 1, 3, 0, 0, 0, 0, 62.87, 29.29),
+    (178, 30, 1, 4, 0, 0, 0, 0, 0, 71.52, 19.15),
+    (171, 30, 5, 3, 3, 0, 0, 0, 0, 75.59, 30.56),
+    (180, 30, 0, 0, 2, 0, 0, 0, 0, 65.76, 4.58),
+    (173, 30, 6, 4, 2, 0, 0, 0, 0, 63.65, 36.37),
+    (177, 30, 2, 4, 1, 1, 0, 0, 0, 73.37, 20.34),
+    (188, 30, 0, 0, 1, 1, 0, 0, 0, 60.19, 3.02),
+    (184, 30, 1, 2, 0, 0, 0, 0, 0, 69.19, 14.92),
+    (172, 30, 2, 0, 2, 1, 0, 0, 0, 80.70, 12.07),
+    (181, 30, 0, 1, 3, 0, 0, 0, 0, 62.74, 5.27),
+    (170, 30, 8, 0, 0, 2, 0, 0, 0, 80.46, 36.05),
+    (183, 30, 0, 0, 1, 0, 0, 0, 14, 73.62, 48.36),
+    (187, 30, 0, 0, 0, 0, 0, 0, 11, 69.50, 39.95),
+    (156, 31, 6, 1, 2, 0, 0, 0, 0, 78.31, 31.83),
+    (155, 31, 5, 0, 0, 0, 0, 0, 0, 70.08, 27.01),
+    (160, 31, 3, 2, 2, 1, 0, 0, 0, 64.81, 18.48),
+    (151, 31, 4, 2, 2, 0, 0, 0, 0, 69.39, 24.94),
+    (159, 31, 2, 1, 1, 0, 0, 0, 0, 72.57, 16.26),
+    (163, 31, 1, 0, 3, 0, 0, 0, 0, 66.61, 7.66),
+    (165, 31, 2, 0, 3, 1, 0, 0, 0, 66.97, 9.70),
+    (157, 31, 3, 2, 0, 0, 0, 0, 0, 68.31, 22.83),
+    (154, 31, 2, 0, 1, 0, 0, 0, 0, 73.33, 14.33),
+    (158, 31, 4, 0, 0, 0, 0, 0, 0, 69.73, 22.97),
+    (166, 31, 0, 1, 0, 0, 0, 0, 16, 69.06, 56.91),
+    (168, 31, 0, 1, 1, 0, 0, 0, 7, 62.70, 28.27),
+    (198, 31, 3, 4, 2, 0, 0, 0, 0, 77.51, 25.75),
+    (200, 31, 3, 1, 3, 1, 0, 0, 0, 65.16, 15.52),
+    (202, 31, 1, 1, 2, 1, 0, 0, 0, 64.57, 8.46),
+    (207, 31, 0, 4, 1, 1, 0, 0, 0, 68.49, 11.85),
+    (204, 31, 1, 2, 0, 0, 0, 0, 0, 70.30, 15.03),
+    (192, 31, 5, 1, 3, 0, 0, 0, 0, 65.67, 25.57),
+    (201, 31, 3, 0, 3, 0, 0, 0, 0, 72.94, 16.29),
+    (194, 31, 9, 0, 3, 0, 0, 0, 0, 70.61, 40.06),
+    (211, 31, 0, 0, 0, 0, 0, 0, 0, 60.99, 6.10),
+    (203, 31, 3, 2, 1, 0, 0, 0, 0, 71.35, 22.13),
+    (206, 31, 1, 2, 1, 0, 0, 0, 0, 66.91, 13.69),
+    (191, 31, 4, 0, 3, 1, 0, 0, 0, 74.81, 18.48),
+    (212, 31, 0, 1, 2, 1, 0, 0, 11, 64.25, 37.42),
+    (218, 32, 6, 1, 1, 0, 0, 0, 0, 73.26, 32.33),
+    (228, 32, 1, 1, 2, 0, 0, 0, 0, 70.01, 11.00),
+    (224, 32, 4, 1, 1, 2, 0, 0, 0, 75.69, 20.57),
+    (226, 32, 1, 1, 1, 0, 0, 0, 0, 73.66, 12.37),
+    (220, 32, 4, 1, 1, 0, 0, 0, 0, 67.66, 23.77),
+    (213, 32, 4, 4, 1, 1, 0, 0, 0, 67.74, 27.77),
+    (221, 32, 2, 1, 0, 0, 0, 0, 0, 69.46, 16.95),
+    (216, 32, 8, 4, 2, 0, 0, 0, 0, 73.42, 45.34),
+    (225, 32, 1, 2, 3, 0, 0, 0, 0, 70.13, 12.01),
+    (215, 32, 3, 1, 1, 0, 0, 0, 0, 65.01, 19.50),
+    (229, 32, 0, 1, 3, 0, 0, 0, 0, 71.92, 6.19),
+    (222, 32, 0, 2, 1, 0, 0, 0, 0, 68.85, 9.88),
+    (230, 32, 0, 0, 2, 1, 0, 0, 12, 74.46, 39.45),
+    (232, 32, 0, 1, 0, 1, 0, 0, 16, 62.79, 54.28),
+    (270, 32, 1, 4, 0, 0, 0, 0, 0, 62.89, 18.29),
+    (257, 32, 11, 0, 3, 2, 0, 0, 0, 74.91, 44.49),
+    (267, 32, 0, 0, 3, 0, 0, 0, 0, 68.01, 3.80),
+    (273, 32, 0, 1, 3, 0, 0, 0, 0, 69.49, 5.95),
+    (263, 32, 4, 0, 0, 1, 0, 0, 0, 70.86, 21.09),
+    (268, 32, 1, 2, 3, 0, 0, 0, 0, 71.81, 12.18),
+    (262, 32, 3, 2, 1, 1, 0, 0, 0, 84.10, 21.41),
+    (266, 32, 3, 4, 1, 0, 0, 0, 0, 66.30, 25.63),
+    (265, 32, 2, 0, 1, 0, 0, 0, 0, 66.93, 13.69),
+    (261, 32, 6, 3, 1, 0, 0, 0, 0, 70.34, 36.03),
+    (269, 32, 2, 1, 1, 0, 0, 0, 0, 65.01, 15.50),
+    (271, 32, 0, 0, 0, 0, 0, 0, 9, 64.65, 33.47),
+    (272, 32, 0, 0, 1, 1, 0, 0, 8, 62.08, 27.21),
+    (274, 32, 0, 0, 2, 0, 0, 0, 10, 68.99, 34.90),
+    (242, 33, 7, 0, 2, 0, 0, 0, 0, 74.80, 33.48),
+    (243, 33, 5, 3, 0, 0, 0, 0, 0, 62.91, 32.29),
+    (237, 33, 8, 1, 1, 1, 0, 0, 0, 75.15, 38.52),
+    (253, 33, 1, 0, 1, 2, 0, 0, 0, 68.88, 5.89),
+    (255, 33, 0, 1, 0, 0, 0, 0, 0, 63.76, 8.38),
+    (239, 33, 5, 3, 0, 0, 0, 0, 0, 71.11, 33.11),
+    (234, 33, 6, 1, 0, 1, 0, 0, 0, 74.83, 31.48),
+    (254, 33, 0, 1, 2, 0, 0, 0, 0, 67.92, 6.79),
+    (246, 33, 0, 0, 2, 0, 0, 0, 0, 73.00, 5.30),
+    (244, 33, 0, 0, 1, 0, 0, 0, 0, 73.74, 6.37),
+    (252, 33, 0, 1, 3, 0, 0, 0, 13, 64.91, 44.49),
+    (251, 33, 0, 1, 0, 1, 0, 0, 8, 69.29, 30.93),
+    (285, 33, 2, 3, 1, 0, 0, 0, 0, 71.65, 20.16),
+    (286, 33, 1, 1, 0, 0, 0, 0, 0, 67.36, 12.74),
+    (275, 33, 3, 1, 3, 1, 0, 0, 0, 72.22, 16.22),
+    (280, 33, 2, 4, 3, 0, 0, 0, 0, 69.25, 19.93),
+    (283, 33, 5, 0, 1, 0, 0, 0, 0, 73.95, 26.39),
+    (287, 33, 2, 0, 3, 1, 0, 0, 0, 72.02, 10.20),
+    (276, 33, 5, 1, 3, 1, 0, 0, 0, 80.65, 25.07),
+    (288, 33, 0, 0, 3, 0, 0, 0, 0, 69.34, 3.93),
+    (284, 33, 3, 0, 1, 1, 0, 0, 0, 78.00, 16.80),
+    (282, 33, 3, 3, 1, 0, 0, 0, 0, 66.00, 23.60),
+    (290, 33, 1, 0, 2, 0, 0, 0, 8, 65.35, 32.53),
+    (289, 33, 1, 0, 2, 0, 1, 0, 8, 65.67, 27.57),
+    (305, 34, 0, 4, 2, 0, 0, 0, 0, 75.38, 13.54),
+    (298, 34, 3, 3, 3, 0, 0, 0, 0, 59.39, 20.94),
+    (304, 34, 1, 0, 3, 0, 0, 0, 0, 74.02, 8.40),
+    (311, 34, 0, 2, 1, 0, 0, 0, 0, 68.01, 9.80),
+    (302, 34, 5, 3, 3, 0, 0, 0, 0, 70.67, 30.07),
+    (296, 34, 1, 0, 0, 0, 0, 0, 0, 71.13, 11.11),
+    (301, 34, 3, 2, 1, 1, 0, 0, 0, 68.78, 19.88),
+    (300, 34, 2, 4, 0, 1, 0, 0, 0, 66.79, 20.68),
+    (297, 34, 4, 0, 1, 1, 0, 0, 0, 66.26, 19.63),
+    (294, 34, 5, 1, 0, 0, 0, 0, 0, 72.57, 29.26),
+    (293, 34, 6, 1, 2, 0, 1, 0, 0, 71.49, 26.15),
+    (312, 34, 2, 0, 0, 0, 0, 0, 0, 60.51, 14.05),
+    (306, 34, 3, 1, 3, 1, 0, 0, 0, 64.06, 15.41),
+    (310, 34, 0, 0, 2, 0, 0, 0, 14, 73.97, 47.40),
+    (336, 34, 4, 4, 1, 0, 0, 0, 0, 71.31, 30.13),
+    (341, 34, 2, 2, 1, 2, 0, 0, 0, 65.62, 13.56),
+    (342, 34, 2, 2, 3, 2, 0, 0, 0, 67.95, 11.79),
+    (346, 34, 3, 3, 3, 0, 0, 0, 0, 68.88, 21.89),
+    (353, 34, 0, 1, 0, 1, 0, 0, 0, 62.10, 6.21),
+    (333, 34, 4, 0, 3, 0, 0, 0, 0, 78.19, 20.82),
+    (338, 34, 5, 1, 3, 0, 0, 0, 0, 68.77, 25.88),
+    (340, 34, 4, 0, 2, 0, 0, 0, 0, 71.22, 21.12),
+    (350, 34, 1, 3, 0, 0, 0, 0, 0, 70.73, 17.07),
+    (339, 34, 1, 1, 1, 0, 0, 0, 0, 68.45, 11.85),
+    (343, 34, 4, 3, 3, 0, 0, 0, 0, 69.46, 25.95),
+    (351, 34, 0, 1, 2, 0, 0, 0, 0, 69.10, 6.91),
+    (352, 34, 1, 1, 0, 1, 0, 0, 14, 77.66, 53.77),
+    (348, 34, 0, 1, 2, 0, 0, 0, 12, 68.95, 42.90),
+    (318, 35, 4, 4, 3, 0, 0, 0, 0, 72.02, 28.20),
+    (322, 35, 2, 2, 1, 1, 0, 0, 0, 73.13, 16.31),
+    (320, 35, 1, 1, 2, 0, 0, 0, 0, 73.74, 11.37),
+    (324, 35, 0, 2, 2, 0, 0, 0, 0, 64.91, 8.49),
+    (317, 35, 2, 0, 2, 0, 0, 0, 0, 69.28, 12.93),
+    (315, 35, 1, 4, 2, 1, 0, 0, 0, 77.42, 15.74),
+    (316, 35, 6, 0, 2, 0, 0, 0, 0, 69.13, 28.91),
+    (313, 35, 5, 0, 2, 0, 0, 0, 0, 70.38, 25.04),
+    (319, 35, 2, 3, 0, 1, 0, 0, 0, 64.08, 18.41),
+    (314, 35, 6, 2, 0, 0, 0, 0, 0, 70.01, 35.00),
+    (323, 35, 2, 1, 3, 1, 0, 0, 0, 73.99, 12.40),
+    (326, 35, 0, 3, 1, 0, 0, 0, 0, 65.79, 11.58),
+    (327, 35, 1, 1, 2, 0, 0, 0, 7, 55.55, 30.55),
+    (330, 35, 0, 1, 2, 0, 0, 0, 15, 68.43, 51.84),
+    (356, 35, 0, 1, 1, 1, 0, 0, 0, 71.81, 6.18),
+    (358, 35, 3, 1, 0, 0, 0, 0, 0, 75.37, 21.54),
+    (354, 35, 7, 4, 2, 0, 0, 0, 0, 74.85, 41.48),
+    (361, 35, 1, 3, 0, 0, 0, 0, 0, 72.66, 17.27),
+    (362, 35, 0, 3, 2, 0, 0, 0, 0, 63.48, 10.35),
+    (355, 35, 5, 1, 1, 0, 0, 0, 0, 65.74, 27.57),
+    (359, 35, 4, 1, 1, 0, 0, 0, 0, 68.76, 23.88),
+    (369, 35, 0, 1, 2, 0, 0, 0, 0, 66.95, 6.70),
+    (360, 35, 4, 3, 0, 0, 0, 0, 0, 67.78, 28.78),
+    (357, 35, 2, 1, 3, 1, 0, 0, 0, 73.09, 12.31),
+    (367, 35, 0, 2, 1, 0, 0, 0, 0, 74.08, 10.41),
+    (363, 35, 5, 0, 2, 0, 0, 0, 0, 68.03, 24.80),
+    (372, 35, 0, 0, 3, 0, 0, 0, 12, 62.17, 39.22),
+    (371, 35, 1, 0, 2, 0, 0, 0, 15, 65.83, 53.58),
+    (7, 36, 6, 3, 1, 1, 0, 0, 0, 66.54, 33.65),
+    (8, 36, 2, 0, 3, 0, 0, 0, 0, 71.65, 12.17),
+    (2, 36, 5, 2, 3, 0, 0, 0, 0, 63.63, 27.36),
+    (13, 36, 0, 2, 1, 0, 0, 0, 0, 73.01, 10.30),
+    (15, 36, 0, 1, 3, 0, 0, 0, 0, 68.47, 5.85),
+    (12, 36, 0, 0, 1, 0, 0, 0, 0, 67.17, 5.72),
+    (5, 36, 0, 4, 2, 1, 0, 0, 0, 62.95, 10.29),
+    (16, 36, 0, 1, 1, 0, 0, 0, 0, 63.04, 7.30),
+    (3, 36, 2, 3, 3, 1, 0, 0, 0, 65.55, 15.55),
+    (1, 36, 4, 0, 3, 1, 0, 0, 0, 72.92, 18.29),
+    (10, 36, 2, 0, 1, 0, 0, 0, 0, 66.93, 13.69),
+    (11, 36, 0, 1, 1, 0, 0, 0, 0, 71.17, 8.12),
+    (18, 36, 0, 0, 1, 1, 0, 0, 0, 63.68, 3.37),
+    (4, 36, 7, 3, 0, 0, 0, 0, 0, 67.88, 40.79),
+    (63, 36, 5, 1, 2, 0, 0, 0, 0, 76.46, 27.65),
+    (65, 36, 4, 2, 2, 1, 0, 0, 0, 68.43, 22.84),
+    (78, 36, 0, 4, 0, 0, 0, 0, 0, 68.18, 14.82),
+    (67, 36, 4, 4, 3, 1, 0, 0, 0, 61.04, 25.10),
+    (70, 36, 2, 1, 2, 0, 0, 0, 0, 68.89, 14.89),
+    (74, 36, 1, 0, 0, 0, 0, 0, 0, 63.08, 10.31),
+    (66, 36, 5, 2, 3, 0, 0, 0, 0, 65.41, 27.54),
+    (72, 36, 0, 1, 2, 0, 0, 0, 0, 77.62, 7.76),
+    (68, 36, 5, 0, 3, 0, 0, 0, 0, 67.96, 23.80),
+    (79, 36, 0, 2, 3, 0, 0, 0, 0, 71.84, 8.18),
+    (75, 36, 0, 1, 3, 2, 0, 0, 0, 64.34, 1.43),
+    (64, 36, 3, 0, 0, 1, 0, 0, 0, 64.19, 16.42),
+    (73, 36, 2, 1, 0, 0, 0, 0, 0, 69.95, 17.00),
+    (80, 36, 0, 1, 3, 0, 0, 0, 16, 67.68, 53.77),
+    (88, 37, 2, 1, 1, 0, 0, 0, 0, 71.47, 16.15),
+    (94, 37, 0, 3, 0, 0, 0, 0, 0, 76.26, 13.63),
+    (96, 37, 1, 0, 2, 2, 0, 0, 0, 69.35, 4.93),
+    (98, 37, 0, 1, 3, 1, 0, 0, 0, 64.50, 3.45),
+    (87, 37, 1, 1, 2, 2, 0, 0, 0, 64.28, 6.43),
+    (82, 37, 5, 1, 3, 0, 0, 0, 0, 74.21, 26.42),
+    (90, 37, 1, 3, 1, 0, 0, 0, 0, 69.05, 15.90),
+    (83, 37, 4, 1, 3, 0, 0, 0, 0, 72.53, 22.25),
+    (85, 37, 3, 3, 3, 0, 1, 0, 0, 77.16, 17.72),
+    (93, 37, 1, 1, 0, 0, 0, 0, 0, 71.20, 13.12),
+    (84, 37, 6, 4, 2, 1, 0, 0, 0, 69.99, 35.00),
+    (92, 37, 1, 1, 2, 1, 0, 0, 0, 68.47, 8.85),
+    (97, 37, 0, 0, 0, 0, 0, 0, 7, 67.60, 27.76),
+    (99, 37, 0, 0, 3, 0, 0, 0, 11, 63.68, 36.37),
+    (158, 37, 4, 4, 2, 1, 0, 0, 0, 65.94, 26.59),
+    (164, 37, 0, 4, 0, 0, 0, 0, 0, 67.11, 14.71),
+    (160, 37, 2, 0, 3, 0, 0, 0, 0, 69.54, 11.95),
+    (152, 37, 3, 3, 0, 1, 0, 0, 0, 71.26, 23.13),
+    (167, 37, 0, 3, 1, 1, 0, 0, 0, 66.34, 9.63),
+    (165, 37, 0, 3, 0, 0, 0, 0, 0, 71.41, 13.14),
+    (163, 37, 0, 1, 3, 0, 0, 0, 0, 62.49, 5.25),
+    (159, 37, 0, 0, 2, 0, 0, 0, 0, 66.31, 4.63),
+    (157, 37, 3, 4, 0, 0, 0, 0, 0, 73.86, 27.39),
+    (154, 37, 4, 1, 1, 0, 0, 0, 0, 76.76, 24.68),
+    (156, 37, 7, 0, 2, 1, 0, 0, 0, 67.96, 30.80),
+    (151, 37, 5, 2, 1, 0, 0, 0, 0, 66.72, 29.67),
+    (125, 38, 1, 1, 3, 0, 0, 0, 0, 70.81, 10.08),
+    (108, 38, 3, 2, 1, 0, 0, 0, 0, 75.73, 22.57),
+    (101, 38, 7, 0, 0, 1, 0, 0, 0, 70.98, 33.10),
+    (121, 38, 0, 1, 3, 0, 0, 0, 0, 67.44, 5.74),
+    (107, 38, 6, 0, 3, 0, 0, 0, 0, 74.30, 28.43),
+    (119, 38, 0, 2, 1, 0, 0, 0, 0, 63.82, 9.38),
+    (113, 38, 3, 0, 3, 1, 0, 0, 0, 64.88, 13.49),
+    (105, 38, 2, 4, 2, 1, 0, 0, 0, 69.16, 18.92),
+    (103, 38, 5, 1, 3, 0, 0, 0, 0, 63.40, 25.34),
+    (117, 38, 1, 1, 1, 0, 0, 0, 0, 65.53, 11.55),
+    (112, 38, 1, 1, 0, 2, 0, 0, 0, 69.75, 8.97),
+    (114, 38, 1, 0, 1, 0, 0, 0, 0, 65.47, 9.55),
+    (126, 38, 0, 1, 2, 1, 0, 0, 16, 58.27, 51.83),
+    (180, 38, 2, 4, 2, 0, 0, 0, 0, 61.75, 20.18),
+    (176, 38, 7, 1, 0, 0, 0, 0, 0, 71.61, 37.16),
+    (188, 38, 0, 3, 2, 1, 0, 0, 0, 59.88, 7.99),
+    (181, 38, 1, 1, 3, 0, 0, 0, 0, 63.32, 9.33),
+    (170, 38, 13, 1, 1, 1, 0, 0, 0, 81.79, 59.18),
+    (171, 38, 4, 2, 3, 1, 0, 0, 0, 75.40, 22.54),
+    (182, 38, 0, 1, 1, 0, 0, 0, 0, 77.15, 8.71),
+    (189, 38, 1, 0, 0, 0, 0, 0, 0, 73.63, 11.36),
+    (177, 38, 3, 3, 3, 0, 0, 0, 0, 71.53, 22.15),
+    (184, 38, 0, 3, 0, 0, 0, 0, 0, 70.08, 13.01),
+    (185, 38, 0, 1, 1, 0, 0, 0, 13, 63.22, 46.32),
+    (183, 38, 0, 0, 3, 0, 0, 0, 11, 64.15, 36.41),
+    (186, 38, 0, 1, 1, 0, 0, 0, 13, 60.24, 46.02),
+    (187, 38, 0, 1, 3, 1, 0, 0, 12, 58.45, 38.84);
+
+INSERT INTO participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos) VALUES
+    (131, 39, 3, 1, 1, 0, 0, 0, 0, 72.54, 20.25),
+    (146, 39, 2, 0, 3, 0, 0, 0, 0, 71.65, 12.17),
+    (135, 39, 3, 1, 1, 0, 0, 0, 0, 69.08, 19.91),
+    (138, 39, 3, 2, 0, 0, 0, 0, 0, 68.21, 22.82),
+    (143, 39, 3, 3, 0, 1, 0, 0, 0, 62.65, 22.27),
+    (145, 39, 1, 4, 3, 1, 0, 0, 0, 69.95, 14.00),
+    (150, 39, 0, 1, 0, 0, 0, 0, 0, 67.61, 8.76),
+    (137, 39, 1, 1, 2, 0, 0, 0, 0, 68.86, 10.89),
+    (129, 39, 4, 0, 2, 0, 0, 0, 0, 72.06, 21.21),
+    (148, 39, 1, 1, 2, 0, 0, 0, 0, 72.71, 11.27),
+    (130, 39, 5, 1, 3, 1, 0, 0, 0, 72.90, 24.29),
+    (144, 39, 0, 1, 2, 1, 0, 0, 10, 74.26, 35.43),
+    (190, 39, 3, 3, 3, 1, 0, 0, 0, 67.45, 19.75),
+    (193, 39, 4, 1, 2, 0, 0, 0, 0, 70.07, 23.01),
+    (197, 39, 1, 4, 1, 1, 0, 0, 0, 65.26, 15.53),
+    (196, 39, 4, 3, 2, 1, 0, 0, 0, 69.13, 24.91),
+    (206, 39, 1, 0, 2, 0, 0, 0, 0, 62.44, 8.24),
+    (199, 39, 2, 0, 0, 0, 0, 0, 0, 70.96, 15.10),
+    (192, 39, 7, 4, 0, 0, 0, 0, 0, 63.60, 42.36),
+    (202, 39, 0, 2, 1, 0, 0, 0, 0, 60.44, 9.04),
+    (207, 39, 0, 2, 2, 1, 0, 0, 0, 66.95, 6.70),
+    (203, 39, 0, 1, 2, 0, 0, 0, 0, 63.01, 6.30),
+    (191, 39, 5, 1, 1, 0, 0, 0, 0, 73.27, 28.33),
+    (212, 39, 0, 0, 3, 0, 0, 0, 13, 59.67, 41.97),
+    (209, 39, 0, 0, 1, 1, 0, 0, 12, 72.39, 40.24),
+    (220, 40, 1, 0, 3, 0, 0, 0, 0, 68.54, 7.85),
+    (229, 40, 1, 0, 3, 1, 0, 0, 0, 64.51, 5.45),
+    (227, 40, 2, 0, 0, 0, 0, 0, 0, 66.43, 14.64),
+    (223, 40, 4, 4, 0, 1, 0, 0, 0, 72.80, 29.28),
+    (225, 40, 4, 0, 2, 2, 0, 0, 0, 61.15, 16.12),
+    (231, 40, 2, 0, 0, 1, 0, 0, 0, 72.96, 13.30),
+    (214, 40, 4, 1, 3, 0, 0, 0, 0, 64.83, 21.48),
+    (218, 40, 8, 1, 1, 0, 0, 0, 0, 72.25, 40.23),
+    (228, 40, 0, 1, 1, 0, 0, 0, 0, 62.96, 7.30),
+    (224, 40, 0, 1, 0, 0, 0, 0, 0, 68.90, 8.89),
+    (213, 40, 5, 0, 1, 0, 0, 0, 0, 72.53, 26.25),
+    (226, 40, 0, 1, 3, 0, 0, 0, 0, 65.15, 5.52),
+    (230, 40, 0, 1, 2, 0, 0, 0, 11, 76.35, 40.63),
+    (277, 40, 2, 0, 0, 1, 0, 0, 0, 66.60, 12.66),
+    (286, 40, 0, 1, 0, 1, 0, 0, 0, 67.68, 6.77),
+    (280, 40, 6, 0, 1, 0, 0, 0, 0, 65.16, 29.52),
+    (284, 40, 1, 4, 0, 0, 0, 0, 0, 79.72, 19.97),
+    (283, 40, 2, 2, 1, 1, 0, 0, 0, 78.16, 16.82),
+    (285, 40, 2, 3, 3, 0, 0, 0, 0, 70.55, 18.05),
+    (279, 40, 3, 0, 3, 0, 0, 0, 0, 75.51, 16.55),
+    (282, 40, 0, 1, 1, 0, 0, 0, 0, 71.33, 8.13),
+    (281, 40, 3, 3, 0, 1, 0, 0, 0, 74.41, 23.44),
+    (291, 40, 0, 1, 0, 0, 0, 0, 0, 66.76, 8.68),
+    (276, 40, 4, 1, 2, 0, 0, 0, 0, 74.27, 23.43),
+    (275, 40, 2, 1, 3, 1, 0, 0, 0, 68.91, 11.89),
+    (278, 40, 4, 2, 3, 1, 0, 0, 0, 74.51, 22.45),
+    (290, 40, 0, 0, 3, 0, 0, 0, 13, 72.12, 43.21),
+    (237, 41, 5, 0, 3, 1, 0, 0, 0, 67.38, 21.74),
+    (250, 41, 2, 0, 3, 1, 0, 0, 0, 64.02, 9.40),
+    (242, 41, 1, 0, 0, 0, 0, 0, 0, 74.24, 11.42),
+    (241, 41, 5, 0, 1, 0, 0, 0, 0, 74.41, 26.44),
+    (238, 41, 4, 4, 3, 1, 0, 0, 0, 75.06, 26.51),
+    (254, 41, 1, 0, 2, 1, 0, 0, 0, 66.22, 6.62),
+    (246, 41, 0, 1, 3, 0, 0, 0, 0, 77.34, 6.73),
+    (233, 41, 10, 2, 3, 1, 0, 0, 0, 76.76, 46.68),
+    (234, 41, 5, 0, 3, 0, 0, 0, 0, 76.05, 24.61),
+    (253, 41, 1, 1, 1, 0, 0, 0, 0, 66.41, 11.64),
+    (247, 41, 0, 0, 2, 0, 0, 0, 0, 68.54, 4.85),
+    (252, 41, 1, 1, 3, 1, 0, 0, 12, 74.96, 44.50),
+    (251, 41, 0, 0, 3, 1, 0, 0, 10, 67.06, 31.71),
+    (256, 41, 0, 0, 0, 0, 0, 0, 9, 66.75, 33.67),
+    (294, 41, 4, 0, 2, 0, 0, 0, 0, 66.58, 20.66),
+    (299, 41, 2, 2, 3, 0, 0, 0, 0, 65.91, 15.59),
+    (296, 41, 3, 1, 2, 0, 0, 0, 0, 74.28, 19.43),
+    (295, 41, 5, 0, 0, 0, 0, 0, 0, 68.26, 26.83),
+    (293, 41, 8, 1, 3, 0, 0, 0, 0, 62.29, 37.23),
+    (311, 41, 1, 4, 2, 0, 0, 0, 0, 72.94, 17.29),
+    (312, 41, 0, 0, 0, 0, 0, 0, 0, 66.60, 6.66),
+    (303, 41, 1, 3, 1, 0, 0, 0, 0, 73.77, 16.38),
+    (292, 41, 1, 0, 2, 0, 0, 0, 0, 71.68, 9.17),
+    (305, 41, 0, 3, 0, 2, 0, 0, 0, 77.05, 9.71),
+    (304, 41, 2, 0, 2, 0, 0, 0, 0, 64.73, 12.47),
+    (310, 41, 0, 0, 1, 0, 0, 0, 16, 72.55, 54.26),
+    (258, 42, 7, 4, 3, 0, 0, 0, 0, 76.12, 40.61),
+    (264, 42, 4, 1, 0, 1, 1, 0, 0, 63.79, 17.38),
+    (270, 42, 1, 0, 3, 0, 0, 0, 0, 66.80, 7.68),
+    (262, 42, 5, 2, 1, 0, 0, 0, 0, 73.87, 30.39),
+    (261, 42, 4, 4, 3, 1, 0, 0, 0, 77.97, 26.80),
+    (266, 42, 2, 0, 3, 1, 0, 0, 0, 70.41, 10.04),
+    (268, 42, 0, 1, 3, 0, 0, 0, 0, 73.60, 6.36),
+    (265, 42, 1, 4, 1, 1, 0, 0, 0, 66.07, 15.61),
+    (267, 42, 0, 1, 2, 1, 0, 0, 0, 72.92, 5.29),
+    (269, 42, 1, 1, 1, 0, 0, 0, 0, 64.47, 11.45),
+    (257, 42, 8, 2, 1, 0, 0, 0, 0, 75.48, 42.55),
+    (271, 42, 0, 0, 3, 0, 0, 0, 14, 65.95, 45.59),
+    (272, 42, 0, 0, 1, 0, 0, 0, 9, 71.72, 33.17),
+    (323, 42, 4, 0, 0, 0, 0, 0, 0, 72.65, 23.27),
+    (325, 42, 0, 0, 0, 0, 0, 0, 0, 67.16, 6.72),
+    (324, 42, 1, 1, 0, 1, 0, 0, 0, 68.79, 10.88),
+    (317, 42, 4, 0, 1, 0, 0, 0, 0, 68.81, 21.88),
+    (316, 42, 7, 0, 1, 0, 0, 0, 0, 72.46, 34.25),
+    (331, 42, 0, 4, 1, 0, 0, 0, 0, 67.15, 13.71),
+    (319, 42, 5, 4, 1, 1, 0, 0, 0, 71.40, 32.14),
+    (326, 42, 0, 4, 0, 1, 0, 0, 0, 69.87, 12.99),
+    (314, 42, 5, 4, 3, 1, 0, 0, 0, 64.06, 29.41),
+    (328, 42, 0, 0, 1, 1, 0, 0, 7, 64.83, 24.48),
+    (329, 42, 0, 1, 2, 0, 0, 0, 13, 60.42, 45.04),
+    (332, 42, 0, 1, 1, 1, 0, 0, 15, 60.54, 50.05),
+    (330, 42, 0, 1, 1, 0, 0, 0, 14, 63.10, 49.31),
+    (342, 43, 0, 1, 3, 0, 0, 0, 0, 67.37, 5.74),
+    (335, 43, 5, 3, 3, 0, 0, 0, 0, 74.44, 30.44),
+    (350, 43, 1, 3, 3, 0, 0, 0, 0, 66.79, 13.68),
+    (351, 43, 1, 0, 3, 0, 0, 0, 0, 62.54, 7.25),
+    (345, 43, 3, 0, 1, 0, 0, 0, 0, 68.34, 17.83),
+    (344, 43, 3, 3, 0, 1, 0, 0, 0, 61.71, 22.17),
+    (349, 43, 1, 1, 2, 0, 0, 0, 0, 67.55, 10.75),
+    (353, 43, 0, 1, 3, 0, 0, 0, 0, 70.83, 6.08),
+    (337, 43, 6, 4, 0, 0, 0, 0, 0, 70.41, 39.04),
+    (334, 43, 7, 0, 1, 0, 0, 0, 0, 75.25, 34.52),
+    (333, 43, 6, 0, 1, 0, 0, 0, 0, 79.67, 30.97),
+    (352, 43, 0, 0, 2, 2, 0, 0, 8, 77.84, 25.78),
+    (16, 43, 1, 1, 2, 0, 0, 0, 0, 61.38, 10.14),
+    (4, 43, 5, 2, 1, 1, 0, 0, 0, 68.76, 27.88),
+    (7, 43, 4, 2, 0, 0, 0, 0, 0, 69.62, 26.96),
+    (2, 43, 4, 4, 1, 0, 0, 0, 0, 67.27, 29.73),
+    (8, 43, 3, 2, 2, 0, 0, 0, 0, 69.06, 20.91),
+    (12, 43, 0, 2, 3, 1, 0, 0, 0, 63.32, 5.33),
+    (6, 43, 2, 0, 1, 0, 0, 0, 0, 75.30, 14.53),
+    (13, 43, 1, 4, 2, 0, 0, 0, 0, 65.94, 16.59),
+    (11, 43, 3, 0, 2, 2, 0, 0, 0, 73.31, 13.33),
+    (1, 43, 5, 1, 3, 0, 0, 0, 0, 67.23, 25.72),
+    (10, 43, 2, 4, 2, 0, 0, 0, 0, 70.28, 21.03),
+    (15, 43, 0, 4, 1, 1, 0, 0, 0, 61.14, 11.11),
+    (17, 43, 1, 1, 2, 0, 0, 0, 8, 65.49, 34.55),
+    (14, 43, 0, 1, 1, 0, 0, 0, 7, 66.87, 28.69),
+    (359, 44, 7, 2, 0, 1, 0, 0, 0, 72.69, 37.27),
+    (354, 44, 3, 1, 1, 0, 0, 0, 0, 66.89, 19.69),
+    (358, 44, 3, 4, 0, 0, 0, 0, 0, 67.08, 26.71),
+    (357, 44, 2, 1, 2, 0, 0, 0, 0, 67.75, 14.78),
+    (363, 44, 1, 3, 1, 1, 0, 0, 0, 70.54, 14.05),
+    (362, 44, 0, 2, 1, 2, 0, 0, 0, 69.61, 5.96),
+    (360, 44, 1, 2, 2, 0, 0, 0, 0, 69.15, 12.92),
+    (367, 44, 1, 2, 1, 1, 0, 0, 0, 76.50, 12.65),
+    (365, 44, 3, 0, 3, 1, 0, 0, 0, 72.56, 14.26),
+    (368, 44, 2, 3, 1, 0, 0, 0, 0, 70.27, 20.03),
+    (361, 44, 2, 1, 2, 0, 0, 0, 0, 61.85, 14.19),
+    (371, 44, 0, 1, 1, 1, 0, 0, 16, 65.87, 53.59),
+    (22, 44, 4, 2, 2, 0, 0, 0, 0, 71.92, 25.19),
+    (20, 44, 2, 1, 2, 0, 0, 0, 0, 68.80, 14.88),
+    (24, 44, 4, 0, 1, 2, 0, 0, 0, 63.88, 17.39),
+    (33, 44, 0, 1, 3, 0, 0, 0, 0, 76.87, 6.69),
+    (21, 44, 4, 0, 0, 2, 0, 0, 0, 70.58, 19.06),
+    (35, 44, 3, 0, 0, 0, 0, 0, 0, 74.75, 19.48),
+    (23, 44, 5, 2, 0, 1, 0, 0, 0, 68.39, 28.84),
+    (25, 44, 6, 0, 1, 1, 0, 0, 0, 71.71, 28.17),
+    (31, 44, 1, 3, 1, 0, 0, 0, 0, 62.67, 15.27),
+    (27, 44, 3, 4, 2, 0, 0, 0, 0, 65.78, 24.58),
+    (38, 44, 0, 0, 0, 0, 0, 0, 13, 62.11, 45.21),
+    (36, 44, 0, 0, 1, 1, 0, 0, 10, 66.01, 33.60),
+    (48, 45, 2, 0, 0, 0, 0, 0, 0, 73.51, 15.35),
+    (44, 45, 11, 0, 0, 0, 0, 0, 0, 76.62, 51.66),
+    (57, 45, 2, 4, 0, 0, 0, 0, 0, 69.66, 22.97),
+    (53, 45, 5, 0, 1, 0, 0, 0, 0, 69.73, 25.97),
+    (51, 45, 1, 0, 1, 0, 0, 0, 0, 65.16, 9.52),
+    (50, 45, 3, 1, 2, 0, 0, 0, 0, 64.94, 18.49),
+    (54, 45, 3, 3, 0, 1, 0, 0, 0, 66.21, 22.62),
+    (49, 45, 3, 0, 1, 0, 0, 0, 0, 65.95, 17.59),
+    (52, 45, 3, 0, 3, 0, 0, 0, 0, 69.87, 15.99),
+    (61, 45, 0, 3, 2, 0, 0, 0, 0, 63.59, 10.36),
+    (59, 45, 0, 0, 1, 1, 0, 0, 16, 63.11, 51.31),
+    (62, 45, 1, 0, 2, 0, 0, 0, 12, 67.58, 44.76),
+    (58, 45, 0, 1, 3, 0, 0, 0, 9, 73.05, 33.30),
+    (133, 45, 6, 3, 3, 0, 0, 0, 0, 66.43, 33.64),
+    (129, 45, 7, 0, 2, 0, 0, 0, 0, 76.25, 33.62),
+    (135, 45, 4, 0, 1, 0, 0, 0, 0, 72.04, 22.20),
+    (142, 45, 2, 0, 0, 2, 0, 0, 0, 64.79, 10.48),
+    (136, 45, 2, 1, 1, 0, 0, 0, 0, 71.67, 16.17),
+    (149, 45, 0, 3, 2, 0, 0, 0, 0, 72.32, 11.23),
+    (138, 45, 1, 3, 2, 0, 0, 0, 0, 64.40, 14.44),
+    (140, 45, 2, 1, 2, 0, 0, 0, 0, 74.98, 15.50),
+    (150, 45, 1, 0, 3, 1, 0, 0, 0, 71.57, 6.16),
+    (148, 45, 0, 2, 3, 0, 0, 0, 0, 66.82, 7.68),
+    (139, 45, 5, 0, 0, 0, 0, 0, 0, 80.72, 28.07),
+    (144, 45, 0, 0, 0, 0, 0, 0, 7, 70.82, 28.08);
