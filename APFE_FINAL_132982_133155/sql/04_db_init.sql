@@ -47,25 +47,25 @@ INSERT INTO pavilhao (nome, capacidade, localidade) VALUES
     ('Buderus Arena Wetzlar', 4421, 'Wetzlar');
 
 INSERT INTO clube (nome, cidade, emblema) VALUES
-    ('ASV Hamm-Westfalen', 'Hamm', 'https://assets.handball.de/clubs/1.png'),
-    ('Füchse Berlin', 'Berlim', 'https://assets.handball.de/clubs/2.png'),
-    ('Bergischer HC', 'Solingen', 'https://assets.handball.de/clubs/3.png'),
-    ('FRISCH AUF! Göppingen', 'Göppingen', 'https://assets.handball.de/clubs/4.png'),
-    ('VfL Gummersbach', 'Gummersbach', 'https://assets.handball.de/clubs/5.png'),
-    ('GWD Minden', 'Minden', 'https://assets.handball.de/clubs/6.png'),
-    ('TSV Hannover-Burgdorf', 'Hannover', 'https://assets.handball.de/clubs/7.png'),
-    ('HC Erlangen', 'Erlangen', 'https://assets.handball.de/clubs/8.png'),
-    ('HSV Hamburg', 'Hamburgo', 'https://assets.handball.de/clubs/9.png'),
-    ('SC DHfK Leipzig', 'Leipzig', 'https://assets.handball.de/clubs/10.png'),
-    ('MT Melsungen', 'Melsungen', 'https://assets.handball.de/clubs/11.png'),
-    ('Rhein-Neckar Löwen', 'Mannheim', 'https://assets.handball.de/clubs/12.png'),
-    ('SC Magdeburg', 'Magdeburgo', 'https://assets.handball.de/clubs/13.png'),
-    ('SG Flensburg-Handewitt', 'Flensburgo', 'https://assets.handball.de/clubs/14.png'),
-    ('TVB Stuttgart', 'Estugarda', 'https://assets.handball.de/clubs/15.png'),
-    ('TBV Lemgo Lippe', 'Lemgo', 'https://assets.handball.de/clubs/16.png'),
-    ('THW Kiel', 'Kiel', 'https://assets.handball.de/clubs/17.png'),
-    ('HSG Wetzlar', 'Wetzlar', 'https://assets.handball.de/clubs/18.png');
-
+    ('ASV Hamm-Westfalen', 'Hamm', 'https://placehold.co/256x256/004080/FFFFFF/png?text=ASV+Hamm-Westfalen'),
+    ('Füchse Berlin', 'Berlim', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/eLs-jG7RXGMw-JsCy9i0Cw_256x256.png'),
+    ('Bergischer HC', 'Solingen', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/iVSjHQNQQbDnDmQLdCle4g_256x256.png'),
+    ('FRISCH AUF! Göppingen', 'Göppingen', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/0L-MnN5YYyP6oHFpeO4_EA_256x256.png'),
+    ('VfL Gummersbach', 'Gummersbach', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/0AR-xskQiOSMc3Fsllhg3Q_256x256.png'),
+    ('GWD Minden', 'Minden', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/HfZXw_3N5VzYJWI5t4EcjQ_256x256.png'),
+    ('TSV Hannover-Burgdorf', 'Hannover', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/1c27KcDgMBAWQJoDw574iQ_256x256.png'),
+    ('HC Erlangen', 'Erlangen', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/AJGnTZVcA1H3MWujgciITA_256x256.png'),
+    ('HSV Hamburg', 'Hamburgo', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/ZmYGI-qMawQ9yuXff_VzuA_256x256.png'),
+    ('SC DHfK Leipzig', 'Leipzig', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/ZJbB1-KSBhWi4qQUIurdwQ_256x256.png'),
+    ('MT Melsungen', 'Melsungen', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/PFfnWRmzAP3Q6U8gYciJ8w_256x256.png'),
+    ('Rhein-Neckar Löwen', 'Mannheim', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/ZJtm58URJViqJqTRHj4DbA_256x256.png'),
+    ('SC Magdeburg', 'Magdeburgo', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/K5s1QQ_LfWv6qOEgOW5s5w_256x256.png'),
+    ('SG Flensburg-Handewitt', 'Flensburgo', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/tlpT6LRHepzzQ095LqRoJg_256x256.png'),
+    ('TVB Stuttgart', 'Estugarda', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/sQ938lbtnIzivhrxHP10XA_256x256.png'),
+    ('TBV Lemgo Lippe', 'Lemgo', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/NBpOSNbIENkP3-XoiTpLXQ_256x256.png'),
+    ('THW Kiel', 'Kiel', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/Ls2xqOXU5KGTS9ViIdM20g_256x256.png'),
+    ('HSG Wetzlar', 'Wetzlar', 'https://ssl.gstatic.com/onebox/media/sports/logos/handball/optimized/WJeJhizbEZqVe4xp2iK_rw_256x256.png');
+    
 INSERT INTO utilizador (username, email, password_hash) VALUES
     ('admin', 'admin@fantasyhandball.pt', 'hash_admin_123'),
     ('joao_silva', 'joao.silva@gmail.com', 'hash_joao_456'),
