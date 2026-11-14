@@ -1,0 +1,167 @@
+{# Variáveis esperadas: jogo (dict), arbitros_jogo (list), stats_casa (list), stats_fora (list), jogadores_participantes (list) #}
+{% extends "base.html" %}
+{% set active_page = 'jogos' %}
+{% block title %}Ficha de Jogo — Handball Fantasy{% endblock %}
+
+{% block content %}
+<div style="margin-bottom: 0.85rem;">
+  <a href="/jogos" style="font-size: 0.85rem; color: var(--text-secondary);">&larr; Voltar ao Calendário</a>
+</div>
+
+<!-- PLACAR PRINCIPAL -->
+<section class="hero" style="padding: 1.75rem 2rem; text-align: center; justify-content: center;">
+  <div style="width: 100%;">
+    <span class="hero-badge">{{ jogo.nome_jornada if jogo else 'Jornada' }} &bull; {{ jogo.data_hora if jogo else '' }}</span>
+
+    <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; margin: 1rem 0; flex-wrap: wrap;">
+      <div style="flex: 1; text-align: right; min-width: 160px;">
+        <h2 style="font-size: 1.5rem; font-weight: 800;">{{ jogo.clube_casa if jogo else 'Equipa Casa' }}</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Visitado</span>
+      </div>
+
+      <div class="score-box tabular" style="font-size: 1.85rem; padding: 0.55rem 1.35rem;">
+        {% if jogo and jogo.golos_casa is not none and jogo.golos_fora is not none %}
+          {{ jogo.golos_casa }} - {{ jogo.golos_fora }}
+        {% else %}
+          0 - 0
+        {% endif %}
+      </div>
+
+      <div style="flex: 1; text-align: left; min-width: 160px;">
+        <h2 style="font-size: 1.5rem; font-weight: 800;">{{ jogo.clube_fora if jogo else 'Equipa Fora' }}</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted);">Visitante</span>
+      </div>
+    </div>
+
+    <div style="font-size: 0.85rem; color: var(--text-secondary);">
+      <strong>Pavilhão:</strong> {{ jogo.pavilhao if jogo and jogo.pavilhao else 'Não especificado' }}
+      &nbsp;|&nbsp;
+      <strong>Árbitros:</strong>
+      {% if arbitros_jogo %}
+        {% for a in arbitros_jogo %}{{ a.nome }}{% if not loop.last %}, {% endif %}{% endfor %}
+      {% else %}
+        Não atribuídos
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- DUAS TABELAS DE ESTATÍSTICAS (participa_jogo) -->
+<div class="grid-2" style="margin-bottom: 1.75rem;">
+  <!-- EQUIPA CASA -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{ jogo.clube_casa if jogo else 'Equipa Casa' }}</h3>
+      <span class="badge badge-blue">Estatísticas</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Jogador</th>
+            <th>Golos</th>
+            <th>Defesas</th>
+            <th>2 Min</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in stats_casa | default([]) %}
+            <tr>
+              <td><a href="/jogadores?ver={{ s.id_jogador }}" style="font-weight: 600;">{{ s.nome }}</a></td>
+              <td class="tabular">{{ s.golos or 0 }}</td>
+              <td class="tabular">{{ s.defesas or 0 }}</td>
+              <td class="tabular">{{ s.exclusoes or 0 }}</td>
+              <td class="tabular"><strong style="color: var(--green-accent);">{{ s.pontos or 0 }}</strong></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-secondary);">Sem estatísticas registadas.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- EQUIPA FORA -->
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">{{ jogo.clube_fora if jogo else 'Equipa Fora' }}</h3>
+      <span class="badge badge-cyan">Estatísticas</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Jogador</th>
+            <th>Golos</th>
+            <th>Defesas</th>
+            <th>2 Min</th>
+            <th>Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in stats_fora | default([]) %}
+            <tr>
+              <td><a href="/jogadores?ver={{ s.id_jogador }}" style="font-weight: 600;">{{ s.nome }}</a></td>
+              <td class="tabular">{{ s.golos or 0 }}</td>
+              <td class="tabular">{{ s.defesas or 0 }}</td>
+              <td class="tabular">{{ s.exclusoes or 0 }}</td>
+              <td class="tabular"><strong style="color: var(--green-accent);">{{ s.pontos or 0 }}</strong></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-secondary);">Sem estatísticas registadas.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULÁRIO: LANÇAR / ATUALIZAR ESTATÍSTICA DE JOGADOR (INSERT / UPDATE participa_jogo) -->
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Lançar / Atualizar Estatística de Jogador</h3>
+    <span class="badge badge-green">Alimenta Pontuação Fantasy</span>
+  </div>
+
+  <form action="/jogos/{{ jogo.id_jogo if jogo else 1 }}/estatisticas" method="POST">
+    <div style="display: grid; grid-template-columns: 2fr repeat(4, 1fr) auto; gap: 0.75rem; align-items: end;">
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Jogador *</label>
+        <select name="id_jogador" required>
+          <option value="">-- Selecionar Jogador --</option>
+          {% for jp in jogadores_participantes | default([]) %}
+            <option value="{{ jp.id_jogador }}">{{ jp.nome }} ({{ jp.clube }})</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Golos</label>
+        <input type="number" name="golos" value="0" min="0">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Defesas</label>
+        <input type="number" name="defesas" value="0" min="0">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Exclusões (2m)</label>
+        <input type="number" name="exclusoes" value="0" min="0" max="3">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label>Pts Fantasy</label>
+        <input type="number" name="pontos" value="0">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

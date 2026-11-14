@@ -1,0 +1,167 @@
+{# Variáveis esperadas: utilizador, minhas_ligas (list), jogos_jornada (list), stats_resumo (dict) #}
+{% extends "base.html" %}
+{% set active_page = 'inicio' %}
+{% block title %}Início — Handball Fantasy{% endblock %}
+
+{% block content %}
+
+{% if not utilizador %}
+  <!-- HERO PARA VISITANTES (Inspirado na estrutura limpa de plataformas Fantasy) -->
+  <section class="hero">
+    <div>
+      <span class="hero-badge">Temporada 2025/2026 &bull; Andebol</span>
+      <h1>Constrói o teu sete ideal e domina a liga.</h1>
+      <p>
+        Seleciona os melhores guarda-redes, pontas, laterais, centrais e pivôs da competição real.
+        Ganha pontos a cada golo, defesa e assistência em cada jornada.
+      </p>
+      <div class="hero-actions">
+        <a href="/login" class="btn btn-primary">Criar Conta / Iniciar Sessão</a>
+        <a href="/jogadores" class="btn btn-secondary">Explorar Jogadores</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid-cards" style="margin-bottom: 2rem;">
+    <div class="card">
+      <span class="badge badge-blue" style="margin-bottom: 0.6rem;">1. Plantel</span>
+      <h3 class="card-title" style="margin-bottom: 0.4rem;">Escolhe o teu Plantel</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Recruta atletas reais dos principais clubes e ajusta a tua convocatória antes de cada jornada.
+      </p>
+    </div>
+    <div class="card">
+      <span class="badge badge-cyan" style="margin-bottom: 0.6rem;">2. Ligas</span>
+      <h3 class="card-title" style="margin-bottom: 0.4rem;">Compete em Ligas</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Cria ligas privadas para desafiar colegas ou junta-te às ligas públicas da comunidade.
+      </p>
+    </div>
+    <div class="card">
+      <span class="badge badge-green" style="margin-bottom: 0.6rem;">3. Estatísticas Reais</span>
+      <h3 class="card-title" style="margin-bottom: 0.4rem;">Pontuação ao Vivo</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Os resultados e estatísticas oficiais de cada partida alimentam diretamente a tabela classificativa.
+      </p>
+    </div>
+  </div>
+
+{% else %}
+  <!-- DASHBOARD DO UTILIZADOR AUTENTICADO -->
+  <section class="hero" style="padding: 1.75rem 2rem;">
+    <div>
+      <span class="hero-badge">Painel do Treinador</span>
+      <h1 style="font-size: 1.65rem;">Bem-vindo, {{ utilizador.nome }}</h1>
+      <p>Gere os teus plantéis, acompanha as classificações das tuas ligas e analisa a jornada atual.</p>
+    </div>
+    <div class="hero-actions" style="margin-top: 0;">
+      <a href="/ligas" class="btn btn-primary">+ Criar / Entrar numa Liga</a>
+      <a href="/jogadores" class="btn btn-secondary">Mercado de Jogadores</a>
+    </div>
+  </section>
+
+  <!-- KPIs RÁPIDOS -->
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-label">Ligas Inscritas</div>
+      <div class="kpi-value blue tabular">{{ minhas_ligas | default([]) | length }}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Pontos Totais</div>
+      <div class="kpi-value green tabular">{{ stats_resumo.pontos_totais if stats_resumo else 0 }} pts</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Melhor Posição</div>
+      <div class="kpi-value tabular">{{ stats_resumo.melhor_rank if stats_resumo else '-' }}</div>
+    </div>
+  </div>
+{% endif %}
+
+<!-- GRELHA PRINCIPAL: LIGAS DO UTILIZADOR + JORNADA ATUAL -->
+<div class="grid-dashboard">
+  <!-- COLUNA ESQUERDA: AS MINHAS LIGAS -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">As Minhas Ligas Fantasy</h2>
+      <a href="/ligas" class="btn btn-secondary btn-sm">Ver Todas</a>
+    </div>
+
+    {% if utilizador and minhas_ligas %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Liga</th>
+              <th>Meu Plantel</th>
+              <th>Posição</th>
+              <th>Pontos</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for l in minhas_ligas %}
+              <tr>
+                <td><strong>{{ l.nome_liga }}</strong></td>
+                <td style="color: var(--text-secondary);">{{ l.nome_plantel }}</td>
+                <td class="tabular"><span class="badge badge-blue">#{{ l.posicao or '-' }}</span></td>
+                <td class="tabular"><strong>{{ l.pontos or 0 }}</strong> pts</td>
+                <td>
+                  <div style="display: flex; gap: 0.4rem;">
+                    <a href="/ligas/{{ l.id_liga }}" class="btn btn-secondary btn-sm">Classificação</a>
+                    <a href="/plantel/{{ l.id_plantel }}" class="btn btn-primary btn-sm">Plantel</a>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p style="color: var(--text-secondary); font-size: 0.92rem; padding: 1rem 0;">
+        {% if utilizador %}
+          Ainda não estás inscrito em nenhuma liga fantasy. Explora o catálogo de ligas para começar!
+        {% else %}
+          Inicia sessão para veres as tuas ligas fantasy e gerires a tua equipa.
+        {% endif %}
+      </p>
+      <a href="{{ '/ligas' if utilizador else '/login' }}" class="btn btn-primary btn-sm">
+        {{ 'Explorar Ligas' if utilizador else 'Entrar Agora' }}
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- COLUNA DIREITA: JOGOS DA JORNADA ATUAL -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Jornada Atual</h2>
+      <a href="/jogos" class="btn btn-secondary btn-sm">Calendário</a>
+    </div>
+
+    {% if jogos_jornada %}
+      {% for j in jogos_jornada %}
+        <a href="/jogos/{{ j.id_jogo }}" class="match-item" style="color: inherit;">
+          <div style="flex: 1;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">
+              {{ j.nome_jornada or 'Jornada' }} &bull; {{ j.data_hora }}
+            </div>
+            <div style="font-weight: 600; font-size: 0.92rem;">
+              {{ j.clube_casa }} <span style="color: var(--text-muted);">vs</span> {{ j.clube_fora }}
+            </div>
+          </div>
+          <div class="score-box tabular">
+            {% if j.golos_casa is not none and j.golos_fora is not none %}
+              {{ j.golos_casa }} - {{ j.golos_fora }}
+            {% else %}
+              VS
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p style="color: var(--text-secondary); font-size: 0.9rem;">
+        Sem jogos registados para a jornada atual. Consulta a secção <strong>Jogos</strong> para ver o calendário completo.
+      </p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

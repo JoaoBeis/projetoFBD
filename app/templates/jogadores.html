@@ -1,0 +1,272 @@
+{# Variáveis esperadas: jogadores (list[dict]), clubes (list), posicoes (list), paises (list), historico_jogos (list) #}
+{% extends "base.html" %}
+{% set active_page = 'jogadores' %}
+{% block title %}Jogadores — Handball Fantasy{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Catálogo de Jogadores</h1>
+    <p class="page-subtitle">Clica num atleta para abrir a ficha detalhada, editar dados ou consultar estatísticas.</p>
+  </div>
+  <button type="button" class="btn btn-primary" onclick="openModal('modal-novo-jogador')">
+    + Novo Jogador
+  </button>
+</div>
+
+<!-- BARRA DE FILTROS INSTANTÂNEOS -->
+<div class="filter-bar">
+  <input type="text" id="filter-search" placeholder="Pesquisar por nome do jogador...">
+
+  <select id="filter-club">
+    <option value="">Todos os Clubes</option>
+    {% for c in clubes | default([]) %}
+      <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+    {% endfor %}
+  </select>
+
+  <select id="filter-pos">
+    <option value="">Todas as Posições</option>
+    {% for pos in posicoes | default([]) %}
+      <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+    {% endfor %}
+  </select>
+
+  <select id="filter-country">
+    <option value="">Todas as Nacionalidades</option>
+    {% for p in paises | default([]) %}
+      <option value="{{ p.id_pais }}">{{ p.nome }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="button" class="btn btn-secondary btn-sm" onclick="resetFilters()">Limpar</button>
+</div>
+
+<!-- TABELA DE JOGADORES -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Jogador</th>
+        <th>Clube</th>
+        <th>Posição</th>
+        <th>Nacionalidade</th>
+        <th>Golos</th>
+        <th>Pts Fantasy</th>
+        <th>Ficha</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for j in jogadores | default([]) %}
+        <tr class="filterable-item clickable-row"
+            onclick="openPlayerDetailModal(this)"
+            data-name="{{ j.nome }}"
+            data-club="{{ j.id_clube }}"
+            data-pos="{{ j.id_posicao }}"
+            data-country="{{ j.id_pais }}"
+            data-player-id="{{ j.id_jogador }}"
+            data-player-nome="{{ j.nome }}"
+            data-player-clube-id="{{ j.id_clube }}"
+            data-player-clube="{{ j.clube }}"
+            data-player-pos-id="{{ j.id_posicao }}"
+            data-player-pos="{{ j.posicao }}"
+            data-player-pais-id="{{ j.id_pais }}"
+            data-player-camisola="{{ j.numero_camisola or '' }}"
+            data-player-golos="{{ j.total_golos or 0 }}"
+            data-player-pontos="{{ j.total_pontos or 0 }}">
+          <td class="tabular" style="color: var(--text-muted);">{{ j.numero_camisola or '-' }}</td>
+          <td><strong>{{ j.nome }}</strong></td>
+          <td>{{ j.clube }}</td>
+          <td><span class="badge badge-cyan">{{ j.posicao }}</span></td>
+          <td style="color: var(--text-secondary);">{{ j.pais or '-' }}</td>
+          <td class="tabular">{{ j.total_golos or 0 }}</td>
+          <td class="tabular"><strong style="color: var(--green-accent);">{{ j.total_pontos or 0 }}</strong></td>
+          <td>
+            <button type="button" class="btn btn-secondary btn-sm">Abrir</button>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+            Nenhum jogador encontrado na base de dados.
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- JANELA FLUTUANTE 1: REGISTAR NOVO JOGADOR (INSERT em pessoa + jogador) -->
+<div id="modal-novo-jogador" class="modal-backdrop">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="card-title">Registar Novo Jogador</h2>
+      <button type="button" class="modal-close" onclick="closeModal('modal-novo-jogador')">&times;</button>
+    </div>
+
+    <form action="/jogadores/criar" method="POST">
+      <div class="form-group">
+        <label for="novo-nome">Nome Completo *</label>
+        <input type="text" id="novo-nome" name="nome" required placeholder="ex: Mathias Gidsel">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="novo-nasc">Data de Nascimento</label>
+          <input type="date" id="novo-nasc" name="data_nascimento">
+        </div>
+
+        <div class="form-group">
+          <label for="novo-camisola">Nº Camisola</label>
+          <input type="number" id="novo-camisola" name="numero_camisola" min="1" max="99" placeholder="ex: 19">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="novo-clube">Clube *</label>
+          <select id="novo-clube" name="id_clube" required>
+            <option value="">-- Selecionar Clube --</option>
+            {% for c in clubes | default([]) %}
+              <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="novo-pos">Posição *</label>
+          <select id="novo-pos" name="id_posicao" required>
+            <option value="">-- Selecionar Posição --</option>
+            {% for pos in posicoes | default([]) %}
+              <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="novo-pais">Nacionalidade</label>
+        <select id="novo-pais" name="id_pais">
+          <option value="">-- Selecionar País --</option>
+          {% for p in paises | default([]) %}
+            <option value="{{ p.id_pais }}">{{ p.nome }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.65rem; margin-top: 1.25rem;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-novo-jogador')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Jogador</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- JANELA FLUTUANTE 2: FICHA DO JOGADOR (UPDATE + DELETE + HISTÓRICO participa_jogo) -->
+<div id="modal-detalhe-jogador" class="modal-backdrop">
+  <div class="modal-box" style="max-width: 720px;">
+    <div class="modal-header">
+      <div>
+        <h2 class="card-title" id="detail-player-name">Ficha do Jogador</h2>
+        <p id="detail-player-meta" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.15rem;"></p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span class="badge badge-green tabular" id="detail-player-stats">0 Golos | 0 Pts</span>
+        <button type="button" class="modal-close" onclick="closeModal('modal-detalhe-jogador')">&times;</button>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO DE EDIÇÃO (UPDATE) -->
+    <form id="form-edit-player" action="" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome do Jogador</label>
+          <input type="text" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label>Nº Camisola</label>
+          <input type="number" name="numero_camisola" min="1" max="99">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Clube Atual</label>
+          <select name="id_clube" required>
+            {% for c in clubes | default([]) %}
+              <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Posição</label>
+          <select name="id_posicao" required>
+            {% for pos in posicoes | default([]) %}
+              <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nacionalidade</label>
+        <select name="id_pais">
+          <option value="">-- Sem país associado --</option>
+          {% for p in paises | default([]) %}
+            <option value="{{ p.id_pais }}">{{ p.nome }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-color);">
+        <button type="submit" class="btn btn-primary">Guardar Alterações</button>
+      </div>
+    </form>
+
+    <!-- BOTÃO DE ELIMINAÇÃO (DELETE) -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0 1.25rem;">
+      <span style="font-size: 0.82rem; color: var(--text-muted);">Remover este atleta permanentemente da base de dados:</span>
+      <form id="form-delete-player" action="" method="POST" onsubmit="return confirm('Tens a certeza que queres eliminar este jogador?');">
+        <button type="submit" class="btn btn-danger btn-sm">Eliminar Jogador</button>
+      </form>
+    </div>
+
+    <!-- HISTÓRICO DE PARTIDAS DO ATLETA (participa_jogo) -->
+    <h3 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.65rem;">Histórico de Partidas</h3>
+    <div class="table-wrap" style="max-height: 220px; overflow-y: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Jogo</th>
+            <th>Golos</th>
+            <th>Defesas</th>
+            <th>2 Min</th>
+            <th>Pts Fantasy</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for h in historico_jogos | default([]) %}
+            <tr class="player-history-row" data-history-player-id="{{ h.id_jogador }}">
+              <td>
+                <a href="/jogos/{{ h.id_jogo }}">{{ h.descricao_jogo }}</a>
+              </td>
+              <td class="tabular">{{ h.golos or 0 }}</td>
+              <td class="tabular">{{ h.defesas or 0 }}</td>
+              <td class="tabular">{{ h.exclusoes or 0 }}</td>
+              <td class="tabular"><strong style="color: var(--green-accent);">{{ h.pontos or 0 }}</strong></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-secondary);">
+                Sem registos de participação em jogos.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

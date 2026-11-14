@@ -1,0 +1,87 @@
+{# Variáveis esperadas: liga (dict), classificacao (list[dict]), jornadas (list[dict]), jornada_selecionada, meu_plantel_id #}
+{% extends "base.html" %}
+{% set active_page = 'ligas' %}
+{% block title %}{{ liga.nome if liga else 'Detalhe da Liga' }} — Handball Fantasy{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <div style="margin-bottom: 0.35rem;">
+      <a href="/ligas" style="font-size: 0.85rem; color: var(--text-secondary);">&larr; Voltar às Ligas</a>
+    </div>
+    <h1 class="page-title">{{ liga.nome if liga else 'Liga Fantasy' }}</h1>
+    <p class="page-subtitle">{{ liga.descricao if liga and liga.descricao else 'Tabela classificativa geral e por jornada.' }}</p>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+    <!-- SELETOR DE JORNADA -->
+    <form method="GET" action="/ligas/{{ liga.id_liga if liga else 1 }}" style="display: flex; gap: 0.4rem;">
+      <select name="jornada" onchange="this.form.submit()">
+        <option value="">Classificação Geral</option>
+        {% for j in jornadas | default([]) %}
+          <option value="{{ j.id_jornada }}" {% if jornada_selecionada == j.id_jornada %}selected{% endif %}>
+            {{ j.nome }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+
+    {% if meu_plantel_id %}
+      <a href="/plantel/{{ meu_plantel_id }}" class="btn btn-primary">Gerir o Meu Plantel</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- TABELA DE CLASSIFICAÇÃO (LEADERBOARD) -->
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title">Classificação dos Participantes</h2>
+    <span class="badge badge-cyan tabular">{{ classificacao | default([]) | length }} Equipas</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 70px;">Pos.</th>
+          <th>Treinador</th>
+          <th>Plantel (Clicar para observar)</th>
+          <th>Pontos Jornada</th>
+          <th>Pontos Totais</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in classificacao | default([]) %}
+          <tr>
+            <td class="tabular">
+              {% if loop.index == 1 %}
+                <span class="badge badge-amber">#1</span>
+              {% elif loop.index == 2 %}
+                <span class="badge badge-cyan">#2</span>
+              {% elif loop.index == 3 %}
+                <span class="badge badge-blue">#3</span>
+              {% else %}
+                <strong>#{{ loop.index }}</strong>
+              {% endif %}
+            </td>
+            <td><strong>{{ item.nome_utilizador }}</strong></td>
+            <td>
+              <a href="/plantel/{{ item.id_plantel }}" style="font-weight: 600;">
+                {{ item.nome_plantel }}
+              </a>
+            </td>
+            <td class="tabular" style="color: var(--text-secondary);">{{ item.pontos_jornada or 0 }} pts</td>
+            <td class="tabular"><strong style="color: var(--green-accent);">{{ item.pontos_totais or 0 }} pts</strong></td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+              Ainda sem pontuações calculadas nesta liga.
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

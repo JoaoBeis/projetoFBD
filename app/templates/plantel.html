@@ -1,0 +1,158 @@
+{# Variáveis esperadas: plantel (dict), jogadores_plantel (list), mercado_jogadores (list), clubes (list), posicoes (list), jornadas (list), modo_leitura (bool) #}
+{% extends "base.html" %}
+{% set active_page = 'ligas' %}
+{% block title %}{{ plantel.nome if plantel else 'Meu Plantel' }} — Handball Fantasy{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <div style="margin-bottom: 0.35rem;">
+      <a href="/ligas/{{ plantel.id_liga if plantel else '' }}" style="font-size: 0.85rem; color: var(--text-secondary);">
+        &larr; Voltar à Liga
+      </a>
+    </div>
+
+    {% if not modo_leitura %}
+      <form action="/plantel/{{ plantel.id_plantel }}/renomear" method="POST" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <input type="text" name="nome" value="{{ plantel.nome if plantel else 'Meu Plantel' }}" style="font-size: 1.25rem; font-weight: 700;">
+        <button type="submit" class="btn btn-secondary btn-sm">Guardar Nome</button>
+      </form>
+    {% else %}
+      <h1 class="page-title">{{ plantel.nome }} <span class="badge badge-slate">Modo Observação</span></h1>
+    {% endif %}
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+    <span class="badge badge-blue tabular" style="font-size: 0.88rem; padding: 0.45rem 0.85rem;">
+      {{ jogadores_plantel | default([]) | length }} / 14 Jogadores
+    </span>
+    <span class="badge badge-green tabular" style="font-size: 0.88rem; padding: 0.45rem 0.85rem;">
+      {{ plantel.pontos_totais if plantel else 0 }} Pts
+    </span>
+  </div>
+</div>
+
+<!-- ECRÃ DIVIDIDO: ESQUERDA = EQUIPA SELECIONADA | DIREITA = MERCADO -->
+<div class="{% if not modo_leitura %}grid-2{% endif %}">
+
+  <!-- COLUNA ESQUERDA: JOGADORES NO PLANTEL (tabela seleciona) -->
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Equipa Convocada</h2>
+      <span style="font-size: 0.82rem; color: var(--text-secondary);">Por Posição</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Pos.</th>
+            <th>Jogador</th>
+            <th>Clube</th>
+            <th>Pts</th>
+            {% if not modo_leitura %}<th>Ação</th>{% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for jp in jogadores_plantel | default([]) %}
+            <tr>
+              <td><span class="badge badge-cyan">{{ jp.posicao_sigla or jp.posicao }}</span></td>
+              <td>
+                <a href="/jogadores?ver={{ jp.id_jogador }}" style="font-weight: 600; color: var(--text-primary);">
+                  {{ jp.nome }}
+                </a>
+              </td>
+              <td style="color: var(--text-secondary); font-size: 0.85rem;">{{ jp.clube }}</td>
+              <td class="tabular"><strong>{{ jp.pontos or 0 }}</strong></td>
+              {% if not modo_leitura %}
+                <td>
+                  <form action="/plantel/{{ plantel.id_plantel }}/remover" method="POST">
+                    <input type="hidden" name="id_jogador" value="{{ jp.id_jogador }}">
+                    <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                  </form>
+                </td>
+              {% endif %}
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                Plantel vazio. Adiciona jogadores a partir do mercado ao lado!
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- COLUNA DIREITA: MERCADO DE JOGADORES DISPONÍVEIS -->
+  {% if not modo_leitura %}
+  <div class="card">
+    <div class="card-header">
+      <h2 class="card-title">Mercado de Jogadores</h2>
+      <span class="badge badge-slate">Disponíveis</span>
+    </div>
+
+    <div class="filter-bar" style="padding: 0.65rem;">
+      <input type="text" id="filter-search" placeholder="Nome do atleta...">
+      <select id="filter-pos">
+        <option value="">Todas Posições</option>
+        {% for pos in posicoes | default([]) %}
+          <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+        {% endfor %}
+      </select>
+      <select id="filter-club">
+        <option value="">Todos Clubes</option>
+        {% for c in clubes | default([]) %}
+          <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="table-wrap" style="max-height: 540px; overflow-y: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Pos.</th>
+            <th>Jogador</th>
+            <th>Clube</th>
+            <th>Pts</th>
+            <th>Recrutar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in mercado_jogadores | default([]) %}
+            <tr class="filterable-item"
+                data-name="{{ m.nome }}"
+                data-pos="{{ m.id_posicao }}"
+                data-club="{{ m.id_clube }}">
+              <td><span class="badge badge-slate">{{ m.posicao_sigla or m.posicao }}</span></td>
+              <td>
+                <a href="/jogadores?ver={{ m.id_jogador }}" style="font-weight: 600; color: var(--text-primary);">
+                  {{ m.nome }}
+                </a>
+              </td>
+              <td style="color: var(--text-secondary); font-size: 0.85rem;">{{ m.clube }}</td>
+              <td class="tabular">{{ m.pontos or 0 }}</td>
+              <td>
+                <form action="/plantel/{{ plantel.id_plantel }}/adicionar" method="POST">
+                  <input type="hidden" name="id_jogador" value="{{ m.id_jogador }}">
+                  <button type="submit" class="btn btn-success btn-sm">+ Adicionar</button>
+                </form>
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">
+                Sem jogadores disponíveis no mercado.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

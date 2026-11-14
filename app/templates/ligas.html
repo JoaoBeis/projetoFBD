@@ -1,0 +1,107 @@
+{# Variáveis esperadas: ligas (list[dict]), utilizador #}
+{% extends "base.html" %}
+{% set active_page = 'ligas' %}
+{% block title %}Ligas Fantasy — Handball Fantasy{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Ligas Fantasy</h1>
+    <p class="page-subtitle">Junta-te a uma liga existente ou cria a tua própria competição.</p>
+  </div>
+  {% if utilizador %}
+    <button type="button" class="btn btn-primary" onclick="openModal('modal-nova-liga')">
+      + Criar Nova Liga
+    </button>
+  {% endif %}
+</div>
+
+<!-- BARRA DE PESQUISA -->
+<div class="filter-bar">
+  <input type="text" id="filter-search" placeholder="Pesquisar liga por nome ou administrador...">
+</div>
+
+<!-- TABELA DE LIGAS -->
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome da Liga</th>
+        <th>Descrição</th>
+        <th>Participantes</th>
+        <th>Estado</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for liga in ligas | default([]) %}
+        <tr class="filterable-item" data-name="{{ liga.nome }} {{ liga.descricao or '' }}">
+          <td>
+            <a href="/ligas/{{ liga.id_liga }}" style="font-weight: 700; color: var(--text-primary);">
+              {{ liga.nome }}
+            </a>
+          </td>
+          <td style="color: var(--text-secondary);">{{ liga.descricao or 'Liga oficial de andebol' }}</td>
+          <td class="tabular"><span class="badge badge-slate">{{ liga.total_participantes or 0 }} treinadores</span></td>
+          <td>
+            {% if liga.inscrito %}
+              <span class="badge badge-green">Inscrito</span>
+            {% else %}
+              <span class="badge badge-blue">Aberta</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if liga.inscrito %}
+              <a href="/ligas/{{ liga.id_liga }}" class="btn btn-secondary btn-sm">Ver Classificação</a>
+            {% elif utilizador %}
+              <form action="/ligas/{{ liga.id_liga }}/entrar" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-primary btn-sm">Entrar na Liga</button>
+              </form>
+            {% else %}
+              <a href="/login" class="btn btn-secondary btn-sm">Entrar para Aderir</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+            Ainda não existem ligas criadas. Cria a primeira liga fantasy!
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- MODAL: CRIAR NOVA LIGA (INSERT em liga + participa_liga + plantel) -->
+<div id="modal-nova-liga" class="modal-backdrop">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2 class="card-title">Criar Nova Liga Fantasy</h2>
+      <button type="button" class="modal-close" onclick="closeModal('modal-nova-liga')">&times;</button>
+    </div>
+
+    <form action="/ligas/criar" method="POST">
+      <div class="form-group">
+        <label for="liga-nome">Nome da Liga *</label>
+        <input type="text" id="liga-nome" name="nome" required placeholder="ex: Liga FBD Aveiro 2026">
+      </div>
+
+      <div class="form-group">
+        <label for="liga-desc">Descrição / Regras</label>
+        <textarea id="liga-desc" name="descricao" rows="3" placeholder="Breve descrição da liga..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="plantel-inicial">Nome do Teu Plantel Inicial *</label>
+        <input type="text" id="plantel-inicial" name="nome_plantel" required placeholder="ex: Os Invencíveis HC">
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.65rem; margin-top: 1.25rem;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-nova-liga')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Criar Liga</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
