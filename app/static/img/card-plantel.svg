@@ -1,24 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140" fill="none">
-  <rect x="6" y="6" width="128" height="128" fill="#0c1829" stroke="#263852" stroke-width="2"/>
-  <!-- Half Handball Court -->
-  <rect x="20" y="18" width="100" height="104" fill="#132540" stroke="#38bdf8" stroke-width="2"/>
+  <!-- Warm Beige Base Card -->
+  <rect x="6" y="6" width="128" height="128" fill="#f5f0e6" stroke="#dcd4c6" stroke-width="2"/>
+  <!-- Handball Court Floor (Light Sport Blue) -->
+  <rect x="20" y="18" width="100" height="104" fill="#e3edf8" stroke="#1d4ed8" stroke-width="2"/>
   <!-- Goal -->
-  <rect x="56" y="12" width="28" height="6" fill="#ef4444" stroke="#f8fafc" stroke-width="1"/>
+  <rect x="56" y="12" width="28" height="6" fill="#ef4444" stroke="#0f172a" stroke-width="1.2"/>
   <!-- 6m Area -->
-  <path d="M40 18 C40 48, 100 48, 100 18" stroke="#f8fafc" stroke-width="2" fill="#1d4ed8" fill-opacity="0.35"/>
+  <path d="M40 18 C40 48, 100 48, 100 18" stroke="#1d4ed8" stroke-width="2" fill="#bfdbfe" fill-opacity="0.6"/>
   <!-- 9m Free-throw Dashed Line -->
-  <path d="M26 18 C26 68, 114 68, 114 18" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M26 18 C26 68, 114 68, 114 18" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4 3"/>
 
-  <!-- 7 Player Tactical Markers (Crisp Squares/Circles) -->
-  <!-- GR -->
+  <!-- 7 Tactical Player Markers -->
+  <!-- GR (Goalkeeper) -->
   <rect x="65" y="22" width="10" height="10" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
   <!-- PE & PD -->
-  <rect x="26" y="42" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
-  <rect x="104" y="42" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
+  <rect x="26" y="42" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="104" y="42" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
   <!-- PIVÔ -->
-  <rect x="65" y="50" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
+  <rect x="65" y="50" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
   <!-- LE, CE, LD -->
-  <rect x="36" y="84" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
-  <rect x="65" y="92" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
-  <rect x="94" y="84" width="10" height="10" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
+  <rect x="36" y="84" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="65" y="92" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
+  <rect x="94" y="84" width="10" height="10" fill="#1d4ed8" stroke="#ffffff" stroke-width="1.5"/>
 </svg>
