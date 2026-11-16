@@ -1,25 +1,55 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140" fill="none">
-  <!-- Warm Beige Base Card -->
-  <rect x="6" y="6" width="128" height="128" fill="#f5f0e6" stroke="#dcd4c6" stroke-width="2"/>
-  <!-- Court Corner Accent Lines -->
-  <line x1="6" y1="26" x2="26" y2="6" stroke="#1d4ed8" stroke-width="2"/>
-  <line x1="114" y1="134" x2="134" y2="114" stroke="#1d4ed8" stroke-width="2"/>
+  <!-- Fundo bege igual ao do cartão do plantel -->
+  <rect x="6" y="6" width="128" height="128" fill="#ede7dc" stroke="#d4ccc0" stroke-width="1.5" />
+  <line x1="6" y1="26" x2="26" y2="6" stroke="#1d4ed8" stroke-width="2" />
+  <line x1="114" y1="134" x2="134" y2="114" stroke="#1d4ed8" stroke-width="2" />
 
-  <!-- Handball Outer Circle -->
-  <circle cx="70" cy="70" r="44" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+  <!-- Bola 2D Geométrica com letras HF (centrada em 70,70) -->
+  <g transform="translate(20, 20)">
+    <defs>
+      <clipPath id="card-ball-clip">
+        <circle cx="50" cy="50" r="46" />
+      </clipPath>
+    </defs>
 
-  <!-- Classic Handball Pentagons & Seams -->
-  <polygon points="70,52 86,63 80,82 60,82 54,63" fill="#1d4ed8" stroke="#0f172a" stroke-width="2"/>
-  <polygon points="70,26 83,35 78,44 62,44 57,35" fill="#0f172a"/>
-  <polygon points="109,57 101,71 92,66 94,52 103,48" fill="#0f172a"/>
-  <polygon points="31,57 39,71 48,66 46,52 37,48" fill="#0f172a"/>
-  <polygon points="94,104 81,98 84,88 97,89 102,97" fill="#0f172a"/>
-  <polygon points="46,104 59,98 56,88 43,89 38,97" fill="#0f172a"/>
+    <!-- Fundo base branco da bola -->
+    <circle cx="50" cy="50" r="46" fill="#f8fafc" />
 
-  <!-- Connecting Panel Seams -->
-  <line x1="70" y1="52" x2="70" y2="44" stroke="#0f172a" stroke-width="2"/>
-  <line x1="86" y1="63" x2="94" y2="59" stroke="#0f172a" stroke-width="2"/>
-  <line x1="54" y1="63" x2="46" y2="59" stroke="#0f172a" stroke-width="2"/>
-  <line x1="80" y1="82" x2="86" y2="89" stroke="#0f172a" stroke-width="2"/>
-  <line x1="60" y1="82" x2="54" y2="89" stroke="#0f172a" stroke-width="2"/>
+    <g clip-path="url(#card-ball-clip)" stroke="#061428" stroke-width="2.6" stroke-linejoin="round">
+      <!-- Apontamentos de cor 2D nos painéis brancos -->
+      <polygon points="44,2 56,2 52,10 41,10" fill="#ef4444" stroke="none" />
+      <polygon points="56,2 65,4 59,11 52,10" fill="#eab308" stroke="none" />
+      <polygon points="4,34 11,36 9,46 2,44" fill="#eab308" stroke="none" />
+      <polygon points="3,53 10,55 8,64 2,61" fill="#16a34a" stroke="none" />
+      <polygon points="96,34 89,36 91,46 98,44" fill="#eab308" stroke="none" />
+      <polygon points="97,53 90,55 92,64 98,61" fill="#16a34a" stroke="none" />
+      <polygon points="10,70 18,74 14,83 7,77" fill="#eab308" stroke="none" />
+      <polygon points="18,74 26,81 21,91 14,83" fill="#ef4444" stroke="none" />
+      <polygon points="90,70 82,74 86,83 93,77" fill="#eab308" stroke="none" />
+      <polygon points="82,74 74,81 79,91 86,83" fill="#ef4444" stroke="none" />
+
+      <!-- PENTÁGONOS -->
+      <polygon points="37,13 63,13 69,29 50,40 31,29" fill="#f8fafc" />
+      <polygon points="50,62 67,73 61,89 39,89 33,73" fill="#1d4ed8" />
+      <polygon points="7,28 16,39 16,61 6,68 2,48" fill="none" />
+      <polygon points="93,28 98,48 94,68 84,61 84,39" fill="none" />
+
+      <!-- HEXÁGONOS -->
+      <polygon points="31,29 50,40 50,62 33,73 16,61 16,39" fill="#1d4ed8" />
+      <polygon points="50,40 69,29 84,39 84,61 67,73 50,62" fill="#1d4ed8" />
+      <polygon points="26,7 37,13 31,29 16,39 7,28 14,14" fill="#1d4ed8" />
+      <polygon points="63,13 74,7 86,14 93,28 84,39 69,29" fill="#1d4ed8" />
+      <polygon points="16,61 33,73 39,89 28,95 13,84 6,68" fill="none" />
+      <polygon points="84,61 94,68 87,84 72,95 61,89 67,73" fill="none" />
+      <polygon points="38,2 62,2 74,7 63,13 37,13 26,7" fill="none" />
+      <polygon points="28,95 39,89 61,89 72,95 60,99 40,99" fill="#1d4ed8" />
+
+      <!-- LETRAS HF NOS DOIS HEXÁGONOS FRONTAIS -->
+      <text x="33" y="58" fill="#f8fafc" stroke="none" font-family="&#39;Inter&#39;, sans-serif" font-weight="900" font-size="21" text-anchor="middle">H</text>
+      <text x="67" y="58" fill="#f8fafc" stroke="none" font-family="&#39;Inter&#39;, sans-serif" font-weight="900" font-size="21" text-anchor="middle">F</text>
+    </g>
+
+    <!-- Contorno exterior da bola -->
+    <circle cx="50" cy="50" r="46" stroke="#061428" stroke-width="3.2" fill="none" />
+  </g>
 </svg>

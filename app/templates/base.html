@@ -15,18 +15,78 @@
   <header class="site-header">
     <div class="header-banner">
       <a href="/" class="brand-crest">
+        <!-- Bola de Andebol 2D Geométrica (Disposição fiel de hexágonos, pentágonos e cores) -->
+        <svg width="54" height="54" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="handball-2d-clip">
+              <circle cx="50" cy="50" r="46" />
+            </clipPath>
+          </defs>
+
+          <!-- Fundo base branco -->
+          <circle cx="50" cy="50" r="46" fill="#f8fafc" />
+
+          <g clip-path="url(#handball-2d-clip)" stroke="#061428" stroke-width="2.6" stroke-linejoin="round">
+            <!-- Apontamentos de cor 2D nos painéis brancos (antes das costuras) -->
+            <!-- Topo (vermelho e amarelo) -->
+            <polygon points="44,2 56,2 52,10 41,10" fill="#ef4444" stroke="none" />
+            <polygon points="56,2 65,4 59,11 52,10" fill="#eab308" stroke="none" />
+            <!-- Lateral esquerda (amarelo e verde) -->
+            <polygon points="4,34 11,36 9,46 2,44" fill="#eab308" stroke="none" />
+            <polygon points="3,53 10,55 8,64 2,61" fill="#16a34a" stroke="none" />
+            <!-- Lateral direita (amarelo e verde) -->
+            <polygon points="96,34 89,36 91,46 98,44" fill="#eab308" stroke="none" />
+            <polygon points="97,53 90,55 92,64 98,61" fill="#16a34a" stroke="none" />
+            <!-- Inferior esquerdo (amarelo e vermelho) -->
+            <polygon points="10,70 18,74 14,83 7,77" fill="#eab308" stroke="none" />
+            <polygon points="18,74 26,81 21,91 14,83" fill="#ef4444" stroke="none" />
+            <!-- Inferior direito (amarelo e vermelho) -->
+            <polygon points="90,70 82,74 86,83 93,77" fill="#eab308" stroke="none" />
+            <polygon points="82,74 74,81 79,91 86,83" fill="#ef4444" stroke="none" />
+
+            <!-- PENTÁGONOS -->
+            <!-- Pentágono Superior (Branco) -->
+            <polygon points="37,13 63,13 69,29 50,40 31,29" fill="#f8fafc" />
+            <!-- Pentágono Inferior (Azul) -->
+            <polygon points="50,62 67,73 61,89 39,89 33,73" fill="#1d4ed8" />
+            <!-- Pentágono Lateral Esquerdo (Costuras) -->
+            <polygon points="7,28 16,39 16,61 6,68 2,48" fill="none" />
+            <!-- Pentágono Lateral Direito (Costuras) -->
+            <polygon points="93,28 98,48 94,68 84,61 84,39" fill="none" />
+
+            <!-- HEXÁGONOS -->
+            <!-- Hexágono Central Esquerdo (Azul) -->
+            <polygon points="31,29 50,40 50,62 33,73 16,61 16,39" fill="#1d4ed8" />
+            <!-- Hexágono Central Direito (Azul) -->
+            <polygon points="50,40 69,29 84,39 84,61 67,73 50,62" fill="#1d4ed8" />
+            <!-- Hexágono Superior Esquerdo (Azul) -->
+            <polygon points="26,7 37,13 31,29 16,39 7,28 14,14" fill="#1d4ed8" />
+            <!-- Hexágono Superior Direito (Azul) -->
+            <polygon points="63,13 74,7 86,14 93,28 84,39 69,29" fill="#1d4ed8" />
+            <!-- Hexágono Inferior Esquerdo (Costuras) -->
+            <polygon points="16,61 33,73 39,89 28,95 13,84 6,68" fill="none" />
+            <!-- Hexágono Inferior Direito (Costuras) -->
+            <polygon points="84,61 94,68 87,84 72,95 61,89 67,73" fill="none" />
+            <!-- Hexágono Topo (Costuras) -->
+            <polygon points="38,2 62,2 74,7 63,13 37,13 26,7" fill="none" />
+            <!-- Hexágono Base (Azul) -->
+            <polygon points="28,95 39,89 61,89 72,95 60,99 40,99" fill="#1d4ed8" />
+            <!-- LETRAS HF NOS DOIS HEXÁGONOS FRONTAIS -->
+            <text x="33" y="58" fill="#f8fafc" stroke="none" font-family="'Inter', sans-serif" font-weight="900" font-size="21" text-anchor="middle">H</text>
+            <text x="67" y="58" fill="#f8fafc" stroke="none" font-family="'Inter', sans-serif" font-weight="900" font-size="21" text-anchor="middle">F</text>
+          </g>
+
+          <!-- Contorno exterior da bola -->
+          <circle cx="50" cy="50" r="46" stroke="#061428" stroke-width="3.2" fill="none" />
+        </svg>
+
+        <!-- Caixa do Logótipo -->
         <div class="crest-badge">
           <div class="crest-top">
-            <!-- Ícone Bola de Andebol -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" fill="#f8fafc" stroke="#061428" stroke-width="2"/>
-              <polygon points="12,7 16,10 14.5,15 9.5,15 8,10" fill="#1d4ed8"/>
-            </svg>
             <span>HANDBALL</span>
           </div>
           <div class="crest-bottom">FANTASY</div>
         </div>
-        <span class="brand-tagline">Competição Oficial de Andebol &bull; Temporada 2025/26</span>
       </a>
 
       <div class="header-art">

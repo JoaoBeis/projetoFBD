@@ -1,54 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 150" width="380" height="150" fill="none">
-  <!-- Subtle Court Lines -->
-  <path d="M10 142 H370" stroke="#c5b9a7" stroke-width="2"/>
-  <path d="M235 142 C245 85, 310 65, 365 65" stroke="#c5b9a7" stroke-width="2" stroke-dasharray="6 4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 122" width="155" height="122" fill="none">
+  <!-- BOLA DE ANDEBOL 2D DO LOGÓTIPO -->
+  <g transform="translate(18, 11) scale(0.25)">
+    <defs>
+      <clipPath id="pictogram-ball-clip">
+        <circle cx="50" cy="50" r="46" />
+      </clipPath>
+    </defs>
 
-  <!-- Handball Goal Frame (Striped Posts & Net) -->
-  <rect x="295" y="34" width="66" height="108" stroke="#1d4ed8" stroke-width="2.5" fill="#f2ecdf"/>
-  <line x1="311" y1="34" x2="311" y2="142" stroke="#d3c8b6" stroke-width="1.5"/>
-  <line x1="328" y1="34" x2="328" y2="142" stroke="#d3c8b6" stroke-width="1.5"/>
-  <line x1="345" y1="34" x2="345" y2="142" stroke="#d3c8b6" stroke-width="1.5"/>
-  <line x1="295" y1="60" x2="361" y2="60" stroke="#d3c8b6" stroke-width="1.5"/>
-  <line x1="295" y1="88" x2="361" y2="88" stroke="#d3c8b6" stroke-width="1.5"/>
-  <line x1="295" y1="115" x2="361" y2="115" stroke="#d3c8b6" stroke-width="1.5"/>
+    <!-- Fundo base branco -->
+    <circle cx="50" cy="50" r="46" fill="#f8fafc" />
 
-  <!-- Red/White Goalpost Stripes with Crisp Outline -->
-  <rect x="293" y="32" width="6" height="18" fill="#ef4444" stroke="#0f172a" stroke-width="0.5"/>
-  <rect x="293" y="50" width="6" height="18" fill="#ffffff" stroke="#0f172a" stroke-width="0.5"/>
-  <rect x="293" y="68" width="6" height="18" fill="#ef4444" stroke="#0f172a" stroke-width="0.5"/>
-  <rect x="293" y="86" width="6" height="18" fill="#ffffff" stroke="#0f172a" stroke-width="0.5"/>
-  <rect x="293" y="104" width="6" height="18" fill="#ef4444" stroke="#0f172a" stroke-width="0.5"/>
-  <rect x="293" y="122" width="6" height="20" fill="#ffffff" stroke="#0f172a" stroke-width="0.5"/>
+    <g clip-path="url(#pictogram-ball-clip)" stroke="#061428" stroke-width="4.2" stroke-linejoin="round">
+      <!-- Apontamentos de cor 2D nos painéis brancos -->
+      <polygon points="44,2 56,2 52,10 41,10" fill="#ef4444" stroke="none" />
+      <polygon points="56,2 65,4 59,11 52,10" fill="#eab308" stroke="none" />
+      <polygon points="4,34 11,36 9,46 2,44" fill="#eab308" stroke="none" />
+      <polygon points="3,53 10,55 8,64 2,61" fill="#16a34a" stroke="none" />
+      <polygon points="96,34 89,36 91,46 98,44" fill="#eab308" stroke="none" />
+      <polygon points="97,53 90,55 92,64 98,61" fill="#16a34a" stroke="none" />
+      <polygon points="10,70 18,74 14,83 7,77" fill="#eab308" stroke="none" />
+      <polygon points="18,74 26,81 21,91 14,83" fill="#ef4444" stroke="none" />
+      <polygon points="90,70 82,74 86,83 93,77" fill="#eab308" stroke="none" />
+      <polygon points="82,74 74,81 79,91 86,83" fill="#ef4444" stroke="none" />
 
-  <!-- Goalkeeper Silhouette (Crisp Flat Retro) -->
-  <circle cx="326" cy="74" r="8" fill="#64748b"/>
-  <path d="M306 94 L326 85 L346 92 L343 99 L331 95 L331 116 L340 138 L332 140 L325 120 L318 140 L310 138 L319 116 L319 96 L308 101 Z" fill="#64748b"/>
+      <!-- PENTÁGONOS -->
+      <polygon points="37,13 63,13 69,29 50,40 31,29" fill="#f8fafc" />
+      <polygon points="50,62 67,73 61,89 39,89 33,73" fill="#1d4ed8" />
+      <polygon points="7,28 16,39 16,61 6,68 2,48" fill="none" />
+      <polygon points="93,28 98,48 94,68 84,61 84,39" fill="none" />
 
-  <!-- Attacker in Mid-Air Jump Shot -->
-  <!-- Motion Lines -->
-  <line x1="95" y1="54" x2="128" y2="54" stroke="#0284c7" stroke-width="2"/>
-  <line x1="82" y1="70" x2="122" y2="70" stroke="#1d4ed8" stroke-width="2"/>
-  <line x1="102" y1="86" x2="132" y2="86" stroke="#0284c7" stroke-width="2"/>
+      <!-- HEXÁGONOS -->
+      <polygon points="31,29 50,40 50,62 33,73 16,61 16,39" fill="#1d4ed8" />
+      <polygon points="50,40 69,29 84,39 84,61 67,73 50,62" fill="#1d4ed8" />
+      <polygon points="26,7 37,13 31,29 16,39 7,28 14,14" fill="#1d4ed8" />
+      <polygon points="63,13 74,7 86,14 93,28 84,39 69,29" fill="#1d4ed8" />
+      <polygon points="16,61 33,73 39,89 28,95 13,84 6,68" fill="none" />
+      <polygon points="84,61 94,68 87,84 72,95 61,89 67,73" fill="none" />
+      <polygon points="38,2 62,2 74,7 63,13 37,13 26,7" fill="none" />
+      <polygon points="28,95 39,89 61,89 72,95 60,99 40,99" fill="#1d4ed8" />
+    </g>
 
-  <!-- Player Body (Crisp Athlete Silhouette) -->
-  <circle cx="176" cy="40" r="10" fill="#0f172a"/>
+    <!-- Contorno exterior da bola -->
+    <circle cx="50" cy="50" r="46" stroke="#061428" stroke-width="5" fill="none" />
+  </g>
 
-  <!-- Jersey (#7) -->
-  <path d="M158 55 L192 52 L196 86 L162 89 Z" fill="#1d4ed8" stroke="#0f172a" stroke-width="2"/>
-  <text x="172" y="75" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="13">7</text>
+  <!-- PICTOGRAMA DO ATLETA -->
+  <!-- Cabeça -->
+  <circle cx="76" cy="17" r="9.5" fill="#061428" />
 
-  <!-- Throwing Arm Raised -->
-  <path d="M188 54 L208 32 L222 25" stroke="#0f172a" stroke-width="7" stroke-linecap="square"/>
+  <!-- Tronco e Braços (arco contínuo afilado) -->
+  <path d="M 39 41
+           C 37 38, 40 35, 44 36
+           C 56 40, 69 38, 81 29
+           C 95 19, 118 22, 133 43
+           C 135 46, 131 50, 128 48
+           C 116 37, 102 34, 96 41
+           C 92 46, 94 53, 96 58
+           C 97 60, 94 61, 92 59
+           C 86 54, 79 49, 73 47
+           C 61 52, 48 49, 39 41 Z" fill="#061428" />
 
-  <!-- Balance Arm -->
-  <path d="M160 58 L138 72" stroke="#0f172a" stroke-width="6" stroke-linecap="square"/>
+  <!-- Perna Dianteira Estendida (separada do tronco por espaço negativo) -->
+  <path d="M 71 54
+           C 71 51, 75 51, 78 53
+           C 93 61, 114 76, 130 107
+           C 131 110, 127 112, 125 109
+           C 109 86, 91 76, 76 68
+           C 71 65, 70 59, 71 54 Z" fill="#061428" />
 
-  <!-- Shorts & Jumping Legs -->
-  <path d="M162 89 L196 86 L202 106 L183 107 L179 98 L173 108 L156 105 Z" fill="#0f172a" stroke="#0f172a" stroke-width="1.5"/>
-  <path d="M192 106 L206 124 L196 132" stroke="#0f172a" stroke-width="6" stroke-linecap="square"/>
-  <path d="M164 106 L146 122 L134 116" stroke="#0f172a" stroke-width="6" stroke-linecap="square"/>
-
-  <!-- Handball in Hand / Shot Trajectory -->
-  <circle cx="228" cy="23" r="8" fill="#f59e0b" stroke="#0f172a" stroke-width="2"/>
-  <line x1="242" y1="26" x2="284" y2="42" stroke="#d97706" stroke-width="2" stroke-dasharray="4 3"/>
+  <!-- Perna Traseira Fletida (separada da coxa por espaço negativo) -->
+  <path d="M 73 73
+           C 78 76, 82 78, 84 79
+           C 81 94, 67 103, 52 97
+           C 44 94, 39 87, 37 79
+           C 36 76, 40 74, 43 76
+           C 49 83, 56 87, 63 85
+           C 69 83, 72 78, 73 73 Z" fill="#061428" />
 </svg>
