@@ -1,9 +1,8 @@
 /* ==========================================================================
-   HANDBALL FANTASY — Client-Side Interactivity (Modals, Filters & Tabs)
+   HANDBALL FANTASY — Client-Side Interactivity
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Fechar modais ao clicar no fundo escuro ou na tecla Escape
   document.querySelectorAll(".modal-backdrop").forEach((backdrop) => {
     backdrop.addEventListener("click", (e) => {
       if (e.target === backdrop) {
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 2. Filtros instantâneos em tabelas/listas (Jogadores e Mercado do Plantel)
   initLiveFilter({
     searchId: "filter-search",
     clubId: "filter-club",
@@ -29,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     itemSelector: ".filterable-item"
   });
 
-  // 3. Auto-abrir modal de jogador se existir ?ver=<id> na URL
   const params = new URLSearchParams(window.location.search);
   const verJogadorId = params.get("ver");
   if (verJogadorId) {
@@ -50,7 +47,6 @@ function closeModal(modalId) {
   if (el) el.classList.remove("open");
 }
 
-// Preenche e abre a janela flutuante de detalhe/edição de jogador (jogadores.html)
 function openPlayerDetailModal(rowElement) {
   const modal = document.getElementById("modal-detalhe-jogador");
   if (!modal || !rowElement) return;
@@ -66,16 +62,14 @@ function openPlayerDetailModal(rowElement) {
   const golos = rowElement.dataset.playerGolos || "0";
   const pontos = rowElement.dataset.playerPontos || "0";
 
-  // Cabeçalho da ficha
   const titleEl = document.getElementById("detail-player-name");
   const subtitleEl = document.getElementById("detail-player-meta");
   const statsBadgeEl = document.getElementById("detail-player-stats");
 
   if (titleEl) titleEl.textContent = nome;
-  if (subtitleEl) subtitleEl.textContent = `${clubeNome} • ${posNome} • Camisola #${camisola || "-"}`;
-  if (statsBadgeEl) statsBadgeEl.textContent = `${golos} Golos | ${pontos} Pts Fantasy`;
+  if (subtitleEl) subtitleEl.textContent = `${clubeNome} | ${posNome} | Camisola #${camisola || "-"}`;
+  if (statsBadgeEl) statsBadgeEl.textContent = `${golos} Golos | ${pontos} Pts`;
 
-  // Formulário de Edição (UPDATE)
   const editForm = document.getElementById("form-edit-player");
   if (editForm) {
     editForm.action = `/jogadores/${id}/editar`;
@@ -92,13 +86,11 @@ function openPlayerDetailModal(rowElement) {
     if (inputCamisola) inputCamisola.value = camisola;
   }
 
-  // Formulário de Eliminação (DELETE)
   const deleteForm = document.getElementById("form-delete-player");
   if (deleteForm) {
     deleteForm.action = `/jogadores/${id}/eliminar`;
   }
 
-  // Filtrar linhas do histórico de jogos deste jogador (se carregadas na página)
   document.querySelectorAll(".player-history-row").forEach((hRow) => {
     hRow.style.display = hRow.dataset.historyPlayerId === id ? "" : "none";
   });
@@ -106,7 +98,6 @@ function openPlayerDetailModal(rowElement) {
   openModal("modal-detalhe-jogador");
 }
 
-// Filtro dinâmico multi-critério no cliente
 function initLiveFilter({ searchId, clubId, posId, countryId, itemSelector }) {
   const searchInput = document.getElementById(searchId);
   const clubSelect = document.getElementById(clubId);
@@ -155,7 +146,6 @@ function resetFilters() {
   });
 }
 
-// Filtro por jornada em jogos.html
 function filterJornada(jornadaId, btnElement) {
   document.querySelectorAll(".pill-tab").forEach((b) => b.classList.remove("active"));
   if (btnElement) btnElement.classList.add("active");
@@ -169,7 +159,6 @@ function filterJornada(jornadaId, btnElement) {
   });
 }
 
-// Seleção rápida de plantel do clube em clubes.html
 function selectClubPanel(clubeId, cardElement) {
   document.querySelectorAll(".club-card").forEach((c) => c.classList.remove("selected"));
   if (cardElement) cardElement.classList.add("selected");

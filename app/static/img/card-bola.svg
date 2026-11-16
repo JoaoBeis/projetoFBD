@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140" fill="none">
+  <rect x="6" y="6" width="128" height="128" fill="#0c1829" stroke="#263852" stroke-width="2"/>
+  <!-- Court corner accent lines -->
+  <line x1="6" y1="26" x2="26" y2="6" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="114" y1="134" x2="134" y2="114" stroke="#1d4ed8" stroke-width="2"/>
+  <!-- Handball Outer Circle -->
+  <circle cx="70" cy="70" r="44" fill="#f8fafc" stroke="#0f172a" stroke-width="3"/>
+  <!-- Classic Handball Pentagons & Seams -->
+  <polygon points="70,52 86,63 80,82 60,82 54,63" fill="#1d4ed8" stroke="#0f172a" stroke-width="2.2"/>
+  <polygon points="70,26 83,35 78,44 62,44 57,35" fill="#0f172a"/>
+  <polygon points="109,57 101,71 92,66 94,52 103,48" fill="#0f172a"/>
+  <polygon points="31,57 39,71 48,66 46,52 37,48" fill="#0f172a"/>
+  <polygon points="94,104 81,98 84,88 97,89 102,97" fill="#0f172a"/>
+  <polygon points="46,104 59,98 56,88 43,89 38,97" fill="#0f172a"/>
+  <!-- Connecting Panel Seams -->
+  <line x1="70" y1="52" x2="70" y2="44" stroke="#0f172a" stroke-width="2.2"/>
+  <line x1="86" y1="63" x2="94" y2="59" stroke="#0f172a" stroke-width="2.2"/>
+  <line x1="54" y1="63" x2="46" y2="59" stroke="#0f172a" stroke-width="2.2"/>
+  <line x1="80" y1="82" x2="86" y2="89" stroke="#0f172a" stroke-width="2.2"/>
+  <line x1="60" y1="82" x2="54" y2="89" stroke="#0f172a" stroke-width="2.2"/>
+</svg>

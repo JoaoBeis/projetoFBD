@@ -5,37 +5,37 @@
 {% block content %}
 <div class="page-header">
   <div>
-    <h1 class="page-title">Acesso à Plataforma</h1>
-    <p class="page-subtitle">Inicia sessão com um treinador fantasy existente ou cria uma nova conta.</p>
+    <h1 class="page-title">Entrar ou Criar Conta</h1>
+    <p class="page-subtitle">Acede com uma conta existente ou regista-te para criar o teu plantel.</p>
   </div>
 </div>
 
 <div class="grid-2">
-  <!-- CARTÃO ESQUERDO: LOGIN / ACESSO RÁPIDO -->
+  <!-- ENTRAR -->
   <div class="card">
     <div class="card-header">
       <h2 class="card-title">Iniciar Sessão</h2>
-      <span class="badge badge-blue">Conta Existente</span>
+      <span class="tag tag-blue">Conta Existente</span>
     </div>
 
     <form action="/login" method="POST">
       {% if utilizadores %}
         <div class="form-group">
-          <label for="select-user">Seleção Rápida de Utilizador (Teste)</label>
+          <label for="select-user">Acesso Rápido (Utilizadores Registados)</label>
           <select id="select-user" name="id_utilizador">
-            <option value="">-- Escolher utilizador registado --</option>
+            <option value="">-- Escolher utilizador --</option>
             {% for u in utilizadores %}
               <option value="{{ u.id_utilizador }}">{{ u.nome }} ({{ u.email }})</option>
             {% endfor %}
           </select>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 1rem;">
-          Ou preenche manualmente as credenciais abaixo:
+        <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 0.9rem;">
+          Ou preenche os dados manualmente:
         </p>
       {% endif %}
 
       <div class="form-group">
-        <label for="login-email">Email ou Nome de Utilizador</label>
+        <label for="login-email">Email</label>
         <input type="text" id="login-email" name="email" placeholder="ex: joao@ua.pt">
       </div>
 
@@ -44,28 +44,28 @@
         <input type="password" id="login-pass" name="password" placeholder="••••••••">
       </div>
 
-      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
-        Entrar na Conta
+      <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.4rem;">
+        Entrar
       </button>
     </form>
   </div>
 
-  <!-- CARTÃO DIREITO: REGISTAR UTILIZADOR (INSERT em utilizador) -->
+  <!-- REGISTAR -->
   <div class="card">
     <div class="card-header">
       <h2 class="card-title">Criar Nova Conta</h2>
-      <span class="badge badge-cyan">Novo Treinador</span>
+      <span class="tag">Novo Registo</span>
     </div>
 
     <form action="/registar" method="POST">
       <div class="form-group">
-        <label for="reg-nome">Nome de Treinador / Username *</label>
-        <input type="text" id="reg-nome" name="nome" required placeholder="ex: CoachSilva">
+        <label for="reg-nome">Nome de Utilizador *</label>
+        <input type="text" id="reg-nome" name="nome" required placeholder="ex: João Silva">
       </div>
 
       <div class="form-group">
         <label for="reg-email">Email *</label>
-        <input type="email" id="reg-email" name="email" required placeholder="ex: silva@email.com">
+        <input type="email" id="reg-email" name="email" required placeholder="ex: joao@email.com">
       </div>
 
       <div class="form-row">
@@ -85,8 +85,8 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 0.5rem;">
-        Registar e Começar a Jogar
+      <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 0.4rem;">
+        Criar Conta
       </button>
     </form>
   </div>

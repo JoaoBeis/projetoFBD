@@ -1,32 +1,30 @@
 {# Variáveis esperadas: ligas (list[dict]), utilizador #}
 {% extends "base.html" %}
 {% set active_page = 'ligas' %}
-{% block title %}Ligas Fantasy — Handball Fantasy{% endblock %}
+{% block title %}Ligas — Handball Fantasy{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <div>
     <h1 class="page-title">Ligas Fantasy</h1>
-    <p class="page-subtitle">Junta-te a uma liga existente ou cria a tua própria competição.</p>
+    <p class="page-subtitle">Entra numa liga existente ou cria uma nova competição para os teus amigos.</p>
   </div>
   {% if utilizador %}
-    <button type="button" class="btn btn-primary" onclick="openModal('modal-nova-liga')">
+    <button type="button" class="btn btn-gold" onclick="openModal('modal-nova-liga')">
       + Criar Nova Liga
     </button>
   {% endif %}
 </div>
 
-<!-- BARRA DE PESQUISA -->
 <div class="filter-bar">
-  <input type="text" id="filter-search" placeholder="Pesquisar liga por nome ou administrador...">
+  <input type="text" id="filter-search" placeholder="Procurar liga pelo nome...">
 </div>
 
-<!-- TABELA DE LIGAS -->
 <div class="table-wrap">
   <table>
     <thead>
       <tr>
-        <th>Nome da Liga</th>
+        <th>Liga</th>
         <th>Descrição</th>
         <th>Participantes</th>
         <th>Estado</th>
@@ -41,13 +39,13 @@
               {{ liga.nome }}
             </a>
           </td>
-          <td style="color: var(--text-secondary);">{{ liga.descricao or 'Liga oficial de andebol' }}</td>
-          <td class="tabular"><span class="badge badge-slate">{{ liga.total_participantes or 0 }} treinadores</span></td>
+          <td style="color: var(--text-secondary);">{{ liga.descricao or 'Liga aberta de andebol' }}</td>
+          <td class="tabular">{{ liga.total_participantes or 0 }}</td>
           <td>
             {% if liga.inscrito %}
-              <span class="badge badge-green">Inscrito</span>
+              <span class="tag tag-green">Inscrito</span>
             {% else %}
-              <span class="badge badge-blue">Aberta</span>
+              <span class="tag tag-blue">Aberta</span>
             {% endif %}
           </td>
           <td>
@@ -64,8 +62,8 @@
         </tr>
       {% else %}
         <tr>
-          <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
-            Ainda não existem ligas criadas. Cria a primeira liga fantasy!
+          <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 1.75rem;">
+            Ainda não existem ligas criadas.
           </td>
         </tr>
       {% endfor %}
@@ -73,31 +71,31 @@
   </table>
 </div>
 
-<!-- MODAL: CRIAR NOVA LIGA (INSERT em liga + participa_liga + plantel) -->
+<!-- MODAL: CRIAR NOVA LIGA -->
 <div id="modal-nova-liga" class="modal-backdrop">
   <div class="modal-box">
     <div class="modal-header">
-      <h2 class="card-title">Criar Nova Liga Fantasy</h2>
+      <h2 class="card-title">Criar Nova Liga</h2>
       <button type="button" class="modal-close" onclick="closeModal('modal-nova-liga')">&times;</button>
     </div>
 
     <form action="/ligas/criar" method="POST">
       <div class="form-group">
         <label for="liga-nome">Nome da Liga *</label>
-        <input type="text" id="liga-nome" name="nome" required placeholder="ex: Liga FBD Aveiro 2026">
+        <input type="text" id="liga-nome" name="nome" required placeholder="ex: Liga FBD 2026">
       </div>
 
       <div class="form-group">
-        <label for="liga-desc">Descrição / Regras</label>
-        <textarea id="liga-desc" name="descricao" rows="3" placeholder="Breve descrição da liga..."></textarea>
+        <label for="liga-desc">Descrição</label>
+        <textarea id="liga-desc" name="descricao" rows="2" placeholder="Descrição breve da liga..."></textarea>
       </div>
 
       <div class="form-group">
-        <label for="plantel-inicial">Nome do Teu Plantel Inicial *</label>
-        <input type="text" id="plantel-inicial" name="nome_plantel" required placeholder="ex: Os Invencíveis HC">
+        <label for="plantel-inicial">Nome do Teu Plantel *</label>
+        <input type="text" id="plantel-inicial" name="nome_plantel" required placeholder="ex: Aveiro Sete">
       </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 0.65rem; margin-top: 1.25rem;">
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
         <button type="button" class="btn btn-secondary" onclick="closeModal('modal-nova-liga')">Cancelar</button>
         <button type="submit" class="btn btn-primary">Criar Liga</button>
       </div>

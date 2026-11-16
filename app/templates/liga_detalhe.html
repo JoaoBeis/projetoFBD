@@ -1,21 +1,20 @@
 {# Variáveis esperadas: liga (dict), classificacao (list[dict]), jornadas (list[dict]), jornada_selecionada, meu_plantel_id #}
 {% extends "base.html" %}
 {% set active_page = 'ligas' %}
-{% block title %}{{ liga.nome if liga else 'Detalhe da Liga' }} — Handball Fantasy{% endblock %}
+{% block title %}{{ liga.nome if liga else 'Liga' }} — Handball Fantasy{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <div>
-    <div style="margin-bottom: 0.35rem;">
-      <a href="/ligas" style="font-size: 0.85rem; color: var(--text-secondary);">&larr; Voltar às Ligas</a>
+    <div style="margin-bottom: 0.3rem;">
+      <a href="/ligas" style="font-size: 0.84rem; color: var(--text-secondary);">&larr; Voltar às Ligas</a>
     </div>
-    <h1 class="page-title">{{ liga.nome if liga else 'Liga Fantasy' }}</h1>
+    <h1 class="page-title">{{ liga.nome if liga else 'Classificação da Liga' }}</h1>
     <p class="page-subtitle">{{ liga.descricao if liga and liga.descricao else 'Tabela classificativa geral e por jornada.' }}</p>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-    <!-- SELETOR DE JORNADA -->
-    <form method="GET" action="/ligas/{{ liga.id_liga if liga else 1 }}" style="display: flex; gap: 0.4rem;">
+  <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+    <form method="GET" action="/ligas/{{ liga.id_liga if liga else 1 }}">
       <select name="jornada" onchange="this.form.submit()">
         <option value="">Classificação Geral</option>
         {% for j in jornadas | default([]) %}
@@ -27,27 +26,26 @@
     </form>
 
     {% if meu_plantel_id %}
-      <a href="/plantel/{{ meu_plantel_id }}" class="btn btn-primary">Gerir o Meu Plantel</a>
+      <a href="/plantel/{{ meu_plantel_id }}" class="btn btn-gold">Gerir o Meu Plantel</a>
     {% endif %}
   </div>
 </div>
 
-<!-- TABELA DE CLASSIFICAÇÃO (LEADERBOARD) -->
 <div class="card">
   <div class="card-header">
-    <h2 class="card-title">Classificação dos Participantes</h2>
-    <span class="badge badge-cyan tabular">{{ classificacao | default([]) | length }} Equipas</span>
+    <h2 class="card-title">Tabela Classificativa</h2>
+    <span class="tag tabular">{{ classificacao | default([]) | length }} Equipas</span>
   </div>
 
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
-          <th style="width: 70px;">Pos.</th>
-          <th>Treinador</th>
-          <th>Plantel (Clicar para observar)</th>
-          <th>Pontos Jornada</th>
-          <th>Pontos Totais</th>
+          <th style="width: 65px;">Pos.</th>
+          <th>Utilizador</th>
+          <th>Plantel</th>
+          <th>Pts Jornada</th>
+          <th>Pts Totais</th>
         </tr>
       </thead>
       <tbody>
@@ -55,11 +53,7 @@
           <tr>
             <td class="tabular">
               {% if loop.index == 1 %}
-                <span class="badge badge-amber">#1</span>
-              {% elif loop.index == 2 %}
-                <span class="badge badge-cyan">#2</span>
-              {% elif loop.index == 3 %}
-                <span class="badge badge-blue">#3</span>
+                <span class="tag tag-gold">#1</span>
               {% else %}
                 <strong>#{{ loop.index }}</strong>
               {% endif %}
@@ -70,13 +64,13 @@
                 {{ item.nome_plantel }}
               </a>
             </td>
-            <td class="tabular" style="color: var(--text-secondary);">{{ item.pontos_jornada or 0 }} pts</td>
-            <td class="tabular"><strong style="color: var(--green-accent);">{{ item.pontos_totais or 0 }} pts</strong></td>
+            <td class="tabular" style="color: var(--text-secondary);">{{ item.pontos_jornada or 0 }}</td>
+            <td class="tabular"><strong style="color: var(--gold-accent);">{{ item.pontos_totais or 0 }} pts</strong></td>
           </tr>
         {% else %}
           <tr>
-            <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
-              Ainda sem pontuações calculadas nesta liga.
+            <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 1.75rem;">
+              Ainda não existem pontuações nesta liga.
             </td>
           </tr>
         {% endfor %}

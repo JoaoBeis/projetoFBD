@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 150" width="380" height="150" fill="none">
+  <!-- Subtle Court Lines -->
+  <path d="M10 142 H370" stroke="#1e3a5f" stroke-width="2"/>
+  <path d="M235 142 C245 85, 310 65, 365 65" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="6 4"/>
+  <!-- Handball Goal Frame (Retro Striped Posts) -->
+  <rect x="295" y="34" width="66" height="108" stroke="#38bdf8" stroke-width="3" fill="#091a32"/>
+  <line x1="311" y1="34" x2="311" y2="142" stroke="#163254" stroke-width="1.5"/>
+  <line x1="328" y1="34" x2="328" y2="142" stroke="#163254" stroke-width="1.5"/>
+  <line x1="345" y1="34" x2="345" y2="142" stroke="#163254" stroke-width="1.5"/>
+  <line x1="295" y1="60" x2="361" y2="60" stroke="#163254" stroke-width="1.5"/>
+  <line x1="295" y1="88" x2="361" y2="88" stroke="#163254" stroke-width="1.5"/>
+  <line x1="295" y1="115" x2="361" y2="115" stroke="#163254" stroke-width="1.5"/>
+  <!-- Red/White Goalpost Stripes -->
+  <rect x="293" y="32" width="6" height="18" fill="#ef4444"/>
+  <rect x="293" y="50" width="6" height="18" fill="#f8fafc"/>
+  <rect x="293" y="68" width="6" height="18" fill="#ef4444"/>
+  <rect x="293" y="86" width="6" height="18" fill="#f8fafc"/>
+  <rect x="293" y="104" width="6" height="18" fill="#ef4444"/>
+  <rect x="293" y="122" width="6" height="20" fill="#f8fafc"/>
+
+  <!-- Goalkeeper Silhouette (Crisp Flat Retro) -->
+  <circle cx="326" cy="74" r="8" fill="#64748b"/>
+  <path d="M306 94 L326 85 L346 92 L343 99 L331 95 L331 116 L340 138 L332 140 L325 120 L318 140 L310 138 L319 116 L319 96 L308 101 Z" fill="#64748b"/>
+
+  <!-- Attacker in Mid-Air Jump Shot -->
+  <!-- Motion Lines -->
+  <line x1="95" y1="54" x2="128" y2="54" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="82" y1="70" x2="122" y2="70" stroke="#2563eb" stroke-width="2"/>
+  <line x1="102" y1="86" x2="132" y2="86" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Player Body -->
+  <circle cx="176" cy="40" r="10" fill="#f8fafc"/>
+  <!-- Jersey (#7) -->
+  <path d="M158 55 L192 52 L196 86 L162 89 Z" fill="#2563eb" stroke="#f8fafc" stroke-width="1.5"/>
+  <text x="172" y="75" fill="#f8fafc" font-family="sans-serif" font-weight="800" font-size="13">7</text>
+  <!-- Throwing Arm Raised -->
+  <path d="M188 54 L208 32 L222 25" stroke="#f8fafc" stroke-width="7" stroke-linecap="square"/>
+  <!-- Balance Arm -->
+  <path d="M160 58 L138 72" stroke="#f8fafc" stroke-width="6" stroke-linecap="square"/>
+  <!-- Shorts & Jumping Legs -->
+  <path d="M162 89 L196 86 L202 106 L183 107 L179 98 L173 108 L156 105 Z" fill="#0f172a" stroke="#f8fafc" stroke-width="1.5"/>
+  <path d="M192 106 L206 124 L196 132" stroke="#f8fafc" stroke-width="6" stroke-linecap="square"/>
+  <path d="M164 106 L146 122 L134 116" stroke="#f8fafc" stroke-width="6" stroke-linecap="square"/>
+
+  <!-- Handball in Hand / Shot Trajectory -->
+  <circle cx="228" cy="23" r="8" fill="#f59e0b" stroke="#f8fafc" stroke-width="1.5"/>
+  <line x1="242" y1="26" x2="284" y2="42" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
+</svg>

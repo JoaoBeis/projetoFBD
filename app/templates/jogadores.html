@@ -6,17 +6,17 @@
 {% block content %}
 <div class="page-header">
   <div>
-    <h1 class="page-title">Catálogo de Jogadores</h1>
-    <p class="page-subtitle">Clica num atleta para abrir a ficha detalhada, editar dados ou consultar estatísticas.</p>
+    <h1 class="page-title">Jogadores</h1>
+    <p class="page-subtitle">Clica num jogador para abrir a ficha, editar dados ou ver o histórico de jogos.</p>
   </div>
-  <button type="button" class="btn btn-primary" onclick="openModal('modal-novo-jogador')">
+  <button type="button" class="btn btn-gold" onclick="openModal('modal-novo-jogador')">
     + Novo Jogador
   </button>
 </div>
 
-<!-- BARRA DE FILTROS INSTANTÂNEOS -->
+<!-- FILTROS -->
 <div class="filter-bar">
-  <input type="text" id="filter-search" placeholder="Pesquisar por nome do jogador...">
+  <input type="text" id="filter-search" placeholder="Procurar por nome...">
 
   <select id="filter-club">
     <option value="">Todos os Clubes</option>
@@ -33,7 +33,7 @@
   </select>
 
   <select id="filter-country">
-    <option value="">Todas as Nacionalidades</option>
+    <option value="">Todos os Países</option>
     {% for p in paises | default([]) %}
       <option value="{{ p.id_pais }}">{{ p.nome }}</option>
     {% endfor %}
@@ -51,10 +51,10 @@
         <th>Jogador</th>
         <th>Clube</th>
         <th>Posição</th>
-        <th>Nacionalidade</th>
+        <th>País</th>
         <th>Golos</th>
-        <th>Pts Fantasy</th>
-        <th>Ficha</th>
+        <th>Pontos</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -78,18 +78,18 @@
           <td class="tabular" style="color: var(--text-muted);">{{ j.numero_camisola or '-' }}</td>
           <td><strong>{{ j.nome }}</strong></td>
           <td>{{ j.clube }}</td>
-          <td><span class="badge badge-cyan">{{ j.posicao }}</span></td>
+          <td><span class="tag tag-blue">{{ j.posicao }}</span></td>
           <td style="color: var(--text-secondary);">{{ j.pais or '-' }}</td>
           <td class="tabular">{{ j.total_golos or 0 }}</td>
-          <td class="tabular"><strong style="color: var(--green-accent);">{{ j.total_pontos or 0 }}</strong></td>
+          <td class="tabular"><strong style="color: var(--gold-accent);">{{ j.total_pontos or 0 }}</strong></td>
           <td>
-            <button type="button" class="btn btn-secondary btn-sm">Abrir</button>
+            <button type="button" class="btn btn-secondary btn-sm">Ficha</button>
           </td>
         </tr>
       {% else %}
         <tr>
-          <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
-            Nenhum jogador encontrado na base de dados.
+          <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 1.75rem;">
+            Sem jogadores registados.
           </td>
         </tr>
       {% endfor %}
@@ -97,7 +97,7 @@
   </table>
 </div>
 
-<!-- JANELA FLUTUANTE 1: REGISTAR NOVO JOGADOR (INSERT em pessoa + jogador) -->
+<!-- JANELA FLUTUANTE 1: REGISTAR NOVO JOGADOR -->
 <div id="modal-novo-jogador" class="modal-backdrop">
   <div class="modal-box">
     <div class="modal-header">
@@ -155,29 +155,28 @@
         </select>
       </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 0.65rem; margin-top: 1.25rem;">
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
         <button type="button" class="btn btn-secondary" onclick="closeModal('modal-novo-jogador')">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar Jogador</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- JANELA FLUTUANTE 2: FICHA DO JOGADOR (UPDATE + DELETE + HISTÓRICO participa_jogo) -->
+<!-- JANELA FLUTUANTE 2: FICHA DO JOGADOR (EDITAR, ELIMINAR E HISTÓRICO) -->
 <div id="modal-detalhe-jogador" class="modal-backdrop">
-  <div class="modal-box" style="max-width: 720px;">
+  <div class="modal-box" style="max-width: 700px;">
     <div class="modal-header">
       <div>
         <h2 class="card-title" id="detail-player-name">Ficha do Jogador</h2>
-        <p id="detail-player-meta" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.15rem;"></p>
+        <p id="detail-player-meta" style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 0.15rem;"></p>
       </div>
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span class="badge badge-green tabular" id="detail-player-stats">0 Golos | 0 Pts</span>
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span class="tag tag-gold tabular" id="detail-player-stats">0 Golos | 0 Pts</span>
         <button type="button" class="modal-close" onclick="closeModal('modal-detalhe-jogador')">&times;</button>
       </div>
     </div>
 
-    <!-- FORMULÁRIO DE EDIÇÃO (UPDATE) -->
     <form id="form-edit-player" action="" method="POST">
       <div class="form-row">
         <div class="form-group">
@@ -192,7 +191,7 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label>Clube Atual</label>
+          <label>Clube</label>
           <select name="id_clube" required>
             {% for c in clubes | default([]) %}
               <option value="{{ c.id_clube }}">{{ c.nome }}</option>
@@ -220,22 +219,20 @@
         </select>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-color);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
         <button type="submit" class="btn btn-primary">Guardar Alterações</button>
       </div>
     </form>
 
-    <!-- BOTÃO DE ELIMINAÇÃO (DELETE) -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin: 1rem 0 1.25rem;">
-      <span style="font-size: 0.82rem; color: var(--text-muted);">Remover este atleta permanentemente da base de dados:</span>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.85rem 0 1.1rem;">
+      <span style="font-size: 0.82rem; color: var(--text-muted);">Apagar registo deste jogador:</span>
       <form id="form-delete-player" action="" method="POST" onsubmit="return confirm('Tens a certeza que queres eliminar este jogador?');">
         <button type="submit" class="btn btn-danger btn-sm">Eliminar Jogador</button>
       </form>
     </div>
 
-    <!-- HISTÓRICO DE PARTIDAS DO ATLETA (participa_jogo) -->
-    <h3 class="card-title" style="font-size: 0.95rem; margin-bottom: 0.65rem;">Histórico de Partidas</h3>
-    <div class="table-wrap" style="max-height: 220px; overflow-y: auto;">
+    <h3 class="card-title" style="font-size: 0.94rem; margin-bottom: 0.55rem;">Histórico de Jogos</h3>
+    <div class="table-wrap" style="max-height: 210px; overflow-y: auto;">
       <table>
         <thead>
           <tr>
@@ -243,24 +240,22 @@
             <th>Golos</th>
             <th>Defesas</th>
             <th>2 Min</th>
-            <th>Pts Fantasy</th>
+            <th>Pontos</th>
           </tr>
         </thead>
         <tbody>
           {% for h in historico_jogos | default([]) %}
             <tr class="player-history-row" data-history-player-id="{{ h.id_jogador }}">
-              <td>
-                <a href="/jogos/{{ h.id_jogo }}">{{ h.descricao_jogo }}</a>
-              </td>
+              <td><a href="/jogos/{{ h.id_jogo }}">{{ h.descricao_jogo }}</a></td>
               <td class="tabular">{{ h.golos or 0 }}</td>
               <td class="tabular">{{ h.defesas or 0 }}</td>
               <td class="tabular">{{ h.exclusoes or 0 }}</td>
-              <td class="tabular"><strong style="color: var(--green-accent);">{{ h.pontos or 0 }}</strong></td>
+              <td class="tabular"><strong style="color: var(--gold-accent);">{{ h.pontos or 0 }}</strong></td>
             </tr>
           {% else %}
             <tr>
               <td colspan="5" style="text-align: center; color: var(--text-secondary);">
-                Sem registos de participação em jogos.
+                Sem jogos registados para este atleta.
               </td>
             </tr>
           {% endfor %}

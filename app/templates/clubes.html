@@ -1,60 +1,59 @@
 {# Variáveis esperadas: clubes (list[dict]), jogadores_por_clube (dict[int, list]) #}
 {% extends "base.html" %}
 {% set active_page = 'clubes' %}
-{% block title %}Clubes, Treinadores e Pavilhões — Handball Fantasy{% endblock %}
+{% block title %}Clubes — Handball Fantasy{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <div>
-    <h1 class="page-title">Clubes da Competição</h1>
-    <p class="page-subtitle">Consulta os clubes, respetivos treinadores, pavilhões e plantéis oficiais.</p>
+    <h1 class="page-title">Clubes</h1>
+    <p class="page-subtitle">Consulta os clubes, treinadores, pavilhões e os respetivos plantéis.</p>
   </div>
 </div>
 
 <div class="grid-master-detail">
-  <!-- COLUNA ESQUERDA: GRELHA DE CLUBES -->
+  <!-- LISTA DE CLUBES -->
   <div class="grid-cards">
     {% for c in clubes | default([]) %}
       <div class="club-card {% if loop.first %}selected{% endif %}"
            onclick="selectClubPanel('{{ c.id_clube }}', this)"
            style="cursor: pointer;">
-        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.65rem;">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.55rem;">
           <div>
             <h3 class="card-title">{{ c.nome }}</h3>
-            <span style="font-size: 0.82rem; color: var(--cyan-accent);">{{ c.pais or 'País N/D' }}</span>
+            <span style="font-size: 0.82rem; color: var(--blue-light);">{{ c.pais or 'País N/D' }}</span>
           </div>
-          <span class="badge badge-blue tabular">{{ c.total_jogadores or 0 }} atletas</span>
+          <span class="tag tabular">{{ c.total_jogadores or 0 }} atletas</span>
         </div>
 
-        <div style="font-size: 0.86rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem;">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.8rem;">
           <div><strong>Treinador:</strong> {{ c.treinador or 'Não atribuído' }}</div>
           <div><strong>Pavilhão:</strong> {{ c.pavilhao or 'Não definido' }}</div>
         </div>
 
         <button type="button" class="btn btn-secondary btn-sm" style="width: 100%;">
-          Ver Plantel &rarr;
+          Ver Plantel
         </button>
       </div>
     {% else %}
       <div class="card">
-        <p style="color: var(--text-secondary);">Ainda não existem clubes registados na base de dados.</p>
+        <p style="color: var(--text-secondary);">Ainda não existem clubes registados.</p>
       </div>
     {% endfor %}
   </div>
 
-  <!-- COLUNA DIREITA: PLANTEL DO CLUBE SELECIONADO -->
+  <!-- PLANTEL DO CLUBE SELECIONADO -->
   <div class="card sticky-panel">
     <div class="card-header">
       <h2 class="card-title">Plantel do Clube</h2>
-      <span class="badge badge-slate">Ficha Oficial</span>
     </div>
 
     {% for c in clubes | default([]) %}
       <div class="club-squad-group"
            data-club-squad="{{ c.id_clube }}"
            style="display: {% if loop.first %}block{% else %}none{% endif %};">
-        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
-          Atletas inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong>:
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Jogadores inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong>:
         </p>
 
         <div class="table-wrap">
@@ -75,7 +74,7 @@
                       {{ jog.nome }}
                     </a>
                   </td>
-                  <td><span class="badge badge-cyan">{{ jog.posicao }}</span></td>
+                  <td><span class="tag tag-blue">{{ jog.posicao }}</span></td>
                 </tr>
               {% else %}
                 <tr>
@@ -89,7 +88,7 @@
         </div>
       </div>
     {% else %}
-      <p style="color: var(--text-secondary);">Seleciona um clube à esquerda para visualizar o plantel.</p>
+      <p style="color: var(--text-secondary);">Seleciona um clube à esquerda.</p>
     {% endfor %}
   </div>
 </div>
