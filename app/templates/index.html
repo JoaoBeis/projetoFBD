@@ -121,7 +121,7 @@
               {{ j.clube_casa }} <span style="color: var(--text-muted); font-weight: 400;">vs</span> {{ j.clube_fora }}
             </div>
           </div>
-          <div class="score-box tabular">
+          <div class="score-box tabular" style="white-space: nowrap; flex-shrink: 0;">
             {% if j.golos_casa is not none and j.golos_fora is not none %}
               {{ j.golos_casa }} - {{ j.golos_fora }}
             {% else %}

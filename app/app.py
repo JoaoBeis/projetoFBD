@@ -121,10 +121,12 @@ def index():
                     "pontos": int(p["pontos_acumulados"]),
                 })
 
-    # Jogos da jornada atual (Jornada 1) para o resumo na dashboard
-    jogos_jornada = [j for j in MOCK_JOGOS if j["numero_jornada"] == 1]
-    if not jogos_jornada:
-        jogos_jornada = MOCK_JOGOS[:9]
+    # Jogos da jornada atual (a mais recente) para o resumo na dashboard
+    if MOCK_JOGOS:
+        jornada_atual = max(j["numero_jornada"] for j in MOCK_JOGOS)
+        jogos_jornada = [j for j in MOCK_JOGOS if j["numero_jornada"] == jornada_atual]
+    else:
+        jogos_jornada = []
 
     return render_template(
         "index.html",
