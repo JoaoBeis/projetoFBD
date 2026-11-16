@@ -25,7 +25,7 @@
           <select id="select-user" name="id_utilizador">
             <option value="">-- Escolher utilizador --</option>
             {% for u in utilizadores %}
-              <option value="{{ u.id_utilizador }}">{{ u.nome }} ({{ u.email }})</option>
+              <option value="{{ u.id_utilizador }}">{{ u.username }} ({{ u.email }})</option>
             {% endfor %}
           </select>
         </div>
@@ -35,8 +35,8 @@
       {% endif %}
 
       <div class="form-group">
-        <label for="login-email">Email</label>
-        <input type="text" id="login-email" name="email" placeholder="ex: joao@ua.pt">
+        <label for="login-email">Username ou Email</label>
+        <input type="text" id="login-email" name="username_ou_email" placeholder="ex: joaosilva ou joao@ua.pt">
       </div>
 
       <div class="form-group">
@@ -59,34 +59,30 @@
 
     <form action="/registar" method="POST">
       <div class="form-group">
-        <label for="reg-nome">Nome de Utilizador *</label>
-        <input type="text" id="reg-nome" name="nome" required placeholder="ex: João Silva">
+        <label for="reg-username">Username *</label>
+        <input type="text" id="reg-username" name="username" required placeholder="ex: joaosilva">
       </div>
 
       <div class="form-group">
         <label for="reg-email">Email *</label>
-        <input type="email" id="reg-email" name="email" required placeholder="ex: joao@email.com">
+        <input type="email" id="reg-email" name="email" required placeholder="ex: joao@ua.pt">
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="reg-pass">Palavra-passe *</label>
-          <input type="password" id="reg-pass" name="password" required placeholder="Mínimo 4 caracteres">
-        </div>
+      <div class="form-group">
+        <label for="reg-pass">Palavra-passe *</label>
+        <input type="password" id="reg-pass" name="password" required placeholder="Mínimo 4 caracteres">
+      </div>
 
-        <div class="form-group">
-          <label for="reg-pais">País</label>
-          <select id="reg-pais" name="id_pais">
-            <option value="">-- Selecionar País --</option>
-            {% for p in paises | default([]) %}
-              <option value="{{ p.id_pais }}">{{ p.nome }}</option>
-            {% endfor %}
-          </select>
-        </div>
+      <div class="form-group">
+        <label for="reg-plantel">Nome do teu Plantel Único *</label>
+        <input type="text" id="reg-plantel" name="nome_plantel" required placeholder="ex: Aveiro Handball Club">
+        <span style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">
+          Cada utilizador gere 1 único plantel com orçamento próprio de 100.000.000 € para competir nas ligas.
+        </span>
       </div>
 
       <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 0.4rem;">
-        Criar Conta
+        Criar Conta e Plantel
       </button>
     </form>
   </div>

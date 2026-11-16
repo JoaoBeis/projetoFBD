@@ -1,4 +1,4 @@
-{# Variáveis esperadas: ligas (list[dict]), utilizador #}
+{# Variáveis esperadas: ligas (list[dict]), paises (list[dict]), utilizador #}
 {% extends "base.html" %}
 {% set active_page = 'ligas' %}
 {% block title %}Ligas — Handball Fantasy{% endblock %}
@@ -7,7 +7,7 @@
 <div class="page-header">
   <div>
     <h1 class="page-title">Ligas Fantasy</h1>
-    <p class="page-subtitle">Entra numa liga existente ou cria uma nova competição para os teus amigos.</p>
+    <p class="page-subtitle">Entra numa liga existente com o teu plantel ou cria uma nova competição para os teus amigos.</p>
   </div>
   {% if utilizador %}
     <button type="button" class="btn btn-gold" onclick="openModal('modal-nova-liga')">
@@ -25,36 +25,42 @@
     <thead>
       <tr>
         <th>Liga</th>
-        <th>Descrição</th>
+        <th>País</th>
+        <th>Acesso</th>
         <th>Participantes</th>
-        <th>Estado</th>
         <th>Ação</th>
       </tr>
     </thead>
     <tbody>
       {% for liga in ligas | default([]) %}
-        <tr class="filterable-item" data-name="{{ liga.nome }} {{ liga.descricao or '' }}">
+        <tr class="filterable-item" data-name="{{ liga.nome }} {{ liga.nome_pais or '' }}">
           <td>
             <a href="/ligas/{{ liga.id_liga }}" style="font-weight: 700; color: var(--text-primary);">
               {{ liga.nome }}
             </a>
           </td>
-          <td style="color: var(--text-secondary);">{{ liga.descricao or 'Liga aberta de andebol' }}</td>
-          <td class="tabular">{{ liga.total_participantes or 0 }}</td>
+          <td style="color: var(--text-secondary);">{{ liga.nome_pais or 'Internacional' }}</td>
           <td>
-            {% if liga.inscrito %}
-              <span class="tag tag-green">Inscrito</span>
+            {% if liga.e_privada %}
+              <span class="tag tag-gold">Privada (Código)</span>
             {% else %}
-              <span class="tag tag-blue">Aberta</span>
+              <span class="tag tag-blue">Pública</span>
             {% endif %}
           </td>
+          <td class="tabular">{{ liga.total_participantes or 0 }}</td>
           <td>
             {% if liga.inscrito %}
               <a href="/ligas/{{ liga.id_liga }}" class="btn btn-secondary btn-sm">Ver Classificação</a>
             {% elif utilizador %}
-              <form action="/ligas/{{ liga.id_liga }}/entrar" method="POST" style="display: inline;">
-                <button type="submit" class="btn btn-primary btn-sm">Entrar na Liga</button>
-              </form>
+              {% if liga.e_privada %}
+                <button type="button" class="btn btn-primary btn-sm" onclick="openEntrarPrivadaModal('{{ liga.id_liga }}', '{{ liga.nome }}')">
+                  Entrar com Código
+                </button>
+              {% else %}
+                <form action="/ligas/{{ liga.id_liga }}/entrar" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-primary btn-sm">Entrar na Liga</button>
+                </form>
+              {% endif %}
             {% else %}
               <a href="/login" class="btn btn-secondary btn-sm">Entrar para Aderir</a>
             {% endif %}
@@ -85,15 +91,37 @@
         <input type="text" id="liga-nome" name="nome" required placeholder="ex: Liga FBD 2026">
       </div>
 
-      <div class="form-group">
-        <label for="liga-desc">Descrição</label>
-        <textarea id="liga-desc" name="descricao" rows="2" placeholder="Descrição breve da liga..."></textarea>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="liga-privada">Tipo de Acesso *</label>
+          <select id="liga-privada" name="e_privada" onchange="toggleCodigoAcesso(this.value)">
+            <option value="0">Pública (Aberta a todos)</option>
+            <option value="1">Privada (Requer Código de Acesso)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="liga-pais">País da Liga</label>
+          <select id="liga-pais" name="nome_pais">
+            <option value="">-- Internacional (Sem País) --</option>
+            {% for p in paises | default([]) %}
+              <option value="{{ p.nome }}">{{ p.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="plantel-inicial">Nome do Teu Plantel *</label>
-        <input type="text" id="plantel-inicial" name="nome_plantel" required placeholder="ex: Aveiro Sete">
+      <div class="form-group" id="group-codigo-acesso" style="display: none;">
+        <label for="liga-codigo">Código de Acesso</label>
+        <input type="text" id="liga-codigo" name="codigo_acesso" placeholder="ex: HANDBALL2026">
+        <span style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem;">
+          Os participantes necessitarão deste código para entrar nesta liga privada.
+        </span>
       </div>
+
+      <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.5rem;">
+        Ao criares a liga, o teu plantel único será automaticamente inscrito na competição.
+      </p>
 
       <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
         <button type="button" class="btn btn-secondary" onclick="closeModal('modal-nova-liga')">Cancelar</button>
@@ -102,4 +130,47 @@
     </form>
   </div>
 </div>
+
+<!-- MODAL: ENTRAR EM LIGA PRIVADA -->
+<div id="modal-entrar-privada" class="modal-backdrop">
+  <div class="modal-box" style="max-width: 480px;">
+    <div class="modal-header">
+      <h2 class="card-title">Aderir a Liga Privada</h2>
+      <button type="button" class="modal-close" onclick="closeModal('modal-entrar-privada')">&times;</button>
+    </div>
+
+    <form id="form-entrar-privada" action="" method="POST">
+      <p id="entrar-privada-nome" style="font-weight: 700; margin-bottom: 0.9rem; color: var(--text-primary);"></p>
+
+      <div class="form-group">
+        <label for="input-codigo-acesso">Código de Acesso *</label>
+        <input type="text" id="input-codigo-acesso" name="codigo_acesso" required placeholder="Insere o código da liga...">
+      </div>
+
+      <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.5rem;">
+        O teu plantel único será associado a esta liga após validação do código.
+      </p>
+
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modal-entrar-privada')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Validar e Entrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleCodigoAcesso(val) {
+  const grp = document.getElementById('group-codigo-acesso');
+  if (grp) grp.style.display = (val === '1' || val === 1) ? 'block' : 'none';
+}
+
+function openEntrarPrivadaModal(idLiga, nomeLiga) {
+  const form = document.getElementById('form-entrar-privada');
+  const nomeEl = document.getElementById('entrar-privada-nome');
+  if (form) form.action = `/ligas/${idLiga}/entrar`;
+  if (nomeEl) nomeEl.textContent = `Liga: ${nomeLiga}`;
+  openModal('modal-entrar-privada');
+}
+</script>
 {% endblock %}

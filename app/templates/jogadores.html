@@ -7,7 +7,7 @@
 <div class="page-header">
   <div>
     <h1 class="page-title">Jogadores</h1>
-    <p class="page-subtitle">Clica num jogador para abrir a ficha, editar dados ou ver o histórico de jogos.</p>
+    <p class="page-subtitle">Consulta a lista oficial de atletas, consulta fichas técnicas e gere os registos.</p>
   </div>
   <button type="button" class="btn btn-gold" onclick="openModal('modal-novo-jogador')">
     + Novo Jogador
@@ -16,7 +16,7 @@
 
 <!-- FILTROS -->
 <div class="filter-bar">
-  <input type="text" id="filter-search" placeholder="Procurar por nome...">
+  <input type="text" id="filter-search" placeholder="Procurar por nome do jogador...">
 
   <select id="filter-club">
     <option value="">Todos os Clubes</option>
@@ -35,7 +35,7 @@
   <select id="filter-country">
     <option value="">Todos os Países</option>
     {% for p in paises | default([]) %}
-      <option value="{{ p.id_pais }}">{{ p.nome }}</option>
+      <option value="{{ p.nome }}">{{ p.nome }}</option>
     {% endfor %}
   </select>
 
@@ -47,13 +47,13 @@
   <table>
     <thead>
       <tr>
-        <th>#</th>
+        <th>ID</th>
         <th>Jogador</th>
-        <th>Clube</th>
         <th>Posição</th>
+        <th>Clube</th>
         <th>País</th>
-        <th>Golos</th>
-        <th>Pontos</th>
+        <th>Altura / Peso</th>
+        <th>Valor Mercado</th>
         <th></th>
       </tr>
     </thead>
@@ -61,34 +61,43 @@
       {% for j in jogadores | default([]) %}
         <tr class="filterable-item clickable-row"
             onclick="openPlayerDetailModal(this)"
-            data-name="{{ j.nome }}"
+            data-player-id="{{ j.id_jogador }}"
+            data-primeiro-nome="{{ j.primeiro_nome }}"
+            data-apelido="{{ j.apelido }}"
+            data-data-nasc="{{ j.data_nasc }}"
+            data-altura="{{ j.altura or '' }}"
+            data-peso="{{ j.peso or '' }}"
+            data-valor-mercado="{{ j.valor_mercado or 0 }}"
+            data-nome-pais="{{ j.nome_pais }}"
+            data-id-clube="{{ j.id_clube }}"
+            data-clube-nome="{{ j.clube_nome }}"
+            data-id-posicao="{{ j.id_posicao }}"
+            data-posicao-nome="{{ j.posicao_nome }}"
+            data-name="{{ j.primeiro_nome }} {{ j.apelido }}"
             data-club="{{ j.id_clube }}"
             data-pos="{{ j.id_posicao }}"
-            data-country="{{ j.id_pais }}"
-            data-player-id="{{ j.id_jogador }}"
-            data-player-nome="{{ j.nome }}"
-            data-player-clube-id="{{ j.id_clube }}"
-            data-player-clube="{{ j.clube }}"
-            data-player-pos-id="{{ j.id_posicao }}"
-            data-player-pos="{{ j.posicao }}"
-            data-player-pais-id="{{ j.id_pais }}"
-            data-player-camisola="{{ j.numero_camisola or '' }}"
-            data-player-golos="{{ j.total_golos or 0 }}"
-            data-player-pontos="{{ j.total_pontos or 0 }}">
-          <td class="tabular" style="color: var(--text-muted);">{{ j.numero_camisola or '-' }}</td>
-          <td><strong>{{ j.nome }}</strong></td>
-          <td>{{ j.clube }}</td>
-          <td><span class="tag tag-blue">{{ j.posicao }}</span></td>
-          <td style="color: var(--text-secondary);">{{ j.pais or '-' }}</td>
-          <td class="tabular">{{ j.total_golos or 0 }}</td>
-          <td class="tabular"><strong style="color: var(--gold-accent);">{{ j.total_pontos or 0 }}</strong></td>
+            data-country="{{ j.nome_pais }}">
+          <td class="tabular" style="color: var(--text-muted);">#{{ j.id_jogador }}</td>
+          <td>
+            <strong>{{ j.primeiro_nome }} {{ j.apelido }}</strong>
+            <div style="font-size: 0.76rem; color: var(--text-muted);">Nasc: {{ j.data_nasc }}</div>
+          </td>
+          <td><span class="tag tag-blue">{{ j.posicao_nome }}</span></td>
+          <td>{{ j.clube_nome }}</td>
+          <td style="color: var(--text-secondary);">{{ j.nome_pais }}</td>
+          <td class="tabular" style="font-size: 0.84rem;">
+            {{ j.altura or '-' }} cm &bull; {{ j.peso or '-' }} kg
+          </td>
+          <td class="tabular" style="font-weight: 700; color: var(--gold-accent);">
+            {{ "{:,.2f} €".format(j.valor_mercado) if j.valor_mercado is number else j.valor_mercado }}
+          </td>
           <td>
             <button type="button" class="btn btn-secondary btn-sm">Ficha</button>
           </td>
         </tr>
       {% else %}
         <tr>
-          <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 1.75rem;">
+          <td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
             Sem jogadores registados.
           </td>
         </tr>
@@ -101,25 +110,37 @@
 <div id="modal-novo-jogador" class="modal-backdrop">
   <div class="modal-box">
     <div class="modal-header">
-      <h2 class="card-title">Registar Novo Jogador</h2>
+      <h2 class="card-title">Registar Novo Jogador (Pessoa + Jogador)</h2>
       <button type="button" class="modal-close" onclick="closeModal('modal-novo-jogador')">&times;</button>
     </div>
 
     <form action="/jogadores/criar" method="POST">
-      <div class="form-group">
-        <label for="novo-nome">Nome Completo *</label>
-        <input type="text" id="novo-nome" name="nome" required placeholder="ex: Mathias Gidsel">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="novo-primeiro-nome">Primeiro Nome *</label>
+          <input type="text" id="novo-primeiro-nome" name="primeiro_nome" required placeholder="ex: Mathias">
+        </div>
+
+        <div class="form-group">
+          <label for="novo-apelido">Apelido *</label>
+          <input type="text" id="novo-apelido" name="apelido" required placeholder="ex: Gidsel">
+        </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label for="novo-nasc">Data de Nascimento</label>
-          <input type="date" id="novo-nasc" name="data_nascimento">
+          <label for="novo-data-nasc">Data de Nascimento *</label>
+          <input type="date" id="novo-data-nasc" name="data_nasc" required>
         </div>
 
         <div class="form-group">
-          <label for="novo-camisola">Nº Camisola</label>
-          <input type="number" id="novo-camisola" name="numero_camisola" min="1" max="99" placeholder="ex: 19">
+          <label for="novo-pais">País (Nacionalidade) *</label>
+          <select id="novo-pais" name="nome_pais" required>
+            <option value="">-- Selecionar País --</option>
+            {% for p in paises | default([]) %}
+              <option value="{{ p.nome }}">{{ p.nome }}</option>
+            {% endfor %}
+          </select>
         </div>
       </div>
 
@@ -139,25 +160,32 @@
           <select id="novo-pos" name="id_posicao" required>
             <option value="">-- Selecionar Posição --</option>
             {% for pos in posicoes | default([]) %}
-              <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+              <option value="{{ pos.id_posicao }}">{{ pos.nome }} ({{ pos.sigla }})</option>
             {% endfor %}
           </select>
         </div>
       </div>
 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="novo-altura">Altura (cm)</label>
+          <input type="number" id="novo-altura" name="altura" min="100" max="250" placeholder="ex: 190">
+        </div>
+
+        <div class="form-group">
+          <label for="novo-peso">Peso (kg)</label>
+          <input type="number" id="novo-peso" name="peso" step="0.1" min="40" max="160" placeholder="ex: 89.00">
+        </div>
+      </div>
+
       <div class="form-group">
-        <label for="novo-pais">Nacionalidade</label>
-        <select id="novo-pais" name="id_pais">
-          <option value="">-- Selecionar País --</option>
-          {% for p in paises | default([]) %}
-            <option value="{{ p.id_pais }}">{{ p.nome }}</option>
-          {% endfor %}
-        </select>
+        <label for="novo-valor">Valor de Mercado (€) *</label>
+        <input type="number" id="novo-valor" name="valor_mercado" step="1000" min="0" required placeholder="ex: 6500000.00">
       </div>
 
       <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
         <button type="button" class="btn btn-secondary" onclick="closeModal('modal-novo-jogador')">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Registar Jogador</button>
       </div>
     </form>
   </div>
@@ -165,14 +193,14 @@
 
 <!-- JANELA FLUTUANTE 2: FICHA DO JOGADOR (EDITAR, ELIMINAR E HISTÓRICO) -->
 <div id="modal-detalhe-jogador" class="modal-backdrop">
-  <div class="modal-box" style="max-width: 700px;">
+  <div class="modal-box" style="max-width: 760px;">
     <div class="modal-header">
       <div>
         <h2 class="card-title" id="detail-player-name">Ficha do Jogador</h2>
         <p id="detail-player-meta" style="font-size: 0.84rem; color: var(--text-secondary); margin-top: 0.15rem;"></p>
       </div>
       <div style="display: flex; align-items: center; gap: 0.65rem;">
-        <span class="tag tag-gold tabular" id="detail-player-stats">0 Golos | 0 Pts</span>
+        <span class="tag tag-gold tabular" id="detail-player-stats">0.00 €</span>
         <button type="button" class="modal-close" onclick="closeModal('modal-detalhe-jogador')">&times;</button>
       </div>
     </div>
@@ -180,18 +208,33 @@
     <form id="form-edit-player" action="" method="POST">
       <div class="form-row">
         <div class="form-group">
-          <label>Nome do Jogador</label>
-          <input type="text" name="nome" required>
+          <label>Primeiro Nome *</label>
+          <input type="text" name="primeiro_nome" required>
         </div>
         <div class="form-group">
-          <label>Nº Camisola</label>
-          <input type="number" name="numero_camisola" min="1" max="99">
+          <label>Apelido *</label>
+          <input type="text" name="apelido" required>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <label>Clube</label>
+          <label>Data de Nascimento *</label>
+          <input type="date" name="data_nasc" required>
+        </div>
+        <div class="form-group">
+          <label>País (Nacionalidade) *</label>
+          <select name="nome_pais" required>
+            {% for p in paises | default([]) %}
+              <option value="{{ p.nome }}">{{ p.nome }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Clube *</label>
           <select name="id_clube" required>
             {% for c in clubes | default([]) %}
               <option value="{{ c.id_clube }}">{{ c.nome }}</option>
@@ -200,7 +243,7 @@
         </div>
 
         <div class="form-group">
-          <label>Posição</label>
+          <label>Posição *</label>
           <select name="id_posicao" required>
             {% for pos in posicoes | default([]) %}
               <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
@@ -209,14 +252,21 @@
         </div>
       </div>
 
+      <div class="form-row">
+        <div class="form-group">
+          <label>Altura (cm)</label>
+          <input type="number" name="altura" min="100" max="250">
+        </div>
+
+        <div class="form-group">
+          <label>Peso (kg)</label>
+          <input type="number" name="peso" step="0.1" min="40" max="160">
+        </div>
+      </div>
+
       <div class="form-group">
-        <label>Nacionalidade</label>
-        <select name="id_pais">
-          <option value="">-- Sem país associado --</option>
-          {% for p in paises | default([]) %}
-            <option value="{{ p.id_pais }}">{{ p.nome }}</option>
-          {% endfor %}
-        </select>
+        <label>Valor de Mercado (€) *</label>
+        <input type="number" name="valor_mercado" step="1000" min="0" required>
       </div>
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
@@ -225,21 +275,23 @@
     </form>
 
     <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.85rem 0 1.1rem;">
-      <span style="font-size: 0.82rem; color: var(--text-muted);">Apagar registo deste jogador:</span>
-      <form id="form-delete-player" action="" method="POST" onsubmit="return confirm('Tens a certeza que queres eliminar este jogador?');">
+      <span style="font-size: 0.82rem; color: var(--text-muted);">Apagar registo deste atleta (ON DELETE CASCADE):</span>
+      <form id="form-delete-player" action="" method="POST" onsubmit="return confirm('Tens a certeza que queres eliminar este jogador? Esta ação é irreversível.');">
         <button type="submit" class="btn btn-danger btn-sm">Eliminar Jogador</button>
       </form>
     </div>
 
-    <h3 class="card-title" style="font-size: 0.94rem; margin-bottom: 0.55rem;">Histórico de Jogos</h3>
-    <div class="table-wrap" style="max-height: 210px; overflow-y: auto;">
+    <h3 class="card-title" style="font-size: 0.94rem; margin-bottom: 0.55rem;">Histórico em Jogos (participa_jogo)</h3>
+    <div class="table-wrap" style="max-height: 220px; overflow-y: auto;">
       <table>
         <thead>
           <tr>
             <th>Jogo</th>
             <th>Golos</th>
-            <th>Defesas</th>
+            <th>Ass.</th>
             <th>2 Min</th>
+            <th>Def. GR</th>
+            <th>HPI</th>
             <th>Pontos</th>
           </tr>
         </thead>
@@ -248,13 +300,15 @@
             <tr class="player-history-row" data-history-player-id="{{ h.id_jogador }}">
               <td><a href="/jogos/{{ h.id_jogo }}">{{ h.descricao_jogo }}</a></td>
               <td class="tabular">{{ h.golos or 0 }}</td>
-              <td class="tabular">{{ h.defesas or 0 }}</td>
-              <td class="tabular">{{ h.exclusoes or 0 }}</td>
-              <td class="tabular"><strong style="color: var(--gold-accent);">{{ h.pontos or 0 }}</strong></td>
+              <td class="tabular">{{ h.assistencias or 0 }}</td>
+              <td class="tabular">{{ h.exclusoes_2min or 0 }}</td>
+              <td class="tabular">{{ h.defesas_gr or 0 }}</td>
+              <td class="tabular">{{ h.hpi or 0 }}</td>
+              <td class="tabular"><strong style="color: var(--gold-accent);">{{ h.pontos_obtidos or 0 }}</strong></td>
             </tr>
           {% else %}
             <tr>
-              <td colspan="5" style="text-align: center; color: var(--text-secondary);">
+              <td colspan="7" style="text-align: center; color: var(--text-secondary); padding: 1rem;">
                 Sem jogos registados para este atleta.
               </td>
             </tr>

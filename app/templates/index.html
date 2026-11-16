@@ -19,12 +19,13 @@
     </div>
   {% else %}
     <div>
-      <h1>Olá, {{ utilizador.nome }}</h1>
+      <h1>Olá, {{ utilizador.username }}</h1>
       <p>
         Tens <strong>{{ minhas_ligas | default([]) | length }}</strong> liga(s) ativa(s) e <strong>{{ stats_resumo.pontos_totais if stats_resumo else 0 }}</strong> pontos acumulados esta época.
       </p>
     </div>
     <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+      <a href="/meu-plantel" class="btn btn-primary">Gerir Meu Plantel</a>
       <a href="/ligas" class="btn btn-gold">+ Nova Liga / Aderir</a>
       <a href="/jogadores" class="btn btn-secondary">Ver Jogadores</a>
     </div>
@@ -33,7 +34,7 @@
 
 <!-- DOIS CARTÕES DE DESTAQUE COM ILUSTRAÇÕES DE ANDEBOL -->
 <div class="grid-2" style="margin-bottom: 1.5rem;">
-  <a href="{{ '/ligas' if utilizador else '/jogadores' }}" class="feature-card">
+  <a href="{{ '/meu-plantel' if utilizador else '/login' }}" class="feature-card">
     <div>
       <h2>Escolhe o teu Plantel</h2>
       <p>
@@ -69,7 +70,6 @@
           <thead>
             <tr>
               <th>Liga</th>
-              <th>Equipa</th>
               <th>Lugar</th>
               <th>Pontos</th>
               <th>Ações</th>
@@ -79,14 +79,10 @@
             {% for l in minhas_ligas %}
               <tr>
                 <td><strong>{{ l.nome_liga }}</strong></td>
-                <td style="color: var(--text-secondary);">{{ l.nome_plantel }}</td>
                 <td class="tabular"><span class="tag tag-blue">#{{ l.posicao or '-' }}</span></td>
                 <td class="tabular"><strong>{{ l.pontos or 0 }}</strong> pts</td>
                 <td>
-                  <div style="display: flex; gap: 0.35rem;">
-                    <a href="/ligas/{{ l.id_liga }}" class="btn btn-secondary btn-sm">Tabela</a>
-                    <a href="/plantel/{{ l.id_plantel }}" class="btn btn-primary btn-sm">Plantel</a>
-                  </div>
+                  <a href="/ligas/{{ l.id_liga }}" class="btn btn-secondary btn-sm">Tabela</a>
                 </td>
               </tr>
             {% endfor %}

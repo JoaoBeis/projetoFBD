@@ -98,6 +98,9 @@
       <div class="subnav-inner">
         <ul class="nav-links">
           <li><a href="/" class="{% if active_page == 'inicio' %}active{% endif %}">Início</a></li>
+          {% if utilizador %}
+            <li><a href="/meu-plantel" class="{% if active_page == 'plantel' %}active{% endif %}">Meu Plantel</a></li>
+          {% endif %}
           <li><a href="/ligas" class="{% if active_page == 'ligas' %}active{% endif %}">Ligas</a></li>
           <li><a href="/jogadores" class="{% if active_page == 'jogadores' %}active{% endif %}">Jogadores</a></li>
           <li><a href="/clubes" class="{% if active_page == 'clubes' %}active{% endif %}">Clubes</a></li>
@@ -106,7 +109,7 @@
 
         <div class="nav-session">
           {% if utilizador %}
-            <span class="user-tag">{{ utilizador.nome }}</span>
+            <span class="user-tag">{{ utilizador.username }}</span>
             <a href="/logout" class="btn btn-secondary btn-sm">Sair</a>
           {% else %}
             <a href="/login" class="btn btn-gold btn-sm">Entrar / Registar</a>

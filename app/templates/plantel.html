@@ -1,38 +1,44 @@
-{# Variáveis esperadas: plantel (dict), jogadores_plantel (list), mercado_jogadores (list), clubes (list), posicoes (list), jornadas (list), modo_leitura (bool) #}
+{# Variáveis esperadas: plantel (dict), jogadores_plantel (list), mercado_jogadores (list), clubes (list), posicoes (list), modo_leitura (bool) #}
 {% extends "base.html" %}
-{% set active_page = 'ligas' %}
-{% block title %}{{ plantel.nome if plantel else 'Plantel' }} — Handball Fantasy{% endblock %}
+{% set active_page = 'plantel' %}
+{% block title %}{{ plantel.nome_plantel if plantel else 'Meu Plantel' }} — Handball Fantasy{% endblock %}
 
 {% block content %}
 <div class="page-header">
   <div>
-    <div style="margin-bottom: 0.3rem;">
-      <a href="/ligas/{{ plantel.id_liga if plantel else '' }}" style="font-size: 0.84rem; color: var(--text-secondary);">
-        &larr; Voltar à Liga
-      </a>
-    </div>
-
-    {% if not modo_leitura %}
-      <form action="/plantel/{{ plantel.id_plantel }}/renomear" method="POST" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-        <input type="text" name="nome" value="{{ plantel.nome if plantel else 'Meu Plantel' }}" style="font-size: 1.15rem; font-weight: 700;">
+    {% if modo_leitura %}
+      <div style="margin-bottom: 0.3rem;">
+        <a href="/ligas" style="font-size: 0.84rem; color: var(--text-secondary);">&larr; Voltar às Ligas</a>
+      </div>
+      <h1 class="page-title">
+        {{ plantel.nome_plantel }}
+        <span class="tag">Adversário &bull; Apenas Leitura</span>
+      </h1>
+      <p class="page-subtitle">Plantel de <strong>{{ plantel.username or 'Utilizador' }}</strong></p>
+    {% else %}
+      <div style="margin-bottom: 0.3rem;">
+        <span style="font-size: 0.84rem; color: var(--text-secondary);">Gere o teu plantel oficial para todas as ligas</span>
+      </div>
+      <form action="/meu-plantel/renomear" method="POST" style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <input type="text" name="nome_plantel" value="{{ plantel.nome_plantel if plantel else 'Meu Plantel' }}" style="font-size: 1.2rem; font-weight: 800; min-width: 260px;">
         <button type="submit" class="btn btn-secondary btn-sm">Guardar Nome</button>
       </form>
-    {% else %}
-      <h1 class="page-title">{{ plantel.nome }} <span class="tag">Apenas Leitura</span></h1>
     {% endif %}
   </div>
 
-  <div style="display: flex; align-items: center; gap: 0.65rem;">
-    <span class="tag tag-blue tabular">{{ jogadores_plantel | default([]) | length }} / 14 Jogadores</span>
-    <span class="tag tag-gold tabular">{{ plantel.pontos_totais if plantel else 0 }} Pts</span>
+  <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
+    <span class="tag tag-blue tabular">{{ jogadores_plantel | default([]) | length }} / 14 Atletas</span>
+    <span class="tag tag-green tabular">Orçamento: {{ "{:,.2f} €".format(plantel.orcamento) if plantel and plantel.orcamento is number else (plantel.orcamento if plantel else '100,000,000.00 €') }}</span>
+    <span class="tag tag-gold tabular">{{ plantel.pontos_acumulados if plantel else 0 }} Pts Acumulados</span>
   </div>
 </div>
 
 <div class="{% if not modo_leitura %}grid-2{% endif %}">
-  <!-- EQUIPA SELECIONADA -->
+  <!-- EQUIPA SELECIONADA (tabela seleciona) -->
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Jogadores Convocados</h2>
+      <h2 class="card-title">Jogadores Convocados (Plantel)</h2>
+      <span class="tag tabular">{{ jogadores_plantel | default([]) | length }} Registados</span>
     </div>
 
     <div class="table-wrap">
@@ -42,34 +48,78 @@
             <th>Pos.</th>
             <th>Jogador</th>
             <th>Clube</th>
-            <th>Pts</th>
-            {% if not modo_leitura %}<th></th>{% endif %}
+            <th>Preço Compra</th>
+            <th>Titular</th>
+            <th>Capitão</th>
+            {% if not modo_leitura %}<th>Ação</th>{% endif %}
           </tr>
         </thead>
         <tbody>
           {% for jp in jogadores_plantel | default([]) %}
             <tr>
-              <td><span class="tag tag-blue">{{ jp.posicao_sigla or jp.posicao }}</span></td>
               <td>
-                <a href="/jogadores?ver={{ jp.id_jogador }}" style="font-weight: 600; color: var(--text-primary);">
-                  {{ jp.nome }}
+                <span class="tag tag-blue">{{ jp.posicao_sigla or jp.posicao_nome or jp.posicao }}</span>
+              </td>
+              <td>
+                <a href="/jogadores?ver={{ jp.id_jogador }}" style="font-weight: 700; color: var(--text-primary);">
+                  {{ jp.primeiro_nome }} {{ jp.apelido }}
                 </a>
               </td>
-              <td style="color: var(--text-secondary); font-size: 0.84rem;">{{ jp.clube }}</td>
-              <td class="tabular"><strong>{{ jp.pontos or 0 }}</strong></td>
+              <td style="color: var(--text-secondary); font-size: 0.84rem;">
+                {{ jp.clube_nome or jp.clube }}
+              </td>
+              <td class="tabular" style="font-size: 0.84rem;">
+                {{ "{:,.2f} €".format(jp.preco_compra) if jp.preco_compra is number else jp.preco_compra }}
+              </td>
+              <td>
+                {% if modo_leitura %}
+                  {% if jp.e_titular %}
+                    <span class="tag tag-green">Titular</span>
+                  {% else %}
+                    <span class="tag">Suplente</span>
+                  {% endif %}
+                {% else %}
+                  <form action="/meu-plantel/toggle-titular" method="POST" style="display: inline;">
+                    <input type="hidden" name="id_jogador" value="{{ jp.id_jogador }}">
+                    {% if jp.e_titular %}
+                      <button type="submit" class="btn btn-sm btn-success" title="Alternar para suplente">Titular</button>
+                    {% else %}
+                      <button type="submit" class="btn btn-sm btn-secondary" title="Alternar para titular">Suplente</button>
+                    {% endif %}
+                  </form>
+                {% endif %}
+              </td>
+              <td>
+                {% if modo_leitura %}
+                  {% if jp.e_capitao %}
+                    <span class="tag tag-gold">&#9733; Capitão</span>
+                  {% else %}
+                    <span style="color: var(--text-muted);">-</span>
+                  {% endif %}
+                {% else %}
+                  <form action="/meu-plantel/toggle-capitao" method="POST" style="display: inline;">
+                    <input type="hidden" name="id_jogador" value="{{ jp.id_jogador }}">
+                    {% if jp.e_capitao %}
+                      <button type="submit" class="btn btn-sm btn-gold" title="Desmarcar capitão">&#9733; Capitão</button>
+                    {% else %}
+                      <button type="submit" class="btn btn-sm btn-secondary" title="Promover a capitão">&#9734;</button>
+                    {% endif %}
+                  </form>
+                {% endif %}
+              </td>
               {% if not modo_leitura %}
                 <td>
-                  <form action="/plantel/{{ plantel.id_plantel }}/remover" method="POST">
+                  <form action="/meu-plantel/remover" method="POST" onsubmit="return confirm('Vender este jogador e recuperar o valor para o orçamento?');">
                     <input type="hidden" name="id_jogador" value="{{ jp.id_jogador }}">
-                    <button type="submit" class="btn btn-danger btn-sm">Remover</button>
+                    <button type="submit" class="btn btn-danger btn-sm">Vender</button>
                   </form>
                 </td>
               {% endif %}
             </tr>
           {% else %}
             <tr>
-              <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 1.75rem;">
-                Ainda não escolheste jogadores para este plantel.
+              <td colspan="{% if not modo_leitura %}7{% else %}6{% endif %}" style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                Ainda não tens jogadores convocados. Utiliza o mercado ao lado para contratar!
               </td>
             </tr>
           {% endfor %}
@@ -78,22 +128,23 @@
     </div>
   </div>
 
-  <!-- JOGADORES DISPONÍVEIS -->
+  <!-- MERCADO DE JOGADORES DISPONÍVEIS (tabela jogador + pessoa) -->
   {% if not modo_leitura %}
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Jogadores Disponíveis</h2>
+      <h2 class="card-title">Mercado de Jogadores</h2>
+      <span class="tag tag-green tabular">Disponíveis</span>
     </div>
 
     <div class="filter-bar" style="padding: 0.6rem;">
-      <input type="text" id="filter-search" placeholder="Nome do jogador...">
-      <select id="filter-pos">
+      <input type="text" id="market-search" placeholder="Procurar jogador..." oninput="filterMarket()">
+      <select id="market-pos" onchange="filterMarket()">
         <option value="">Todas Posições</option>
         {% for pos in posicoes | default([]) %}
-          <option value="{{ pos.id_posicao }}">{{ pos.nome }}</option>
+          <option value="{{ pos.id_posicao }}">{{ pos.nome }} ({{ pos.sigla }})</option>
         {% endfor %}
       </select>
-      <select id="filter-club">
+      <select id="market-club" onchange="filterMarket()">
         <option value="">Todos Clubes</option>
         {% for c in clubes | default([]) %}
           <option value="{{ c.id_clube }}">{{ c.nome }}</option>
@@ -108,35 +159,40 @@
             <th>Pos.</th>
             <th>Jogador</th>
             <th>Clube</th>
-            <th>Pts</th>
-            <th></th>
+            <th>Valor Mercado</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody>
           {% for m in mercado_jogadores | default([]) %}
-            <tr class="filterable-item"
-                data-name="{{ m.nome }}"
+            <tr class="market-row"
+                data-name="{{ m.primeiro_nome }} {{ m.apelido }}"
                 data-pos="{{ m.id_posicao }}"
                 data-club="{{ m.id_clube }}">
-              <td><span class="tag">{{ m.posicao_sigla or m.posicao }}</span></td>
+              <td><span class="tag">{{ m.posicao_sigla or m.posicao_nome }}</span></td>
               <td>
-                <a href="/jogadores?ver={{ m.id_jogador }}" style="font-weight: 600; color: var(--text-primary);">
-                  {{ m.nome }}
+                <a href="/jogadores?ver={{ m.id_jogador }}" style="font-weight: 700; color: var(--text-primary);">
+                  {{ m.primeiro_nome }} {{ m.apelido }}
                 </a>
+                <div style="font-size: 0.76rem; color: var(--text-muted);">
+                  {{ m.nome_pais }} &bull; {{ m.altura or '-' }}cm, {{ m.peso or '-' }}kg
+                </div>
               </td>
-              <td style="color: var(--text-secondary); font-size: 0.84rem;">{{ m.clube }}</td>
-              <td class="tabular">{{ m.pontos or 0 }}</td>
+              <td style="color: var(--text-secondary); font-size: 0.84rem;">{{ m.clube_nome }}</td>
+              <td class="tabular" style="font-weight: 700; color: var(--gold-accent);">
+                {{ "{:,.2f} €".format(m.valor_mercado) if m.valor_mercado is number else m.valor_mercado }}
+              </td>
               <td>
-                <form action="/plantel/{{ plantel.id_plantel }}/adicionar" method="POST">
+                <form action="/meu-plantel/adicionar" method="POST">
                   <input type="hidden" name="id_jogador" value="{{ m.id_jogador }}">
-                  <button type="submit" class="btn btn-success btn-sm">+ Adicionar</button>
+                  <button type="submit" class="btn btn-success btn-sm">+ Comprar</button>
                 </form>
               </td>
             </tr>
           {% else %}
             <tr>
               <td colspan="5" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">
-                Sem jogadores disponíveis.
+                Sem jogadores disponíveis no mercado.
               </td>
             </tr>
           {% endfor %}
@@ -146,4 +202,24 @@
   </div>
   {% endif %}
 </div>
+
+<script>
+function filterMarket() {
+  const search = (document.getElementById('market-search')?.value || '').toLowerCase();
+  const pos = document.getElementById('market-pos')?.value || '';
+  const club = document.getElementById('market-club')?.value || '';
+
+  document.querySelectorAll('.market-row').forEach(row => {
+    const name = (row.dataset.name || '').toLowerCase();
+    const rowPos = row.dataset.pos || '';
+    const rowClub = row.dataset.club || '';
+
+    const matchName = !search || name.includes(search);
+    const matchPos = !pos || rowPos === pos;
+    const matchClub = !club || rowClub === club;
+
+    row.style.display = matchName && matchPos && matchClub ? '' : 'none';
+  });
+}
+</script>
 {% endblock %}

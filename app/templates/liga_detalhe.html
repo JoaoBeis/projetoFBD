@@ -10,7 +10,15 @@
       <a href="/ligas" style="font-size: 0.84rem; color: var(--text-secondary);">&larr; Voltar às Ligas</a>
     </div>
     <h1 class="page-title">{{ liga.nome if liga else 'Classificação da Liga' }}</h1>
-    <p class="page-subtitle">{{ liga.descricao if liga and liga.descricao else 'Tabela classificativa geral e por jornada.' }}</p>
+    <p class="page-subtitle">
+      {% if liga and liga.e_privada %}
+        <span class="tag tag-gold">Liga Privada</span>
+      {% else %}
+        <span class="tag tag-blue">Liga Pública</span>
+      {% endif %}
+      {% if liga and liga.nome_pais %} &bull; País: <strong>{{ liga.nome_pais }}</strong>{% endif %}
+      &bull; Tabela classificativa geral e por jornada.
+    </p>
   </div>
 
   <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
@@ -19,15 +27,11 @@
         <option value="">Classificação Geral</option>
         {% for j in jornadas | default([]) %}
           <option value="{{ j.id_jornada }}" {% if jornada_selecionada == j.id_jornada %}selected{% endif %}>
-            {{ j.nome }}
+            Jornada {{ j.numero_jornada or loop.index }}
           </option>
         {% endfor %}
       </select>
     </form>
-
-    {% if meu_plantel_id %}
-      <a href="/plantel/{{ meu_plantel_id }}" class="btn btn-gold">Gerir o Meu Plantel</a>
-    {% endif %}
   </div>
 </div>
 
@@ -58,10 +62,10 @@
                 <strong>#{{ loop.index }}</strong>
               {% endif %}
             </td>
-            <td><strong>{{ item.nome_utilizador }}</strong></td>
+            <td><strong>{{ item.username or item.nome_utilizador }}</strong></td>
             <td>
-              <a href="/plantel/{{ item.id_plantel }}" style="font-weight: 600;">
-                {{ item.nome_plantel }}
+              <a href="/plantel/{{ item.id_plantel }}" style="font-weight: 600;" title="Ver plantel em modo de leitura">
+                {{ item.nome_plantel }} &rarr;
               </a>
             </td>
             <td class="tabular" style="color: var(--text-secondary);">{{ item.pontos_jornada or 0 }}</td>

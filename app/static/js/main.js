@@ -52,38 +52,53 @@ function openPlayerDetailModal(rowElement) {
   if (!modal || !rowElement) return;
 
   const id = rowElement.dataset.playerId || "";
-  const nome = rowElement.dataset.playerNome || "";
-  const clubeId = rowElement.dataset.playerClubeId || "";
-  const clubeNome = rowElement.dataset.playerClube || "";
-  const posId = rowElement.dataset.playerPosId || "";
-  const posNome = rowElement.dataset.playerPos || "";
-  const paisId = rowElement.dataset.playerPaisId || "";
-  const camisola = rowElement.dataset.playerCamisola || "";
-  const golos = rowElement.dataset.playerGolos || "0";
-  const pontos = rowElement.dataset.playerPontos || "0";
+  const primeiroNome = rowElement.dataset.primeiroNome || "";
+  const apelido = rowElement.dataset.apelido || "";
+  const dataNasc = rowElement.dataset.dataNasc || "";
+  const altura = rowElement.dataset.altura || "";
+  const peso = rowElement.dataset.peso || "";
+  const valorMercado = rowElement.dataset.valorMercado || "0";
+  const nomePais = rowElement.dataset.nomePais || "";
+  const idClube = rowElement.dataset.idClube || "";
+  const clubeNome = rowElement.dataset.clubeNome || "";
+  const idPosicao = rowElement.dataset.idPosicao || "";
+  const posicaoNome = rowElement.dataset.posicaoNome || "";
 
   const titleEl = document.getElementById("detail-player-name");
   const subtitleEl = document.getElementById("detail-player-meta");
   const statsBadgeEl = document.getElementById("detail-player-stats");
 
-  if (titleEl) titleEl.textContent = nome;
-  if (subtitleEl) subtitleEl.textContent = `${clubeNome} | ${posNome} | Camisola #${camisola || "-"}`;
-  if (statsBadgeEl) statsBadgeEl.textContent = `${golos} Golos | ${pontos} Pts`;
+  if (titleEl) titleEl.textContent = `${primeiroNome} ${apelido}`;
+  if (subtitleEl) subtitleEl.textContent = `${clubeNome} | ${posicaoNome} | ${nomePais}`;
+  if (statsBadgeEl) {
+    const num = Number(valorMercado);
+    statsBadgeEl.textContent = !isNaN(num) && num > 0
+      ? num.toLocaleString("pt-PT", { style: "currency", currency: "EUR" })
+      : `${valorMercado} €`;
+  }
 
   const editForm = document.getElementById("form-edit-player");
   if (editForm) {
     editForm.action = `/jogadores/${id}/editar`;
-    const inputNome = editForm.querySelector('[name="nome"]');
+    const inputPrimeiro = editForm.querySelector('[name="primeiro_nome"]');
+    const inputApelido = editForm.querySelector('[name="apelido"]');
+    const inputDataNasc = editForm.querySelector('[name="data_nasc"]');
+    const inputAltura = editForm.querySelector('[name="altura"]');
+    const inputPeso = editForm.querySelector('[name="peso"]');
+    const inputValor = editForm.querySelector('[name="valor_mercado"]');
     const selectClube = editForm.querySelector('[name="id_clube"]');
     const selectPos = editForm.querySelector('[name="id_posicao"]');
-    const selectPais = editForm.querySelector('[name="id_pais"]');
-    const inputCamisola = editForm.querySelector('[name="numero_camisola"]');
+    const selectPais = editForm.querySelector('[name="nome_pais"]');
 
-    if (inputNome) inputNome.value = nome;
-    if (selectClube) selectClube.value = clubeId;
-    if (selectPos) selectPos.value = posId;
-    if (selectPais) selectPais.value = paisId;
-    if (inputCamisola) inputCamisola.value = camisola;
+    if (inputPrimeiro) inputPrimeiro.value = primeiroNome;
+    if (inputApelido) inputApelido.value = apelido;
+    if (inputDataNasc) inputDataNasc.value = dataNasc;
+    if (inputAltura) inputAltura.value = altura;
+    if (inputPeso) inputPeso.value = peso;
+    if (inputValor) inputValor.value = valorMercado;
+    if (selectClube) selectClube.value = idClube;
+    if (selectPos) selectPos.value = idPosicao;
+    if (selectPais) selectPais.value = nomePais;
   }
 
   const deleteForm = document.getElementById("form-delete-player");

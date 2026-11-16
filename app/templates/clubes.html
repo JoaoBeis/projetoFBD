@@ -6,8 +6,8 @@
 {% block content %}
 <div class="page-header">
   <div>
-    <h1 class="page-title">Clubes</h1>
-    <p class="page-subtitle">Consulta os clubes, treinadores, pavilhões e os respetivos plantéis.</p>
+    <h1 class="page-title">Clubes Oficiais</h1>
+    <p class="page-subtitle">Consulta os clubes inscritos, os respetivos treinadores com licença e plantéis oficiais.</p>
   </div>
 </div>
 
@@ -21,18 +21,24 @@
         <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.55rem;">
           <div>
             <h3 class="card-title">{{ c.nome }}</h3>
-            <span style="font-size: 0.82rem; color: var(--blue-light);">{{ c.pais or 'País N/D' }}</span>
+            <span style="font-size: 0.82rem; color: var(--text-secondary);">{{ c.cidade }}</span>
           </div>
           <span class="tag tabular">{{ c.total_jogadores or 0 }} atletas</span>
         </div>
 
         <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.8rem;">
-          <div><strong>Treinador:</strong> {{ c.treinador or 'Não atribuído' }}</div>
-          <div><strong>Pavilhão:</strong> {{ c.pavilhao or 'Não definido' }}</div>
+          <div>
+            <strong>Treinador:</strong>
+            {{ c.treinador_nome or 'Não atribuído' }}
+            {% if c.treinador_licenca %}
+              <span class="tag" style="font-size: 0.72rem; padding: 0.1rem 0.35rem;">{{ c.treinador_licenca }}</span>
+            {% endif %}
+          </div>
+          <div><strong>Cidade:</strong> {{ c.cidade }}</div>
         </div>
 
         <button type="button" class="btn btn-secondary btn-sm" style="width: 100%;">
-          Ver Plantel
+          Ver Atletas do Clube
         </button>
       </div>
     {% else %}
@@ -53,28 +59,31 @@
            data-club-squad="{{ c.id_clube }}"
            style="display: {% if loop.first %}block{% else %}none{% endif %};">
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-          Jogadores inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong>:
+          Atletas inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong> ({{ c.cidade }}):
         </p>
 
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>#</th>
                 <th>Jogador</th>
                 <th>Posição</th>
+                <th>Valor Mercado</th>
               </tr>
             </thead>
             <tbody>
               {% for jog in (jogadores_por_clube[c.id_clube] if jogadores_por_clube and c.id_clube in jogadores_por_clube else []) %}
                 <tr>
-                  <td class="tabular" style="color: var(--text-muted);">{{ jog.numero_camisola or '-' }}</td>
                   <td>
-                    <a href="/jogadores?ver={{ jog.id_jogador }}" style="font-weight: 600;">
-                      {{ jog.nome }}
+                    <a href="/jogadores?ver={{ jog.id_jogador }}" style="font-weight: 700; color: var(--text-primary);">
+                      {{ jog.primeiro_nome }} {{ jog.apelido }}
                     </a>
+                    <div style="font-size: 0.76rem; color: var(--text-muted);">{{ jog.nome_pais }}</div>
                   </td>
-                  <td><span class="tag tag-blue">{{ jog.posicao }}</span></td>
+                  <td><span class="tag tag-blue">{{ jog.posicao_nome }}</span></td>
+                  <td class="tabular" style="font-weight: 700; color: var(--gold-accent);">
+                    {{ "{:,.2f} €".format(jog.valor_mercado) if jog.valor_mercado is number else jog.valor_mercado }}
+                  </td>
                 </tr>
               {% else %}
                 <tr>

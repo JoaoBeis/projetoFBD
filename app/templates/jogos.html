@@ -7,7 +7,7 @@
 <div class="page-header">
   <div>
     <h1 class="page-title">Jogos & Jornadas</h1>
-    <p class="page-subtitle">Calendário de partidas, resultados e fichas de estatísticas.</p>
+    <p class="page-subtitle">Calendário oficial de partidas, resultados e fichas de estatísticas detalhadas.</p>
   </div>
   <button type="button" class="btn btn-gold" onclick="openModal('modal-novo-jogo')">
     + Agendar Jogo
@@ -19,7 +19,7 @@
   <button type="button" class="pill-tab active" onclick="filterJornada('', this)">Todas as Jornadas</button>
   {% for jor in jornadas | default([]) %}
     <button type="button" class="pill-tab" onclick="filterJornada('{{ jor.id_jornada }}', this)">
-      {{ jor.nome }}
+      Jornada {{ jor.numero_jornada }}{% if jor.nome_liga %} ({{ jor.nome_liga }}){% endif %}
     </button>
   {% endfor %}
 </div>
@@ -28,8 +28,8 @@
 <div>
   {% for j in jogos | default([]) %}
     <div class="match-item jornada-match-card" data-jornada="{{ j.id_jornada }}">
-      <div style="min-width: 150px;">
-        <span class="tag tag-blue">{{ j.nome_jornada }}</span>
+      <div style="min-width: 170px;">
+        <span class="tag tag-blue">Jornada {{ j.numero_jornada or j.id_jornada }}</span>
         <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.25rem;">
           {{ j.data_hora }}
         </div>
@@ -47,9 +47,9 @@
         <strong style="flex: 1; text-align: left; font-size: 0.98rem;">{{ j.clube_fora }}</strong>
       </div>
 
-      <div style="text-align: right; min-width: 170px;">
+      <div style="text-align: right; min-width: 180px;">
         <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.3rem;">
-          {{ j.pavilhao or 'Pavilhão N/D' }}
+          {{ j.pavilhao or 'Pavilhão Oficial' }}
         </div>
         <a href="/jogos/{{ j.id_jogo }}" class="btn btn-secondary btn-sm">Ficha de Jogo</a>
       </div>
@@ -67,17 +67,20 @@
 <div id="modal-novo-jogo" class="modal-backdrop">
   <div class="modal-box">
     <div class="modal-header">
-      <h2 class="card-title">Agendar Novo Jogo</h2>
+      <h2 class="card-title">Agendar Novo Jogo (tabela jogo)</h2>
       <button type="button" class="modal-close" onclick="closeModal('modal-novo-jogo')">&times;</button>
     </div>
 
     <form action="/jogos/criar" method="POST">
       <div class="form-row">
         <div class="form-group">
-          <label>Jornada *</label>
+          <label>Jornada (associada a Liga) *</label>
           <select name="id_jornada" required>
+            <option value="">-- Selecionar Jornada --</option>
             {% for jor in jornadas | default([]) %}
-              <option value="{{ jor.id_jornada }}">{{ jor.nome }}</option>
+              <option value="{{ jor.id_jornada }}">
+                Jornada {{ jor.numero_jornada }} (Liga: {{ jor.nome_liga or jor.id_liga }})
+              </option>
             {% endfor %}
           </select>
         </div>
@@ -92,8 +95,9 @@
         <div class="form-group">
           <label>Equipa da Casa *</label>
           <select name="id_clube_casa" required>
+            <option value="">-- Clube Casa --</option>
             {% for c in clubes | default([]) %}
-              <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+              <option value="{{ c.id_clube }}">{{ c.nome }} ({{ c.cidade }})</option>
             {% endfor %}
           </select>
         </div>
@@ -101,35 +105,39 @@
         <div class="form-group">
           <label>Equipa Visitante *</label>
           <select name="id_clube_fora" required>
+            <option value="">-- Clube Fora --</option>
             {% for c in clubes | default([]) %}
-              <option value="{{ c.id_clube }}">{{ c.nome }}</option>
+              <option value="{{ c.id_clube }}">{{ c.nome }} ({{ c.cidade }})</option>
             {% endfor %}
           </select>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Pavilhão</label>
-        <select name="id_pavilhao">
-          <option value="">-- Selecionar Pavilhão --</option>
+        <label>Pavilhão (NOT NULL) *</label>
+        <select name="id_pavilhao" required>
+          <option value="">-- Selecionar Pavilhão Oficial --</option>
           {% for pav in pavilhoes | default([]) %}
-            <option value="{{ pav.id_pavilhao }}">{{ pav.nome }} ({{ pav.cidade }})</option>
+            <option value="{{ pav.id_pavilhao }}">
+              {{ pav.nome }} ({{ pav.localidade }}) &bull; Cap: {{ pav.capacidade }}
+            </option>
           {% endfor %}
         </select>
       </div>
 
       <div class="form-group">
-        <label>Árbitros (Ctrl+Clique para selecionar 2)</label>
+        <label>Árbitros (tabela apita)</label>
         <select name="arbitros" multiple size="3">
           {% for arb in arbitros | default([]) %}
-            <option value="{{ arb.id_arbitro }}">{{ arb.nome }}</option>
+            <option value="{{ arb.id_arbitro }}">{{ arb.nome }} (Cédula: {{ arb.num_cedula }})</option>
           {% endfor %}
         </select>
+        <span style="font-size: 0.76rem; color: var(--text-muted);">Usa Ctrl para selecionar os 2 árbitros da partida.</span>
       </div>
 
       <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem;">
         <button type="button" class="btn btn-secondary" onclick="closeModal('modal-novo-jogo')">Cancelar</button>
-        <button type="submit" class="btn btn-primary">Guardar Jogo</button>
+        <button type="submit" class="btn btn-primary">Agendar Jogo</button>
       </div>
     </form>
   </div>
