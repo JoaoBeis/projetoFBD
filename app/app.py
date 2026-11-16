@@ -1,288 +1,37 @@
+"""
+Aplicação Web Flask — Handball Fantasy League
+Alinhada com o esquema relacional e dados DML de APFE_FINAL_132982_133155/sql/04_db_init.sql
+
+Todas as tabelas do esquema físico estão representadas em estruturas Python MOCK
+carregadas diretamente a partir do ficheiro SQL de inicialização:
+- utilizador, plantel, pais, posicao, clube, pavilhao, arbitro,
+  treinador, pessoa, jogador, seleciona, liga, participa_liga,
+  jornada, participa_jornada, jogo, apita, participa_jogo.
+"""
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from mock_data import (
+    MOCK_USERS,
+    MOCK_PLANTEIS,
+    MOCK_PAISES,
+    MOCK_POSICOES,
+    MOCK_CLUBES,
+    MOCK_PAVILHOES,
+    MOCK_ARBITROS,
+    MOCK_JOGADORES,
+    MOCK_SELECIONA,
+    MOCK_LIGAS,
+    MOCK_PARTICIPA_LIGA,
+    MOCK_JORNADAS,
+    MOCK_PARTICIPA_JORNADA,
+    MOCK_JOGOS,
+    MOCK_APITA,
+    MOCK_PARTICIPA_JOGO,
+    HISTORICO_JOGOS,
+)
 
 app = Flask(__name__)
 app.secret_key = "handball_fantasy_fbd"
-
-# ==============================================================================
-# DADOS MOCK — 100% ALINHADOS COM 01_DDL.SQL
-# ==============================================================================
-
-# Tabela utilizador (id_utilizador, username, email, password_hash)
-MOCK_USERS = [
-    {"id_utilizador": 1, "username": "joaosilva", "email": "joao@ua.pt", "password_hash": "hash123"},
-    {"id_utilizador": 2, "username": "anacosta", "email": "ana@ua.pt", "password_hash": "hash456"},
-]
-
-# Tabela plantel (id_plantel, nome_plantel, orcamento, pontos_acumulados, id_utilizador)
-# UNIQUE(id_utilizador) — cada utilizador gere exatamente 1 plantel
-MOCK_PLANTEIS = {
-    1: {"id_plantel": 1, "nome_plantel": "Aveiro HC", "orcamento": 85000000.0, "pontos_acumulados": 188.0, "id_utilizador": 1, "username": "joaosilva"},
-    2: {"id_plantel": 2, "nome_plantel": "Ria Seven", "orcamento": 92000000.0, "pontos_acumulados": 165.0, "id_utilizador": 2, "username": "anacosta"},
-}
-
-# Tabela pais (nome, sigla)
-MOCK_PAISES = [
-    {"nome": "Portugal", "sigla": "POR"},
-    {"nome": "Alemanha", "sigla": "GER"},
-    {"nome": "Dinamarca", "sigla": "DEN"},
-    {"nome": "Espanha", "sigla": "ESP"},
-    {"nome": "França", "sigla": "FRA"},
-    {"nome": "Suécia", "sigla": "SWE"},
-]
-
-# Tabela posicao (id_posicao, nome, sigla)
-MOCK_POSICOES = [
-    {"id_posicao": 1, "nome": "Guarda-Redes", "sigla": "GR"},
-    {"id_posicao": 2, "nome": "Ponta Esquerda", "sigla": "PE"},
-    {"id_posicao": 3, "nome": "Lateral Esquerdo", "sigla": "LE"},
-    {"id_posicao": 4, "nome": "Central", "sigla": "CE"},
-    {"id_posicao": 5, "nome": "Lateral Direito", "sigla": "LD"},
-    {"id_posicao": 6, "nome": "Ponta Direita", "sigla": "PD"},
-    {"id_posicao": 7, "nome": "Pivô", "sigla": "PI"},
-]
-
-# Tabela clube (id_clube, nome, cidade, emblema) + treinador (id_treinador, licenca, id_clube)
-MOCK_CLUBES = [
-    {
-        "id_clube": 1,
-        "nome": "THW Kiel",
-        "cidade": "Kiel",
-        "emblema": None,
-        "treinador_nome": "Filip Jícha",
-        "treinador_licenca": "EHF-PRO-881",
-        "total_jogadores": 2,
-    },
-    {
-        "id_clube": 2,
-        "nome": "Füchse Berlin",
-        "cidade": "Berlim",
-        "emblema": None,
-        "treinador_nome": "Jaron Siewert",
-        "treinador_licenca": "EHF-PRO-412",
-        "total_jogadores": 2,
-    },
-    {
-        "id_clube": 3,
-        "nome": "FC Porto",
-        "cidade": "Porto",
-        "emblema": None,
-        "treinador_nome": "Magnus Andersson",
-        "treinador_licenca": "EHF-PRO-105",
-        "total_jogadores": 1,
-    },
-]
-
-# Tabela pavilhao (id_pavilhao, nome, capacidade, localidade)
-MOCK_PAVILHOES = [
-    {"id_pavilhao": 1, "nome": "Wunderino Arena", "capacidade": 10285, "localidade": "Kiel"},
-    {"id_pavilhao": 2, "nome": "Max-Schmeling-Halle", "capacidade": 8500, "localidade": "Berlim"},
-    {"id_pavilhao": 3, "nome": "Dragão Arena", "capacidade": 2179, "localidade": "Porto"},
-]
-
-# Tabela arbitro (id_arbitro, num_cedula) + pessoa (primeiro_nome, apelido)
-MOCK_ARBITROS = [
-    {"id_arbitro": 1, "nome": "Duarte Santos", "num_cedula": "ARB-PT-101"},
-    {"id_arbitro": 2, "nome": "Ricardo Fonseca", "num_cedula": "ARB-PT-102"},
-]
-
-# Tabela pessoa + jogador (id_jogador, altura, peso, valor_mercado, nome_pais, id_clube, id_posicao)
-MOCK_JOGADORES = [
-    {
-        "id_jogador": 1,
-        "primeiro_nome": "Mathias",
-        "apelido": "Gidsel",
-        "data_nasc": "1999-02-08",
-        "altura": 190,
-        "peso": 89.0,
-        "valor_mercado": 6500000.0,
-        "nome_pais": "Dinamarca",
-        "id_clube": 2,
-        "clube_nome": "Füchse Berlin",
-        "id_posicao": 5,
-        "posicao_nome": "Lateral Direito",
-        "posicao_sigla": "LD",
-        "total_golos": 48,
-        "total_pontos": 112,
-    },
-    {
-        "id_jogador": 2,
-        "primeiro_nome": "Domagoj",
-        "apelido": "Duvnjak",
-        "data_nasc": "1988-06-01",
-        "altura": 197,
-        "peso": 99.0,
-        "valor_mercado": 3800000.0,
-        "nome_pais": "Alemanha",
-        "id_clube": 1,
-        "clube_nome": "THW Kiel",
-        "id_posicao": 4,
-        "posicao_nome": "Central",
-        "posicao_sigla": "CE",
-        "total_golos": 22,
-        "total_pontos": 76,
-    },
-    {
-        "id_jogador": 3,
-        "primeiro_nome": "Andreas",
-        "apelido": "Wolff",
-        "data_nasc": "1991-03-03",
-        "altura": 198,
-        "peso": 105.0,
-        "valor_mercado": 4200000.0,
-        "nome_pais": "Alemanha",
-        "id_clube": 1,
-        "clube_nome": "THW Kiel",
-        "id_posicao": 1,
-        "posicao_nome": "Guarda-Redes",
-        "posicao_sigla": "GR",
-        "total_golos": 1,
-        "total_pontos": 89,
-    },
-    {
-        "id_jogador": 4,
-        "primeiro_nome": "Rui",
-        "apelido": "Silva",
-        "data_nasc": "1993-04-28",
-        "altura": 186,
-        "peso": 86.0,
-        "valor_mercado": 2900000.0,
-        "nome_pais": "Portugal",
-        "id_clube": 3,
-        "clube_nome": "FC Porto",
-        "id_posicao": 4,
-        "posicao_nome": "Central",
-        "posicao_sigla": "CE",
-        "total_golos": 35,
-        "total_pontos": 94,
-    },
-]
-
-# Tabela seleciona (id_plantel, id_jogador, e_titular, e_capitao, preco_compra)
-MOCK_SELECIONA = {
-    1: [
-        {"id_jogador": 1, "e_titular": True, "e_capitao": True, "preco_compra": 6500000.0},
-        {"id_jogador": 3, "e_titular": True, "e_capitao": False, "preco_compra": 4200000.0},
-    ],
-    2: [
-        {"id_jogador": 2, "e_titular": True, "e_capitao": True, "preco_compra": 3800000.0},
-    ],
-}
-
-# Tabela liga (id_liga, nome, codigo_acesso, e_privada, nome_pais, id_utilizador)
-MOCK_LIGAS = [
-    {
-        "id_liga": 1,
-        "nome": "Liga FBD Aveiro",
-        "codigo_acesso": None,
-        "e_privada": False,
-        "nome_pais": "Portugal",
-        "id_utilizador": 1,
-        "total_participantes": 2,
-    },
-    {
-        "id_liga": 2,
-        "nome": "Bundesliga Fantasy",
-        "codigo_acesso": "BUNDES26",
-        "e_privada": True,
-        "nome_pais": "Alemanha",
-        "id_utilizador": 2,
-        "total_participantes": 1,
-    },
-]
-
-# Tabela participa_liga (id_plantel, id_liga)
-MOCK_PARTICIPA_LIGA = [
-    {"id_plantel": 1, "id_liga": 1},
-    {"id_plantel": 2, "id_liga": 1},
-    {"id_plantel": 2, "id_liga": 2},
-]
-
-# Tabela jornada (id_jornada, numero_jornada, data_inicio, data_fim, id_liga)
-MOCK_JORNADAS = [
-    {"id_jornada": 1, "numero_jornada": 1, "data_inicio": "2026-11-10", "data_fim": "2026-11-12", "id_liga": 1, "nome_liga": "Liga FBD Aveiro"},
-    {"id_jornada": 2, "numero_jornada": 2, "data_inicio": "2026-11-17", "data_fim": "2026-11-19", "id_liga": 1, "nome_liga": "Liga FBD Aveiro"},
-]
-
-# Tabela jogo (id_jogo, data_hora, golos_casa, golos_fora, id_clube_casa, id_clube_fora, id_pavilhao, id_jornada)
-MOCK_JOGOS = [
-    {
-        "id_jogo": 1,
-        "id_jornada": 1,
-        "numero_jornada": 1,
-        "data_hora": "2026-11-10 19:30",
-        "clube_casa": "THW Kiel",
-        "id_clube_casa": 1,
-        "clube_fora": "Füchse Berlin",
-        "id_clube_fora": 2,
-        "golos_casa": 31,
-        "golos_fora": 29,
-        "id_pavilhao": 1,
-        "pavilhao": "Wunderino Arena (Kiel)",
-    },
-    {
-        "id_jogo": 2,
-        "id_jornada": 2,
-        "numero_jornada": 2,
-        "data_hora": "2026-11-17 20:00",
-        "clube_casa": "Füchse Berlin",
-        "id_clube_fora": 2,
-        "clube_fora": "THW Kiel",
-        "id_clube_fora": 1,
-        "golos_casa": None,
-        "golos_fora": None,
-        "id_pavilhao": 2,
-        "pavilhao": "Max-Schmeling-Halle (Berlim)",
-    },
-]
-
-# Tabela participa_jogo (id_jogador, id_jogo, golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi, pontos_obtidos)
-MOCK_PARTICIPA_JOGO = [
-    {
-        "id_jogador": 2,
-        "nome": "Domagoj Duvnjak",
-        "id_jogo": 1,
-        "id_clube": 1,
-        "golos": 6,
-        "assistencias": 4,
-        "remates_falhados": 2,
-        "exclusoes_2min": 1,
-        "cartoes_vermelhos": 0,
-        "cartoes_azuis": 0,
-        "defesas_gr": 0,
-        "hpi": 78.50,
-        "pontos_obtidos": 15.0,
-    },
-    {
-        "id_jogador": 3,
-        "nome": "Andreas Wolff",
-        "id_jogo": 1,
-        "id_clube": 1,
-        "golos": 0,
-        "assistencias": 1,
-        "remates_falhados": 0,
-        "exclusoes_2min": 0,
-        "cartoes_vermelhos": 0,
-        "cartoes_azuis": 0,
-        "defesas_gr": 14,
-        "hpi": 84.20,
-        "pontos_obtidos": 20.0,
-    },
-    {
-        "id_jogador": 1,
-        "nome": "Mathias Gidsel",
-        "id_jogo": 1,
-        "id_clube": 2,
-        "golos": 9,
-        "assistencias": 5,
-        "remates_falhados": 1,
-        "exclusoes_2min": 1,
-        "cartoes_vermelhos": 0,
-        "cartoes_azuis": 0,
-        "defesas_gr": 0,
-        "hpi": 91.00,
-        "pontos_obtidos": 22.0,
-    },
-]
 
 # ==============================================================================
 # FUNÇÕES AUXILIARES DE SESSÃO E ENTIDADES
@@ -294,11 +43,16 @@ def current_user():
         return None
     return next((u for u in MOCK_USERS if u["id_utilizador"] == uid), None)
 
+
 def get_user_plantel(user_id):
+    """
+    Garante a regra de integridade do DDL:
+    Cada utilizador gere exatamente 1 plantel (UNIQUE(id_utilizador)).
+    """
     if user_id not in MOCK_PLANTEIS:
         user = next((u for u in MOCK_USERS if u["id_utilizador"] == user_id), None)
         username = user["username"] if user else f"user_{user_id}"
-        new_id = max(MOCK_PLANTEIS.keys(), default=0) + 1
+        new_id = max([p["id_plantel"] for p in MOCK_PLANTEIS.values()], default=0) + 1
         MOCK_PLANTEIS[user_id] = {
             "id_plantel": new_id,
             "nome_plantel": f"Plantel de {username}",
@@ -307,7 +61,9 @@ def get_user_plantel(user_id):
             "id_utilizador": user_id,
             "username": username,
         }
+        MOCK_SELECIONA.setdefault(new_id, [])
     return MOCK_PLANTEIS[user_id]
+
 
 def get_plantel_by_id(id_plantel):
     for p in MOCK_PLANTEIS.values():
@@ -315,7 +71,12 @@ def get_plantel_by_id(id_plantel):
             return p
     return None
 
+
 def build_jogadores_plantel(id_plantel):
+    """
+    Cruza a tabela 'seleciona' com a tabela 'jogador' e 'pessoa'
+    para construir o plantel com estado de titular, capitão e preço de compra.
+    """
     selecionados = MOCK_SELECIONA.get(id_plantel, [])
     result = []
     for s in selecionados:
@@ -328,8 +89,9 @@ def build_jogadores_plantel(id_plantel):
             result.append(item)
     return result
 
+
 # ==============================================================================
-# ROTAS FLASK
+# ROTAS FLASK — PÁGINA INICIAL E AUTENTICAÇÃO
 # ==============================================================================
 
 @app.route("/")
@@ -345,20 +107,33 @@ def index():
         inscricoes = [pl["id_liga"] for pl in MOCK_PARTICIPA_LIGA if pl["id_plantel"] == p["id_plantel"]]
         for liga in MOCK_LIGAS:
             if liga["id_liga"] in inscricoes:
+                part_ids = [pl["id_plantel"] for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == liga["id_liga"]]
+                rank_list = sorted(
+                    [get_plantel_by_id(pid) for pid in part_ids if get_plantel_by_id(pid)],
+                    key=lambda x: x["pontos_acumulados"],
+                    reverse=True,
+                )
+                pos = next((i + 1 for i, item in enumerate(rank_list) if item["id_plantel"] == p["id_plantel"]), 1)
                 minhas_ligas.append({
                     "id_liga": liga["id_liga"],
                     "nome_liga": liga["nome"],
-                    "posicao": 1,
+                    "posicao": pos,
                     "pontos": int(p["pontos_acumulados"]),
                 })
+
+    # Jogos da jornada atual (Jornada 1) para o resumo na dashboard
+    jogos_jornada = [j for j in MOCK_JOGOS if j["numero_jornada"] == 1]
+    if not jogos_jornada:
+        jogos_jornada = MOCK_JOGOS[:9]
 
     return render_template(
         "index.html",
         utilizador=user,
         minhas_ligas=minhas_ligas,
-        jogos_jornada=MOCK_JOGOS,
+        jogos_jornada=jogos_jornada,
         stats_resumo=stats,
     )
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -372,7 +147,10 @@ def login():
             return redirect(url_for("meu_plantel"))
 
         if username_ou_email:
-            matched = next((u for u in MOCK_USERS if u["username"] == username_ou_email or u["email"] == username_ou_email), None)
+            matched = next(
+                (u for u in MOCK_USERS if u["username"].lower() == username_ou_email.lower() or u["email"].lower() == username_ou_email.lower()),
+                None,
+            )
             if matched:
                 session["user_id"] = matched["id_utilizador"]
                 flash(f"Bem-vindo, {matched['username']}!", "success")
@@ -389,6 +167,7 @@ def login():
         paises=MOCK_PAISES,
     )
 
+
 @app.route("/registar", methods=["POST"])
 def registar():
     username = request.form.get("username", "").strip()
@@ -401,10 +180,10 @@ def registar():
         return redirect(url_for("login"))
 
     # Verificar unicidade (username, email)
-    if any(u["username"] == username for u in MOCK_USERS):
+    if any(u["username"].lower() == username.lower() for u in MOCK_USERS):
         flash("Esse username já está registado.", "error")
         return redirect(url_for("login"))
-    if any(u["email"] == email for u in MOCK_USERS):
+    if any(u["email"].lower() == email.lower() for u in MOCK_USERS):
         flash("Esse email já se encontra em uso.", "error")
         return redirect(url_for("login"))
 
@@ -418,7 +197,7 @@ def registar():
     MOCK_USERS.append(new_user)
 
     # Criação do plantel único associado ao utilizador (tabela plantel)
-    new_plantel_id = max(MOCK_PLANTEIS.keys(), default=0) + 1
+    new_plantel_id = max([p["id_plantel"] for p in MOCK_PLANTEIS.values()], default=0) + 1
     MOCK_PLANTEIS[new_uid] = {
         "id_plantel": new_plantel_id,
         "nome_plantel": nome_plantel,
@@ -429,15 +208,22 @@ def registar():
     }
     MOCK_SELECIONA[new_plantel_id] = []
 
+    # Inscrição automática na liga pública principal (id_liga 1)
+    MOCK_PARTICIPA_LIGA.append({"id_plantel": new_plantel_id, "id_liga": 1})
+    if MOCK_LIGAS:
+        MOCK_LIGAS[0]["total_participantes"] = sum(1 for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == 1)
+
     session["user_id"] = new_uid
     flash(f"Conta e Plantel '{nome_plantel}' criados com sucesso!", "success")
     return redirect(url_for("meu_plantel"))
+
 
 @app.route("/logout")
 def logout():
     session.pop("user_id", None)
     flash("Sessão terminada.", "success")
     return redirect(url_for("index"))
+
 
 # ==============================================================================
 # ROTAS DO PLANTEL (1 UTILIZADOR <-> 1 PLANTEL ÚNICO)
@@ -466,6 +252,7 @@ def meu_plantel():
         modo_leitura=False,
     )
 
+
 @app.route("/plantel/<int:id_plantel>")
 def plantel_detalhe(id_plantel):
     user = current_user()
@@ -491,6 +278,7 @@ def plantel_detalhe(id_plantel):
         modo_leitura=True,
     )
 
+
 @app.route("/meu-plantel/renomear", methods=["POST"])
 @app.route("/plantel/<int:id_plantel>/renomear", methods=["POST"])
 def renomear_plantel(id_plantel=None):
@@ -503,6 +291,7 @@ def renomear_plantel(id_plantel=None):
         p["nome_plantel"] = novo_nome
         flash(f"Nome do plantel atualizado para '{novo_nome}'!", "success")
     return redirect(url_for("meu_plantel"))
+
 
 @app.route("/meu-plantel/adicionar", methods=["POST"])
 @app.route("/plantel/<int:id_plantel>/adicionar", methods=["POST"])
@@ -543,6 +332,7 @@ def adicionar_jogador_plantel(id_plantel=None):
     flash(f"{jog['primeiro_nome']} {jog['apelido']} contratado com sucesso!", "success")
     return redirect(url_for("meu_plantel"))
 
+
 @app.route("/meu-plantel/remover", methods=["POST"])
 @app.route("/plantel/<int:id_plantel>/remover", methods=["POST"])
 def remover_jogador_plantel(id_plantel=None):
@@ -565,6 +355,7 @@ def remover_jogador_plantel(id_plantel=None):
 
     return redirect(url_for("meu_plantel"))
 
+
 @app.route("/meu-plantel/toggle-titular", methods=["POST"])
 def toggle_titular():
     user = current_user()
@@ -580,6 +371,7 @@ def toggle_titular():
             break
     return redirect(url_for("meu_plantel"))
 
+
 @app.route("/meu-plantel/toggle-capitao", methods=["POST"])
 def toggle_capitao():
     user = current_user()
@@ -593,8 +385,9 @@ def toggle_capitao():
         if s["id_jogador"] == id_jogador:
             s["e_capitao"] = not s["e_capitao"]
         else:
-            s["e_capitao"] = False  # apenas 1 capitão
+            s["e_capitao"] = False  # Apenas 1 capitão por equipa
     return redirect(url_for("meu_plantel"))
+
 
 # ==============================================================================
 # ROTAS DE LIGAS (tabela liga e participa_liga)
@@ -608,7 +401,7 @@ def ligas():
     # Preparar lista de ligas enriquecida com estado de inscrição
     ligas_view = []
     for liga in MOCK_LIGAS:
-        inscrito = any(pl["id_liga"] == liga["id_liga"] and pl["id_plantel"] == user_pid for pl in MOCK_PARTICIPA_LIGA)
+        inscrito = any(pl["id_liga"] == liga["id_liga"] and pl["id_plantel"] == user_pid for pl in MOCK_PARTICIPA_LIGA) if user_pid else False
         total = sum(1 for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == liga["id_liga"])
         item = dict(liga)
         item["inscrito"] = inscrito
@@ -621,6 +414,7 @@ def ligas():
         ligas=ligas_view,
         paises=MOCK_PAISES,
     )
+
 
 @app.route("/ligas/criar", methods=["POST"])
 def criar_liga():
@@ -657,6 +451,7 @@ def criar_liga():
     flash(f"Liga '{nome}' criada com sucesso! O teu plantel foi inscrito automaticamente.", "success")
     return redirect(url_for("liga_detalhe", id_liga=new_id))
 
+
 @app.route("/ligas/<int:id_liga>/entrar", methods=["POST"])
 def entrar_liga(id_liga):
     user = current_user()
@@ -685,21 +480,31 @@ def entrar_liga(id_liga):
     flash(f"Inscrição confirmada na liga '{liga['nome']}'!", "success")
     return redirect(url_for("liga_detalhe", id_liga=id_liga))
 
+
 @app.route("/ligas/<int:id_liga>")
 def liga_detalhe(id_liga):
     liga = next((l for l in MOCK_LIGAS if l["id_liga"] == id_liga), MOCK_LIGAS[0])
-    
+    jornada_req = request.args.get("jornada")
+    jornada_sel = int(jornada_req) if jornada_req and jornada_req.isdigit() else None
+
     # Participantes da liga via participa_liga
     participantes_ids = [pl["id_plantel"] for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == id_liga]
     classificacao = []
     for pid in participantes_ids:
         pl_obj = get_plantel_by_id(pid)
         if pl_obj:
+            if jornada_sel:
+                pj = next((item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == jornada_sel), None)
+                pts_j = pj["pontos_jornada"] if pj else 0.0
+            else:
+                pj_last = next((item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == 5), None)
+                pts_j = pj_last["pontos_jornada"] if pj_last else 0.0
+
             classificacao.append({
                 "id_plantel": pl_obj["id_plantel"],
                 "username": pl_obj["username"],
                 "nome_plantel": pl_obj["nome_plantel"],
-                "pontos_jornada": 45,
+                "pontos_jornada": pts_j,
                 "pontos_totais": pl_obj["pontos_acumulados"],
             })
 
@@ -715,8 +520,9 @@ def liga_detalhe(id_liga):
         liga=liga,
         classificacao=classificacao,
         jornadas=jornadas_liga,
-        jornada_selecionada=None,
+        jornada_selecionada=jornada_sel,
     )
+
 
 # ==============================================================================
 # ROTAS DE JOGADORES (tabela pessoa e jogador)
@@ -724,31 +530,6 @@ def liga_detalhe(id_liga):
 
 @app.route("/jogadores")
 def jogadores():
-    historico = [
-        {
-            "id_jogador": 1,
-            "id_jogo": 1,
-            "descricao_jogo": "THW Kiel 31 - 29 Füchse Berlin",
-            "golos": 9,
-            "assistencias": 5,
-            "exclusoes_2min": 1,
-            "defesas_gr": 0,
-            "hpi": 91.00,
-            "pontos_obtidos": 22.0,
-        },
-        {
-            "id_jogador": 2,
-            "id_jogo": 1,
-            "descricao_jogo": "THW Kiel 31 - 29 Füchse Berlin",
-            "golos": 6,
-            "assistencias": 4,
-            "exclusoes_2min": 1,
-            "defesas_gr": 0,
-            "hpi": 78.50,
-            "pontos_obtidos": 15.0,
-        },
-    ]
-
     return render_template(
         "jogadores.html",
         utilizador=current_user(),
@@ -756,8 +537,9 @@ def jogadores():
         clubes=MOCK_CLUBES,
         posicoes=MOCK_POSICOES,
         paises=MOCK_PAISES,
-        historico_jogos=historico,
+        historico_jogos=HISTORICO_JOGOS,
     )
+
 
 @app.route("/jogadores/criar", methods=["POST"])
 def criar_jogador():
@@ -790,11 +572,12 @@ def criar_jogador():
         "posicao_nome": posicao["nome"],
         "posicao_sigla": posicao["sigla"],
         "total_golos": 0,
-        "total_pontos": 0,
+        "total_pontos": 0.0,
     })
 
     flash(f"Jogador {primeiro_nome} {apelido} registado com sucesso!", "success")
     return redirect(url_for("jogadores"))
+
 
 @app.route("/jogadores/<int:id_jogador>/editar", methods=["POST"])
 def editar_jogador(id_jogador):
@@ -825,6 +608,7 @@ def editar_jogador(id_jogador):
         flash(f"Dados de {jog['primeiro_nome']} {jog['apelido']} atualizados!", "success")
     return redirect(url_for("jogadores"))
 
+
 @app.route("/jogadores/<int:id_jogador>/eliminar", methods=["POST"])
 def eliminar_jogador(id_jogador):
     global MOCK_JOGADORES
@@ -836,6 +620,7 @@ def eliminar_jogador(id_jogador):
         squad[:] = [s for s in squad if s["id_jogador"] != id_jogador]
     flash(f"Registo de {nome} eliminado com sucesso (CASCADE).", "success")
     return redirect(url_for("jogadores"))
+
 
 # ==============================================================================
 # ROTAS DE CLUBES (tabela clube e treinador)
@@ -854,6 +639,7 @@ def clubes():
         jogadores_por_clube=jogadores_por_clube,
     )
 
+
 # ==============================================================================
 # ROTAS DE JOGOS E PARTICIPAÇÃO (tabela jogo, jornada, pavilhao, participa_jogo)
 # ==============================================================================
@@ -869,6 +655,7 @@ def jogos():
         pavilhoes=MOCK_PAVILHOES,
         arbitros=MOCK_ARBITROS,
     )
+
 
 @app.route("/jogos/criar", methods=["POST"])
 def criar_jogo():
@@ -892,6 +679,7 @@ def criar_jogo():
         "id_jogo": new_id,
         "id_jornada": id_jornada,
         "numero_jornada": jornada["numero_jornada"],
+        "nome_jornada": f"Jornada {jornada['numero_jornada']}",
         "data_hora": data_hora,
         "clube_casa": clube_casa["nome"],
         "id_clube_casa": id_clube_casa,
@@ -906,6 +694,7 @@ def criar_jogo():
     flash("Jogo agendado com sucesso!", "success")
     return redirect(url_for("jogos"))
 
+
 @app.route("/jogos/<int:id_jogo>")
 def jogo_detalhe(id_jogo):
     jogo = next((j for j in MOCK_JOGOS if j["id_jogo"] == id_jogo), MOCK_JOGOS[0])
@@ -918,15 +707,22 @@ def jogo_detalhe(id_jogo):
         if j["id_clube"] in (jogo["id_clube_casa"], jogo["id_clube_fora"])
     ]
 
+    # Árbitros associados a este jogo específico via tabela apita
+    arbitros_ids = [a["id_arbitro"] for a in MOCK_APITA if a["id_jogo"] == id_jogo]
+    arbitros_jogo = [a for a in MOCK_ARBITROS if a["id_arbitro"] in arbitros_ids]
+    if not arbitros_jogo:
+        arbitros_jogo = MOCK_ARBITROS[:2]
+
     return render_template(
         "jogo_detalhe.html",
         utilizador=current_user(),
         jogo=jogo,
-        arbitros_jogo=MOCK_ARBITROS,
+        arbitros_jogo=arbitros_jogo,
         stats_casa=stats_casa,
         stats_fora=stats_fora,
         jogadores_participantes=jogadores_participantes,
     )
+
 
 @app.route("/jogos/<int:id_jogo>/estatisticas", methods=["POST"])
 def jogo_estatisticas(id_jogo):
@@ -977,8 +773,14 @@ def jogo_estatisticas(id_jogo):
             "pontos_obtidos": pontos_obtidos,
         })
 
+    # Recalcular totais consolidados do jogador
+    all_player_pj = [s for s in MOCK_PARTICIPA_JOGO if s["id_jogador"] == id_jogador]
+    jog["total_golos"] = sum(s.get("golos", 0) for s in all_player_pj)
+    jog["total_pontos"] = round(sum(s.get("pontos_obtidos", 0.0) for s in all_player_pj), 1)
+
     flash(f"Estatística de {jog['primeiro_nome']} {jog['apelido']} gravada com sucesso em participa_jogo!", "success")
     return redirect(url_for("jogo_detalhe", id_jogo=id_jogo))
+
 
 # ==============================================================================
 # MAIN
