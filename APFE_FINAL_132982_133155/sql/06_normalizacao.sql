@@ -25,45 +25,64 @@ ALTER TABLE jornada ADD CONSTRAINT JORNADA_NUMERO_UNK UNIQUE (numero_jornada);
 GO
 
 -- 3. RECALCULAR participa_jornada.pontos_jornada COM BASE NOS TITULARES/CAPITÃO
-UPDATE pjorn
-SET pjorn.pontos_jornada = ISNULL(calc.total_pontos, 0)
-FROM participa_jornada pjorn
-LEFT JOIN (
-    SELECT
-        s.id_plantel,
-        jg.id_jornada,
-        ROUND(SUM(
-            (
-                4.0 * pj.golos
-                + 2.0 * pj.assistencias
-                - 1.0 * pj.remates_falhados
-                - 2.0 * pj.exclusoes_2min
-                - 5.0 * pj.cartoes_vermelhos
-                - 3.0 * pj.cartoes_azuis
-                + 3.0 * pj.defesas_gr
-                + 0.1 * pj.hpi
-            ) * CASE WHEN s.e_capitao = 1 THEN 2.0 ELSE 1.0 END
-        ), 2) AS total_pontos
-    FROM seleciona s
-    INNER JOIN participa_jogo pj ON pj.id_jogador = s.id_jogador
-    INNER JOIN jogo jg ON jg.id_jogo = pj.id_jogo
+UPDATE participa_jornada
+SET pontos_jornada = 0;
+
+UPDATE participa_jornada
+SET pontos_jornada = (
+    SELECT ROUND(SUM(
+        (
+            4.0 * pj.golos
+            + 2.0 * pj.assistencias
+            - 1.0 * pj.remates_falhados
+            - 2.0 * pj.exclusoes_2min
+            - 5.0 * pj.cartoes_vermelhos
+            - 3.0 * pj.cartoes_azuis
+            + 3.0 * pj.defesas_gr
+            + 0.1 * pj.hpi
+        ) * CASE WHEN s.e_capitao = 1 THEN 2.0 ELSE 1.0 END
+    ), 2)
+    FROM seleciona AS s
+    INNER JOIN participa_jogo AS pj ON pj.id_jogador = s.id_jogador
+    INNER JOIN jogo AS jg ON jg.id_jogo = pj.id_jogo
     WHERE s.e_titular = 1
-    GROUP BY s.id_plantel, jg.id_jornada
-) calc
-    ON calc.id_plantel = pjorn.id_plantel
-   AND calc.id_jornada = pjorn.id_jornada;
+      AND s.id_plantel = participa_jornada.id_plantel
+      AND jg.id_jornada = participa_jornada.id_jornada
+)
+WHERE EXISTS (
+    SELECT *
+    FROM seleciona AS s
+    INNER JOIN participa_jogo AS pj ON pj.id_jogador = s.id_jogador
+    INNER JOIN jogo AS jg ON jg.id_jogo = pj.id_jogo
+    WHERE s.e_titular = 1
+      AND s.id_plantel = participa_jornada.id_plantel
+      AND jg.id_jornada = participa_jornada.id_jornada
+);
 GO
 
 -- 4. REMOVER ATRIBUTOS DERIVADOS/REDUNDANTES (plantel, jogo, participa_jogo)
 -- Remover DEFAULT constraints associadas às colunas que vão ser apagadas
-DECLARE @sql NVARCHAR(MAX) = N'';
-SELECT @sql += N'ALTER TABLE ' + QUOTENAME(OBJECT_NAME(parent_object_id)) +
-               N' DROP CONSTRAINT ' + QUOTENAME(name) + N';' + CHAR(13)
-FROM sys.default_constraints
-WHERE (OBJECT_NAME(parent_object_id) = 'plantel' AND COL_NAME(parent_object_id, parent_column_id) IN ('orcamento', 'pontos_acumulados'))
-   OR (OBJECT_NAME(parent_object_id) = 'jogo' AND COL_NAME(parent_object_id, parent_column_id) IN ('golos_casa', 'golos_fora'))
-   OR (OBJECT_NAME(parent_object_id) = 'participa_jogo' AND COL_NAME(parent_object_id, parent_column_id) = 'pontos_obtidos');
-EXEC sp_executesql @sql;
+DECLARE @tabela VARCHAR(100), @constraint VARCHAR(200), @cmd VARCHAR(500);
+
+WHILE EXISTS (
+    SELECT *
+    FROM sys.default_constraints
+    WHERE (OBJECT_NAME(parent_object_id) = 'plantel' AND COL_NAME(parent_object_id, parent_column_id) IN ('orcamento', 'pontos_acumulados'))
+       OR (OBJECT_NAME(parent_object_id) = 'jogo' AND COL_NAME(parent_object_id, parent_column_id) IN ('golos_casa', 'golos_fora'))
+       OR (OBJECT_NAME(parent_object_id) = 'participa_jogo' AND COL_NAME(parent_object_id, parent_column_id) = 'pontos_obtidos')
+)
+BEGIN
+    SELECT
+        @tabela = OBJECT_NAME(parent_object_id),
+        @constraint = name
+    FROM sys.default_constraints
+    WHERE (OBJECT_NAME(parent_object_id) = 'plantel' AND COL_NAME(parent_object_id, parent_column_id) IN ('orcamento', 'pontos_acumulados'))
+       OR (OBJECT_NAME(parent_object_id) = 'jogo' AND COL_NAME(parent_object_id, parent_column_id) IN ('golos_casa', 'golos_fora'))
+       OR (OBJECT_NAME(parent_object_id) = 'participa_jogo' AND COL_NAME(parent_object_id, parent_column_id) = 'pontos_obtidos');
+
+    SET @cmd = 'ALTER TABLE ' + @tabela + ' DROP CONSTRAINT ' + @constraint + ';';
+    EXEC (@cmd);
+END;
 GO
 
 ALTER TABLE plantel DROP CONSTRAINT PLANTEL_ORCAMENTO_CK;
