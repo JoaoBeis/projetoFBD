@@ -44,14 +44,14 @@ Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise 
 ### 1. Remoção de Atributos Derivados e Redundantes
 Para evitar anomalias de atualização e inconsistências entre valores armazenados e valores calculados, foram eliminados os atributos derivados que podem ser obtidos dinamicamente através de consultas (`SELECT` / *Views*):
 
-* **`Plantel.orcamento`:** Removido por ser calculável a partir do orçamento inicial definido para a plataforma subtraído da soma dos `preco_compra` dos jogadores associados ao plantel (`Pertence`).
+* **`Plantel.orcamento`:** Removido por ser calculável a partir do orçamento inicial definido para a plataforma subtraído da soma dos `preco_compra` dos jogadores associados ao plantel (`Seleciona`).
 * **`Plantel.pontos_acumulados`:** Removido por corresponder ao somatório dos `pontos_jornada` registados para cada plantel na tabela `Participa_Jornada`.
 * **`Jogo.golos_casa` e `Jogo.golos_fora`:** Removidos por poderem ser apurados diretamente através da soma dos golos marcados pelos jogadores de cada clube no respetivo jogo (`Participa_Jogo`).
 * **`Participa_Jogo.pontos_obtidos`:** Removido por representar uma pontuação derivada da aplicação das regras de pontuação da *Fantasy* às estatísticas individuais registadas no jogo (golos, assistências, defesas, sanções, etc.).
 
 ### 2. Reestruturação de Dependências Funcionais
 * **Transferência de `id_pavilhao` (`Jogo` $\rightarrow$ `Clube`):** No modelo inicial, o pavilhão estava associado diretamente a `Jogo`. Contudo, no contexto da competição, o pavilhão onde se realiza o encontro é determinado pelo clube visitado (`id_clube_casa`), gerando uma dependência transitiva ($Jogo \rightarrow Clube_{casa} \rightarrow Pavilhao$). Ao mover `id_pavilhao` para `Clube` (numa relação 1:1), elimina-se esta dependência transitiva e garante-se a 3FN.
-* **Desacoplamento entre `Jornada` e `Liga`:** Uma vez que as jornadas correspondem ao calendário real dos jogos de andebol e que um mesmo plantel pode competir simultaneamente em várias ligas virtuais (públicas ou privadas), removeu-se a chave estrangeira `id_liga` de `Jornada`. A ligação entre jornadas, plantéis e ligas passa a ser assegurada de forma consistente através de `Participa_Jornada` e `Compete`.
+* **Desacoplamento entre `Jornada` e `Liga`:** Uma vez que as jornadas correspondem ao calendário real dos jogos de andebol e que um mesmo plantel pode competir simultaneamente em várias ligas virtuais (públicas ou privadas), removeu-se a chave estrangeira `id_liga` de `Jornada`. A ligação entre jornadas, plantéis e ligas passa a ser assegurada de forma consistente através de `Participa_Jornada` e `Participa_Liga`.
 
 ### 3. Restrições de Integridade e Atualização de Dados
 * **Chaves Candidatas (`UNIQUE`):** Adicionadas restrições de unicidade sobre atributos naturais (como nomes de entidades e identificadores únicos) para impedir registos duplicados.
