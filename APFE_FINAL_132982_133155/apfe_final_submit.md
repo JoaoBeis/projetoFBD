@@ -39,7 +39,7 @@ Uma liga pode também ser relativa a uma país, mas já é opcional.
 
 ## Normalização / Normalization
 
-Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados (implementada no script `normalizacao.sql`) com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados.
+Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados (implementada no script `06_normalizacao.sql`) com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados.
 
 ### 1. Remoção de Atributos Derivados e Redundantes
 Para evitar anomalias de atualização e inconsistências entre valores armazenados e valores calculados, foram eliminados os atributos derivados que podem ser obtidos dinamicamente através de consultas (`SELECT` / *Views*):
