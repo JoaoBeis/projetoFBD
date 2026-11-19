@@ -9,7 +9,12 @@
 USE p3g2;
 GO
 
--- Necessario para criar os indices filtrados do passo 5
+-- Configuracao exigida pelo SQL Server para criar indices filtrados (CREATE UNIQUE INDEX ... WHERE ...) sem dar erros.
+-- Os indices filtrados resolvem a limitacao do UNIQUE tradicional, 
+-- que impede valores repetidos em TODOS os tuplos da relacao: 
+-- aqui aplicam unicidade apenas aos tuplos especificos que cumprem o filtro WHERE, permitindo repeticoes nos restantes. 
+-- (ex.: codigo_acesso unico apenas quando nao é NULL, permitindo varias ligas publicas)
+-- (ex.: id_plantel unico apenas quando e_capitao = 1, permitindo varios jogadores nao-capitaes no mesmo plantel)
 SET QUOTED_IDENTIFIER ON;
 SET ANSI_NULLS ON;
 GO
