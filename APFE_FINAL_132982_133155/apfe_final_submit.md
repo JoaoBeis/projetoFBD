@@ -54,6 +54,6 @@ Para evitar anomalias de atualização e inconsistências entre valores armazena
 * **Desacoplamento entre `Jornada` e `Liga`:** Uma vez que as jornadas correspondem ao calendário real dos jogos de andebol e que um mesmo plantel pode competir simultaneamente em várias ligas virtuais (públicas ou privadas), removeu-se a chave estrangeira `id_liga` de `Jornada`. A ligação entre jornadas, plantéis e ligas passa a ser assegurada de forma consistente através de `Participa_Jornada` e `Participa_Liga`.
 
 ### 3. Restrições de Integridade e Atualização de Dados
-* **Chaves Candidatas (`UNIQUE`):** Adicionadas restrições de unicidade sobre atributos naturais (como nomes de entidades e identificadores únicos) para impedir registos duplicados.
+* **Chaves Candidatas (`UNIQUE`):** Adicionadas restrições de unicidade sobre atributos naturais (`pais.sigla`, `posicao.nome`, `posicao.sigla`, `treinador.id_clube`, `clube.id_pavilhao` e `jornada.numero_jornada`) para impedir registos duplicados.
 * **Integridade de Domínio (`CHECK`):** Introduzidas validações ao nível do esquema para garantir a coerência dos dados (valores não negativos para preços, capacidades e estatísticas de jogo, distinção obrigatória entre clube visitado e visitante num jogo, e validação das regras de titularidade/capitão).
 * **Recálculo de Pontuações:** Atualização dos valores de `Participa_Jornada.pontos_jornada` para refletir de forma exata o desempenho estatístico dos atletas titulares e do capitão em cada jornada.
