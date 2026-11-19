@@ -37,23 +37,81 @@ Uma liga pode também ser relativa a uma país, mas já é opcional.
 
 [SQL DDL File](sql/01_ddl.sql "SQLFileQuestion")
 
+O `01_ddl.sql` e o `04_db_init.sql` contêm o esquema e os dados iniciais. A normalização é aplicada pelo script [`sql/normalizacao.sql`](sql/normalizacao.sql), que se executa a seguir a esses dois e leva a base de dados ao esquema final representado no ER:
+
+`01_ddl.sql` → `04_db_init.sql` → `normalizacao.sql`
+
 ## Normalização / Normalization
 
-Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados (implementada no script `06_normalizacao.sql`) com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados.
+Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados. O DER e o ER foram atualizados e o script `sql/normalizacao.sql` aplica à base de dados as mesmas alterações.
 
-### 1. Remoção de Atributos Derivados e Redundantes
-Para evitar anomalias de atualização e inconsistências entre valores armazenados e valores calculados, foram eliminados os atributos derivados que podem ser obtidos dinamicamente através de consultas (`SELECT` / *Views*):
+### 1. Análise de dependências funcionais
 
-* **`Plantel.orcamento`:** Removido por ser calculável a partir do orçamento inicial definido para a plataforma subtraído da soma dos `preco_compra` dos jogadores associados ao plantel (`Seleciona`).
-* **`Plantel.pontos_acumulados`:** Removido por corresponder ao somatório dos `pontos_jornada` registados para cada plantel na tabela `Participa_Jornada`.
-* **`Jogo.golos_casa` e `Jogo.golos_fora`:** Removidos por poderem ser apurados diretamente através da soma dos golos marcados pelos jogadores de cada clube no respetivo jogo (`Participa_Jogo`).
-* **`Participa_Jogo.pontos_obtidos`:** Removido por representar uma pontuação derivada da aplicação das regras de pontuação da *Fantasy* às estatísticas individuais registadas no jogo (golos, assistências, defesas, sanções, etc.).
+As dependências funcionais (DF) foram definidas a partir da semântica dos atributos (e não inferidas dos dados). A **1FN** é cumprida em todas as relações (atributos atómicos, sem relações aninhadas). A **2FN** é cumprida em todas: nas 5 relações de chave composta (`participa_liga`, `seleciona`, `participa_jornada`, `apita`, `participa_jogo`) todos os atributos não-chave dependem da chave completa.
 
-### 2. Reestruturação de Dependências Funcionais
-* **Transferência de `id_pavilhao` (`Jogo` $\rightarrow$ `Clube`):** No modelo inicial, o pavilhão estava associado diretamente a `Jogo`. Contudo, no contexto da competição, o pavilhão onde se realiza o encontro é determinado pelo clube visitado (`id_clube_casa`), gerando uma dependência transitiva ($Jogo \rightarrow Clube_{casa} \rightarrow Pavilhao$). Ao mover `id_pavilhao` para `Clube` (numa relação 1:1), elimina-se esta dependência transitiva e garante-se a 3FN.
-* **Desacoplamento entre `Jornada` e `Liga`:** Uma vez que as jornadas correspondem ao calendário real dos jogos de andebol e que um mesmo plantel pode competir simultaneamente em várias ligas virtuais (públicas ou privadas), removeu-se a chave estrangeira `id_liga` de `Jornada`. A ligação entre jornadas, plantéis e ligas passa a ser assegurada de forma consistente através de `Participa_Jornada` e `Participa_Liga`.
+Esquema final (após normalização):
 
-### 3. Restrições de Integridade e Atualização de Dados
-* **Chaves Candidatas (`UNIQUE`):** Adicionadas restrições de unicidade sobre atributos naturais (`pais.sigla`, `posicao.nome`, `posicao.sigla`, `treinador.id_clube`, `clube.id_pavilhao` e `jornada.numero_jornada`) para impedir registos duplicados.
-* **Integridade de Domínio (`CHECK`):** Introduzidas validações ao nível do esquema para garantir a coerência dos dados (valores não negativos para preços, capacidades e estatísticas de jogo, distinção obrigatória entre clube visitado e visitante num jogo, e validação das regras de titularidade/capitão).
-* **Recálculo de Pontuações:** Atualização dos valores de `Participa_Jornada.pontos_jornada` para refletir de forma exata o desempenho estatístico dos atletas titulares e do capitão em cada jornada.
+| Relação | Chave(s) | DF principais | Forma normal |
+|---|---|---|---|
+| pessoa | id_pessoa | id_pessoa → primeiro_nome, apelido, data_nasc | BCNF |
+| pais | nome; sigla | nome ↔ sigla | BCNF |
+| posicao | id_posicao; nome; sigla | id_posicao → nome, sigla | BCNF |
+| clube | id_clube; nome; id_pavilhao | id_clube → nome, cidade, emblema, id_pavilhao | BCNF |
+| pavilhao | id_pavilhao; nome | id_pavilhao → nome, capacidade, localidade | BCNF |
+| utilizador | id_utilizador; username; email | id_utilizador → username, email, password_hash | BCNF |
+| jogador | id_jogador | id_jogador → altura, peso, valor_mercado, nome_pais, id_clube, id_posicao | BCNF |
+| treinador | id_treinador; id_clube | id_treinador → licenca, id_clube | BCNF |
+| arbitro | id_arbitro; num_cedula | id_arbitro → num_cedula | BCNF |
+| liga | id_liga | id_liga → nome, codigo_acesso, e_privada, nome_pais, id_utilizador | BCNF |
+| plantel | id_plantel; id_utilizador | id_plantel → nome_plantel, id_utilizador | BCNF |
+| jornada | id_jornada; numero_jornada | id_jornada → numero_jornada, data_inicio, data_fim | BCNF |
+| jogo | id_jogo | id_jogo → data_hora, id_clube_casa, id_clube_fora, id_jornada | BCNF |
+| participa_liga, apita | (chave composta) | sem atributos fora da chave | BCNF |
+| seleciona | (id_plantel, id_jogador) | → e_titular, e_capitao, preco_compra | BCNF |
+| participa_jornada | (id_plantel, id_jornada) | → pontos_jornada | BCNF |
+| participa_jogo | (id_jogador, id_jogo) | → golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi | BCNF |
+
+Critérios informais (BD8): cada relação tem uma semântica única; os poucos atributos opcionais (`liga.codigo_acesso`, `liga.nome_pais`, `clube.emblema`, `jogador.altura`, `jogador.peso`) são NULL por regra de negócio (liga pública, liga sem país, dados em falta) e não justificam relações separadas; todas as junções fazem-se por PK/FK.
+
+### 2. Violações encontradas e correções
+
+**Violação formal da 3FN**
+
+* **`Participa_Jogo.pontos_obtidos`:** existe a dependência {golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi} → pontos_obtidos entre atributos não-chave (dependência transitiva). Como a dependência é uma fórmula e não uma tabela de consulta, a decomposição não faz sentido: o atributo foi removido e os pontos passam a ser calculados a partir das estatísticas.
+* **`Jogo.id_pavilhao` (`Jogo` → `Clube` → `Pavilhao`):** assumimos a regra de negócio de que todos os jogos se disputam no pavilhão do clube visitado, ou seja, `id_clube_casa → id_pavilhao` (não há jogos em campo neutro). Existe assim dependência transitiva, pelo que `id_pavilhao` passou para `Clube` (relação 1:1 com `Pavilhao`, com `UNIQUE`). Cada clube joga no pavilhão da sua cidade, o que se confirma em todos os jogos em casa.
+
+**Atributos derivados (redundância; não são violações formais da 3FN)**
+
+* **`Plantel.pontos_acumulados`:** soma de `pontos_jornada` de `Participa_Jornada`. Removido; calcula-se por `SUM`.
+* **`Plantel.orcamento`:** igual ao orçamento inicial da plataforma (100 000 000) menos a soma dos `preco_compra` do plantel. Removido.
+* **`Jogo.golos_casa` e `Jogo.golos_fora`:** soma dos golos individuais dos jogadores de cada clube em `Participa_Jogo`. Removidos.
+
+**Atributos que se mantêm guardados (redundância deliberada)**
+
+* **`Participa_Jornada.pontos_jornada`:** é derivável (titulares e capitão do plantel × pontos dos jogos da jornada), mas mantém-se guardado como *snapshot*: a relação `Seleciona` não tem dimensão "jornada", pelo que, se o valor fosse calculado a pedido, trocar um titular depois de uma jornada alteraria retroativamente o histórico. Esta decisão enquadra-se no ponto de equilíbrio entre 3FN e BCNF do BD8.
+* **`Seleciona.preco_compra`:** não é redundante; guarda o preço no momento da compra, que difere do `valor_mercado` atual.
+
+**Desacoplamento entre `Jornada` e `Liga`:** as jornadas correspondem ao calendário real e um plantel pode competir em várias ligas, pelo que se removeu `id_liga` de `Jornada` (que só permitia jornadas e jogos para uma liga). A ligação passa a ser feita por `Participa_Jornada` e `Participa_Liga`, e `numero_jornada` passou a `UNIQUE`.
+
+### 3. O que faz o script `normalizacao.sql`
+
+Por ordem:
+
+1. **Pavilhão:** acrescenta `clube.id_pavilhao` (com `UNIQUE` e chave estrangeira), confirma que coincide com o pavilhão dos jogos em casa e remove `jogo.id_pavilhao`.
+2. **Jornada:** remove `jornada.id_liga` e acrescenta `UNIQUE (numero_jornada)`.
+3. **Pontos de jornada:** recalcula `participa_jornada.pontos_jornada` (titulares, capitão a dobrar). Os valores do povoamento inicial não correspondiam às estatísticas: nenhum dos 4 plantéis tinha `pontos_acumulados` igual à soma das suas jornadas.
+4. **Derivados:** remove `plantel.orcamento`, `plantel.pontos_acumulados`, `jogo.golos_casa`, `jogo.golos_fora` e `participa_jogo.pontos_obtidos` (incluindo as restrições `DEFAULT` e `CHECK` associadas).
+5. **Restrições:** as listadas na secção seguinte.
+
+Com a remoção de `golos_casa` e `golos_fora`, o resultado de cada jogo passa a ser a soma dos golos individuais, que é a única fonte de verdade. Os resultados do povoamento inicial eram dados de teste incoerentes com essas estatísticas (em 22 dos 45 jogos o vencedor seria diferente), pelo que não se preservam.
+
+### 4. Restrições de integridade acrescentadas
+
+* **Chaves candidatas (`UNIQUE`):** `pais.sigla`, `posicao.nome`, `posicao.sigla`, `clube.nome`, `pavilhao.nome`, `treinador.id_clube` e `clube.id_pavilhao` (relações 1:1 do DER).
+* **`CHECK` e índices filtrados:** liga privada ⇔ tem `codigo_acesso` (e código único); capitão tem de ser titular; no máximo um capitão por plantel; no máximo 1 cartão vermelho e 1 azul por jogador e jogo.
+
+### 5. Regras assumidas
+
+* Pontos de um jogador num jogo: 4×golos + 2×assistências − 1×remates falhados − 2×exclusões de 2 min − 5×cartão vermelho − 3×cartão azul + 3×defesas de GR + 0,1×HPI, arredondados a 2 casas; o capitão vale o dobro. O peso do cartão azul foi definido pelo grupo (os dados não têm cartões azuis).
+* O orçamento restante de um plantel é o orçamento inicial menos a soma dos `preco_compra`; assume-se que vender um jogador devolve o preço de compra.
+* Os golos de um jogo atribuem-se pelo clube atual do jogador; assume-se que não há transferências durante a época.
