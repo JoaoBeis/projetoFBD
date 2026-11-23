@@ -37,13 +37,13 @@ Uma liga pode também ser relativa a uma país, mas já é opcional.
 
 [SQL DDL File](sql/01_ddl.sql "SQLFileQuestion")
 
-O `01_ddl.sql` e o `04_db_init.sql` contêm o esquema e os dados iniciais. A normalização é aplicada pelo script [`sql/normalizacao.sql`](sql/normalizacao.sql), que se executa a seguir a esses dois e leva a base de dados ao esquema final representado no ER:
+O `01_ddl.sql` e o `04_db_init.sql` contêm o esquema e os dados iniciais. A normalização é aplicada pelo script `normalizacao.sql` que se executa a seguir a esses dois e leva a base de dados ao esquema final representado no ER:
 
 `01_ddl.sql` → `04_db_init.sql` → `normalizacao.sql`
 
-## Normalização / Normalization
+## Normalização
 
-Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados. O DER e o ER foram atualizados e o script `sql/normalizacao.sql` aplica à base de dados as mesmas alterações.
+Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados. O DER e o ER foram atualizados e o script `normalizacao.sql` aplica à base de dados as mesmas alterações.
 
 ### 1. Análise de dependências funcionais
 
