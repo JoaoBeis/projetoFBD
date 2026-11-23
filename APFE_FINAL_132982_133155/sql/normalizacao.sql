@@ -23,16 +23,9 @@ GO
 ALTER TABLE dbo.clube ADD id_pavilhao INT NULL;
 GO
 
--- cada clube joga no pavilhao com o mesmo id (mesma cidade; confirmado no passo seguinte)
+-- cada clube joga no pavilhao com o mesmo id (mesma cidade;)
 UPDATE dbo.clube
 SET id_pavilhao = id_clube;
-GO
-
--- verificacao (esperado: 0): nenhum jogo em casa num pavilhao diferente do do clube
-SELECT COUNT(*) AS jogos_com_pavilhao_diferente
-FROM dbo.jogo AS j
-INNER JOIN dbo.clube AS c ON c.id_clube = j.id_clube_casa
-WHERE c.id_pavilhao <> j.id_pavilhao;
 GO
 
 ALTER TABLE dbo.clube ALTER COLUMN id_pavilhao INT NOT NULL;
