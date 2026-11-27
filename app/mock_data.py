@@ -1,16 +1,19 @@
 """
 Módulo de Carregamento e Gestão de Dados MOCK
-100% Alinhado com o DML oficial de APFE_FINAL_132982_133155/sql/04_db_init.sql
+100% Alinhado com o esquema normalizado (3FN) de:
+- APFE_FINAL_132982_133155/sql/04_db_init.sql
+- APFE_FINAL_132982_133155/sql/normalizacao.sql
 
-Este módulo faz o parsing direto do script SQL de inicialização da base de dados,
-garantindo que todas as entidades (utilizadores, plantéis, clubes, jogadores,
-posições, pavilhões, jornadas, jogos, árbitros e estatísticas individuais)
-estejam rigorosamente alinhadas com os dados da BD do projeto.
+Remove atributos derivados (golos_casa, golos_fora, orcamento, pontos_acumulados,
+pontos_obtidos), move id_pavilhao de jogo para clube (1:1), desacopla jornada
+de liga (calendário global) e recalcula participa_jornada.pontos_jornada.
 """
 
 import os
 import re
 import json
+from persistence.calculations import recalcular_pontos_jornada_plantel
+
 
 def parse_sql_values(values_str):
     """
@@ -83,8 +86,8 @@ def find_sql_path():
 
 def load_mock_data(sql_path=None):
     """
-    Lê o ficheiro 04_db_init.sql e gera as estruturas de dados Python
-    alinhadas com todas as tabelas do esquema da base de dados.
+    Lê o ficheiro 04_db_init.sql e aplica as transformações de normalizacao.sql
+    em memória para produzir estruturas Python alinhadas com o ER final.
     """
     if sql_path is None:
         sql_path = find_sql_path()
@@ -105,7 +108,6 @@ def load_mock_data(sql_path=None):
             try:
                 with open(json_cache_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                    # Converter chaves inteiras de planteis e seleciona
                     data["MOCK_PLANTEIS"] = {int(k): v for k, v in data["MOCK_PLANTEIS"].items()}
                     data["MOCK_SELECIONA"] = {int(k): v for k, v in data["MOCK_SELECIONA"].items()}
                     return data
@@ -114,9 +116,13 @@ def load_mock_data(sql_path=None):
         raise FileNotFoundError(f"Não foi possível encontrar nem o SQL ({sql_path}) nem a cache JSON.")
 
     def get_table_rows(table_name):
-        matches = re.findall(rf'INSERT INTO {table_name}\s*\((.*?)\)\s*VALUES\s*(.*?);', sql_text, re.DOTALL | re.IGNORECASE)
+        matches = re.findall(
+            rf'INSERT INTO {table_name}\s*\((.*?)\)\s*VALUES\s*(.*?);',
+            sql_text,
+            re.DOTALL | re.IGNORECASE,
+        )
         rows = []
-        for cols, vals in matches:
+        for _cols, vals in matches:
             rows.extend(parse_sql_values(vals))
         return rows
 
@@ -138,7 +144,6 @@ def load_mock_data(sql_path=None):
         {"id_pavilhao": idx + 1, "nome": r[0], "capacidade": int(r[1]), "localidade": r[2]}
         for idx, r in enumerate(get_table_rows("pavilhao"))
     ]
-    pavilhao_map = {p["id_pavilhao"]: p for p in mock_pavilhoes}
 
     # 4. PESSOAS
     pessoas = {
@@ -146,13 +151,14 @@ def load_mock_data(sql_path=None):
         for idx, r in enumerate(get_table_rows("pessoa"))
     }
 
-    # 5. CLUBES E TREINADORES
+    # 5. CLUBES E TREINADORES (normalizacao.sql: id_pavilhao movido para clube com relação 1:1)
     clubes_dict = {
         idx + 1: {
             "id_clube": idx + 1,
             "nome": r[0],
             "cidade": r[1],
             "emblema": r[2] if r[2] != "NULL" else None,
+            "id_pavilhao": idx + 1,
             "treinador_nome": None,
             "treinador_licenca": None,
             "total_jogadores": 0,
@@ -187,46 +193,7 @@ def load_mock_data(sql_path=None):
             "num_cedula": r[1],
         })
 
-    # 8. PARTICIPA JOGO (Estatísticas de Partida)
-    mock_participa_jogo = []
-    player_stats = {}
-    for r in get_table_rows("participa_jogo"):
-        jid = int(r[0])
-        jogo_id = int(r[1])
-        golos = int(r[2])
-        assistencias = int(r[3])
-        remates_falhados = int(r[4])
-        exclusoes_2min = int(r[5])
-        cartoes_vermelhos = int(r[6])
-        cartoes_azuis = int(r[7])
-        defesas_gr = int(r[8])
-        hpi = float(r[9])
-        pontos_obtidos = float(r[10])
-
-        p = pessoas.get(jid, {})
-        nome_jog = f"{p.get('primeiro_nome', '')} {p.get('apelido', '')}".strip()
-
-        st = player_stats.setdefault(jid, {"golos": 0, "pontos": 0.0})
-        st["golos"] += golos
-        st["pontos"] += pontos_obtidos
-
-        mock_participa_jogo.append({
-            "id_jogador": jid,
-            "nome": nome_jog,
-            "id_jogo": jogo_id,
-            "id_clube": None,  # Preenchido em baixo
-            "golos": golos,
-            "assistencias": assistencias,
-            "remates_falhados": remates_falhados,
-            "exclusoes_2min": exclusoes_2min,
-            "cartoes_vermelhos": cartoes_vermelhos,
-            "cartoes_azuis": cartoes_azuis,
-            "defesas_gr": defesas_gr,
-            "hpi": hpi,
-            "pontos_obtidos": pontos_obtidos,
-        })
-
-    # 9. JOGADORES
+    # 8. JOGADORES
     mock_jogadores = []
     player_club_map = {}
     for r in get_table_rows("jogador"):
@@ -244,7 +211,6 @@ def load_mock_data(sql_path=None):
 
         p = pessoas.get(jid, {})
         pos = pos_map.get(pos_id, {})
-        st = player_stats.get(jid, {"golos": 0, "pontos": 0.0})
 
         mock_jogadores.append({
             "id_jogador": jid,
@@ -260,15 +226,32 @@ def load_mock_data(sql_path=None):
             "id_posicao": pos_id,
             "posicao_nome": pos.get("nome", ""),
             "posicao_sigla": pos.get("sigla", ""),
-            "total_golos": st["golos"],
-            "total_pontos": round(st["pontos"], 1),
         })
 
-    # Atualizar id_clube nos registos de participa_jogo
-    for item in mock_participa_jogo:
-        item["id_clube"] = player_club_map.get(item["id_jogador"])
-
     mock_clubes = list(clubes_dict.values())
+
+    # 9. PARTICIPA JOGO (sem atributo derivado pontos_obtidos)
+    mock_participa_jogo = []
+    for r in get_table_rows("participa_jogo"):
+        jid = int(r[0])
+        jogo_id = int(r[1])
+        p = pessoas.get(jid, {})
+        nome_jog = f"{p.get('primeiro_nome', '')} {p.get('apelido', '')}".strip()
+
+        mock_participa_jogo.append({
+            "id_jogador": jid,
+            "nome": nome_jog,
+            "id_jogo": jogo_id,
+            "id_clube": player_club_map.get(jid),
+            "golos": int(r[2]),
+            "assistencias": int(r[3]),
+            "remates_falhados": int(r[4]),
+            "exclusoes_2min": int(r[5]),
+            "cartoes_vermelhos": int(r[6]),
+            "cartoes_azuis": int(r[7]),
+            "defesas_gr": int(r[8]),
+            "hpi": float(r[9]),
+        })
 
     # 10. LIGAS
     mock_ligas = []
@@ -278,21 +261,17 @@ def load_mock_data(sql_path=None):
             "nome": r[0],
             "codigo_acesso": r[1] if r[1] != "NULL" else None,
             "e_privada": r[2] == "1",
-            "nome_pais": r[3],
+            "nome_pais": r[3] if r[3] != "NULL" else None,
             "id_utilizador": int(r[4]),
-            "total_participantes": 0,
         })
-    liga_map = {l["id_liga"]: l for l in mock_ligas}
 
-    # 11. PARTICIPA LIGA
+    # 11. PARTICIPA LIGA (apenas id_plantel, id_liga)
     mock_participa_liga = [
         {"id_plantel": int(r[0]), "id_liga": int(r[1])}
         for r in get_table_rows("participa_liga")
     ]
-    for l in mock_ligas:
-        l["total_participantes"] = sum(1 for pl in mock_participa_liga if pl["id_liga"] == l["id_liga"])
 
-    # 12. PLANTÉIS (Keyed by id_utilizador, conforme uso em app.py)
+    # 12. PLANTÉIS (sem atributos derivados orcamento e pontos_acumulados)
     mock_planteis = {}
     for idx, r in enumerate(get_table_rows("plantel"), 1):
         uid = int(r[3])
@@ -300,8 +279,6 @@ def load_mock_data(sql_path=None):
         mock_planteis[uid] = {
             "id_plantel": idx,
             "nome_plantel": r[0],
-            "orcamento": float(r[1]),
-            "pontos_acumulados": float(r[2]),
             "id_utilizador": uid,
             "username": u.get("username", f"user_{uid}"),
         }
@@ -309,17 +286,14 @@ def load_mock_data(sql_path=None):
     # Plantel inicial para utilizador 1 (admin) para facilitar testes diretos
     if 1 not in mock_planteis and 1 in user_map:
         admin_u = user_map[1]
+        admin_pid = max([p["id_plantel"] for p in mock_planteis.values()], default=0) + 1
         mock_planteis[1] = {
-            "id_plantel": 5,
+            "id_plantel": admin_pid,
             "nome_plantel": "Plantel Oficial HBL",
-            "orcamento": 100000000.0,
-            "pontos_acumulados": 0.0,
             "id_utilizador": 1,
             "username": admin_u["username"],
         }
-        mock_participa_liga.append({"id_plantel": 5, "id_liga": 1})
-        if mock_ligas:
-            mock_ligas[0]["total_participantes"] += 1
+        mock_participa_liga.append({"id_plantel": admin_pid, "id_liga": 1})
 
     # 13. SELECIONA
     mock_seleciona = {}
@@ -332,89 +306,57 @@ def load_mock_data(sql_path=None):
             "e_capitao": int(r[3]) == 1,
             "preco_compra": float(r[4]),
         })
-    mock_seleciona.setdefault(5, [])
+    for p in mock_planteis.values():
+        mock_seleciona.setdefault(p["id_plantel"], [])
 
-    # 14. JORNADAS
+    # 14. JORNADAS (normalizacao.sql: desligada de liga -> calendário global)
     mock_jornadas = []
     for idx, r in enumerate(get_table_rows("jornada"), 1):
-        lid = int(r[3])
         mock_jornadas.append({
             "id_jornada": idx,
             "numero_jornada": int(r[0]),
             "data_inicio": r[1],
             "data_fim": r[2],
-            "id_liga": lid,
-            "nome_liga": liga_map.get(lid, {}).get("nome", f"Liga {lid}"),
         })
-    jornada_map = {j["id_jornada"]: j for j in mock_jornadas}
 
-    # 15. PARTICIPA JORNADA
-    mock_participa_jornada = [
-        {"id_plantel": int(r[0]), "id_jornada": int(r[1]), "pontos_jornada": float(r[2])}
-        for r in get_table_rows("participa_jornada")
-    ]
-
-    # 16. APITA
+    # 15. APITA
     mock_apita = [
         {"id_arbitro": int(r[0]), "id_jogo": int(r[1])}
         for r in get_table_rows("apita")
     ]
 
-    # 17. JOGOS
+    # 16. JOGOS (sem golos_casa, golos_fora, nem id_pavilhao)
     mock_jogos = []
     for idx, r in enumerate(get_table_rows("jogo"), 1):
         d_str = r[0][:16]  # 'YYYY-MM-DD HH:MM'
-        gc = int(r[1]) if r[1] != "NULL" else None
-        gf = int(r[2]) if r[2] != "NULL" else None
         c_casa_id = int(r[3])
         c_fora_id = int(r[4])
-        pav_id = int(r[5])
         jor_id = int(r[6])
-
-        c_casa = clubes_dict.get(c_casa_id, {})
-        c_fora = clubes_dict.get(c_fora_id, {})
-        pav = pavilhao_map.get(pav_id, {})
-        jor = jornada_map.get(jor_id, {})
 
         mock_jogos.append({
             "id_jogo": idx,
             "id_jornada": jor_id,
-            "numero_jornada": jor.get("numero_jornada", jor_id),
-            "nome_jornada": f"Jornada {jor.get('numero_jornada', jor_id)}",
             "data_hora": d_str,
-            "clube_casa": c_casa.get("nome", f"Clube {c_casa_id}"),
             "id_clube_casa": c_casa_id,
-            "clube_fora": c_fora.get("nome", f"Clube {c_fora_id}"),
             "id_clube_fora": c_fora_id,
-            "golos_casa": gc,
-            "golos_fora": gf,
-            "id_pavilhao": pav_id,
-            "pavilhao": f"{pav.get('nome', 'Pavilhão')} ({pav.get('localidade', '')})",
         })
 
-    # 18. HISTÓRICO DE JOGOS PARA A MODAL DE JOGADORES
-    historico_jogos = []
-    jogos_dict = {jg["id_jogo"]: jg for jg in mock_jogos}
-    for s in mock_participa_jogo:
-        jg = jogos_dict.get(s["id_jogo"])
-        if jg and jg["golos_casa"] is not None:
-            desc = f"{jg['clube_casa']} {jg['golos_casa']} - {jg['golos_fora']} {jg['clube_fora']}"
-        elif jg:
-            desc = f"{jg['clube_casa']} vs {jg['clube_fora']}"
-        else:
-            desc = f"Jogo #{s['id_jogo']}"
-
-        historico_jogos.append({
-            "id_jogador": s["id_jogador"],
-            "id_jogo": s["id_jogo"],
-            "descricao_jogo": desc,
-            "golos": s["golos"],
-            "assistencias": s["assistencias"],
-            "remates_falhados": s["remates_falhados"],
-            "exclusoes_2min": s["exclusoes_2min"],
-            "defesas_gr": s["defesas_gr"],
-            "hpi": s["hpi"],
-            "pontos_obtidos": s["pontos_obtidos"],
+    # 17. PARTICIPA JORNADA (recalculado conforme passo 3 de normalizacao.sql)
+    mock_participa_jornada = []
+    for r in get_table_rows("participa_jornada"):
+        pid = int(r[0])
+        jid = int(r[1])
+        pts = recalcular_pontos_jornada_plantel(
+            pid,
+            jid,
+            mock_seleciona.get(pid, []),
+            mock_participa_jogo,
+            mock_jogos,
+        )
+        mock_participa_jornada.append({
+            "id_plantel": pid,
+            "id_jornada": jid,
+            "pontos_jornada": pts,
         })
 
     result = {
@@ -434,10 +376,9 @@ def load_mock_data(sql_path=None):
         "MOCK_JOGOS": mock_jogos,
         "MOCK_APITA": mock_apita,
         "MOCK_PARTICIPA_JOGO": mock_participa_jogo,
-        "HISTORICO_JOGOS": historico_jogos,
     }
 
-    # Salvar cache JSON em background para portabilidade
+    # Salvar cache JSON atualizada para portabilidade
     try:
         with open(json_cache_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
@@ -466,4 +407,3 @@ MOCK_PARTICIPA_JORNADA = _DATA["MOCK_PARTICIPA_JORNADA"]
 MOCK_JOGOS = _DATA["MOCK_JOGOS"]
 MOCK_APITA = _DATA["MOCK_APITA"]
 MOCK_PARTICIPA_JOGO = _DATA["MOCK_PARTICIPA_JOGO"]
-HISTORICO_JOGOS = _DATA["HISTORICO_JOGOS"]

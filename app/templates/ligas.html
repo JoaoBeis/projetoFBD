@@ -162,7 +162,13 @@
 <script>
 function toggleCodigoAcesso(val) {
   const grp = document.getElementById('group-codigo-acesso');
-  if (grp) grp.style.display = (val === '1' || val === 1) ? 'block' : 'none';
+  const inp = document.getElementById('liga-codigo');
+  const isPrivada = (val === '1' || val === 1);
+  if (grp) grp.style.display = isPrivada ? 'block' : 'none';
+  if (inp) {
+    inp.required = isPrivada;
+    if (!isPrivada) inp.value = '';
+  }
 }
 
 function openEntrarPrivadaModal(idLiga, nomeLiga) {

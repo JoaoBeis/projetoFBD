@@ -28,7 +28,8 @@
 
   <div style="display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap;">
     <span class="tag tag-blue tabular">{{ jogadores_plantel | default([]) | length }} / 14 Atletas</span>
-    <span class="tag tag-green tabular">Orçamento: {{ "{:,.2f} €".format(plantel.orcamento) if plantel and plantel.orcamento is number else (plantel.orcamento if plantel else '100,000,000.00 €') }}</span>
+    <span class="tag tabular">Utilizado: {{ "{:,.2f} €".format(plantel.orcamento_usado) if plantel and plantel.orcamento_usado is number else '0.00 €' }}</span>
+    <span class="tag tag-green tabular">Disponível: {{ "{:,.2f} €".format(plantel.orcamento_restante) if plantel and plantel.orcamento_restante is number else '100,000,000.00 €' }}</span>
     <span class="tag tag-gold tabular">{{ plantel.pontos_acumulados if plantel else 0 }} Pts Acumulados</span>
   </div>
 </div>
@@ -101,8 +102,10 @@
                     <input type="hidden" name="id_jogador" value="{{ jp.id_jogador }}">
                     {% if jp.e_capitao %}
                       <button type="submit" class="btn btn-sm btn-gold" title="Desmarcar capitão">&#9733; Capitão</button>
-                    {% else %}
+                    {% elif jp.e_titular %}
                       <button type="submit" class="btn btn-sm btn-secondary" title="Promover a capitão">&#9734;</button>
+                    {% else %}
+                      <button type="button" class="btn btn-sm btn-secondary" disabled style="opacity: 0.45; cursor: not-allowed;" title="Apenas titulares podem ser capitães">&#9734;</button>
                     {% endif %}
                   </form>
                 {% endif %}

@@ -1,4 +1,4 @@
-{# Variáveis esperadas: jornadas (list[dict]), jogos (list[dict]), clubes (list), pavilhoes (list), arbitros (list) #}
+{# Variáveis esperadas: jornadas (list[dict]), jogos (list[dict]), clubes (list), arbitros (list) #}
 {% extends "base.html" %}
 {% set active_page = 'jogos' %}
 {% block title %}Jogos e Jornadas — Handball Fantasy{% endblock %}
@@ -7,19 +7,19 @@
 <div class="page-header">
   <div>
     <h1 class="page-title">Jogos & Jornadas</h1>
-    <p class="page-subtitle">Calendário oficial de partidas, resultados e fichas de estatísticas detalhadas.</p>
+    <p class="page-subtitle">Calendário oficial global de partidas, placares calculados por estatísticas e pavilhão do clube anfitrião.</p>
   </div>
   <button type="button" class="btn btn-gold" onclick="openModal('modal-novo-jogo')">
     + Agendar Jogo
   </button>
 </div>
 
-<!-- FILTRO POR JORNADA -->
+<!-- FILTRO POR JORNADA (Calendário global) -->
 <div class="pill-tabs">
   <button type="button" class="pill-tab active" onclick="filterJornada('', this)">Todas as Jornadas</button>
   {% for jor in jornadas | default([]) %}
     <button type="button" class="pill-tab" onclick="filterJornada('{{ jor.id_jornada }}', this)">
-      Jornada {{ jor.numero_jornada }}{% if jor.nome_liga %} ({{ jor.nome_liga }}){% endif %}
+      Jornada {{ jor.numero_jornada }}
     </button>
   {% endfor %}
 </div>
@@ -47,9 +47,9 @@
         <strong style="flex: 1; text-align: left; font-size: 0.98rem;">{{ j.clube_fora }}</strong>
       </div>
 
-      <div style="text-align: right; min-width: 180px;">
+      <div style="text-align: right; min-width: 210px;">
         <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.3rem;">
-          {{ j.pavilhao or 'Pavilhão Oficial' }}
+          {{ j.pavilhao or 'Pavilhão do Clube Casa' }}
         </div>
         <a href="/jogos/{{ j.id_jogo }}" class="btn btn-secondary btn-sm">Ficha de Jogo</a>
       </div>
@@ -63,7 +63,7 @@
   {% endfor %}
 </div>
 
-<!-- MODAL: AGENDAR NOVO JOGO -->
+<!-- MODAL: AGENDAR NOVO JOGO (sem id_pavilhao; inferido via clube_casa na 3FN) -->
 <div id="modal-novo-jogo" class="modal-backdrop">
   <div class="modal-box">
     <div class="modal-header">
@@ -74,12 +74,12 @@
     <form action="/jogos/criar" method="POST">
       <div class="form-row">
         <div class="form-group">
-          <label>Jornada (associada a Liga) *</label>
+          <label>Jornada (Calendário Global) *</label>
           <select name="id_jornada" required>
             <option value="">-- Selecionar Jornada --</option>
             {% for jor in jornadas | default([]) %}
               <option value="{{ jor.id_jornada }}">
-                Jornada {{ jor.numero_jornada }} (Liga: {{ jor.nome_liga or jor.id_liga }})
+                Jornada {{ jor.numero_jornada }} ({{ jor.data_inicio }} a {{ jor.data_fim }})
               </option>
             {% endfor %}
           </select>
@@ -97,7 +97,7 @@
           <select name="id_clube_casa" required>
             <option value="">-- Clube Casa --</option>
             {% for c in clubes | default([]) %}
-              <option value="{{ c.id_clube }}">{{ c.nome }} ({{ c.cidade }})</option>
+              <option value="{{ c.id_clube }}">{{ c.nome }} ({{ c.pavilhao_nome }})</option>
             {% endfor %}
           </select>
         </div>
@@ -113,17 +113,9 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Pavilhão (NOT NULL) *</label>
-        <select name="id_pavilhao" required>
-          <option value="">-- Selecionar Pavilhão Oficial --</option>
-          {% for pav in pavilhoes | default([]) %}
-            <option value="{{ pav.id_pavilhao }}">
-              {{ pav.nome }} ({{ pav.localidade }}) &bull; Cap: {{ pav.capacidade }}
-            </option>
-          {% endfor %}
-        </select>
-      </div>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.85rem;">
+        O pavilhão do encontro é atribuído automaticamente a partir do clube visitado (relação 1:1 <code>clube &rarr; pavilhao</code>).
+      </p>
 
       <div class="form-group">
         <label>Árbitros (tabela apita)</label>

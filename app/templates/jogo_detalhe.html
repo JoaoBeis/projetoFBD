@@ -8,7 +8,7 @@
   <a href="/jogos" style="font-size: 0.84rem; color: var(--text-secondary);">&larr; Voltar aos Jogos</a>
 </div>
 
-<!-- PLACAR DO JOGO -->
+<!-- PLACAR DO JOGO (golos calculados dinamicamente a partir de participa_jogo) -->
 <div class="card" style="margin-bottom: 1.5rem; text-align: center; background-color: var(--bg-header);">
   <div style="font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;">
     Jornada {{ jogo.numero_jornada if jogo else 1 }} &bull; {{ jogo.data_hora if jogo else '' }}
@@ -35,7 +35,7 @@
   </div>
 
   <div style="font-size: 0.84rem; color: var(--text-secondary);">
-    <strong>Pavilhão Oficial:</strong> {{ jogo.pavilhao if jogo and jogo.pavilhao else 'Não especificado' }}
+    <strong>Pavilhão (Clube Visitado):</strong> {{ jogo.pavilhao if jogo and jogo.pavilhao else 'Não especificado' }}
     &nbsp;|&nbsp;
     <strong>Arbitragem (tabela apita):</strong>
     {% if arbitros_jogo %}
@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<!-- ESTATÍSTICAS DAS DUAS EQUIPAS (participa_jogo) -->
+<!-- ESTATÍSTICAS DAS DUAS EQUIPAS (participa_jogo com pontos calculados dinamicamente) -->
 <div class="grid-2" style="margin-bottom: 1.5rem;">
   <!-- EQUIPA CASA -->
   <div class="card">
@@ -149,10 +149,11 @@
   </div>
 </div>
 
-<!-- FORMULÁRIO DE ESTATÍSTICAS (participa_jogo) -->
+<!-- FORMULÁRIO DE ESTATÍSTICAS (participa_jogo: pontos calculados automaticamente) -->
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">Lançar / Atualizar Estatística de Jogador (tabela participa_jogo)</h3>
+    <span class="tag tag-gold">Pontuação Automática</span>
   </div>
 
   <form action="/jogos/{{ jogo.id_jogo if jogo else 1 }}/estatisticas" method="POST">
@@ -170,11 +171,6 @@
       <div class="form-group" style="margin-bottom: 0;">
         <label>HPI (Handball Performance Index)</label>
         <input type="number" name="hpi" step="0.01" min="0" value="0.00">
-      </div>
-
-      <div class="form-group" style="margin-bottom: 0;">
-        <label>Pontos Obtidos (Fantasy) *</label>
-        <input type="number" name="pontos_obtidos" step="0.01" value="0.00" required>
       </div>
     </div>
 
@@ -216,6 +212,10 @@
 
       <button type="submit" class="btn btn-primary" style="height: 38px;">Guardar Estatística</button>
     </div>
+
+    <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.7rem;">
+      Os pontos fantasy e o resultado da partida são recalculados automaticamente após a gravação (4&times;Golos + 2&times;Assistências &minus; Falhados &minus; 2&times;2min &minus; 5&times;CV &minus; 3&times;CA + 3&times;Defesas + 0.1&times;HPI).
+    </p>
   </form>
 </div>
 {% endblock %}

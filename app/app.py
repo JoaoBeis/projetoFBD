@@ -1,12 +1,11 @@
 """
 Aplicação Web Flask — Handball Fantasy League
-Alinhada com o esquema relacional e dados DML de APFE_FINAL_132982_133155/sql/04_db_init.sql
+100% Alinhada com o esquema normalizado (3FN) de:
+- APFE_FINAL_132982_133155/sql/04_db_init.sql
+- APFE_FINAL_132982_133155/sql/normalizacao.sql
 
-Todas as tabelas do esquema físico estão representadas em estruturas Python MOCK
-carregadas diretamente a partir do ficheiro SQL de inicialização:
-- utilizador, plantel, pais, posicao, clube, pavilhao, arbitro,
-  treinador, pessoa, jogador, seleciona, liga, participa_liga,
-  jornada, participa_jornada, jogo, apita, participa_jogo.
+Todas as tabelas do esquema físico estão representadas em estruturas Python MOCK,
+com atributos derivados calculados dinamicamente (sem armazenamento redundante).
 """
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
@@ -27,14 +26,23 @@ from mock_data import (
     MOCK_JOGOS,
     MOCK_APITA,
     MOCK_PARTICIPA_JOGO,
-    HISTORICO_JOGOS,
+)
+from persistence.calculations import (
+    ORCAMENTO_INICIAL,
+    calcular_pontos_jogador_jogo,
+    calcular_golos_jogo,
+    calcular_orcamento_plantel,
+    calcular_pontos_acumulados_plantel,
+    recalcular_pontos_jornada_plantel,
+    obter_pavilhao_clube,
 )
 
 app = Flask(__name__)
 app.secret_key = "handball_fantasy_fbd"
 
+
 # ==============================================================================
-# FUNÇÕES AUXILIARES DE SESSÃO E ENTIDADES
+# FUNÇÕES AUXILIARES DE SESSÃO, ENTIDADES E CÁLCULOS DERIVADOS
 # ==============================================================================
 
 def current_user():
@@ -56,8 +64,6 @@ def get_user_plantel(user_id):
         MOCK_PLANTEIS[user_id] = {
             "id_plantel": new_id,
             "nome_plantel": f"Plantel de {username}",
-            "orcamento": 100000000.0,
-            "pontos_acumulados": 0.0,
             "id_utilizador": user_id,
             "username": username,
         }
@@ -72,9 +78,83 @@ def get_plantel_by_id(id_plantel):
     return None
 
 
+def enrich_plantel(p):
+    """Calcula dinamicamente orcamento_usado, orcamento_restante e pontos_acumulados."""
+    squad = MOCK_SELECIONA.get(p["id_plantel"], [])
+    orcamento_usado, orcamento_restante = calcular_orcamento_plantel(squad)
+    pontos_acumulados = calcular_pontos_acumulados_plantel(p["id_plantel"], MOCK_PARTICIPA_JORNADA)
+
+    res = dict(p)
+    res["orcamento_usado"] = orcamento_usado
+    res["orcamento_restante"] = orcamento_restante
+    res["orcamento_inicial"] = ORCAMENTO_INICIAL
+    res["pontos_acumulados"] = pontos_acumulados
+    return res
+
+
+def enrich_jogo(jg):
+    """
+    Calcula dinamicamente golos_casa e golos_fora a partir de MOCK_PARTICIPA_JOGO
+    e obtém o pavilhão através do clube visitado (id_clube_casa -> id_pavilhao).
+    """
+    c_casa = next((c for c in MOCK_CLUBES if c["id_clube"] == jg["id_clube_casa"]), {})
+    c_fora = next((c for c in MOCK_CLUBES if c["id_clube"] == jg["id_clube_fora"]), {})
+    jor = next((j for j in MOCK_JORNADAS if j["id_jornada"] == jg["id_jornada"]), {})
+    pav = obter_pavilhao_clube(jg["id_clube_casa"], MOCK_CLUBES, MOCK_PAVILHOES)
+
+    golos_casa, golos_fora = calcular_golos_jogo(
+        jg["id_jogo"],
+        jg["id_clube_casa"],
+        jg["id_clube_fora"],
+        MOCK_PARTICIPA_JOGO,
+    )
+    num_jor = jor.get("numero_jornada", jg["id_jornada"])
+    pav_label = f"{pav['nome']} ({pav['localidade']})" if pav else "Pavilhão N/D"
+
+    res = dict(jg)
+    res.update({
+        "numero_jornada": num_jor,
+        "nome_jornada": f"Jornada {num_jor}",
+        "clube_casa": c_casa.get("nome", f"Clube {jg['id_clube_casa']}"),
+        "clube_fora": c_fora.get("nome", f"Clube {jg['id_clube_fora']}"),
+        "golos_casa": golos_casa,
+        "golos_fora": golos_fora,
+        "pavilhao": pav_label,
+        "pavilhao_info": pav,
+    })
+    return res
+
+
+def enrich_clube(c):
+    """Anexa os dados do pavilhão (1:1) e contagem atual de jogadores."""
+    pav = obter_pavilhao_clube(c["id_clube"], MOCK_CLUBES, MOCK_PAVILHOES)
+    res = dict(c)
+    res["total_jogadores"] = sum(1 for j in MOCK_JOGADORES if j["id_clube"] == c["id_clube"])
+    if pav:
+        res["pavilhao_nome"] = pav["nome"]
+        res["pavilhao_localidade"] = pav["localidade"]
+        res["pavilhao_capacidade"] = pav["capacidade"]
+    else:
+        res["pavilhao_nome"] = "Não atribuído"
+        res["pavilhao_localidade"] = ""
+        res["pavilhao_capacidade"] = None
+    return res
+
+
+def enrich_jogador(j):
+    """Calcula total_golos e total_pontos a partir de MOCK_PARTICIPA_JOGO."""
+    all_pj = [s for s in MOCK_PARTICIPA_JOGO if s["id_jogador"] == j["id_jogador"]]
+    total_golos = sum(int(s.get("golos", 0) or 0) for s in all_pj)
+    total_pontos = round(sum(calcular_pontos_jogador_jogo(s) for s in all_pj), 2)
+    res = dict(j)
+    res["total_golos"] = total_golos
+    res["total_pontos"] = total_pontos
+    return res
+
+
 def build_jogadores_plantel(id_plantel):
     """
-    Cruza a tabela 'seleciona' com a tabela 'jogador' e 'pessoa'
+    Cruza a tabela 'seleciona' com 'jogador' e 'pessoa'
     para construir o plantel com estado de titular, capitão e preço de compra.
     """
     selecionados = MOCK_SELECIONA.get(id_plantel, [])
@@ -82,12 +162,65 @@ def build_jogadores_plantel(id_plantel):
     for s in selecionados:
         jog = next((j for j in MOCK_JOGADORES if j["id_jogador"] == s["id_jogador"]), None)
         if jog:
-            item = dict(jog)
+            item = enrich_jogador(jog)
             item["preco_compra"] = s["preco_compra"]
             item["e_titular"] = s["e_titular"]
             item["e_capitao"] = s["e_capitao"]
             result.append(item)
     return result
+
+
+def build_historico_jogos():
+    """Constrói dinamicamente o histórico de participações com golos e pontos calculados."""
+    jogos_view = {jg["id_jogo"]: enrich_jogo(jg) for jg in MOCK_JOGOS}
+    historico = []
+    for s in MOCK_PARTICIPA_JOGO:
+        jg = jogos_view.get(s["id_jogo"])
+        if jg and jg["golos_casa"] is not None:
+            desc = f"{jg['clube_casa']} {jg['golos_casa']} - {jg['golos_fora']} {jg['clube_fora']}"
+        elif jg:
+            desc = f"{jg['clube_casa']} vs {jg['clube_fora']}"
+        else:
+            desc = f"Jogo #{s['id_jogo']}"
+
+        historico.append({
+            "id_jogador": s["id_jogador"],
+            "id_jogo": s["id_jogo"],
+            "descricao_jogo": desc,
+            "golos": s["golos"],
+            "assistencias": s["assistencias"],
+            "remates_falhados": s["remates_falhados"],
+            "exclusoes_2min": s["exclusoes_2min"],
+            "defesas_gr": s["defesas_gr"],
+            "hpi": s["hpi"],
+            "pontos_obtidos": calcular_pontos_jogador_jogo(s),
+        })
+    return historico
+
+
+def recalculate_jornada_standings(id_jornada):
+    """Atualiza MOCK_PARTICIPA_JORNADA para todos os plantéis após alteração estatística numa jornada."""
+    for p in MOCK_PLANTEIS.values():
+        pid = p["id_plantel"]
+        pts = recalcular_pontos_jornada_plantel(
+            pid,
+            id_jornada,
+            MOCK_SELECIONA.get(pid, []),
+            MOCK_PARTICIPA_JOGO,
+            MOCK_JOGOS,
+        )
+        entry = next(
+            (item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == id_jornada),
+            None,
+        )
+        if entry:
+            entry["pontos_jornada"] = pts
+        else:
+            MOCK_PARTICIPA_JORNADA.append({
+                "id_plantel": pid,
+                "id_jornada": id_jornada,
+                "pontos_jornada": pts,
+            })
 
 
 # ==============================================================================
@@ -101,15 +234,15 @@ def index():
     stats = None
 
     if user:
-        p = get_user_plantel(user["id_utilizador"])
+        p = enrich_plantel(get_user_plantel(user["id_utilizador"]))
         stats = {"pontos_totais": p["pontos_acumulados"], "melhor_rank": "#1"}
-        # Cruzar participa_liga com MOCK_LIGAS
+
         inscricoes = [pl["id_liga"] for pl in MOCK_PARTICIPA_LIGA if pl["id_plantel"] == p["id_plantel"]]
         for liga in MOCK_LIGAS:
             if liga["id_liga"] in inscricoes:
                 part_ids = [pl["id_plantel"] for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == liga["id_liga"]]
                 rank_list = sorted(
-                    [get_plantel_by_id(pid) for pid in part_ids if get_plantel_by_id(pid)],
+                    [enrich_plantel(get_plantel_by_id(pid)) for pid in part_ids if get_plantel_by_id(pid)],
                     key=lambda x: x["pontos_acumulados"],
                     reverse=True,
                 )
@@ -118,13 +251,13 @@ def index():
                     "id_liga": liga["id_liga"],
                     "nome_liga": liga["nome"],
                     "posicao": pos,
-                    "pontos": int(p["pontos_acumulados"]),
+                    "pontos": p["pontos_acumulados"],
                 })
 
-    # Jogos da jornada atual (a mais recente) para o resumo na dashboard
-    if MOCK_JOGOS:
-        jornada_atual = max(j["numero_jornada"] for j in MOCK_JOGOS)
-        jogos_jornada = [j for j in MOCK_JOGOS if j["numero_jornada"] == jornada_atual]
+    jogos_enriched = [enrich_jogo(j) for j in MOCK_JOGOS]
+    if jogos_enriched:
+        jornada_atual = max(j["numero_jornada"] for j in jogos_enriched)
+        jogos_jornada = [j for j in jogos_enriched if j["numero_jornada"] == jornada_atual]
     else:
         jogos_jornada = []
 
@@ -150,7 +283,12 @@ def login():
 
         if username_ou_email:
             matched = next(
-                (u for u in MOCK_USERS if u["username"].lower() == username_ou_email.lower() or u["email"].lower() == username_ou_email.lower()),
+                (
+                    u
+                    for u in MOCK_USERS
+                    if u["username"].lower() == username_ou_email.lower()
+                    or u["email"].lower() == username_ou_email.lower()
+                ),
                 None,
             )
             if matched:
@@ -181,7 +319,6 @@ def registar():
         flash("Todos os campos são obrigatórios.", "error")
         return redirect(url_for("login"))
 
-    # Verificar unicidade (username, email)
     if any(u["username"].lower() == username.lower() for u in MOCK_USERS):
         flash("Esse username já está registado.", "error")
         return redirect(url_for("login"))
@@ -198,22 +335,17 @@ def registar():
     }
     MOCK_USERS.append(new_user)
 
-    # Criação do plantel único associado ao utilizador (tabela plantel)
     new_plantel_id = max([p["id_plantel"] for p in MOCK_PLANTEIS.values()], default=0) + 1
     MOCK_PLANTEIS[new_uid] = {
         "id_plantel": new_plantel_id,
         "nome_plantel": nome_plantel,
-        "orcamento": 100000000.0,
-        "pontos_acumulados": 0.0,
         "id_utilizador": new_uid,
         "username": username,
     }
     MOCK_SELECIONA[new_plantel_id] = []
 
-    # Inscrição automática na liga pública principal (id_liga 1)
-    MOCK_PARTICIPA_LIGA.append({"id_plantel": new_plantel_id, "id_liga": 1})
     if MOCK_LIGAS:
-        MOCK_LIGAS[0]["total_participantes"] = sum(1 for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == 1)
+        MOCK_PARTICIPA_LIGA.append({"id_plantel": new_plantel_id, "id_liga": MOCK_LIGAS[0]["id_liga"]})
 
     session["user_id"] = new_uid
     flash(f"Conta e Plantel '{nome_plantel}' criados com sucesso!", "success")
@@ -238,10 +370,10 @@ def meu_plantel():
         flash("Precisas de iniciar sessão para acederes ao teu plantel.", "error")
         return redirect(url_for("login"))
 
-    p = get_user_plantel(user["id_utilizador"])
+    p = enrich_plantel(get_user_plantel(user["id_utilizador"]))
     jogadores_convocados = build_jogadores_plantel(p["id_plantel"])
-    ids_selecionados = [j["id_jogador"] for j in jogadores_convocados]
-    mercado = [j for j in MOCK_JOGADORES if j["id_jogador"] not in ids_selecionados]
+    ids_selecionados = {j["id_jogador"] for j in jogadores_convocados}
+    mercado = [enrich_jogador(j) for j in MOCK_JOGADORES if j["id_jogador"] not in ids_selecionados]
 
     return render_template(
         "plantel.html",
@@ -258,16 +390,15 @@ def meu_plantel():
 @app.route("/plantel/<int:id_plantel>")
 def plantel_detalhe(id_plantel):
     user = current_user()
-    p = get_plantel_by_id(id_plantel)
-    if not p:
+    raw_p = get_plantel_by_id(id_plantel)
+    if not raw_p:
         flash("Plantel não encontrado.", "error")
         return redirect(url_for("index"))
 
-    # Se for o próprio plantel do utilizador com sessão, redireciona para a gestão ativa
-    if user and p["id_utilizador"] == user["id_utilizador"]:
+    if user and raw_p["id_utilizador"] == user["id_utilizador"]:
         return redirect(url_for("meu_plantel"))
 
-    # Modo de observação (apenas leitura) para plantéis adversários
+    p = enrich_plantel(raw_p)
     jogadores_convocados = build_jogadores_plantel(p["id_plantel"])
     return render_template(
         "plantel.html",
@@ -319,15 +450,18 @@ def adicionar_jogador_plantel(id_plantel=None):
         flash("Este jogador já se encontra no teu plantel.", "error")
         return redirect(url_for("meu_plantel"))
 
-    preco = jog["valor_mercado"]
-    if p["orcamento"] < preco:
-        flash(f"Orçamento insuficiente! Necessitas de {preco:,.2f} € e tens apenas {p['orcamento']:,.2f} €.", "error")
+    preco = float(jog["valor_mercado"])
+    _, orcamento_restante = calcular_orcamento_plantel(squad)
+    if orcamento_restante < preco:
+        flash(
+            f"Orçamento insuficiente! Necessitas de {preco:,.2f} € e tens apenas {orcamento_restante:,.2f} € disponíveis.",
+            "error",
+        )
         return redirect(url_for("meu_plantel"))
 
-    p["orcamento"] -= preco
     squad.append({
         "id_jogador": id_jogador,
-        "e_titular": len(squad) < 7,
+        "e_titular": len([s for s in squad if s.get("e_titular")]) < 7,
         "e_capitao": False,
         "preco_compra": preco,
     })
@@ -349,9 +483,8 @@ def remover_jogador_plantel(id_plantel=None):
     item = next((s for s in squad if s["id_jogador"] == id_jogador), None)
 
     if item:
-        p["orcamento"] += item["preco_compra"]
         MOCK_SELECIONA[pid] = [s for s in squad if s["id_jogador"] != id_jogador]
-        flash("Jogador vendido! O valor de compra foi creditado de volta ao teu orçamento.", "success")
+        flash("Jogador vendido! O valor de compra foi restituído ao orçamento disponível.", "success")
     else:
         flash("Jogador não encontrado no plantel.", "error")
 
@@ -369,7 +502,13 @@ def toggle_titular():
     squad = MOCK_SELECIONA.get(p["id_plantel"], [])
     for s in squad:
         if s["id_jogador"] == id_jogador:
-            s["e_titular"] = not s["e_titular"]
+            if s["e_titular"] and s["e_capitao"]:
+                # Regra SELECIONA_CAPITAO_TITULAR_CK: capitão tem de ser titular
+                s["e_titular"] = False
+                s["e_capitao"] = False
+                flash("O jogador passou a suplente e deixou de ser capitão (apenas titulares podem ser capitães).", "success")
+            else:
+                s["e_titular"] = not s["e_titular"]
             break
     return redirect(url_for("meu_plantel"))
 
@@ -383,11 +522,19 @@ def toggle_capitao():
     id_jogador = int(request.form.get("id_jogador", 0))
 
     squad = MOCK_SELECIONA.get(p["id_plantel"], [])
+    target = next((s for s in squad if s["id_jogador"] == id_jogador), None)
+    if not target:
+        return redirect(url_for("meu_plantel"))
+
+    if not target["e_capitao"] and not target["e_titular"]:
+        flash("Apenas jogadores titulares podem ser capitães (CONSTRAINT SELECIONA_CAPITAO_TITULAR_CK).", "error")
+        return redirect(url_for("meu_plantel"))
+
     for s in squad:
         if s["id_jogador"] == id_jogador:
             s["e_capitao"] = not s["e_capitao"]
         else:
-            s["e_capitao"] = False  # Apenas 1 capitão por equipa
+            s["e_capitao"] = False  # UX_SELECIONA_UM_CAPITAO: no máximo 1 capitão por equipa
     return redirect(url_for("meu_plantel"))
 
 
@@ -400,10 +547,13 @@ def ligas():
     user = current_user()
     user_pid = get_user_plantel(user["id_utilizador"])["id_plantel"] if user else None
 
-    # Preparar lista de ligas enriquecida com estado de inscrição
     ligas_view = []
     for liga in MOCK_LIGAS:
-        inscrito = any(pl["id_liga"] == liga["id_liga"] and pl["id_plantel"] == user_pid for pl in MOCK_PARTICIPA_LIGA) if user_pid else False
+        inscrito = (
+            any(pl["id_liga"] == liga["id_liga"] and pl["id_plantel"] == user_pid for pl in MOCK_PARTICIPA_LIGA)
+            if user_pid
+            else False
+        )
         total = sum(1 for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == liga["id_liga"])
         item = dict(liga)
         item["inscrito"] = inscrito
@@ -434,6 +584,15 @@ def criar_liga():
         flash("O nome da liga é obrigatório.", "error")
         return redirect(url_for("ligas"))
 
+    # LIGA_PRIVADA_CODIGO_CK e UX_LIGA_CODIGO_ACESSO
+    if e_privada:
+        if not codigo_acesso:
+            flash("As ligas privadas exigem um código de acesso (CONSTRAINT LIGA_PRIVADA_CODIGO_CK).", "error")
+            return redirect(url_for("ligas"))
+        if any(l.get("codigo_acesso") == codigo_acesso for l in MOCK_LIGAS):
+            flash("Esse código de acesso já está atribuído a outra liga privada (UX_LIGA_CODIGO_ACESSO).", "error")
+            return redirect(url_for("ligas"))
+
     new_id = max([l["id_liga"] for l in MOCK_LIGAS], default=0) + 1
     nova_liga = {
         "id_liga": new_id,
@@ -442,11 +601,9 @@ def criar_liga():
         "e_privada": e_privada,
         "nome_pais": nome_pais,
         "id_utilizador": user["id_utilizador"],
-        "total_participantes": 1,
     }
     MOCK_LIGAS.append(nova_liga)
 
-    # Inscrição automática do plantel do criador da liga
     p = get_user_plantel(user["id_utilizador"])
     MOCK_PARTICIPA_LIGA.append({"id_plantel": p["id_plantel"], "id_liga": new_id})
 
@@ -488,19 +645,21 @@ def liga_detalhe(id_liga):
     liga = next((l for l in MOCK_LIGAS if l["id_liga"] == id_liga), MOCK_LIGAS[0])
     jornada_req = request.args.get("jornada")
     jornada_sel = int(jornada_req) if jornada_req and jornada_req.isdigit() else None
+    ultima_jornada_id = max((j["id_jornada"] for j in MOCK_JORNADAS), default=None)
 
-    # Participantes da liga via participa_liga
     participantes_ids = [pl["id_plantel"] for pl in MOCK_PARTICIPA_LIGA if pl["id_liga"] == id_liga]
     classificacao = []
     for pid in participantes_ids:
-        pl_obj = get_plantel_by_id(pid)
-        if pl_obj:
-            if jornada_sel:
-                pj = next((item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == jornada_sel), None)
-                pts_j = pj["pontos_jornada"] if pj else 0.0
-            else:
-                pj_last = next((item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == 5), None)
-                pts_j = pj_last["pontos_jornada"] if pj_last else 0.0
+        raw_pl = get_plantel_by_id(pid)
+        if raw_pl:
+            pl_obj = enrich_plantel(raw_pl)
+            jid_ref = jornada_sel if jornada_sel is not None else ultima_jornada_id
+            pj = (
+                next((item for item in MOCK_PARTICIPA_JORNADA if item["id_plantel"] == pid and item["id_jornada"] == jid_ref), None)
+                if jid_ref is not None
+                else None
+            )
+            pts_j = pj["pontos_jornada"] if pj else 0.0
 
             classificacao.append({
                 "id_plantel": pl_obj["id_plantel"],
@@ -512,16 +671,12 @@ def liga_detalhe(id_liga):
 
     classificacao.sort(key=lambda x: x["pontos_totais"], reverse=True)
 
-    jornadas_liga = [j for j in MOCK_JORNADAS if j["id_liga"] == id_liga]
-    if not jornadas_liga:
-        jornadas_liga = MOCK_JORNADAS
-
     return render_template(
         "liga_detalhe.html",
         utilizador=current_user(),
         liga=liga,
         classificacao=classificacao,
-        jornadas=jornadas_liga,
+        jornadas=MOCK_JORNADAS,
         jornada_selecionada=jornada_sel,
     )
 
@@ -532,14 +687,15 @@ def liga_detalhe(id_liga):
 
 @app.route("/jogadores")
 def jogadores():
+    jogadores_view = [enrich_jogador(j) for j in MOCK_JOGADORES]
     return render_template(
         "jogadores.html",
         utilizador=current_user(),
-        jogadores=MOCK_JOGADORES,
+        jogadores=jogadores_view,
         clubes=MOCK_CLUBES,
         posicoes=MOCK_POSICOES,
         paises=MOCK_PAISES,
-        historico_jogos=HISTORICO_JOGOS,
+        historico_jogos=build_historico_jogos(),
     )
 
 
@@ -573,8 +729,6 @@ def criar_jogador():
         "id_posicao": id_posicao,
         "posicao_nome": posicao["nome"],
         "posicao_sigla": posicao["sigla"],
-        "total_golos": 0,
-        "total_pontos": 0.0,
     })
 
     flash(f"Jogador {primeiro_nome} {apelido} registado com sucesso!", "success")
@@ -617,7 +771,6 @@ def eliminar_jogador(id_jogador):
     jog = next((j for j in MOCK_JOGADORES if j["id_jogador"] == id_jogador), None)
     nome = f"{jog['primeiro_nome']} {jog['apelido']}" if jog else "Jogador"
     MOCK_JOGADORES = [j for j in MOCK_JOGADORES if j["id_jogador"] != id_jogador]
-    # CASCADE nos selecionas
     for squad in MOCK_SELECIONA.values():
         squad[:] = [s for s in squad if s["id_jogador"] != id_jogador]
     flash(f"Registo de {nome} eliminado com sucesso (CASCADE).", "success")
@@ -625,36 +778,39 @@ def eliminar_jogador(id_jogador):
 
 
 # ==============================================================================
-# ROTAS DE CLUBES (tabela clube e treinador)
+# ROTAS DE CLUBES (tabela clube, pavilhao 1:1 e treinador)
 # ==============================================================================
 
 @app.route("/clubes")
 def clubes():
+    clubes_view = [enrich_clube(c) for c in MOCK_CLUBES]
     jogadores_por_clube = {}
     for c in MOCK_CLUBES:
-        jogadores_por_clube[c["id_clube"]] = [j for j in MOCK_JOGADORES if j["id_clube"] == c["id_clube"]]
+        jogadores_por_clube[c["id_clube"]] = [
+            enrich_jogador(j) for j in MOCK_JOGADORES if j["id_clube"] == c["id_clube"]
+        ]
 
     return render_template(
         "clubes.html",
         utilizador=current_user(),
-        clubes=MOCK_CLUBES,
+        clubes=clubes_view,
         jogadores_por_clube=jogadores_por_clube,
     )
 
 
 # ==============================================================================
-# ROTAS DE JOGOS E PARTICIPAÇÃO (tabela jogo, jornada, pavilhao, participa_jogo)
+# ROTAS DE JOGOS E PARTICIPAÇÃO (jogo, jornada global, apita, participa_jogo)
 # ==============================================================================
 
 @app.route("/jogos")
 def jogos():
+    jogos_view = [enrich_jogo(j) for j in MOCK_JOGOS]
     return render_template(
         "jogos.html",
         utilizador=current_user(),
         jornadas=MOCK_JORNADAS,
-        jogos=MOCK_JOGOS,
-        clubes=MOCK_CLUBES,
-        pavilhoes=MOCK_PAVILHOES,
+        jogos=jogos_view,
+        clubes=[enrich_clube(c) for c in MOCK_CLUBES],
         arbitros=MOCK_ARBITROS,
     )
 
@@ -665,55 +821,52 @@ def criar_jogo():
     data_hora = request.form.get("data_hora", "").replace("T", " ")
     id_clube_casa = int(request.form.get("id_clube_casa", 1))
     id_clube_fora = int(request.form.get("id_clube_fora", 2))
-    id_pavilhao = int(request.form.get("id_pavilhao", 1))
+    arbitros_sel = request.form.getlist("arbitros")
 
     if id_clube_casa == id_clube_fora:
         flash("A equipa da casa e a equipa visitante não podem ser o mesmo clube (CONSTRAINT JOGO_CLUBES_DIFERENTES_CK).", "error")
         return redirect(url_for("jogos"))
 
-    clube_casa = next((c for c in MOCK_CLUBES if c["id_clube"] == id_clube_casa), MOCK_CLUBES[0])
-    clube_fora = next((c for c in MOCK_CLUBES if c["id_clube"] == id_clube_fora), MOCK_CLUBES[1])
-    pavilhao = next((p for p in MOCK_PAVILHOES if p["id_pavilhao"] == id_pavilhao), MOCK_PAVILHOES[0])
-    jornada = next((j for j in MOCK_JORNADAS if j["id_jornada"] == id_jornada), MOCK_JORNADAS[0])
-
     new_id = max([j["id_jogo"] for j in MOCK_JOGOS], default=0) + 1
     MOCK_JOGOS.append({
         "id_jogo": new_id,
         "id_jornada": id_jornada,
-        "numero_jornada": jornada["numero_jornada"],
-        "nome_jornada": f"Jornada {jornada['numero_jornada']}",
         "data_hora": data_hora,
-        "clube_casa": clube_casa["nome"],
         "id_clube_casa": id_clube_casa,
-        "clube_fora": clube_fora["nome"],
         "id_clube_fora": id_clube_fora,
-        "golos_casa": None,
-        "golos_fora": None,
-        "id_pavilhao": id_pavilhao,
-        "pavilhao": f"{pavilhao['nome']} ({pavilhao['localidade']})",
     })
 
-    flash("Jogo agendado com sucesso!", "success")
+    for aid in arbitros_sel:
+        if str(aid).isdigit():
+            MOCK_APITA.append({"id_arbitro": int(aid), "id_jogo": new_id})
+
+    flash("Jogo agendado com sucesso (pavilhão atribuído automaticamente pelo clube visitado)!", "success")
     return redirect(url_for("jogos"))
 
 
 @app.route("/jogos/<int:id_jogo>")
 def jogo_detalhe(id_jogo):
-    jogo = next((j for j in MOCK_JOGOS if j["id_jogo"] == id_jogo), MOCK_JOGOS[0])
+    raw_jogo = next((j for j in MOCK_JOGOS if j["id_jogo"] == id_jogo), MOCK_JOGOS[0])
+    jogo = enrich_jogo(raw_jogo)
 
-    stats_casa = [s for s in MOCK_PARTICIPA_JOGO if s["id_jogo"] == id_jogo and s.get("id_clube") == jogo["id_clube_casa"]]
-    stats_fora = [s for s in MOCK_PARTICIPA_JOGO if s["id_jogo"] == id_jogo and s.get("id_clube") == jogo["id_clube_fora"]]
+    stats_casa = []
+    stats_fora = []
+    for s in MOCK_PARTICIPA_JOGO:
+        if s["id_jogo"] == jogo["id_jogo"]:
+            row = dict(s)
+            row["pontos_obtidos"] = calcular_pontos_jogador_jogo(s)
+            if s.get("id_clube") == jogo["id_clube_casa"]:
+                stats_casa.append(row)
+            elif s.get("id_clube") == jogo["id_clube_fora"]:
+                stats_fora.append(row)
 
     jogadores_participantes = [
         j for j in MOCK_JOGADORES
         if j["id_clube"] in (jogo["id_clube_casa"], jogo["id_clube_fora"])
     ]
 
-    # Árbitros associados a este jogo específico via tabela apita
-    arbitros_ids = [a["id_arbitro"] for a in MOCK_APITA if a["id_jogo"] == id_jogo]
+    arbitros_ids = [a["id_arbitro"] for a in MOCK_APITA if a["id_jogo"] == jogo["id_jogo"]]
     arbitros_jogo = [a for a in MOCK_ARBITROS if a["id_arbitro"] in arbitros_ids]
-    if not arbitros_jogo:
-        arbitros_jogo = MOCK_ARBITROS[:2]
 
     return render_template(
         "jogo_detalhe.html",
@@ -737,14 +890,20 @@ def jogo_estatisticas(id_jogo):
     cartoes_azuis = int(request.form.get("cartoes_azuis", 0))
     defesas_gr = int(request.form.get("defesas_gr", 0))
     hpi = float(request.form.get("hpi", 0.0))
-    pontos_obtidos = float(request.form.get("pontos_obtidos", 0.0))
+
+    if min(golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr) < 0:
+        flash("As estatísticas não podem ter valores negativos.", "error")
+        return redirect(url_for("jogo_detalhe", id_jogo=id_jogo))
+
+    if cartoes_vermelhos > 1 or cartoes_azuis > 1:
+        flash("Máximo de 1 cartão vermelho e 1 cartão azul por jogador e jogo (CONSTRAINT PARTICIPA_JOGO_CARTOES_CK).", "error")
+        return redirect(url_for("jogo_detalhe", id_jogo=id_jogo))
 
     jog = next((j for j in MOCK_JOGADORES if j["id_jogador"] == id_jogador), None)
     if not jog:
         flash("Jogador não encontrado.", "error")
         return redirect(url_for("jogo_detalhe", id_jogo=id_jogo))
 
-    # Atualizar ou inserir em MOCK_PARTICIPA_JOGO
     entry = next((s for s in MOCK_PARTICIPA_JOGO if s["id_jogo"] == id_jogo and s["id_jogador"] == id_jogador), None)
     if entry:
         entry.update({
@@ -756,7 +915,6 @@ def jogo_estatisticas(id_jogo):
             "cartoes_azuis": cartoes_azuis,
             "defesas_gr": defesas_gr,
             "hpi": hpi,
-            "pontos_obtidos": pontos_obtidos,
         })
     else:
         MOCK_PARTICIPA_JOGO.append({
@@ -772,15 +930,17 @@ def jogo_estatisticas(id_jogo):
             "cartoes_azuis": cartoes_azuis,
             "defesas_gr": defesas_gr,
             "hpi": hpi,
-            "pontos_obtidos": pontos_obtidos,
         })
 
-    # Recalcular totais consolidados do jogador
-    all_player_pj = [s for s in MOCK_PARTICIPA_JOGO if s["id_jogador"] == id_jogador]
-    jog["total_golos"] = sum(s.get("golos", 0) for s in all_player_pj)
-    jog["total_pontos"] = round(sum(s.get("pontos_obtidos", 0.0) for s in all_player_pj), 1)
+    # Recalcular pontos da respetiva jornada para os plantéis (participa_jornada)
+    raw_jogo = next((j for j in MOCK_JOGOS if j["id_jogo"] == id_jogo), None)
+    if raw_jogo:
+        recalculate_jornada_standings(raw_jogo["id_jornada"])
 
-    flash(f"Estatística de {jog['primeiro_nome']} {jog['apelido']} gravada com sucesso em participa_jogo!", "success")
+    flash(
+        f"Estatística de {jog['primeiro_nome']} {jog['apelido']} gravada! Pontos e placar recalculados automaticamente.",
+        "success",
+    )
     return redirect(url_for("jogo_detalhe", id_jogo=id_jogo))
 
 

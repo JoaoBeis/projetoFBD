@@ -7,7 +7,7 @@
 <div class="page-header">
   <div>
     <h1 class="page-title">Clubes Oficiais</h1>
-    <p class="page-subtitle">Consulta os clubes inscritos, os respetivos treinadores com licença e plantéis oficiais.</p>
+    <p class="page-subtitle">Consulta os clubes inscritos, o seu pavilhão exclusivo (1:1), treinadores com licença e plantéis oficiais.</p>
   </div>
 </div>
 
@@ -34,7 +34,9 @@
               <span class="tag" style="font-size: 0.72rem; padding: 0.1rem 0.35rem;">{{ c.treinador_licenca }}</span>
             {% endif %}
           </div>
-          <div><strong>Cidade:</strong> {{ c.cidade }}</div>
+          <div>
+            <strong>Pavilhão:</strong> {{ c.pavilhao_nome or 'Não atribuído' }}{% if c.pavilhao_capacidade %} <span style="color: var(--text-muted);">({{ c.pavilhao_capacidade }} lug.)</span>{% endif %}
+          </div>
         </div>
 
         <button type="button" class="btn btn-secondary btn-sm" style="width: 100%;">
@@ -59,7 +61,7 @@
            data-club-squad="{{ c.id_clube }}"
            style="display: {% if loop.first %}block{% else %}none{% endif %};">
         <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-          Atletas inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong> ({{ c.cidade }}):
+          Atletas inscritos no <strong style="color: var(--text-primary);">{{ c.nome }}</strong> &bull; {{ c.pavilhao_nome }} ({{ c.cidade }}):
         </p>
 
         <div class="table-wrap">
