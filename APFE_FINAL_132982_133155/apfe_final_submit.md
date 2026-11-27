@@ -37,41 +37,17 @@ Uma liga pode também ser relativa a uma país, mas já é opcional.
 
 [SQL DDL File](sql/01_ddl.sql "SQLFileQuestion")
 
-O `01_ddl.sql` e o `04_db_init.sql` contêm o esquema e os dados iniciais. A normalização é aplicada pelo script `normalizacao.sql` que se executa a seguir a esses dois e leva a base de dados ao esquema final representado no ER:
+O `01_ddl.sql` e o `04_db_init.sql` contêm o esquema e os dados iniciais. A normalização é aplicada pela query `normalizacao.sql` que se executa a seguir a esses dois e leva a base de dados ao esquema final representado no ER:
 
-`01_ddl.sql` → `04_db_init.sql` → `normalizacao.sql`
+`01_ddl.sql` -> `04_db_init.sql` -> `normalizacao.sql`
 
 ## Normalização
 
-Após a definição do esquema inicial (`DDL` e `DML`), procedeu-se à análise e normalização da base de dados com o objetivo de atingir a Terceira Forma Normal (3FN), eliminar redundâncias e reforçar a integridade dos dados. O DER e o ER foram atualizados e o script `normalizacao.sql` aplica à base de dados as mesmas alterações.
+Após a definição do esquema inicial (`DDL` e `DML`), normalizámos a base de dados com o objetivo de chegar à Terceira Forma Normal, eliminar redundâncias e reforçar a integridade dos dados. O DER e o ER foram atualizados e a query `normalizacao.sql` aplica à base de dados anteriormente definida essas alterações.
 
 ### 1. Análise de dependências funcionais
 
-As dependências funcionais (DF) foram definidas a partir da semântica dos atributos (e não inferidas dos dados). A **1FN** é cumprida em todas as relações (atributos atómicos, sem relações aninhadas). A **2FN** é cumprida em todas: nas 5 relações de chave composta (`participa_liga`, `seleciona`, `participa_jornada`, `apita`, `participa_jogo`) todos os atributos não-chave dependem da chave completa.
-
-Esquema final (após normalização):
-
-| Relação | Chave(s) | DF principais | Forma normal |
-|---|---|---|---|
-| pessoa | id_pessoa | id_pessoa → primeiro_nome, apelido, data_nasc | BCNF |
-| pais | nome; sigla | nome ↔ sigla | BCNF |
-| posicao | id_posicao; nome; sigla | id_posicao → nome, sigla | BCNF |
-| clube | id_clube; nome; id_pavilhao | id_clube → nome, cidade, emblema, id_pavilhao | BCNF |
-| pavilhao | id_pavilhao; nome | id_pavilhao → nome, capacidade, localidade | BCNF |
-| utilizador | id_utilizador; username; email | id_utilizador → username, email, password_hash | BCNF |
-| jogador | id_jogador | id_jogador → altura, peso, valor_mercado, nome_pais, id_clube, id_posicao | BCNF |
-| treinador | id_treinador; id_clube | id_treinador → licenca, id_clube | BCNF |
-| arbitro | id_arbitro; num_cedula | id_arbitro → num_cedula | BCNF |
-| liga | id_liga | id_liga → nome, codigo_acesso, e_privada, nome_pais, id_utilizador | BCNF |
-| plantel | id_plantel; id_utilizador | id_plantel → nome_plantel, id_utilizador | BCNF |
-| jornada | id_jornada; numero_jornada | id_jornada → numero_jornada, data_inicio, data_fim | BCNF |
-| jogo | id_jogo | id_jogo → data_hora, id_clube_casa, id_clube_fora, id_jornada | BCNF |
-| participa_liga, apita | (chave composta) | sem atributos fora da chave | BCNF |
-| seleciona | (id_plantel, id_jogador) | → e_titular, e_capitao, preco_compra | BCNF |
-| participa_jornada | (id_plantel, id_jornada) | → pontos_jornada | BCNF |
-| participa_jogo | (id_jogador, id_jogo) | → golos, assistencias, remates_falhados, exclusoes_2min, cartoes_vermelhos, cartoes_azuis, defesas_gr, hpi | BCNF |
-
-Critérios informais (BD8): cada relação tem uma semântica única; os poucos atributos opcionais (`liga.codigo_acesso`, `liga.nome_pais`, `clube.emblema`, `jogador.altura`, `jogador.peso`) são NULL por regra de negócio (liga pública, liga sem país, dados em falta) e não justificam relações separadas; todas as junções fazem-se por PK/FK.
+A **1FN** é cumprida em todas as relações (atributos atómicos, sem relações aninhadas). A **2FN** é cumprida em todas: nas 5 relações de chave composta (`participa_liga`, `seleciona`, `participa_jornada`, `apita`, `participa_jogo`) todos os atributos não-chave dependem da chave completa.
 
 ### 2. Violações encontradas e correções
 
@@ -88,16 +64,16 @@ Critérios informais (BD8): cada relação tem uma semântica única; os poucos 
 
 **Atributos que se mantêm guardados (redundância deliberada)**
 
-* **`Participa_Jornada.pontos_jornada`:** é derivável (titulares e capitão do plantel × pontos dos jogos da jornada), mas mantém-se guardado como *snapshot*: a relação `Seleciona` não tem dimensão "jornada", pelo que, se o valor fosse calculado a pedido, trocar um titular depois de uma jornada alteraria retroativamente o histórico. Esta decisão enquadra-se no ponto de equilíbrio entre 3FN e BCNF do BD8.
+* **`Participa_Jornada.pontos_jornada`:** é derivável (titulares e capitão do plantel x pontos dos jogos da jornada), mas mantém-se guardado para se manter fiel à respetiva jornada onde foram calculados: a relação `Seleciona` não tem dimensão "jornada", pelo que, se o valor fosse calculado a pedido, trocar um titular depois de uma jornada alteraria o histórico. Esta decisão enquadra-se no ponto de equilíbrio entre 3FN e BCNF.
 * **`Seleciona.preco_compra`:** não é redundante; guarda o preço no momento da compra, que difere do `valor_mercado` atual.
 
 **Desacoplamento entre `Jornada` e `Liga`:** as jornadas correspondem ao calendário real e um plantel pode competir em várias ligas, pelo que se removeu `id_liga` de `Jornada` (que só permitia jornadas e jogos para uma liga). A ligação passa a ser feita por `Participa_Jornada` e `Participa_Liga`, e `numero_jornada` passou a `UNIQUE`.
 
-### 3. O que faz o script `normalizacao.sql`
+### 3. O que faz a query `normalizacao.sql`
 
 Por ordem:
 
-1. **Pavilhão:** acrescenta `clube.id_pavilhao` (com `UNIQUE` e chave estrangeira), confirma que coincide com o pavilhão dos jogos em casa e remove `jogo.id_pavilhao`.
+1. **Pavilhão:** acrescenta `clube.id_pavilhao` (com `UNIQUE` e chave estrangeira), associa cada clube ao respetivo pavilhão (coincidente com os jogos em casa definidos pelo `04_db_init.sql`) e remove `jogo.id_pavilhao`.
 2. **Jornada:** remove `jornada.id_liga` e acrescenta `UNIQUE (numero_jornada)`.
 3. **Pontos de jornada:** recalcula `participa_jornada.pontos_jornada` (titulares, capitão a dobrar). Os valores do povoamento inicial não correspondiam às estatísticas: nenhum dos 4 plantéis tinha `pontos_acumulados` igual à soma das suas jornadas.
 4. **Derivados:** remove `plantel.orcamento`, `plantel.pontos_acumulados`, `jogo.golos_casa`, `jogo.golos_fora` e `participa_jogo.pontos_obtidos` (incluindo as restrições `DEFAULT` e `CHECK` associadas).
@@ -112,6 +88,6 @@ Com a remoção de `golos_casa` e `golos_fora`, o resultado de cada jogo passa a
 
 ### 5. Regras assumidas
 
-* Pontos de um jogador num jogo: 4×golos + 2×assistências − 1×remates falhados − 2×exclusões de 2 min − 5×cartão vermelho − 3×cartão azul + 3×defesas de GR + 0,1×HPI, arredondados a 2 casas; o capitão vale o dobro. O peso do cartão azul foi definido pelo grupo (os dados não têm cartões azuis).
+* Pontos de um jogador num jogo: 4\*golos + 2\*assistências − 1\*remates falhados − 2\*exclusões de 2 min − 5\*cartão vermelho − 3\*cartão azul + 3\*defesas de GR + 0,1\*HPI, arredondados a 2 casas; o capitão vale o dobro. O peso do cartão azul foi definido por nós pois os dados que usámos como referência não têm cartões azuis.
 * O orçamento restante de um plantel é o orçamento inicial menos a soma dos `preco_compra`; assume-se que vender um jogador devolve o preço de compra.
 * Os golos de um jogo atribuem-se pelo clube atual do jogador; assume-se que não há transferências durante a época.
